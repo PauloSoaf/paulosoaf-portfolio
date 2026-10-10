@@ -1,14 +1,12 @@
-import Image from "next/image";
-
 import { StatusBadge } from "@/components/editorial/Editorial";
 import { ExternalLink } from "@/components/ui/ExternalLink";
+import { publicRepository } from "@/features/projects/project-presentation";
 import type { Project } from "@/features/projects/project-types";
 import type { Locale } from "@/i18n/config";
 import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { cx } from "@/lib/cx";
 
-import { ProjectArtFallback } from "./ProjectArtFallback";
+import { ProjectMedia } from "./ProjectMedia.client";
 
 interface ProjectCardProps {
   project: Project;
@@ -27,33 +25,18 @@ const pad = (value: number) => String(value).padStart(2, "0");
 export function ProjectCard({ project, locale, dict, position, total }: ProjectCardProps) {
   const titleId = `project-${project.slug}-title`;
   const categories = project.categories.map((category) => dict.projects.categories[category]).join(" / ");
+  const repository = publicRepository(project);
 
   return (
     <article
       aria-labelledby={titleId}
-      className="flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface shadow-card"
+      className="project-card flex h-full flex-col overflow-hidden rounded-md border border-line bg-surface shadow-card"
     >
-      <div className="media-panel relative aspect-[16/11] overflow-hidden border-b border-line">
-        {project.image ? (
-          <Image
-            src={project.image.src}
-            alt={project.image.alt[locale]}
-            width={project.image.width}
-            height={project.image.height}
-            sizes="(min-width: 1280px) 420px, (min-width: 768px) 50vw, 100vw"
-            className={cx(
-              "h-full w-full",
-              project.image.fit === "contain" ? "object-contain p-[6%]" : "object-cover",
-            )}
-          />
-        ) : (
-          <ProjectArtFallback title={project.title} />
-        )}
-      </div>
+      <ProjectMedia image={project.image} title={project.title} slug={project.slug} art={project.art} locale={locale} conceptLabel={dict.projects.conceptArt} />
 
       <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-kicker text-fg-subtle">{categories}</p>
+          <p className="text-kicker text-fg-subtle">{dict.projects.kinds[project.kind]} · {categories}</p>
           <span aria-hidden="true" className="font-mono text-xs text-fg-subtle">
             {pad(position)} / {pad(total)}
           </span>
@@ -67,23 +50,28 @@ export function ProjectCard({ project, locale, dict, position, total }: ProjectC
         </div>
 
         <p className="text-sm leading-relaxed text-fg-muted">{project.summary[locale]}</p>
-        <p className="font-mono text-xs leading-relaxed text-fg-subtle">{project.tech.join(" • ")}</p>
+        <p className="font-mono text-xs leading-relaxed text-fg-subtle">{project.stackVerification === "confirmed" ? project.tech.join(" • ") : dict.projects.stackPending}</p>
         {project.teamCredits?.length ? (
           <p className="text-xs text-fg-subtle">
             {format(dict.projects.teamCredits, { names: project.teamCredits.join(", ") })}
           </p>
         ) : null}
 
-        {project.repository ? (
-          <div className="mt-auto pt-3">
-            <ExternalLink
-              href={project.repository.href}
-              newTabLabel={dict.a11y.newTab}
-              label={format(dict.projects.sourceCodeLabel, { title: project.title })}
-              className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-line-strong bg-accent-wash px-3.5 text-xs font-semibold transition-colors duration-(--oo-motion-fast) hover:border-accent"
-            >
-              {dict.projects.sourceCode}
-            </ExternalLink>
+        {repository || project.demo ? (
+          <div className="mt-auto flex flex-wrap gap-3 pt-3">
+            {repository && (
+              <ExternalLink
+                href={repository.href}
+                newTabLabel={dict.a11y.newTab}
+                label={format(dict.projects.sourceCodeLabel, { title: project.title })}
+                className="inline-flex min-h-11 items-center gap-2 rounded-sm border border-line-strong bg-accent-wash px-3.5 text-xs font-semibold transition-colors duration-(--oo-motion-fast) hover:border-accent"
+              >
+                {dict.projects.sourceCode}
+              </ExternalLink>
+            )}
+            {project.demo && <ExternalLink href={project.demo.href} newTabLabel={dict.a11y.newTab}
+              label={format(dict.projects.demoLabel, { title: project.title })}
+              className="carousel-button text-sm">{dict.projects.demo}</ExternalLink>}
           </div>
         ) : null}
       </div>

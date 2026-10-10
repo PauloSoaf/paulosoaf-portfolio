@@ -1,8 +1,11 @@
 import type { ContentStatus, LocalizedText, VerifiedLink } from "@/features/content/types";
 
 export type ProjectCategory = "3d" | "web" | "fullstack" | "games" | "academic";
+export type ProjectKind = "commercial-product" | "professional-website" | "open-source" | "enterprise-application" | "technical-experiment" | "academic-project";
+export type ProjectArt = "nutrition" | "editorial" | "space" | "chess" | "telemetry" | "games" | "academic";
 
 export interface ProjectImage {
+  kind: "concept" | "screenshot";
   /** Path under `public/`, e.g. `/art/projects/chess.svg`. */
   src: string;
   width: number;
@@ -17,6 +20,14 @@ export interface Project {
   slug: string;
   title: string;
   status: ContentStatus;
+  kind: ProjectKind;
+  /** Undefined keeps the project in the secondary catalog. Lower values appear first. */
+  featuredOrder?: number;
+  sourceVisibility: "public" | "private" | "unconfirmed";
+  stackVerification: "confirmed" | "pending";
+  art: ProjectArt;
+  /** Availability is derived from the optional verified demo link; no invented destinations. */
+  caseStudy: { availability: "planned" | "unavailable" } | { availability: "available"; path: `/${string}` };
   categories: readonly ProjectCategory[];
   summary: LocalizedText;
   /** Required before approval (case study, S04). */

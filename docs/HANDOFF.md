@@ -105,3 +105,19 @@ Antes das modificações, Codex leu README/AGENTS/CLAUDE/HANDOFF, roadmap, requi
 A comparação de performance usou um worktree temporário detached de `ea3cf24`, sem alterar `main`. Apenas o root de resolução Turbopack desse worktree foi ampliado para aceitar a junction das dependências; código da aplicação S00 permaneceu igual. Relatórios brutos, traces auxiliares e captura da POC ficam em `docs/report/S01/`, ignorados pelo Git. O resumo QA e as 36 evidências selecionadas ficam em `docs/qa/S01/`.
 
 A autorização de push anterior aplicou-se à entrega S00. **A instrução atual da S01 exige autorização nova para push/deploy.** Não houve push ou deploy S01. S02–S05 permanecem no roadmap original; S06 exige autorização específica e Obsidian Dev Mode permanece no backlog. A revisão editorial e a aferição em aparelhos físicos continuam pendentes, conforme QA.
+
+## Continuação S02 — marco e autoria
+
+Em 10/10/2026, Codex recebeu a auditoria/prompt S02 anexada pelo proprietário. **Primeira ação:** leu esse anexo e conferiu status, branch e HEAD. A árvore estava limpa em `feat/s01-hero-procedural`, commit `758557ecc342875ce098f6912cc26d14bf3fc284`. `git ls-remote` confirmou esse mesmo commit remoto e `main` em `ea3cf243094ba524335c6e367467c8bbf6107574`. A disponibilidade da branch S01 no GitHub é um fato desta nova consulta; este registro não atribui a Codex um push realizado fora da continuação anterior.
+
+Após ler instruções/specs, código herdado, documentação instalada do Next, mockups e POC-002, **primeira operação de versão:** criou `feat/s02-cinematic-projects` a partir da S01. **Primeira alteração de código S02:** estendeu `src/features/projects/project-types.ts`/`project-validation.ts` e criou `project-presentation.ts`. A base da S01 foi preservada; nenhum arquivo de `src/graphics/hero/` mudou.
+
+| Origem | Trabalho e fronteira nesta sprint |
+|---|---|
+| Claude, herdado da S00 | Shell, tokens/tipografia, conteúdo original, filtros editoriais/release gate, `WorkSection`, `ProjectCard`, fallback inicial, dicionários e cinco candidatos/repositórios. Atribuição detalhada nas seções anteriores. |
+| Codex, continuação anterior S00/S01 | Validação/regressões e Hero procedural em `758557e`, incluindo QA, ADR-009 e 36 capturas históricas. |
+| Proprietário / pacote de referência | Auditoria/prompt S02, contexto de NutriOpus/Déborah Lima, ordem desejada, specs/POC/mockups v0.1. Não são criações editoriais atribuídas ao Codex. |
+| Codex, implementação S02 | Ilha/controlador de carrossel, CSS de profundidade, Pointer Events/teclado/autoplay/ARIA, contexto de mídia, recuperação de imagens e artes abstratas distintas. Estendeu cards/seção/modelos/validador e labels PT/EN/ES; cadastrou os dois novos candidatos exclusivamente a partir do prompt, sem aprová-los ou confirmar stack. Corrigiu somente o fallback mono em `src/app/fonts.ts` após identificar CLS por troca de fonte; fonte final/tokens/cena do Hero foram preservados. |
+| Codex, QA/documentação S02 | Testes unitários/E2E/visuais, 52 PNGs próprios, perfil/Lighthouse local e resumo de métricas, ADR-010, relatório/pendências, README e este marco. `qa:hero` ganhou apenas uma opção de diretório de saída para preservar S01; implementação visual do Hero permaneceu intacta. |
+
+Novos candidatos começam `draft`, sem imagem real/GitHub/demo, com verificação de stack pendente. Os links/descrições originais continuam herdados; não foi feita nova auditoria remota de stack/licenças. Cases completos, timeline, Explore Mode e Dev Mode não foram implementados. Resultados e limitações em `docs/qa/S02/REPORT.md`; pendências em `docs/qa/S02/EDITORIAL-PENDING.md`. Logs brutos e a nova regressão do Hero ficam em `docs/report/S02/`, fora do Git. Nenhum merge, force-push, push ou deploy foi realizado nesta continuação.

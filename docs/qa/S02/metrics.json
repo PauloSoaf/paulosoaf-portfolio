@@ -1,0 +1,815 @@
+{
+  "baseCommit": "758557ecc342875ce098f6912cc26d14bf3fc284",
+  "branch": "feat/s02-cinematic-projects",
+  "baselineS01": {
+    "source": "docs/qa/S01/metrics.json",
+    "initialGzipBytes": 151218,
+    "laboratory": [
+      {
+        "sample": "lighthouse-desktop",
+        "date": "2026-10-10T18:50:08.722Z",
+        "lighthouse": "13.5.0",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 596.2177,
+        "cls": 0.0006481940232490883,
+        "tbtMs": 0,
+        "warnings": []
+      },
+      {
+        "sample": "lighthouse-mobile",
+        "date": "2026-10-10T18:48:59.572Z",
+        "lighthouse": "13.5.0",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 95,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2865.81855,
+        "cls": 0,
+        "tbtMs": 100,
+        "warnings": []
+      }
+    ]
+  },
+  "laboratory": [
+    {
+      "sample": "preview-desktop",
+      "date": "2026-10-10T20:42:59.452Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 661.814775,
+      "cls": 0.00039530773450471157,
+      "tbtMs": 9.5,
+      "warnings": []
+    },
+    {
+      "sample": "preview-mobile",
+      "date": "2026-10-10T20:43:17.655Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3177.532075,
+      "cls": 0,
+      "tbtMs": 119.63827500000002,
+      "warnings": []
+    },
+    {
+      "sample": "public-desktop",
+      "date": "2026-10-10T20:46:28.412Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 586.2801499999999,
+      "cls": 0.00039530773450471157,
+      "tbtMs": 8.5,
+      "warnings": []
+    },
+    {
+      "sample": "public-mobile",
+      "date": "2026-10-10T20:46:46.532Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2903.6749,
+      "cls": 0,
+      "tbtMs": 100,
+      "warnings": []
+    },
+    {
+      "sample": "preview-desktop-before-font-fix",
+      "date": "2026-10-10T20:31:05.838Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 658.2701499999998,
+      "cls": 0.0022157169364256904,
+      "tbtMs": 0.5,
+      "warnings": []
+    },
+    {
+      "sample": "preview-mobile-before-font-fix",
+      "date": "2026-10-10T20:29:35.791Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 93,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3134.1994000000004,
+      "cls": 0,
+      "tbtMs": 61.68579999999997,
+      "warnings": []
+    },
+    {
+      "sample": "public-desktop-before-font-fix",
+      "date": "2026-10-10T20:32:36.191Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 597.4044,
+      "cls": 0.0006481940232490883,
+      "tbtMs": 16.5,
+      "warnings": []
+    },
+    {
+      "sample": "public-mobile-before-font-fix",
+      "date": "2026-10-10T20:32:55.038Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2798.56525,
+      "cls": 0.1149674689571095,
+      "tbtMs": 119.00000000000023,
+      "warnings": []
+    }
+  ],
+  "previewProfiles": [
+    {
+      "width": 390,
+      "mode": "editorial-preview",
+      "initialGzipBytes": 154711,
+      "transitions": [
+        {
+          "observedRafHz": 60.01194237653292,
+          "intervalP95Ms": 16.799999999999727,
+          "uniqueTransforms": 34,
+          "selectedProject": "deborah-lima"
+        },
+        {
+          "observedRafHz": 60,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 35,
+          "selectedProject": "dr-manaus"
+        },
+        {
+          "observedRafHz": 60.00294014406706,
+          "intervalP95Ms": 16.799999999999727,
+          "uniqueTransforms": 35,
+          "selectedProject": "iot-devices-manager"
+        },
+        {
+          "observedRafHz": 60,
+          "intervalP95Ms": 16.800000000000182,
+          "uniqueTransforms": 34,
+          "selectedProject": "chess-in-react"
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 69.29999995231628
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 1768
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 1768
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 2.799999952316284
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.05396138018360241
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.05396138018360241,
+          "startTime": 1754.2999999523163,
+          "phase": "manual-transitions",
+          "nodes": [
+            "<div class=\"carousel-slide\" data-project=\"nutriopus\" data-active=\"true\" data-neighbor=\"false\" style=\"--offset:0;--layer:3\" role=\"group\" aria",
+            "<div class=\"carousel-controls\"><button type=\"button\" class=\"carousel-button carousel-play\">Reproduzir automaticamente<span aria-hidden=\"true"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "editorial-preview",
+      "initialGzipBytes": 154711,
+      "transitions": [
+        {
+          "observedRafHz": 60.00294014406706,
+          "intervalP95Ms": 16.799999999999955,
+          "uniqueTransforms": 35,
+          "selectedProject": "deborah-lima"
+        },
+        {
+          "observedRafHz": 60.00600060006001,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 35,
+          "selectedProject": "dr-manaus"
+        },
+        {
+          "observedRafHz": 60,
+          "intervalP95Ms": 16.800000000000182,
+          "uniqueTransforms": 34,
+          "selectedProject": "iot-devices-manager"
+        },
+        {
+          "observedRafHz": 60.00600060006001,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 34,
+          "selectedProject": "chess-in-react"
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 168
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 6.400000095367432
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 168
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5999999046325684
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.00033234987193501373
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.00033234987193501373,
+          "startTime": 268.40000009536743,
+          "phase": "initial",
+          "nodes": [
+            "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+          ]
+        }
+      ]
+    }
+  ],
+  "publicProfiles": [
+    {
+      "width": 390,
+      "mode": "public-empty",
+      "initialGzipBytes": 154711,
+      "transitions": [],
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 73.79999995231628
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 480
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 480
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0019526327556188669
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.0019526327556188669,
+          "startTime": 481.59999990463257,
+          "phase": "initial",
+          "nodes": [
+            "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "public-empty",
+      "initialGzipBytes": 154711,
+      "transitions": [],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 136
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.400000095367432
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 136
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.00033234987193501373
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.00033234987193501373,
+          "startTime": 211.80000019073486,
+          "phase": "initial",
+          "nodes": [
+            "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+          ]
+        }
+      ]
+    }
+  ],
+  "firstPreviewProfile": [
+    {
+      "width": 390,
+      "mode": "editorial-preview",
+      "initialGzipBytes": 154704,
+      "transitions": [
+        {
+          "observedRafHz": 60.00888131443454,
+          "intervalP95Ms": 16.700000000000045,
+          "uniqueTransforms": 34,
+          "selectedProject": "deborah-lima"
+        },
+        {
+          "observedRafHz": 60.01500375093774,
+          "intervalP95Ms": 16.800000000000182,
+          "uniqueTransforms": 35,
+          "selectedProject": "dr-manaus"
+        },
+        {
+          "observedRafHz": 60.00600060006001,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 35,
+          "selectedProject": "iot-devices-manager"
+        },
+        {
+          "observedRafHz": 60,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 34,
+          "selectedProject": "chess-in-react"
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 248
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 83.5
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 248
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.3000001907348633
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 16
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.12144820601851852
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.12144820601851852,
+          "nodes": [
+            "<div aria-hidden=\"true\" class=\"hero-grid pointer-events-none absolute inset-0 -z-20\"></div>",
+            null
+          ]
+        },
+        {
+          "value": 0.00506343720322887,
+          "nodes": [
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "mode": "editorial-preview",
+      "initialGzipBytes": 154704,
+      "transitions": [
+        {
+          "observedRafHz": 60.00294014406706,
+          "intervalP95Ms": 16.799999999999955,
+          "uniqueTransforms": 34,
+          "selectedProject": "deborah-lima"
+        },
+        {
+          "observedRafHz": 60.002940144067075,
+          "intervalP95Ms": 16.800000000000182,
+          "uniqueTransforms": 35,
+          "selectedProject": "dr-manaus"
+        },
+        {
+          "observedRafHz": 60.00600060005997,
+          "intervalP95Ms": 16.700000000000273,
+          "uniqueTransforms": 35,
+          "selectedProject": "iot-devices-manager"
+        },
+        {
+          "observedRafHz": 60.00600060006001,
+          "intervalP95Ms": 16.799999999999727,
+          "uniqueTransforms": 35,
+          "selectedProject": "chess-in-react"
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.900000095367432
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.2999999523162842
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0020379365060228054
+        }
+      ],
+      "canvasCount": 0,
+      "layoutShifts": [
+        {
+          "value": 0.0017055866340877916,
+          "nodes": [
+            null,
+            "<span class=\"hidden items-center gap-3 sm:inline-flex\">Role para explorar<span class=\"h-px w-14 bg-line-strong\"></span><svg aria-hidden=\"tru",
+            "<span>Engenheiro Full Stack</span>",
+            "<span aria-hidden=\"true\">/</span>"
+          ]
+        },
+        {
+          "value": 0.00033234987193501373,
+          "nodes": [
+            "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+          ]
+        }
+      ]
+    }
+  ],
+  "profilesBeforeFontFix": {
+    "preview": [
+      {
+        "width": 390,
+        "mode": "editorial-preview",
+        "initialGzipBytes": 154704,
+        "transitions": [
+          {
+            "observedRafHz": 60,
+            "intervalP95Ms": 16.700000000000045,
+            "uniqueTransforms": 35,
+            "selectedProject": "deborah-lima"
+          },
+          {
+            "observedRafHz": 59.99999999999998,
+            "intervalP95Ms": 16.799999999999955,
+            "uniqueTransforms": 34,
+            "selectedProject": "dr-manaus"
+          },
+          {
+            "observedRafHz": 60.01194237653292,
+            "intervalP95Ms": 16.700000000000273,
+            "uniqueTransforms": 35,
+            "selectedProject": "iot-devices-manager"
+          },
+          {
+            "observedRafHz": 59.997000149992516,
+            "intervalP95Ms": 16.800000000000182,
+            "uniqueTransforms": 34,
+            "selectedProject": "chess-in-react"
+          }
+        ],
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 176
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 6.5
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 176
+          },
+          {
+            "name": "portfolio:vital:FID",
+            "value": 1.2999999523162842
+          },
+          {
+            "name": "portfolio:vital:INP",
+            "value": 16
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0.12144820601851852
+          }
+        ],
+        "canvasCount": 0,
+        "layoutShifts": [
+          {
+            "value": 0.12144820601851852,
+            "startTime": 202.29999995231628,
+            "phase": "initial",
+            "nodes": [
+              "<div aria-hidden=\"true\" class=\"hero-grid pointer-events-none absolute inset-0 -z-20\"></div>",
+              null
+            ]
+          },
+          {
+            "value": 0.00506343720322887,
+            "startTime": 3058.2000000476837,
+            "phase": "manual-transitions",
+            "nodes": [
+              null
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "mode": "editorial-preview",
+        "initialGzipBytes": 154704,
+        "transitions": [
+          {
+            "observedRafHz": 60.00600060005999,
+            "intervalP95Ms": 16.799999999999955,
+            "uniqueTransforms": 35,
+            "selectedProject": "deborah-lima"
+          },
+          {
+            "observedRafHz": 60.00294014406706,
+            "intervalP95Ms": 16.700000000000273,
+            "uniqueTransforms": 34,
+            "selectedProject": "dr-manaus"
+          },
+          {
+            "observedRafHz": 60.00600060006001,
+            "intervalP95Ms": 16.800000000000182,
+            "uniqueTransforms": 34,
+            "selectedProject": "iot-devices-manager"
+          },
+          {
+            "observedRafHz": 60,
+            "intervalP95Ms": 16.799999999999727,
+            "uniqueTransforms": 35,
+            "selectedProject": "chess-in-react"
+          }
+        ],
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 196
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 5.599999904632568
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 196
+          },
+          {
+            "name": "portfolio:vital:FID",
+            "value": 1.5
+          },
+          {
+            "name": "portfolio:vital:INP",
+            "value": 32
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0.0020379365060228054
+          }
+        ],
+        "canvasCount": 0,
+        "layoutShifts": [
+          {
+            "value": 0.0017055866340877916,
+            "startTime": 185.29999995231628,
+            "phase": "initial",
+            "nodes": [
+              null,
+              "<span class=\"hidden items-center gap-3 sm:inline-flex\">Role para explorar<span class=\"h-px w-14 bg-line-strong\"></span><svg aria-hidden=\"tru",
+              "<span>Engenheiro Full Stack</span>",
+              "<span aria-hidden=\"true\">/</span>"
+            ]
+          },
+          {
+            "value": 0.00033234987193501373,
+            "startTime": 372.90000009536743,
+            "phase": "initial",
+            "nodes": [
+              "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+            ]
+          }
+        ]
+      }
+    ],
+    "public": [
+      {
+        "width": 390,
+        "mode": "public-empty",
+        "initialGzipBytes": 154704,
+        "transitions": [],
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 208
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 80.79999995231628
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 208
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0.10906662625633112
+          }
+        ],
+        "canvasCount": 0,
+        "layoutShifts": [
+          {
+            "value": 0.10711399350071225,
+            "startTime": 247.20000004768372,
+            "phase": "initial",
+            "nodes": [
+              "<div aria-hidden=\"true\" class=\"hero-art-fade pointer-events-none select-none\"><img data-theme-only=\"dark\" alt=\"\" draggable=\"false\" fetchprio",
+              "<div class=\"mt-8 flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3.5\"><a class=\"inline-flex max-w-full items",
+              "<p class=\"max-w-[30rem] text-base leading-[1.7] text-fg-muted sm:text-[1.0625rem]\">Transformo problemas complexos em sistemas robustos, inte",
+              "<h1 id=\"hero-title\" class=\"mt-7 mb-6 wrap-anywhere text-[clamp(2.8rem,11vw,4.4rem)] leading-[0.95] font-bold tracking-[-0.055em] lg:mt-8 lg:",
+              "<span>Engenheiro Full Stack</span>"
+            ]
+          },
+          {
+            "value": 0.0019526327556188669,
+            "startTime": 289.5,
+            "phase": "initial",
+            "nodes": [
+              "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "mode": "public-empty",
+        "initialGzipBytes": 154704,
+        "transitions": [],
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 140
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 6.200000047683716
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 140
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0.0005593615371013374
+          }
+        ],
+        "canvasCount": 0,
+        "layoutShifts": [
+          {
+            "value": 0.00022701166516632374,
+            "startTime": 125.5,
+            "phase": "initial",
+            "nodes": [
+              "<span class=\"hidden items-center gap-3 sm:inline-flex\">Role para explorar<span class=\"h-px w-14 bg-line-strong\"></span><svg aria-hidden=\"tru",
+              "<span>Engenheiro Full Stack</span>",
+              "<span aria-hidden=\"true\">/</span>"
+            ]
+          },
+          {
+            "value": 0.00033234987193501373,
+            "startTime": 203.70000004768372,
+            "phase": "initial",
+            "nodes": [
+              "<button type=\"button\" class=\"min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar ar"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Local runs, not field p75",
+    "Public catalog contains no approved projects; transitions measured in editorial preview",
+    "Desktop viewport and 390px mouse emulation; real touch covered separately in E2E",
+    "rAF cadence and changing CSS transforms do not certify physical-device FPS",
+    "Pre-fix font swap contributed mobile CLS; its samples are retained beside final results",
+    "Raw logs and original POC capture are ignored under docs/report/S02"
+  ]
+}

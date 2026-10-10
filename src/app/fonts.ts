@@ -2,8 +2,8 @@ import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 
 /*
  * Self-hosted at build time by next/font (no runtime request to Google; all three are OFL).
- * Fallback metrics are adjusted automatically to avoid layout shift. Only the display and body
- * faces are preloaded (critical for the hero); the mono face is used for small labels.
+ * Display/body use Next's adjusted fallbacks and preload. Mono stays deferred, with a true
+ * monospace fallback: Next's adjusted Arial widened labels and changed their line count in QA.
  */
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -23,6 +23,8 @@ const mono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Courier New", "monospace"],
 });
 
 export const fontVariables = `${display.variable} ${body.variable} ${mono.variable}`;

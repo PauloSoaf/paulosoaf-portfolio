@@ -18,6 +18,8 @@
     "qa:screenshots": "playwright test --config playwright.visual.config.ts",
     "qa:hero": "playwright test --config playwright.hero-visual.config.ts",
     "qa:hero:summary": "node scripts/summarize-hero-qa.mjs",
+    "qa:carousel": "playwright test --config playwright.carousel-visual.config.ts",
+    "qa:carousel:summary": "node scripts/summarize-carousel-qa.mjs",
     "release:check": "vitest run --config vitest.release.config.mts",
     "art:light": "node scripts/derive-light-orb.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build"

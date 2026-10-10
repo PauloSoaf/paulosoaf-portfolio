@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
+@import "../styles/carousel.css";
 
 /* Reference material, not app code: keep its class names out of the generated CSS. */
 @source not "../../paulo_soaf_obsidian_orbit_specs_pocs_v01";

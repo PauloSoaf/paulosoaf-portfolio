@@ -40,13 +40,14 @@ describe("editorial safety", () => {
   });
   it("rejects missing Spanish content, missing media and unverified demos", () => {
     const content = structuredClone(siteContent);
-    const project = content.projects[0]!;
+    const index = content.projects.findIndex((project) => project.slug === "dr-manaus");
+    const project = content.projects[index]!;
     project.summary.es = "";
     project.demo = { href: "javascript:alert(1)", verifiedAt: "2026-10-11" };
     const issues = validateSiteContent(content, { today, publicAssetExists: () => false });
     expect(issues.map((issue) => issue.path)).toEqual(expect.arrayContaining([
-      "projects[0:dr-manaus].summary.es", "projects[0:dr-manaus].image.src",
-      "projects[0:dr-manaus].demo.href", "projects[0:dr-manaus].demo.verifiedAt",
+      `projects[${index}:dr-manaus].summary.es`, `projects[${index}:dr-manaus].image.src`,
+      `projects[${index}:dr-manaus].demo.href`, `projects[${index}:dr-manaus].demo.verifiedAt`,
     ]));
   });
   it.each(["2026-02-30", "2026-13-01", "2026-10-11", "10/10/2026"])("rejects invalid verification date %s", (value) => {

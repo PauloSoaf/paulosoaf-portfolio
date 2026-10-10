@@ -1,8 +1,10 @@
+import { ProjectCarousel } from "@/components/carousel/ProjectCarousel.client";
 import { EditorialNotice } from "@/components/editorial/Editorial";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import type { ContactChannel } from "@/features/contact/contact-links";
 import type { Project } from "@/features/projects/project-types";
+import { orderProjects } from "@/features/projects/project-presentation";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
@@ -18,26 +20,20 @@ interface WorkSectionProps {
 }
 
 /**
- * Selected Work. S00 renders a static, semantic grid — also the no-JS baseline the S02 carousel will
- * enhance. Never an empty section: without reviewed projects it points to the public GitHub profile.
+ * Server filters stay upstream. S02 enhances server cards; without JS the entire list remains.
  */
 export function WorkSection({ locale, dict, projects, github, preview }: WorkSectionProps) {
   return (
     <Section id="work" heading={dict.sections.work} band>
       {projects.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
-            <li key={project.slug}>
-              <ProjectCard
-                project={project}
-                locale={locale}
-                dict={dict}
-                position={index + 1}
-                total={projects.length}
-              />
-            </li>
-          ))}
-        </ul>
+        <ProjectCarousel labels={dict.carousel} slides={orderProjects(projects).map((project, index) => ({
+          slug: project.slug,
+          title: project.title,
+          content: (
+            <ProjectCard project={project} locale={locale} dict={dict}
+              position={index + 1} total={projects.length} />
+          ),
+        }))} />
       ) : github?.href ? (
         <div className="flex flex-col items-start gap-4 rounded-md border border-line bg-surface p-6 sm:p-8">
           <p className="font-display text-2xl font-semibold tracking-[-0.03em]">{dict.projects.fallbackTitle}</p>

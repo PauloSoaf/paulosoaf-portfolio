@@ -1,14 +1,62 @@
 import type { Project } from "./project-types";
 
 /**
- * Candidate projects (data-model.md seed). All are DRAFTS: descriptions come from the public
- * repositories (README / manifests read on 2026-10-10) and still need the owner's fact-check,
- * contribution details and approval. Images are original concept art from the design package,
- * not screenshots of the real projects — alt texts say so.
+ * DRAFT catalog. The five original candidates/links come from the S00 inventory of public
+ * repositories. NutriOpus and Déborah Lima come solely from the owner's S02 instructions;
+ * their stack, media and delivery details remain unconfirmed. No editorial approval is inferred.
+ * Existing images are concept art from the original design package, never delivery screenshots.
  */
 export const projects: readonly Project[] = [
   {
+    slug: "nutriopus",
+    title: "NutriOpus",
+    status: "draft",
+    kind: "commercial-product",
+    art: "nutrition",
+    featuredOrder: 1,
+    sourceVisibility: "private",
+    stackVerification: "pending",
+    caseStudy: {
+      availability: "planned",
+    },
+    categories: ["fullstack", "academic"],
+    summary: {
+      pt: "Plataforma de gestão nutricional, com contexto full-stack e acadêmico/TCC. Escopo informado: pacientes, anamnese e pré-consulta; detalhes da entrega em revisão.",
+      en: "Nutrition management platform in a full-stack and academic/thesis context. Reported scope: patients, anamnesis and pre-consultation; delivery details under review.",
+      es: "Plataforma de gestión nutricional en un contexto full-stack y académico/TCC. Alcance informado: pacientes, anamnesis y preconsulta; detalles de la entrega en revisión.",
+    },
+    tech: [],
+    notes: "Fonte: instrução do proprietário para S02. Candidatas: Next.js, TypeScript, Prisma, PostgreSQL; não confirmar sem evidência. Confirmar módulos entregues, contribuição, autorização de screenshots e eventual demo. Não expor código privado.",
+  },
+  {
+    slug: "deborah-lima",
+    title: "Déborah Lima",
+    status: "draft",
+    kind: "professional-website",
+    art: "editorial",
+    featuredOrder: 2,
+    sourceVisibility: "private",
+    stackVerification: "pending",
+    caseStudy: {
+      availability: "planned",
+    },
+    categories: ["web"],
+    summary: {
+      pt: "Website desenvolvido para a apresentação profissional da advogada Déborah Lima. Identidade visual, navegação e detalhes do resultado entregue aguardam revisão editorial.",
+      en: "Website developed for the professional presentation of lawyer Déborah Lima. Visual identity, navigation and delivery details await editorial review.",
+      es: "Website desarrollado para la presentación profesional de la abogada Déborah Lima. Identidad visual, navegación y detalles de la entrega pendientes de revisión editorial.",
+    },
+    tech: [],
+    notes: "Fonte: contexto confirmado pelo proprietário no prompt S02. Domínio, stack, funcionalidades e screenshots ainda não fornecidos/validados. Não inventar depoimentos ou métricas; não expor código privado.",
+  },
+  {
     slug: "dr-manaus",
+    kind: "technical-experiment",
+    art: "space",
+    sourceVisibility: "public",
+    stackVerification: "confirmed",
+    caseStudy: { availability: "planned" },
+    featuredOrder: 3,
     title: "Dr-Manaus",
     status: "draft",
     categories: ["3d", "web"],
@@ -19,6 +67,7 @@ export const projects: readonly Project[] = [
     },
     tech: ["TypeScript", "Three.js", "glTF Transform", "Vite"],
     image: {
+      kind: "concept",
       src: "/art/hero/orb-dark.svg",
       width: 820,
       height: 760,
@@ -34,6 +83,12 @@ export const projects: readonly Project[] = [
   },
   {
     slug: "chess-in-react",
+    kind: "open-source",
+    art: "chess",
+    sourceVisibility: "public",
+    stackVerification: "confirmed",
+    caseStudy: { availability: "planned" },
+    featuredOrder: 5,
     title: "ChessInReact",
     status: "draft",
     categories: ["games", "3d", "web"],
@@ -44,6 +99,7 @@ export const projects: readonly Project[] = [
     },
     tech: ["React", "TypeScript", "React Three Fiber", "Three.js", "Ant Design"],
     image: {
+      kind: "concept",
       src: "/art/projects/chess.svg",
       width: 700,
       height: 480,
@@ -58,6 +114,12 @@ export const projects: readonly Project[] = [
   },
   {
     slug: "iot-devices-manager",
+    kind: "enterprise-application",
+    art: "telemetry",
+    sourceVisibility: "public",
+    stackVerification: "confirmed",
+    caseStudy: { availability: "planned" },
+    featuredOrder: 4,
     title: "IoT Devices Manager",
     status: "draft",
     categories: ["fullstack"],
@@ -68,6 +130,7 @@ export const projects: readonly Project[] = [
     },
     tech: ["Angular", "Django REST Framework", "Django Channels", "PostgreSQL", "Redis", "Docker"],
     image: {
+      kind: "concept",
       src: "/art/projects/iot.svg",
       width: 700,
       height: 480,
@@ -83,13 +146,18 @@ export const projects: readonly Project[] = [
   },
   {
     slug: "gol-na-hora",
+    kind: "academic-project",
+    art: "academic",
+    sourceVisibility: "public",
+    stackVerification: "confirmed",
+    caseStudy: { availability: "planned" },
     title: "Gol na Hora",
     status: "draft",
     categories: ["academic", "web"],
     summary: {
       pt: "Protótipo acadêmico que simula microapostas ao vivo para torcedores no estádio; dados apenas locais (localStorage), sem backend real.",
       en: "Academic prototype that simulates live micro-bets for fans in the stadium; local-only data (localStorage), no real backend.",
-      es: "Prototipo académico que simula microapuestas en vivo para aficionados en el estadio; datos solo locales (localStorage), sin backend real.",
+      es: "Prototipo acadêmico que simula microapuestas en vivo para aficionados en el estadio; datos solo locales (localStorage), sin backend real.",
     },
     tech: ["React", "TypeScript", "React Router", "Tailwind CSS", "Vite"],
     repository: { href: "https://github.com/PauloSoaf/gol-na-hora", verifiedAt: "2026-10-10" },
@@ -99,6 +167,11 @@ export const projects: readonly Project[] = [
   },
   {
     slug: "game-hub",
+    kind: "open-source",
+    art: "games",
+    sourceVisibility: "public",
+    stackVerification: "confirmed",
+    caseStudy: { availability: "planned" },
     title: "Game Hub",
     status: "draft",
     categories: ["games", "fullstack"],

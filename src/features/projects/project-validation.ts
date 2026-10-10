@@ -12,12 +12,14 @@ interface ProjectValidationOptions {
   today: Date;
   /** Checks that a `public/` asset exists; injected so the rules stay pure and testable. */
   publicAssetExists?: (publicPath: string) => boolean;
+  /** S04 will supply the actual case route registry before any case action can be accepted. */
+  caseRouteExists?: (path: string) => boolean;
 }
 
 /** Build-time rules from data-model.md ("Política de build"). */
 export function validateProjects(
   items: readonly Project[],
-  { today, publicAssetExists }: ProjectValidationOptions,
+  { today, publicAssetExists, caseRouteExists }: ProjectValidationOptions,
 ): ContentIssue[] {
   const issues: ContentIssue[] = [];
   checkUnique(
@@ -31,10 +33,20 @@ export function validateProjects(
     checkSlug(project.slug, `${path}.slug`, issues);
     if (project.title.trim() === "") issues.push({ path: `${path}.title`, message: "título vazio" });
     if (project.categories.length === 0) issues.push({ path: `${path}.categories`, message: "sem categoria" });
-    if (project.tech.length === 0) issues.push({ path: `${path}.tech`, message: "stack vazia" });
+    if (project.stackVerification === "confirmed" && project.tech.length === 0) issues.push({ path: `${path}.tech`, message: "stack confirmada vazia" });
+    if (project.featuredOrder !== undefined && (!Number.isInteger(project.featuredOrder) || project.featuredOrder < 0)) {
+      issues.push({ path: `${path}.featuredOrder`, message: "ordem deve ser inteiro não negativo" });
+    }
+    if (project.repository && project.sourceVisibility !== "public") {
+      issues.push({ path: `${path}.repository`, message: "código não público não pode expor repositório" });
+    }
+    if (project.caseStudy.availability === "available" && !caseRouteExists?.(project.caseStudy.path)) {
+      issues.push({ path: `${path}.caseStudy`, message: "rota de case não registrada" });
+    }
     checkLocalizedText(project.summary, `${path}.summary`, issues);
 
     if (project.status === "approved") {
+      if (project.stackVerification !== "confirmed") issues.push({ path: `${path}.stackVerification`, message: "stack aguarda confirmação" });
       checkLocalizedText(project.challenge, `${path}.challenge`, issues);
       checkLocalizedText(project.contribution, `${path}.contribution`, issues);
     }
