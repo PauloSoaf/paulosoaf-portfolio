@@ -1,6 +1,6 @@
 # Paulo Soaf — Obsidian Orbit
 
-Portfólio em Next.js App Router, React e TypeScript. A fundação S00 contém landing renderizada no servidor, arte SVG local, navegação acessível, PT-BR/EN/ES e temas Dark/Light. WebGL, carrossel e timeline interativa pertencem às próximas sprints.
+Portfólio em Next.js App Router, React e TypeScript, com a identidade Obsidian Orbit v0.1. A fundação S00 contém landing renderizada no servidor, navegação acessível, PT-BR/EN/ES e temas Dark/Light. A S01 acrescenta um hero procedural real em Three.js/React Three Fiber, carregado progressivamente sobre o SVG local. Carrossel e timeline seguem nas próximas sprints.
 
 ## Desenvolvimento
 
@@ -29,9 +29,21 @@ $env:PORTFOLIO_CONTENT_PREVIEW = '1'
 npm run build
 npm run test:e2e
 npm run qa:screenshots
+npm run qa:hero
 ```
 
-Playwright inicia e encerra seu próprio servidor em `127.0.0.1:3200`; deixe essa porta livre. Os testes cobrem páginas sem JS, 404, teclado, mídia indisponível, reduced motion, responsividade, acessibilidade automatizada e persistência. Capturas ficam em `docs/qa/S00/`; relatório interativo em `playwright-report/`.
+Playwright inicia e encerra seu próprio servidor em `127.0.0.1:3200`; deixe essa porta livre. Os testes cobrem páginas sem JS, 404, teclado, mídia indisponível, reduced motion, responsividade, acessibilidade automatizada e persistência. A S01 também testa pixels e parallax reais, pausa, tema, touch, falha de chunk/criação WebGL e perda de contexto com recuperação. Capturas S00 ficam em `docs/qa/S00/`; `qa:hero` produz 36 capturas S01 em `docs/qa/S01/screenshots/`, sem sobrescrever a evidência anterior. Relatório interativo em `playwright-report/`.
+
+O hero preserva SVG em reduced motion, Save-Data e dispositivos limitados; “Ativar arte 3D” oferece opt-in. Em mobile com toque, a ativação automática espera 90% da arte visível para preservar a primeira dobra de texto/CTAs. Os controles permitem pausa e retorno à arte estática. A cena não captura scroll/touch e não renderiza continuamente quando está parada. `?heroDebug=1` expõe diagnóstico no DOM; Web Vitals ficam no painel Performance local, sem envio de analytics.
+
+Para repetir o perfil de chunks/CPU/cadência, inicie um build de produção com `npm run start -- --port 3202` e, em outro terminal, execute:
+
+```powershell
+$env:QA_ORIGIN = 'http://127.0.0.1:3202'
+node scripts/profile-hero.mjs
+```
+
+Os resultados brutos ficam em `docs/report/S01/`, fora do Git. O procedimento Lighthouse e os limites da medição constam no relatório S01. `npm run qa:hero:summary` gera `docs/qa/S01/metrics.json` a partir do perfil e dos dois relatórios Lighthouse finais, conservando a comparação histórica quando os logs antigos estiverem ausentes.
 
 Para verificar o build público sem rascunhos:
 
@@ -60,10 +72,11 @@ Esse comando **falha intencionalmente no estado editorial atual**. Um build pass
 
 - Pacote original: `paulo_soaf_obsidian_orbit_specs_pocs_v01/`.
 - Relatório da continuação: `docs/qa/S00/REPORT.md`.
+- Hero procedural, aceite e evidências: `docs/qa/S01/REPORT.md` e `docs/adr/ADR-009-progressive-hero-webgl.md`.
 - Ponto exato de retomada e divisão Claude/Codex: `docs/HANDOFF.md`.
 - Relatórios operacionais locais: `docs/report/` (ignorado pelo Git).
 - Decisões da implementação: `docs/adr/`.
 - Tema Dark preserva os tokens v0.1; Light é neutro com acento discreto.
 - Fontes são baixadas pelo `next/font` durante o build e servidas localmente em runtime. Build novo exige acesso ao provedor de fontes.
 
-Commit e push foram autorizados pelo proprietário após a validação local. Deploy continua condicionado ao gate editorial e a autorização específica.
+Commit e push da S00 foram autorizados pelo proprietário após a validação local. A S01 foi solicitada em branch própria; a instrução atual exige nova autorização antes de push ou deploy. O gate editorial permanece pendente.

@@ -16,14 +16,18 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "qa:screenshots": "playwright test --config playwright.visual.config.ts",
+    "qa:hero": "playwright test --config playwright.hero-visual.config.ts",
+    "qa:hero:summary": "node scripts/summarize-hero-qa.mjs",
     "release:check": "vitest run --config vitest.release.config.mts",
     "art:light": "node scripts/derive-light-orb.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
+    "@react-three/fiber": "9.8.1",
     "next": "16.3.8",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",
@@ -36,6 +40,7 @@
     "@types/node": "22.20.5",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "@types/three": "0.186.0",
     "@vitejs/plugin-react": "6.1.1",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.8",

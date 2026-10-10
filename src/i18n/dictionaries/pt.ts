@@ -41,6 +41,10 @@ export const pt = {
     signature: "Paulo_Soaf / Desde 2026",
     scrollHint: "Role para explorar",
   },
+  heroScene: {
+    pause: "Pausar movimento", resume: "Retomar movimento", staticArt: "Usar arte estática",
+    enable: "Ativar arte 3D", reduced: "Movimento reduzido ativo",
+  },
   sections: {
     work: {
       kicker: "01 / Projetos selecionados",

@@ -38,6 +38,10 @@ export const es: Dictionary = {
     signature: "Paulo_Soaf / Desde 2026",
     scrollHint: "Desplázate para explorar",
   },
+  heroScene: {
+    pause: "Pausar movimiento", resume: "Reanudar movimiento", staticArt: "Usar arte estático",
+    enable: "Activar arte 3D", reduced: "Movimiento reducido activo",
+  },
   sections: {
     work: {
       kicker: "01 / Proyectos seleccionados",

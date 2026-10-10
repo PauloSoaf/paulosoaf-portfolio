@@ -6,13 +6,14 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import { sectionHref } from "@/i18n/paths";
 
 import { HeroFallback } from "./HeroFallback";
+import { HeroArtBoundary } from "./HeroArtBoundary.client";
+import { HeroVitals } from "./HeroVitals.client";
 
 interface HeroEditorialProps {
   locale: Locale;
   dict: Dictionary;
   profile: Profile;
 }
-
 /**
  * Hero (RF-001): name, role, summary and two CTAs (projects, contact) rendered on the server, so
  * they are visible and clickable without JavaScript or WebGL (AC-001). Layout per responsive.md:
@@ -22,7 +23,8 @@ export function HeroEditorial({ locale, dict, profile }: HeroEditorialProps) {
   const { hero } = dict;
 
   return (
-    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden border-b border-line">
+    <section data-hero aria-labelledby="hero-title" className="relative isolate overflow-clip border-b border-line">
+      <HeroVitals />
       <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0 -z-20" />
 
       <div className="container-page flex flex-col lg:min-h-[calc(100svh-var(--oo-header-height))]">
@@ -56,12 +58,14 @@ export function HeroEditorial({ locale, dict, profile }: HeroEditorialProps) {
           </div>
         </div>
 
-        <HeroFallback className="relative -mx-5 mt-6 w-[calc(100%+2.5rem)] max-w-[37.5rem] self-center sm:absolute sm:-right-[12%] sm:bottom-[3%] sm:-z-10 sm:mx-0 sm:mt-0 sm:w-[72vw] sm:max-w-none sm:self-auto sm:opacity-55 lg:top-1/2 lg:right-[-1.5%] lg:bottom-auto lg:w-[min(58vw,800px)] lg:-translate-y-1/2 lg:opacity-100" />
+        <HeroArtBoundary labels={dict.heroScene} className="relative -mx-5 mt-6 w-[calc(100%+2.5rem)] max-w-[37.5rem] self-center sm:absolute sm:-right-[12%] sm:bottom-[3%] sm:mx-0 sm:mt-0 sm:w-[72vw] sm:max-w-none sm:self-auto lg:top-1/2 lg:right-[-1.5%] lg:bottom-auto lg:w-[min(58vw,800px)] lg:-translate-y-1/2">
+          <HeroFallback />
+        </HeroArtBoundary>
 
         {/* Tablet: art sits behind the copy; this wash keeps the text contrast intact. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 hidden bg-linear-to-r from-base via-base/85 to-transparent sm:block lg:hidden"
+          className="pointer-events-none absolute inset-0 z-[1] hidden bg-linear-to-r from-base via-base/85 to-transparent sm:block lg:hidden"
         />
 
         <div

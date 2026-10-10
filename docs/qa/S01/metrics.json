@@ -1,0 +1,283 @@
+{
+  "baselineCommit": "ea3cf243094ba524335c6e367467c8bbf6107574",
+  "branch": "feat/s01-hero-procedural",
+  "laboratory": [
+    {
+      "sample": "lighthouse-S00-desktop",
+      "date": "2026-10-10T18:32:18.746Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 547.1026999999999,
+      "cls": 0,
+      "tbtMs": 0,
+      "warnings": []
+    },
+    {
+      "sample": "lighthouse-S00-mobile",
+      "date": "2026-10-10T18:33:00.205Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2727.1309,
+      "cls": 0,
+      "tbtMs": 110,
+      "warnings": []
+    },
+    {
+      "sample": "lighthouse-mobile-early-load",
+      "date": "2026-10-10T18:30:53.660Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 84,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2871.33365,
+      "cls": 0,
+      "tbtMs": 440,
+      "warnings": []
+    },
+    {
+      "sample": "lighthouse-mobile-unreserved",
+      "date": "2026-10-10T18:42:28.709Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2886.32195,
+      "cls": 0.1149674689571095,
+      "tbtMs": 120,
+      "warnings": []
+    },
+    {
+      "sample": "lighthouse-desktop",
+      "date": "2026-10-10T18:50:08.722Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 596.2177,
+      "cls": 0.0006481940232490883,
+      "tbtMs": 0,
+      "warnings": []
+    },
+    {
+      "sample": "lighthouse-mobile",
+      "date": "2026-10-10T18:48:59.572Z",
+      "lighthouse": "13.5.0",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2865.81855,
+      "cls": 0,
+      "tbtMs": 100,
+      "warnings": []
+    }
+  ],
+  "baselineInitialGzipBytes": 145309,
+  "diagnosticVitals": [
+    {
+      "width": 390,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 208
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 86.20000004768372
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 208
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.11311412091445079
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 160
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.900000095367432
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 160
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0012446696298439642
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "width": 390,
+      "initialGzipBytes": 151218,
+      "lazyGzipBytes": 244519,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "mobile",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "182",
+        "heroRotation": "-0.01238,0.09791",
+        "heroDrawCalls": "5",
+        "heroTriangles": "2540",
+        "heroGeometries": "5",
+        "heroCpuMs": "0.222",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 60.00469310448861,
+        "intervalP95Ms": 16.700000000000273
+      },
+      "idleFrames": 0,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 7.8999998569488525
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 524
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 524
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.7000000476837158
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 8
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.006000127413738525
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "initialGzipBytes": 151218,
+      "lazyGzipBytes": 244519,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "desktop",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "183",
+        "heroRotation": "0.00451,0.03004",
+        "heroDrawCalls": "5",
+        "heroTriangles": "7852",
+        "heroGeometries": "5",
+        "heroCpuMs": "0.239",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 59.66865562185406,
+        "intervalP95Ms": 16.700000000000728
+      },
+      "idleFrames": 0,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 156
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 4.700000047683716
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 156
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 40
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0012446696298439642
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Single local Lighthouse run per configuration; not field p75",
+    "SwiftShader software rendering; GPU timer extension unavailable",
+    "No physical desktop/mobile FPS certification",
+    "Raw logs remain in ignored docs/report/S01"
+  ]
+}

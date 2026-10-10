@@ -80,3 +80,28 @@ Codex executou lint/typecheck/build com sucesso, 25 testes unitários, 15 E2E de
 O primeiro commit reúne **a base herdada do Claude, o pacote fornecido pelo usuário e as alterações do Codex**, pois não havia histórico prévio. Não foi fabricado um commit retroativo do Claude nem atribuição linha a linha. A separação acima identifica caminhos e operações comprovados pela conversa/inventário; não é um diff recuperado de um snapshot Git anterior.
 
 O usuário autorizou explicitamente commit e push após a entrega técnica, mantendo `docs/report` fora do Git. Deploy não foi solicitado. Servidor local solicitado: `http://localhost:1010/pt`.
+
+## Retomada S01 — marco exato e autoria
+
+A solicitação seguinte retomou S01 a partir de `main`, HEAD `ea3cf243094ba524335c6e367467c8bbf6107574` (`ea3cf24`), com árvore limpa. Codex criou `feat/s01-hero-procedural` antes da implementação. Este é o marco Git preciso: o diff desta branch contra `ea3cf24` corresponde à S01. O trabalho Claude/Codex da S00 continua separado nas tabelas acima, sem atribuição retroativa adicional.
+
+Antes das modificações, Codex leu README/AGENTS/CLAUDE/HANDOFF, roadmap, requisitos, matriz de aceite, sprint e POCs do pacote v0.1, guias locais desta versão Next, código reutilizável, mockups desktop/mobile e a POC original. A POC-001 também foi aberta no navegador; não contém canvas WebGL. Não foi usada referência v0.2.
+
+**Primeira alteração S01:** dependências exatas Three.js/R3F e tipos no manifesto/lockfile. **Primeiro módulo de implementação S01:** `src/graphics/hero/quality.ts`, com perfis, clamp do ponteiro e funções determinísticas. O novo WebGL e os testes desta sprint são trabalho do Codex; o SVG, shell, identidade e textos continuam herdados, com as correções S00 já documentadas.
+
+| Caminhos S01 | O que Codex fez |
+|---|---|
+| `src/graphics/hero/{quality.ts,shaders.ts,HeroScene.client.tsx}` | Geometria procedural, shader topográfico, órbitas/estrelas, parallax, câmera, perfis, pausa, descarte e diagnóstico CPU/GPU. |
+| `src/components/hero/HeroArtBoundary.client.tsx` | Lazy import, SVG no HTML, gate de viewport/aba/device, controles multilíngues e recuperação de falhas GL/chunk/shader. |
+| `src/components/hero/HeroVitals.client.tsx` | Web Vitals locais sem transmissão de analytics. |
+| `src/components/hero/HeroEditorial.tsx` | Integração da ilha preservando Server Component/copy/links; clipping seguro e wash tablet. |
+| `src/i18n/dictionaries/{pt,en,es}.ts` | Somente labels dos novos controles; nenhuma aprovação de conteúdo editorial. |
+| `package.json`, `package-lock.json` | Three 0.186.1, R3F 9.8.1, tipos Three 0.186.0 e comando `qa:hero`. Porta 1010 preservada. |
+| `tests/unit/hero-quality.test.ts`, `tests/e2e/hero.spec.ts` | Matemática/perfis e interações reais, pixels, pausa, temas, touch, falhas, descarte, teclado e acessibilidade. |
+| `tests/visual/hero.spec.ts`, `playwright.hero-visual.config.ts`, `playwright.visual.config.ts` | Capturas próprias S01 nos seis viewports, PT/EN/ES e Dark/Light; S00 não é sobrescrita. |
+| `scripts/profile-hero.mjs`, `scripts/summarize-hero-qa.mjs` | Medição de JS gzip, custo CPU, capacidade de query GPU, cadência, idle e vitals; resumo versionável sem logs brutos. |
+| `docs/adr/ADR-009-progressive-hero-webgl.md`, `docs/qa/S01/`, `README.md`, este HANDOFF | Decisões, números/evidências, limites, aceite e operação. |
+
+A comparação de performance usou um worktree temporário detached de `ea3cf24`, sem alterar `main`. Apenas o root de resolução Turbopack desse worktree foi ampliado para aceitar a junction das dependências; código da aplicação S00 permaneceu igual. Relatórios brutos, traces auxiliares e captura da POC ficam em `docs/report/S01/`, ignorados pelo Git. O resumo QA e as 36 evidências selecionadas ficam em `docs/qa/S01/`.
+
+A autorização de push anterior aplicou-se à entrega S00. **A instrução atual da S01 exige autorização nova para push/deploy.** Não houve push ou deploy S01. S02–S05 permanecem no roadmap original; S06 exige autorização específica e Obsidian Dev Mode permanece no backlog. A revisão editorial e a aferição em aparelhos físicos continuam pendentes, conforme QA.
