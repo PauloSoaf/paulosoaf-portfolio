@@ -1,0 +1,105 @@
+/*
+ * Obsidian Orbit — design tokens (single source of truth for colour/motion/shape).
+ *
+ * Dark  = v0.1 baseline copied from assets/design-tokens.json. IMMUTABLE (RNF-015):
+ *         tests/unit/tokens.test.ts fails if any base value drifts.
+ * Light = ADDENDUM-001 §2.2 proposal (neutral editorial theme, discreet teal accent).
+ * Derived tokens are computed from the base values; contrast is asserted by the same test.
+ * Components must use these variables (via Tailwind theme utilities), never raw hex values.
+ */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* v0.1 base — do not edit */
+  --oo-bg-base: #090D11;
+  --oo-bg-surface: #141B20;
+  --oo-bg-elevated: #233038;
+  --oo-fg-primary: #F2F6F4;
+  --oo-fg-secondary: #A9B6B9;
+  --oo-accent-primary: #65E6C3;
+  --oo-accent-secondary: #8A9CFF;
+  --oo-border-subtle: #2B383D;
+  --oo-status-error: #FF8B83;
+
+  /* Derived interface tokens */
+  --oo-fg-tertiary: #879A9E; /* secondary pulled toward base: 6.6:1 on base, 4.6:1 on elevated */
+  --oo-border-strong: #5E7578; /* control outlines: 4.0:1 on base (non-text >= 3:1) */
+  --oo-on-accent: #06110F; /* text on accent buttons: 12.5:1 */
+  --oo-accent-hover: #A7F8DF; /* lighter accent for hover (POC .primary:hover) */
+  --oo-heading-em: #65E6C3; /* emphasised heading words, as in the v0.1 mockups */
+  --oo-bg-band: #0B1014; /* alternate section band (POC projects background) */
+  --oo-bg-sunken: #070A0D; /* footer (POC footer background) */
+  --oo-header-bg: rgb(9 13 17 / 0.92);
+  --oo-glow: rgb(101 230 195 / 0.14);
+  --oo-accent-wash: rgb(101 230 195 / 0.05);
+  --oo-accent-edge: rgb(101 230 195 / 0.22);
+  --oo-grid-line: rgb(101 230 195 / 0.03);
+  --oo-card-shadow: 0 30px 80px rgb(0 0 0 / 0.42);
+  /* Media panels (project art/screens) stay dark in both themes, like a screenshot frame. */
+  --oo-media-from: #1C4544;
+  --oo-media-to: #0D1420;
+  --oo-media-fg: #E6EFEC;
+  --oo-media-line: rgb(230 239 236 / 0.16);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* ADDENDUM-001 §2.2 base */
+  --oo-bg-base: #F7F8FA;
+  --oo-bg-surface: #FFFFFF;
+  --oo-bg-elevated: #EBEFF2;
+  --oo-fg-primary: #172027;
+  --oo-fg-secondary: #53616B;
+  --oo-accent-primary: #176B63;
+  --oo-accent-secondary: #5568B8;
+  --oo-border-subtle: #D7DFE3;
+  --oo-status-error: #B4232B;
+
+  /* Derived interface tokens */
+  --oo-fg-tertiary: #5E6B74; /* 5.2:1 on base, 4.7:1 on elevated */
+  --oo-border-strong: #7E8C95; /* 3.3:1 on base */
+  --oo-on-accent: #FFFFFF; /* white on dark teal: 6.3:1 (never #65E6C3 on white) */
+  --oo-accent-hover: #12554F;
+  --oo-heading-em: #176B63; /* discreet teal, no green wash */
+  --oo-bg-band: #F1F4F6;
+  --oo-bg-sunken: #EBEFF2;
+  --oo-header-bg: rgb(247 248 250 / 0.92);
+  --oo-glow: rgb(23 32 39 / 0.08);
+  --oo-accent-wash: rgb(23 107 99 / 0.04);
+  --oo-accent-edge: rgb(23 107 99 / 0.24);
+  --oo-grid-line: rgb(23 32 39 / 0.04);
+  --oo-card-shadow: 0 24px 60px rgb(23 32 39 / 0.1);
+  /* Graphite instead of teal so the light theme never gets a green wash. */
+  --oo-media-from: #2A3A44;
+  --oo-media-to: #141D25;
+  --oo-media-fg: #E6EFEC;
+  --oo-media-line: rgb(230 239 236 / 0.16);
+}
+
+:root {
+  /* Motion (motion-and-interaction.md) */
+  --oo-motion-fast: 140ms;
+  --oo-motion-normal: 280ms;
+  --oo-motion-slow: 550ms;
+  --oo-motion-hero: 850ms;
+  --oo-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --oo-ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Shape (design-tokens.json radii) */
+  --oo-radius-sm: 10px;
+  --oo-radius-md: 16px;
+  --oo-radius-lg: 24px;
+
+  /* Layout */
+  --oo-content-max: 1320px;
+  --oo-header-height: 64px;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --oo-header-height: 72px;
+  }
+}

@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Reference material, not app code: keep its class names out of the generated CSS. */
+@source not "../../paulo_soaf_obsidian_orbit_specs_pocs_v01";
+@source not "../../docs";
+
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+@theme {
+  /* Only the semantic token palette exists: raw Tailwind colours cannot leak into components. */
+  --color-*: initial;
+}
+
+@theme inline {
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-base: var(--oo-bg-base);
+  --color-surface: var(--oo-bg-surface);
+  --color-elevated: var(--oo-bg-elevated);
+  --color-band: var(--oo-bg-band);
+  --color-sunken: var(--oo-bg-sunken);
+  --color-fg: var(--oo-fg-primary);
+  --color-fg-muted: var(--oo-fg-secondary);
+  --color-fg-subtle: var(--oo-fg-tertiary);
+  --color-accent: var(--oo-accent-primary);
+  --color-accent-hover: var(--oo-accent-hover);
+  --color-accent-2: var(--oo-accent-secondary);
+  --color-accent-wash: var(--oo-accent-wash);
+  --color-accent-edge: var(--oo-accent-edge);
+  --color-on-accent: var(--oo-on-accent);
+  --color-heading-em: var(--oo-heading-em);
+  --color-line: var(--oo-border-subtle);
+  --color-line-strong: var(--oo-border-strong);
+  --color-error: var(--oo-status-error);
+
+  --font-display:
+    var(--font-space-grotesk), "Space Grotesk", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    var(--font-plex-mono), "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --radius-sm: var(--oo-radius-sm);
+  --radius-md: var(--oo-radius-md);
+  --radius-lg: var(--oo-radius-lg);
+
+  --ease-standard: var(--oo-ease-standard);
+  --ease-emphasized: var(--oo-ease-emphasized);
+  --shadow-card: var(--oo-card-shadow);
+}
+
+@layer base {
+  html {
+    background-color: var(--oo-bg-base);
+    color: var(--oo-fg-primary);
+    scroll-padding-top: calc(var(--oo-header-height) + 1rem);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--oo-bg-base);
+    color: var(--oo-fg-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--oo-accent-primary) 30%, transparent);
+    color: var(--oo-fg-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--oo-accent-primary);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Emphasised words in display headings (v0.1: "the unexpected.", "projects.") */
+  .heading-em {
+    font-style: normal;
+    color: var(--oo-heading-em);
+  }
+
+  /* Faint orbital grid behind the hero copy (POC .gridshine), faded to the right. */
+  .hero-grid {
+    background-image:
+      linear-gradient(var(--oo-grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--oo-grid-line) 1px, transparent 1px);
+    background-size: 100px 100px;
+    mask-image: linear-gradient(90deg, #000, transparent 75%);
+  }
+
+  /* Always-dark media panel behind project art (POC .project-art radial background). */
+  .media-panel {
+    background: radial-gradient(circle at 50% 45%, var(--oo-media-from), var(--oo-media-to) 68%);
+    color: var(--oo-media-fg);
+  }
+
+  /* Mobile art bleeds past the viewport edge; fade its top/bottom into the page. */
+  .hero-art-fade {
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 86%, transparent 100%);
+  }
+
+  @media (min-width: 64rem) {
+    .hero-art-fade {
+      mask-image: none;
+    }
+  }
+}
+
+@utility container-page {
+  width: min(100% - 40px, var(--oo-content-max));
+  margin-inline: auto;
+
+  @media (min-width: 40rem) {
+    width: min(100% - 48px, var(--oo-content-max));
+  }
+}
+
+@utility text-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+@utility text-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Theme-specific media (e.g. hero fallback art): only the active theme's variant renders. */
+[data-theme-only="light"] {
+  display: none !important;
+}
+
+[data-theme="light"] [data-theme-only="dark"] {
+  display: none !important;
+}
+
+[data-theme="light"] [data-theme-only="light"] {
+  display: block !important;
+}
+
+/* No animated colour sweep while the theme swaps (ADDENDUM-001 §4.3, reduced motion). */
+[data-theme-switching] *,
+[data-theme-switching] *::before,
+[data-theme-switching] *::after {
+  transition: none !important;
+}
+
+/* Progressive enhancement: `data-js` is set by the head bootstrap only when scripts run. */
+html:not([data-js]) .js-only {
+  display: none !important;
+}
+
+html[data-js] .nojs-only {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

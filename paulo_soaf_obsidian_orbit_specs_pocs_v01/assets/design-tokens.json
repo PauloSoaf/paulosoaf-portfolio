@@ -1,0 +1,44 @@
+{
+  "name": "Obsidian Orbit",
+  "version": "0.1",
+  "colors": {
+    "bg-base": "#090D11",
+    "bg-surface": "#141B20",
+    "bg-elevated": "#233038",
+    "fg-primary": "#F2F6F4",
+    "fg-secondary": "#A9B6B9",
+    "accent-primary": "#65E6C3",
+    "accent-secondary": "#8A9CFF",
+    "border-subtle": "#2B383D",
+    "error": "#FF8B83"
+  },
+  "fontFamilies": {
+    "display": "Space Grotesk, Inter, sans-serif",
+    "body": "Inter, system-ui, sans-serif",
+    "mono": "IBM Plex Mono, ui-monospace, monospace"
+  },
+  "spacing": [
+    4,
+    8,
+    12,
+    16,
+    24,
+    32,
+    48,
+    64,
+    96,
+    128
+  ],
+  "radii": {
+    "sm": 10,
+    "md": 16,
+    "lg": 24
+  },
+  "motion": {
+    "fastMs": 140,
+    "normalMs": 280,
+    "slowMs": 550,
+    "heroMs": 850,
+    "carouselAutoplayMs": 7000
+  }
+}
