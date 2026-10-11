@@ -8,9 +8,11 @@ import { BufferAttribute, BufferGeometry, Color, Euler, Group, OrthographicCamer
 import type { Theme } from "@/theme/theme";
 import { explorationRotation, pointerRotation, relief, seededRandom, type HeroQuality } from "./quality";
 import { orbFragment, orbVertex } from "./shaders";
+import { heroExitProgress } from "@/features/creative/experience";
+import { RecoverySculpture } from "./RecoverySculpture.client";
 
 interface Props {
-  theme: Theme; active: boolean; coarse: boolean; quality: HeroQuality;
+  theme: Theme; active: boolean; creative: boolean; coarse: boolean; quality: HeroQuality;
   host: RefObject<HTMLDivElement | null>;
   onReady: () => void; onFailure: () => void; onSlow: () => void;
 }
@@ -69,7 +71,7 @@ function ProceduralOrb({ theme, quality }: Pick<Props, "theme" | "quality">) {
 }
 
 function SceneController(props: Props) {
-  const { theme, quality, active, coarse, host, onReady, onFailure, onSlow } = props;
+  const { theme, quality, active, creative, coarse, host, onReady, onFailure, onSlow } = props;
   const group = useRef<Group>(null);
   const target = useRef<[number, number]>([0, 0]);
   const explored = useRef(0);
@@ -78,6 +80,11 @@ function SceneController(props: Props) {
   const initialized = useRef(false);
   const samples = useRef({ count: 0, sum: 0, slow: false, frames: 0 });
   const { gl, scene, camera, size, invalidate, advance } = useThree();
+  useEffect(() => {
+    if (!creative || !active) return;
+    const timer = setInterval(() => invalidate(), 1000 / (quality.name === "mobile" ? 30 : 45));
+    return () => clearInterval(timer);
+  }, [creative, active, quality.name, invalidate]);
   const debug = useRef(false);
   const gpu = useRef<{ context: WebGL2RenderingContext; timer: { TIME_ELAPSED_EXT: number; GPU_DISJOINT_EXT: number }; pending: WebGLQuery | null; sum: number; count: number } | null>(null);
   useEffect(() => {
@@ -152,7 +159,7 @@ function SceneController(props: Props) {
     const scroll = () => {
       if (!active || !section) return;
       const rect = section.getBoundingClientRect();
-      exit.current = Math.max(0, Math.min(1, -rect.top / rect.height)) * .08;
+      exit.current = creative ? heroExitProgress(rect.top, rect.height, innerHeight) : Math.max(0, Math.min(1, -rect.top / rect.height)) * .08;
       invalidate();
     };
     section?.addEventListener("pointermove", move, { passive: true });
@@ -184,21 +191,28 @@ function SceneController(props: Props) {
       if (gpu.current?.pending) gpu.current.context.deleteQuery(gpu.current.pending);
       gpu.current = null;
     };
-  }, [active, coarse, host, invalidate, gl, onFailure]);
+  }, [active, creative, coarse, host, invalidate, gl, onFailure]);
   useFrame((_, delta) => {
     const object = group.current;
     if (!object) return;
     if (active) {
       const amount = 1 - Math.exp(-Math.min(delta, 0.05) * 7);
-      const x = target.current[0] + exit.current, y = target.current[1] + explored.current;
+      const x = target.current[0] + exit.current * (creative ? .7 : 1), y = target.current[1] + explored.current;
       object.rotation.x += (x - object.rotation.x) * amount;
       object.rotation.y += (y - object.rotation.y) * amount;
       entrance.current = Math.min(850, entrance.current + Math.min(delta, .05) * 1000);
       const progress = 1 - Math.pow(1 - entrance.current / 850, 3);
-      object.scale.setScalar(.94 + progress * .06);
+      object.scale.setScalar((creative ? .68 + progress * .32 : .94 + progress * .06) * (creative ? 1 - exit.current * .18 : 1));
+      if (creative) {
+        object.rotation.z = -.28 * (1 - progress) + exit.current * .32;
+        object.position.x = .06 - exit.current * .5;
+        const orthographic = camera as OrthographicCamera;
+        orthographic.zoom = Math.min(size.width / 4.5, size.height / 4.17) * (1 + exit.current * .28);
+        orthographic.updateProjectionMatrix();
+      }
       if (entrance.current < 850 || Math.abs(x - object.rotation.x) + Math.abs(y - object.rotation.y) > 0.00015) invalidate();
     } else {
-      entrance.current = 850; object.scale.setScalar(1);
+      entrance.current = 850; if (!creative) object.scale.setScalar(1);
     }
     const probe = gpu.current;
     if (probe?.pending && probe.context.getQueryParameter(probe.pending, probe.context.QUERY_RESULT_AVAILABLE)) {
@@ -223,6 +237,8 @@ function SceneController(props: Props) {
       host.current.dataset.heroRotation = `${object.rotation.x.toFixed(5)},${object.rotation.y.toFixed(5)}`;
       host.current.dataset.heroExploration = explored.current.toFixed(5);
       host.current.dataset.heroEntrance = entrance.current.toFixed(0);
+      host.current.dataset.heroAmbient = creative ? active ? "running" : "paused" : "none";
+      host.current.dataset.heroScroll = exit.current.toFixed(3);
       host.current.dataset.heroDrawCalls = String(gl.info.render.calls);
       host.current.dataset.heroTriangles = String(gl.info.render.triangles);
       host.current.dataset.heroGeometries = String(gl.info.memory.geometries);
@@ -234,7 +250,7 @@ function SceneController(props: Props) {
       initialized.current = true; performance.mark("portfolio:hero-first-frame"); queueMicrotask(onReady);
     }
   }, 1);
-  return <group ref={group} position={[0.06, 0.12, 0]} rotation={[-0.12, -0.22, 0]}><ProceduralOrb theme={theme} quality={quality} /></group>;
+  return <group ref={group} position={[0.06, 0.12, 0]} rotation={creative ? [-.55, -.65, -.28] : [-0.12, -0.22, 0]}>{creative ? <RecoverySculpture theme={theme} quality={quality} active={active} /> : <ProceduralOrb theme={theme} quality={quality} />}</group>;
 }
 
 export default function HeroScene(props: Props) {

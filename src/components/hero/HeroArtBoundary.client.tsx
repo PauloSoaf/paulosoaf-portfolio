@@ -5,6 +5,7 @@ import { Component, useCallback, useEffect, useRef, useState, useSyncExternalSto
 import { cx } from "@/lib/cx";
 import { getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
 import { heroQuality, constrainedDevice, type HeroQuality } from "@/graphics/hero/quality";
+import { useCreativeExperience } from "@/features/creative/experience";
 
 const HeroScene = dynamic(() => import("@/graphics/hero/HeroScene.client"), { ssr: false });
 
@@ -26,6 +27,7 @@ interface Props {
 
 /** Only this decorative island owns state; editorial content and SVG arrive in server HTML. */
 export function HeroArtBoundary({ children, className, labels }: Props) {
+  const creative = useCreativeExperience();
   const host = useRef<HTMLDivElement>(null);
   const degraded = useRef(false);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
@@ -55,14 +57,14 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
     let visible = false;
     let ratio = 0;
     const update = () => setEnvironment({
-      visible, loadable: visible && (!coarse.matches || window.innerWidth >= 640 || ratio >= 0.9),
+      visible, loadable: visible && (!coarse.matches || window.innerWidth >= 640 || ratio >= (creative ? .18 : .9)),
       reduced: reduced.matches, hidden: document.hidden, coarse: coarse.matches,
       constrained: limited, quality: heroQuality(window.innerWidth, limited || degraded.current),
     });
     const observer = new IntersectionObserver(([entry]) => {
       visible = !!entry?.isIntersecting; ratio = entry?.intersectionRatio || 0; update();
-    }, { threshold: [0, 0.01, 0.9] });
-    observer.observe(element);
+    }, { threshold: [0, 0.01, 0.18, 0.9] });
+    observer.observe(element.querySelector(".hero-view") ?? element);
     reduced.addEventListener("change", update);
     coarse.addEventListener("change", update);
     window.addEventListener("resize", update, { passive: true });
@@ -71,14 +73,19 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
       observer.disconnect(); reduced.removeEventListener("change", update); coarse.removeEventListener("change", update);
       window.removeEventListener("resize", update); document.removeEventListener("visibilitychange", update);
     };
-  }, []);
+  }, [creative]);
 
   useEffect(() => {
     if (armed || !environment.loadable || environment.reduced || environment.constrained || environment.hidden) return;
-    // Finish the first useful paint before requesting the separate Three/R3F chunk.
-    const timer = window.setTimeout(() => setArmed(true), 350);
-    return () => clearTimeout(timer);
-  }, [armed, environment]);
+    // Finish the opening before mobile's larger lazy module competes for the main thread.
+    // An idle slot is opportunistic, with a bounded timeout; explicit opt-in remains immediate.
+    let idle: number | undefined;
+    const timer = window.setTimeout(() => {
+      if ("requestIdleCallback" in window) idle = window.requestIdleCallback(() => setArmed(true), { timeout: 1000 });
+      else setArmed(true);
+    }, creative && environment.quality.name === "mobile" ? 1200 : 350);
+    return () => { clearTimeout(timer); if (idle !== undefined) window.cancelIdleCallback(idle); };
+  }, [armed, creative, environment]);
 
   function toggleArt() {
     if (failed || !armed || staticArt) {
@@ -89,18 +96,18 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
   return (
     <div ref={host} data-hero-art data-hero-state={failed ? "error" : staticArt || !armed ? "fallback" : ready ? active ? "ready" : "paused" : "loading"}
       data-hero-quality={environment.quality.name} className={cx("select-none", className)}>
-      <div aria-hidden="true" className="relative aspect-[820/760] pointer-events-none sm:opacity-55 lg:opacity-100">
+      <div aria-hidden="true" className="hero-view relative aspect-[820/760] pointer-events-none sm:opacity-55 lg:opacity-100">
         <div className={cx("absolute inset-0", ready && canvasMounted && "opacity-0")}>{children}</div>
         {canvasMounted ? (
           <div data-hero-surface className={cx("hero-surface hero-art-fade absolute inset-0", ready ? "opacity-100" : "opacity-0")}>
             <SceneBoundary key={attempt} onFailure={fail}>
-              <HeroScene theme={theme} active={active} coarse={environment.coarse} quality={environment.quality}
+              <HeroScene theme={theme} active={active} creative={creative} coarse={environment.coarse} quality={environment.quality}
                 host={host} onReady={onReady} onFailure={fail} onSlow={onSlow} />
             </SceneBoundary>
           </div>
         ) : null}
       </div>
-      <div className="js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3">
+      <div className="hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3">
         {ready && !environment.reduced ? (
           <button type="button" onClick={() => setPaused((value) => !value)} aria-pressed={paused}
             aria-label={paused ? labels.resume : labels.pause} title={paused ? labels.resume : labels.pause}

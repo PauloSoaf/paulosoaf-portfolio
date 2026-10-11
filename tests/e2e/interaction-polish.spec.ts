@@ -154,7 +154,7 @@ test("CTA mouse hover/press and keyboard focus change pixels without changing la
   await page.keyboard.press("Enter"); await expect(page).toHaveURL(/#work$/);
 });
 
-test("Hero drag, keyboard equivalent and damping operate on the same real canvas and stop at rest", async ({ page }) => {
+test("Hero drag, keyboard equivalent and damping operate on the same real canvas and pause", async ({ page }) => {
   await page.goto("/pt?heroDebug=1"); await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
   await expect(art(page)).toHaveAttribute("data-hero-entrance", "850");
   const canvas = await page.locator("canvas").elementHandle(), before = await page.locator("canvas").screenshot();
@@ -167,6 +167,7 @@ test("Hero drag, keyboard equivalent and damping operate on the same real canvas
   await page.getByRole("button", { name: "Explorar objeto à esquerda", exact: true }).focus(); await page.keyboard.press("Enter");
   await expect.poll(async () => Number(await art(page).getAttribute("data-hero-exploration"))).toBeLessThan(angle);
   await page.mouse.move(0, 0); await page.waitForTimeout(2200);
+  await page.getByRole("button", { name: "Pausar movimento", exact: true }).click(); await page.waitForTimeout(100);
   const frames = await art(page).getAttribute("data-hero-frames"); await page.waitForTimeout(400);
   expect(await art(page).getAttribute("data-hero-frames")).toBe(frames);
   expect(await canvas!.evaluate(node => node === document.querySelector("canvas"))).toBe(true);

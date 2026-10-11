@@ -13,6 +13,8 @@ npm run dev
 
 Abra http://localhost:1010/pt. `npm run dev` usa a porta 1010. `/en` e `/es` têm textos e metadata próprios. A raiz escolhe idioma pelo cookie, depois `Accept-Language`, depois português. Uma URL com idioma sempre prevalece sobre preferências.
 
+A POC Creative Direction Recovery usa escultura procedural em camadas, abertura tipográfica, transição Hero → Work pelo scroll, vitrines ampliadas e profundidade na trajetória. Compare a experiência padrão com http://localhost:1010/pt?experience=classic. O parâmetro serve apenas à revisão visual; conteúdo/editorial/SEO continuam iguais. Vídeos, medições, diferenças intencionais e pendências: [QA Recovery](docs/qa/CreativeRecovery/REPORT.md). Aceite estético pertence ao proprietário; S04 ainda não foi iniciada.
+
 `next dev` mostra candidatos editoriais com avisos. Produção filtra coleções por `status: "approved"`. Perfil e textos da interface ainda exigem aprovação, verificada pelo gate de publicação.
 
 ## Verificação
@@ -28,10 +30,16 @@ Para testar a composição completa de candidatos em um build otimizado local:
 $env:PORTFOLIO_CONTENT_PREVIEW = '1'
 npm run build
 npm run test:e2e
+$env:QA_FOUNDATION_SCREENSHOT_DIR='docs/report/CreativeRecovery/foundation-regression'
+$env:QA_HERO_SCREENSHOT_DIR='docs/report/CreativeRecovery/hero-regression'
+$env:QA_CAROUSEL_SCREENSHOT_DIR='docs/report/CreativeRecovery/carousel-regression'
+$env:QA_TIMELINE_SCREENSHOT_DIR='docs/report/CreativeRecovery/timeline-regression'
+$env:QA_TIMELINE_VIDEO_DIR='docs/report/CreativeRecovery/timeline-regression-videos'
 npm run qa:screenshots
 npm run qa:hero
 npm run qa:carousel
 npm run qa:timeline
+npm run qa:creative
 ```
 
 Playwright inicia e encerra seu próprio servidor em `127.0.0.1:3200`; deixe essa porta livre. Os testes cobrem páginas sem JS, 404, teclado, mídia indisponível, reduced motion, responsividade, acessibilidade automatizada e persistência. A S01 também testa pixels e parallax reais, pausa, tema, touch, falha de chunk/criação WebGL e perda de contexto com recuperação. Capturas S00 ficam em `docs/qa/S00/`; `qa:hero` produz 36 capturas S01 em `docs/qa/S01/screenshots/`, sem sobrescrever a evidência anterior. Relatório interativo em `playwright-report/`.
@@ -100,4 +108,4 @@ Esse comando **falha intencionalmente no estado editorial atual**. Um build pass
 - Tema Dark preserva os tokens v0.1; Light é neutro com acento discreto.
 - Fontes são baixadas pelo `next/font` durante o build e servidas localmente em runtime. Build novo exige acesso ao provedor de fontes.
 
-Commit e push da S00 foram autorizados pelo proprietário após a validação local. A S03 remota foi confirmada em `0ad2532`, com CI concluído com sucesso; `main` continua na S00. A S03.5 fica em `feat/s03-5-interaction-polish`, derivada da S03. Não houve merge, push ou deploy nesta continuação. O gate editorial permanece pendente; S04/S05 seguem no roadmap, S06 depende de autorização específica.
+Commit e push da S00 foram autorizados pelo proprietário após a validação local. S03 e S03.5 remotas foram confirmadas em `0ad2532` / `bd21d67`, com seus CIs concluídos; `main` continua na S00. A POC atual fica em `feat/creative-direction-recovery`, derivada de `bd21d67`. Não houve merge, push ou deploy nesta continuação. Aceite estético, performance mobile e gate editorial permanecem pendentes; S04/S05 seguem no roadmap, S06 depende de autorização específica.

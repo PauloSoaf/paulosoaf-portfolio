@@ -154,3 +154,26 @@ Primeira operação de versão: `git switch -c feat/s03-5-interaction-polish`, a
 | Codex, documentação S03.5 | `ADR-012`, `docs/qa/S03.5/REPORT.md`, métricas/evidências selecionadas, scripts de reprodução, README e este registro. Logs/relatório operacional em `docs/report/S03.5` e atualização do log de continuação ficam fora do Git. |
 
 Somente labels de exploração foram acrescentados aos três dicionários; dados, aprovações, contatos e links reais permanecem herdados. A S03.5 não autoriza S04/S06/Dev Mode nem integração automática das branches. Commit local conforme autorização anterior; instrução atual proíbe merge/push/deploy sem nova autorização, portanto não executados. Consulte o QA para resultados e limitações finais.
+
+## Creative Direction Recovery — fronteira exata e autoria
+
+Em 11/10/2026, Codex recebeu a auditoria de `bd21d67` e o novo prompt Creative Direction Recovery. A primeira ação foi ler o anexo e conferir branch/HEAD/árvore limpa: `feat/s03-5-interaction-polish`, `bd21d677df571286d192618b0aba79437145dee3`, igual ao upstream. O CI remoto `38168586596` estava aprovado. A existência do commit remoto não é atribuída a um push desta sessão.
+
+Primeira operação de versão: criação de `feat/creative-direction-recovery` diretamente desse HEAD. Antes da aplicação, foram lidas as instruções/guias Next instalados e referências v0.1; foram gravadas navegações completas desktop/mobile da S03 e S03.5. S03 foi executada num worktree detached de `0ad2532`, dentro do diretório operacional ignorado, com build webpack; branches históricas não foram alteradas. Mockups e material local Dr-Manaus foram examinados. Esses vídeos comparam experiência, não performance entre bundlers.
+
+Primeira escrita operacional: `docs/report/CreativeRecovery/record-before.cjs`, ignorada. **Primeira alteração de aplicação:** criação de `src/features/creative/experience.ts` e `src/graphics/hero/RecoverySculpture.client.tsx`, seguida da integração em `HeroScene.client.tsx`, `HeroArtBoundary.client.tsx` e bootstrap do tema. O diff contra `bd21d677df571286d192618b0aba79437145dee3` delimita integralmente este novo trabalho.
+
+| Origem | Responsabilidade nesta continuação |
+|---|---|
+| Claude, S00 herdada | Shell, arquitetura inicial, identidade/tokens/fontes, textos e gates conforme inventário acima. Nada foi retroativamente reatribuído. |
+| Codex, S00–S03.5 herdadas | Fundação auditada, Three/R3F progressivo, carrossel/controlador, timeline/motion, temas/microinterações e estabilidade de hidratação nos commits históricos documentados acima. |
+| Proprietário | Auditoria, autorização para alterar composição/escala/ritmo, referência Dr-Manaus. Aceite estético e aprovações comerciais permanecem reservados ao proprietário. |
+| Codex, Recovery — cena | Nova geometria/shader/partículas/rotações independentes, movimento ambiente controlado, câmera pelo scroll, nova arte SVG, comparação classic, observação da superfície e carregamento mobile com 18% de visibilidade. |
+| Codex, Recovery — composição | `creative.css`, classes Hero/SectionHeading/ProjectCard, wrapper Hero→Work, runtime passivo de scroll, vitrines ampliadas e profundidade About. Tokens, dicionários, dados, URLs aprovadas e controlador do carrossel não foram alterados. |
+| Codex, Recovery — QA/docs | Novos unitários/E2E/capturas/vídeos, atualização das regressões para SVG novo/ambiente com pausa, perfis de hidratação e frames offscreen, resumo de métricas, ADR-013, relatório QA, README e este registro. |
+
+A primeira POC integrada foi executada e gravada em produção antes da consolidação das novas regressões. As evidências preliminares ficam em `docs/report/CreativeRecovery/poc-initial/`; as finais e os vídeos históricos selecionados ficam em `docs/qa/CreativeRecovery/`. Houve reinício do servidor dev 1010 após o runtime de desenvolvimento parar de hidratar; o smoke voltou a confirmar Hero real/carrossel ativo. Uma regressão detectou a faixa decorativa interceptando o botão de pausa após a mudança de proporções; foi corrigida na aplicação, mantendo o clique real no teste.
+
+`docs/report/` continua ignorado e fora do commit. Commit local conforme autorização anterior. Não houve merge, push ou deploy desta continuação. S04/S06/Dev Mode não foram iniciados. Resultados e limites finais: [QA Recovery](qa/CreativeRecovery/REPORT.md), [ADR-013](adr/ADR-013-creative-direction-recovery.md).
+
+Fechamento técnico da POC: lint/typecheck/74 unitários/builds de prévia e público passaram; 82 E2E de prévia + gate público adicional; 14 cenários visuais e sete mobile reexecutados após ajuste de carregamento; 64 PNGs/oito WebM com metadata/hashes. Hidratação lenta em quatro cenários manteve altura/topos/scroll. Localhost 1010 confirmou Recovery ready, Work enhanced, timeline desktop, tema Light e comparação classic funcional, sem pageerrors. Performance mobile **regrediu** no Lighthouse (público 81, LCP 3.013 ms, TBT 506,5 ms); não foi considerada consolidada para lançamento. Aceite estético, performance mobile e dez pendências do release gate continuam explícitos no QA.

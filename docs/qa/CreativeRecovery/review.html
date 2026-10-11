@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Obsidian Orbit — revisão Creative Recovery</title>
+<style>
+  body{margin:0;padding:clamp(20px,4vw,60px);background:#090d11;color:#f2f6f4;font:16px/1.6 system-ui,sans-serif}main{max-width:1500px;margin:auto}h1{font-size:clamp(28px,4vw,54px);line-height:1.1;letter-spacing:-.04em}a{color:#65e6c3}p{max-width:78ch;color:#a9b6b9}.choices{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}button{padding:12px 20px;background:#141b20;border:1px solid #53616b;color:inherit;font:inherit;border-radius:8px;cursor:pointer}button[aria-pressed=true]{border-color:#65e6c3}button:focus-visible,a:focus-visible{outline:2px solid #65e6c3;outline-offset:4px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}figure{margin:0}figcaption{margin-bottom:12px;font-weight:600}video{display:block;width:100%;max-height:650px;background:#141b20;border:1px solid #2b383d;border-radius:12px}.notice{border-top:1px solid #2b383d;margin-top:32px;padding-top:24px}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+<main>
+<h1>Obsidian Orbit<br>Creative Direction Recovery</h1>
+<p>Navegação real das versões S03, S03.5 e da nova POC. Compare abertura, movimento sem hover, transição Hero → Work, vitrines e trajetória. As gravações têm velocidades normais e percursos de durações diferentes.</p>
+<p><a href="http://localhost:1010/pt">Abrir POC no localhost:1010</a> · <a href="http://localhost:1010/pt?experience=classic">Comparação classic</a> · <a href="REPORT.md">Relatório técnico e métricas</a></p>
+<div class="choices" aria-label="Viewport da comparação"><button type="button" data-width="1440" aria-pressed="true">Desktop 1440</button><button type="button" data-width="390" aria-pressed="false">Mobile 390</button></div>
+<div class="grid">
+<figure><figcaption>S03 — 0ad2532</figcaption><video controls preload="metadata" data-source="before-s03" src="videos/before-s03-1440.webm"></video></figure>
+<figure><figcaption>S03.5 — bd21d67</figcaption><video controls preload="metadata" data-source="before-s03-5" src="videos/before-s03-5-1440.webm"></video></figure>
+<figure><figcaption>Creative Recovery — POC</figcaption><video controls preload="metadata" data-source="after-pt-dark" src="videos/after-pt-dark-1440.webm"></video></figure>
+</div>
+<p class="notice">Aprovação estética pendente do proprietário. Mobile é uma viewport Chromium com touch habilitado, arraste touch e navegação wheel; não certifica aparelho físico. Projetos e trajetória exibidos são prévia editorial, preservando os avisos e filtros.</p>
+<p>Também disponíveis: <a href="videos/after-pt-light-1440.webm">vídeo Light desktop</a>, <a href="videos/after-pt-light-390.webm">vídeo Light mobile</a> e <a href="screenshots/after-reduced-390.png">fallback com movimento reduzido</a>.</p>
+</main>
+<script>
+  document.querySelectorAll('[data-width]').forEach(button=>button.addEventListener('click',()=>{
+    document.querySelectorAll('[data-width]').forEach(choice=>choice.setAttribute('aria-pressed',String(choice===button)));
+    document.querySelectorAll('video').forEach(video=>{video.pause();video.src=`videos/${video.dataset.source}-${button.dataset.width}.webm`;video.load()});
+  }));
+</script>
+</html>

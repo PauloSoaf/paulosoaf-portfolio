@@ -16,7 +16,7 @@ async function settled(page: Page) {
   await expect.poll(async () => (await rotation(page)).every((value) => Math.abs(value) < 0.001)).toBe(true);
 }
 
-test("real WebGL: pointer changes pixels, clamps rotation and settles without an idle loop", async ({ page }) => {
+test("real WebGL: pointer changes pixels, clamps rotation and bounded ambient motion pauses", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await ready(page); await settled(page);
@@ -29,6 +29,12 @@ test("real WebGL: pointer changes pixels, clamps rotation and settles without an
   await page.locator("[data-hero]").dispatchEvent("pointerleave");
   await settled(page);
   await page.waitForTimeout(400);
+  const ambientStart = Number(await art(page).getAttribute("data-hero-frames"));
+  await page.waitForTimeout(500);
+  const ambientFrames = Number(await art(page).getAttribute("data-hero-frames")) - ambientStart;
+  expect(ambientFrames).toBeGreaterThan(3); expect(ambientFrames).toBeLessThanOrEqual(31);
+  await page.getByRole("button", { name: "Pausar movimento", exact: true }).click();
+  await page.waitForTimeout(100);
   const frames = await art(page).getAttribute("data-hero-frames");
   await page.waitForTimeout(400);
   expect(await art(page).getAttribute("data-hero-frames")).toBe(frames);
@@ -72,11 +78,11 @@ test("context loss restores SVG and real CTAs; retries release old canvases", as
   });
   await expect(art(page)).toHaveAttribute("data-hero-state", "error");
   await expect(page.locator("canvas")).toHaveCount(0);
-  await expect(art(page).locator("img").first()).toBeVisible();
+  await expect(art(page).locator(".recovery-art")).toBeVisible();
   for (let attempt = 0; attempt < 3; attempt++) {
     await page.getByRole("button", { name: "Ativar arte 3D", exact: true }).click();
     await expect(art(page)).toHaveAttribute("data-hero-state", "ready");
-    expect(Number(await art(page).getAttribute("data-hero-geometries"))).toBe(5);
+    expect(Number(await art(page).getAttribute("data-hero-geometries"))).toBe(6);
     const oldCanvas = await page.locator("canvas").elementHandle();
     await page.getByRole("button", { name: "Usar arte estática", exact: true }).click();
     await expect(page.locator("canvas")).toHaveCount(0);
@@ -97,7 +103,7 @@ test("unsupported GPU leaves a visible fallback and usable contact", async ({ pa
   });
   await page.goto("/pt");
   await expect(art(page)).toHaveAttribute("data-hero-state", "error", { timeout: 30_000 });
-  await expect(art(page).locator("img").first()).toBeVisible();
+  await expect(art(page).locator(".recovery-art")).toBeVisible();
   await page.getByRole("link", { name: "Entrar em contato", exact: true }).click();
   await expect(page).toHaveURL(/#contact$/);
 });
@@ -111,7 +117,7 @@ test("shader compilation failure also restores the server artwork", async ({ pag
   });
   await page.goto("/pt");
   await expect(art(page)).toHaveAttribute("data-hero-state", "error", { timeout: 30_000 });
-  await expect(art(page).locator("img").first()).toBeVisible();
+  await expect(art(page).locator(".recovery-art")).toBeVisible();
   await expect(page.locator("canvas")).toHaveCount(0);
   await page.getByRole("link", { name: "Explorar projetos", exact: true }).click();
   await expect(page).toHaveURL(/#work$/);
@@ -157,7 +163,7 @@ test("an offscreen hero defers the canvas; a failed lazy chunk preserves SVG and
   for (const chunk of three) await page.route(`**/_next/static/chunks/${chunk}`, (route) => route.abort());
   await page.locator("#hero-title").scrollIntoViewIfNeeded();
   await expect(art(page)).toHaveAttribute("data-hero-state", "error", { timeout: 30_000 });
-  await expect(art(page).locator("img").first()).toBeVisible();
+  await expect(art(page).locator(".recovery-art")).toBeVisible();
   await page.getByRole("link", { name: "Explorar projetos", exact: true }).click();
   await expect(page).toHaveURL(/#work$/);
 });
@@ -167,13 +173,12 @@ test("mobile touch hover never rotates the scene or intercepts natural scrolling
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:3200/pt?heroDebug=1");
   await page.waitForTimeout(700);
-  await expect(page.locator("canvas")).toHaveCount(0);
+  // Recovery loads as soon as 18% of the art is visible, including a peek in the first fold.
   await art(page).scrollIntoViewIfNeeded();
   await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
-  await settled(page);
   await expect.poll(async () => {
-    const frames = await art(page).getAttribute("data-hero-frames"); await page.waitForTimeout(250);
-    return await art(page).getAttribute("data-hero-frames") === frames;
+    const angles = await rotation(page); await page.waitForTimeout(250);
+    return (await rotation(page)).every((value, index) => Math.abs(value - angles[index]!) < .0001);
   }).toBe(true);
   const angles = await rotation(page);
   await page.locator("[data-hero]").dispatchEvent("pointermove", { clientX: 390, clientY: 0, pointerType: "touch" });
@@ -232,7 +237,7 @@ test("high DPR and responsive quality budgets reach the actual renderer", async 
     await page.setViewportSize({ width, height: 1024 });
     await expect(art(page)).toHaveAttribute("data-hero-quality", profile);
     await expect(art(page)).toHaveAttribute("data-hero-dpr", dpr);
-    await expect(art(page)).toHaveAttribute("data-hero-geometries", "5");
+    await expect(art(page)).toHaveAttribute("data-hero-geometries", "6");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   }
   await context.close();

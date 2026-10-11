@@ -26,7 +26,8 @@
     "art:light": "node scripts/derive-light-orb.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build",
     "qa:polish": "playwright test --config playwright.polish-visual.config.ts",
-    "qa:polish:summary": "node scripts/summarize-polish-qa.mjs"
+    "qa:polish:summary": "node scripts/summarize-polish-qa.mjs",
+    "qa:creative": "playwright test --config playwright.creative-visual.config.ts"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.1",

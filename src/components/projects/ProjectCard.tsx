@@ -34,7 +34,7 @@ export function ProjectCard({ project, locale, dict, position, total }: ProjectC
     >
       <ProjectMedia image={project.image} title={project.title} slug={project.slug} art={project.art} locale={locale} conceptLabel={dict.projects.conceptArt} />
 
-      <div className="flex flex-1 flex-col gap-3 p-5 sm:p-6">
+      <div className="project-copy flex flex-1 flex-col gap-3 p-5 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-kicker text-fg-subtle">{dict.projects.kinds[project.kind]} · {categories}</p>
           <span aria-hidden="true" className="font-mono text-xs text-fg-subtle">

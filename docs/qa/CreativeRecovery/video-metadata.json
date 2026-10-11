@@ -1,0 +1,66 @@
+[
+  {
+    "file": "videos/after-pt-dark-1440.webm",
+    "bytes": 2117896,
+    "sha256": "774fa745f7b7855df80b2a8fe737595c9763090d9688949c77ff49c1cdf19872",
+    "durationSeconds": 16.72,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/after-pt-dark-390.webm",
+    "bytes": 2201428,
+    "sha256": "1ae918681a222a3b4c6c9f545fe5e9fbe4de035a76243030b92ccfbb7d152505",
+    "durationSeconds": 21,
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "videos/after-pt-light-1440.webm",
+    "bytes": 2148052,
+    "sha256": "3e8100e3de6aef76a17c32425ffd4229b3e1e8666b576cafc06c815fdfab6080",
+    "durationSeconds": 17.12,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/after-pt-light-390.webm",
+    "bytes": 2194664,
+    "sha256": "3e6c9588c11081585b1ee9f57be11ed2403bab053c77ea125fa76fd11e25eedf",
+    "durationSeconds": 20.92,
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "videos/before-s03-1440.webm",
+    "bytes": 1562798,
+    "sha256": "4a8fdba91d74524be2afeebdd5694828805a06294d8b1bcf0ba5fec430cb1334",
+    "durationSeconds": 11.92,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/before-s03-390.webm",
+    "bytes": 1497738,
+    "sha256": "3015608759e18aae56111239721410d8b0471450e4835efbdc2d0b46029ad22f",
+    "durationSeconds": 12.88,
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "videos/before-s03-5-1440.webm",
+    "bytes": 1490174,
+    "sha256": "6fde5d8cfcab53d8347dfe2da110993155d6bebb3186dd4171d2605ce7ae0d27",
+    "durationSeconds": 10.88,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/before-s03-5-390.webm",
+    "bytes": 1538103,
+    "sha256": "48d80ae3046d8b62181dfbbc2bc37663c573e6cda9d07e11c949d1723f5817d4",
+    "durationSeconds": 13.04,
+    "width": 390,
+    "height": 844
+  }
+]

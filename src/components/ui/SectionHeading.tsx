@@ -15,7 +15,7 @@ export function SectionHeading({
   description,
 }: SectionHeadingProps) {
   return (
-    <div className="mb-10 lg:mb-12">
+    <div className="section-heading mb-10 lg:mb-12">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
         <div>
           <p data-motion="horizontal" className="text-kicker mb-5 text-accent lg:mb-6">{kicker}</p>

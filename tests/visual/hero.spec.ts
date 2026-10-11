@@ -20,7 +20,8 @@ for (const locale of locales) for (const theme of ["dark", "light"] as const) fo
     await expect(art).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
     await page.locator("[data-hero]").dispatchEvent("pointerleave");
     await expect(art).toHaveAttribute("data-hero-entrance", "850");
-    // S03.5 adds bounded scroll exit pitch; settle at the current view rather than force a zero pitch.
+    // Freeze through the visitor control for repeatable screenshots; videos keep ambient motion.
+    await page.getByRole("button", { name: /Pausar movimento|Pause motion|Pausar movimiento/, exact: true }).click();
     await expect.poll(async () => {
       const frames = await art.getAttribute("data-hero-frames"); await page.waitForTimeout(250);
       return await art.getAttribute("data-hero-frames") === frames;

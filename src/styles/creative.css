@@ -1,0 +1,58 @@
+/* Creative Recovery: composition changes, original v0.1 tokens. Classic is a review switch. */
+html:not([data-experience="classic"]) [data-spatial-story] { overflow:clip; position:relative; }
+html:not([data-experience="classic"]) [data-hero] { overflow:visible; border-bottom:0; z-index:2; --hero-progress:0; }
+html:not([data-experience="classic"]) .hero-view { transform:translate3d(calc(var(--hero-progress) * 75px),calc(var(--hero-progress) * 225px),0) scale(calc(1 - var(--hero-progress) * .24)); transform-origin:50% 45%; }
+html:not([data-experience="classic"]) .hero-copy { transform:translate3d(0,calc(var(--hero-progress) * -60px),0); }
+html:not([data-experience="classic"]) .hero-title-lead { display:block; }
+html:not([data-experience="classic"]) #work { position:relative; --work-progress:1; padding-top:7rem; }
+html:not([data-experience="classic"]) #work::before { content:""; position:absolute; width:70%; height:12rem; right:-8%; top:-6rem; border:1px solid var(--oo-border-strong); border-radius:50%; transform:rotate(-12deg) scaleX(calc(.6 + var(--work-progress) * .4)); opacity:.5; pointer-events:none; }
+html:not([data-experience="classic"]) #work .section-heading { position:relative; z-index:3; }
+html:not([data-experience="classic"]) #work .section-heading h2 { max-width:48rem; font-size:clamp(3.1rem,7.5vw,7rem); }
+html:not([data-experience="classic"]) #work .project-carousel { position:relative; z-index:3; }
+html:not([data-experience="classic"]) .project-concept::before { content:""; position:absolute; width:85%; aspect-ratio:1; left:5%; top:-15%; border:1px solid var(--oo-media-line); border-radius:50%; box-shadow:0 0 0 30px color-mix(in srgb,var(--oo-media-line) 12%,transparent),0 0 0 70px color-mix(in srgb,var(--oo-media-line) 6%,transparent); transform:rotateX(55deg) rotateZ(-25deg); }
+html:not([data-experience="classic"]) .concept-lines { transform:perspective(850px) rotateY(-16deg) rotateX(9deg) scale(1.12); filter:drop-shadow(15px 25px 1px var(--oo-bg-sunken)); }
+html:not([data-experience="classic"]) .project-art-caption { background:var(--oo-media-to); padding:.3rem .6rem; width:fit-content; border:1px solid var(--oo-media-line); }
+html:not([data-experience="classic"]) .project-copy h3 { font-size:clamp(1.75rem,2.8vw,2.75rem); letter-spacing:-.045em; }
+html:not([data-experience="classic"]) .journey-timeline { --chapter-scroll:.5; }
+html:not([data-experience="classic"]) .journey-panel { transform:perspective(1600px) translate3d(0,calc(32px - var(--chapter-scroll,.5) * 64px),0) rotateX(calc(-7deg + var(--chapter-scroll,.5) * 14deg)); transform-origin:50% 50%; box-shadow:0 28px 50px -36px var(--oo-fg-tertiary); }
+html:not([data-experience="classic"]) .journey-panel h3 { font-size:clamp(1.75rem,3.5vw,3.4rem); }
+html:not([data-experience="classic"]) .journey-panel-footer { position:relative; }
+html:not([data-experience="classic"]) .journey-panel-footer::before { content:""; position:absolute; top:-1px; height:2px; width:100%; background:var(--oo-accent-primary); transform-origin:left; transform:scaleX(var(--chapter-scroll,.5)); opacity:.55; }
+.recovery-art { display:block; }
+html[data-experience="classic"] .recovery-art { display:none; }
+html:not([data-experience="classic"]) .classic-art { display:none; }
+@keyframes orbit-opening { from { opacity:.72; transform:translate3d(0,44px,0) rotate(-1.5deg); } to { opacity:1; transform:none; } }
+@keyframes orbit-subtitle { from { opacity:.72; transform:translate3d(28px,0,0); } to { opacity:1; transform:none; } }
+@keyframes chapter-opening { from { opacity:.72; transform:perspective(1200px) translate3d(40px,0,0) rotateY(-10deg); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion:no-preference) {
+  html[data-js]:not([data-experience="classic"]) .journey-item[data-current="true"] .journey-content { animation:chapter-opening 650ms var(--oo-ease-emphasized) both; }
+  html[data-js]:not([data-experience="classic"]) .hero-title-lead { animation:orbit-opening 850ms var(--oo-ease-emphasized) both; }
+  html[data-js]:not([data-experience="classic"]) .hero-title-em { animation:orbit-opening 950ms 90ms var(--oo-ease-emphasized) both; }
+  html[data-js]:not([data-experience="classic"]) .hero-identity,
+  html[data-js]:not([data-experience="classic"]) .hero-summary { animation:orbit-subtitle 850ms 130ms var(--oo-ease-emphasized) both; }
+  html[data-js]:not([data-experience="classic"]) .hero-actions { animation:orbit-subtitle 850ms 230ms var(--oo-ease-emphasized) both; }
+}
+@media (min-width:80rem) {
+  html:not([data-experience="classic"]) .hero-copy { max-width:57%; }
+  html:not([data-experience="classic"]) #hero-title { font-size:clamp(4.5rem,7.8vw,7.5rem); line-height:.96; }
+  html:not([data-experience="classic"]) [data-hero-art] { right:-5%; width:min(62vw,880px); }
+  html:not([data-experience="classic"]) .hero-controls { bottom:4rem; }
+  html:not([data-experience="classic"]) .project-carousel[data-enhanced="true"] .carousel-slide { width:min(80%,1040px); }
+  html[data-js]:not([data-experience="classic"]) .project-carousel[data-enhanced="false"] .carousel-stage { grid-auto-columns:min(80%,1040px); }
+  html:not([data-experience="classic"]) .project-card { display:grid; grid-template-columns:1.15fr 1fr; }
+  html:not([data-experience="classic"]) .project-media { height:100%; min-height:460px; aspect-ratio:auto; border-bottom:0; border-right:1px solid var(--oo-border-subtle); }
+  html:not([data-experience="classic"]) .project-copy { padding:2.25rem; justify-content:center; }
+}
+@media (max-width:39.99rem) {
+  html:not([data-experience="classic"]) #hero-title { font-size:clamp(3.2rem,13vw,5rem); }
+  html:not([data-experience="classic"]) .hero-view { transform:translate3d(0,calc(var(--hero-progress) * 70px),0) scale(calc(1 - var(--hero-progress) * .12)); }
+  html:not([data-experience="classic"]) .hero-copy { transform:translate3d(0,calc(var(--hero-progress) * -24px),0); }
+  html:not([data-experience="classic"]) #work { padding-top:5rem; }
+  html:not([data-experience="classic"]) .journey-panel { transform:perspective(1400px) translate3d(0,calc(20px - var(--chapter-scroll,.5) * 40px),0) rotateX(calc(-5deg + var(--chapter-scroll,.5) * 10deg)); }
+}
+@media (prefers-reduced-motion:reduce) {
+  html:not([data-experience="classic"]) .hero-view,
+  html:not([data-experience="classic"]) .hero-copy,
+  html:not([data-experience="classic"]) .journey-panel { transform:none; }
+}
+html:not([data-js]) .hero-view, html:not([data-js]) .hero-copy, html:not([data-js]) .journey-panel { transform:none; }

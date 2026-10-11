@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { HeroEditorial } from "@/components/hero/HeroEditorial";
 import { MotionRuntime } from "@/components/motion/MotionRuntime.client";
+import { CreativeRuntime } from "@/features/creative/CreativeRuntime.client";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
@@ -31,14 +32,16 @@ export default async function LandingPage({ params }: PageProps<"/[locale]">) {
 
   return (
     <>
-      <HeroEditorial locale={locale} dict={dict} profile={siteContent.profile} />
-      <WorkSection
-        locale={locale}
-        dict={dict}
-        projects={visibleItems(siteContent.projects, preview)}
-        github={findChannel(channels, "github")}
-        preview={preview}
-      />
+      <div data-spatial-story>
+        <HeroEditorial locale={locale} dict={dict} profile={siteContent.profile} />
+        <WorkSection
+          locale={locale}
+          dict={dict}
+          projects={visibleItems(siteContent.projects, preview)}
+          github={findChannel(channels, "github")}
+          preview={preview}
+        />
+      </div>
       <AboutSection
         locale={locale}
         dict={dict}
@@ -59,6 +62,7 @@ export default async function LandingPage({ params }: PageProps<"/[locale]">) {
       />
       <ContactSection dict={dict} channels={channels} preview={preview} />
       <MotionRuntime />
+      <CreativeRuntime />
     </>
   );
 }
