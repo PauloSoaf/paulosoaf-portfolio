@@ -4,9 +4,10 @@ import { gzipSync } from "node:zlib";
 
 const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3202";
 const publicSample = process.env.QA_PUBLIC_SAMPLE === "1";
+const output = process.env.QA_MOTION_OUTPUT_DIR ?? "docs/report/S03";
 const results = [];
 const browser = await chromium.launch();
-await mkdir("docs/report/S03", { recursive: true });
+await mkdir(output, { recursive: true });
 try {
   for (const width of [390, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: "no-preference" });
@@ -43,6 +44,19 @@ try {
       await page.getByRole("tab").nth(1).click(); await page.waitForTimeout(350);
       await page.getByRole("tab").nth(2).click(); await page.waitForTimeout(350);
     }
+    if (process.env.QA_POLISH_PROFILE === "1") {
+      if (width < 1024) await page.getByRole("button", { name: "Menu", exact: true }).click();
+      const toggle = (await page.locator("header .theme-toggle").filter({ visible: true }).boundingBox());
+      for (let index = 0; index < 2; index++) {
+        await page.mouse.click(toggle.x + toggle.width / 2, toggle.y + toggle.height / 2);
+        await page.waitForTimeout(450);
+      }
+      if (width < 1024) {
+        await page.keyboard.press("Escape");
+        // Escape restores focus to Menu; allow its finite 280ms focus shadow to settle.
+        await page.waitForTimeout(350);
+      }
+    }
     if (publicSample) {
       await page.getByRole("link", { name: "Voltar ao topo", exact: true }).click(); await page.waitForTimeout(650);
     }
@@ -55,5 +69,5 @@ try {
     results.push({ width, publicSample, saveData: true, initialGzipBytes, ...measurements }); await page.close();
   }
 } finally { await browser.close(); }
-await writeFile(`docs/report/S03/profile-motion${publicSample ? "-public" : ""}.json`, JSON.stringify(results, null, 2));
+await writeFile(`${output}/profile-motion${publicSample ? "-public" : ""}.json`, JSON.stringify(results, null, 2));
 console.log(results.map(({ width, initialGzipBytes, reveals, remainingAnimations, canvasCount, overflow, vitals }) => ({ width, initialGzipBytes, reveals: reveals.length, remainingAnimations, canvasCount, overflow, vitals })));

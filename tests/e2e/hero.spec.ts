@@ -22,9 +22,9 @@ test("real WebGL: pointer changes pixels, clamps rotation and settles without an
   await ready(page); await settled(page);
   const before = await page.locator("canvas").screenshot();
   await page.locator("[data-hero]").dispatchEvent("pointermove", { clientX: 100_000, clientY: -100_000, pointerType: "mouse" });
-  await expect.poll(async () => (await rotation(page))[1]).toBeGreaterThan(0.09);
+  await expect.poll(async () => (await rotation(page))[1]).toBeGreaterThan(0.16);
   const angles = await rotation(page);
-  expect(angles.every((value) => Math.abs(value) <= 0.1)).toBe(true);
+  expect(angles.every((value) => Math.abs(value) <= 0.18)).toBe(true);
   expect((await page.locator("canvas").screenshot()).equals(before)).toBe(false);
   await page.locator("[data-hero]").dispatchEvent("pointerleave");
   await settled(page);
@@ -162,7 +162,7 @@ test("an offscreen hero defers the canvas; a failed lazy chunk preserves SVG and
   await expect(page).toHaveURL(/#work$/);
 });
 
-test("mobile touch never rotates the scene or intercepts natural scrolling", async ({ browser }) => {
+test("mobile touch hover never rotates the scene or intercepts natural scrolling", async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: "no-preference" });
   const page = await context.newPage();
   await page.goto("http://127.0.0.1:3200/pt?heroDebug=1");
@@ -171,6 +171,10 @@ test("mobile touch never rotates the scene or intercepts natural scrolling", asy
   await art(page).scrollIntoViewIfNeeded();
   await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
   await settled(page);
+  await expect.poll(async () => {
+    const frames = await art(page).getAttribute("data-hero-frames"); await page.waitForTimeout(250);
+    return await art(page).getAttribute("data-hero-frames") === frames;
+  }).toBe(true);
   const angles = await rotation(page);
   await page.locator("[data-hero]").dispatchEvent("pointermove", { clientX: 390, clientY: 0, pointerType: "touch" });
   await page.waitForTimeout(200);

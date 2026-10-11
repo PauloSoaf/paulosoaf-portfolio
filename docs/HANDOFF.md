@@ -137,3 +137,20 @@ Codex leu os dois anexos de auditoria/extensão S03 e verificou árvore limpa em
 | Codex, QA/docs S03 | Testes de lifecycle/timeline/interações, capturas/vídeos reais, perfis/Lighthouse, ADR-011, relatório, pendências e README. Testes de relógio da S02 isolam hidratação antes de instalar fake clock; teste adicional usa sete segundos nativos. Suítes visuais S00/S02 ganham saída opcional para não sobrescrever evidências. Gate E2E público passa a conferir explicitamente a ausência de timeline/artigos de trajetória draft. ESLint/TS ignoram cache/logs operacionais em `docs/report`. |
 
 Os dados `journey-data.ts`, Expertise/Services, status e filtros editoriais foram preservados integralmente. A aprovação T03-01 continua pendente; não foram inventadas datas/cargos/empresas. Logs/cache/regressões anteriores ficam em `docs/report/S03/`, ignorados; QA selecionada fica em `docs/qa/S03/`. Não houve merge, push ou deploy nesta continuação. S04/S05 seguem no roadmap; S06/Dev Mode não iniciados.
+
+## Continuação S03.5 — marco exato e autoria
+
+Em 11/10/2026, Codex retomou a auditoria/prompt S03.5 fornecida pelo proprietário. Primeira ação: leitura do anexo e verificação da árvore limpa, branch `feat/s03-interactive-timeline-motion` e HEAD `0ad2532814677035435367a7aa5f7ed7c62445a0`. `git ls-remote` confirmou esse commit remoto e `main` ainda em `ea3cf24`; API GitHub confirmou CI `38109153478` completed/success nesse HEAD. A disponibilidade remota não é atribuída a um push desta sessão.
+
+Primeira operação de versão: `git switch -c feat/s03-5-interaction-polish`, a partir da S03. Após as leituras obrigatórias, mockups v0.1 e reprodução do deslocamento, primeira escrita operacional: `docs/report/S03.5/baseline.cjs`, ignorado. Primeira alteração de aplicação: `src/theme/theme-client.ts`, substituindo supressão imediata por transição iniciada pelo usuário. Essas fronteiras permitem distinguir código herdado do trabalho desta continuação.
+
+| Origem | Trabalho / responsabilidade |
+|---|---|
+| Claude, herdado da S00 | Fundação, arquitetura, tokens/composição/tipografia, shell, conteúdo inicial e gates conforme atribuição das seções anteriores. Nada foi reatribuído nesta sprint. |
+| Codex, continuações S01/S02/S03 | Cena real, carrossel/controlador, catálogo candidato, timeline/Motion System e QA históricos nos commits `758557e`, `66c8ff0`, `0ad2532`. Essas implementações foram reaproveitadas. |
+| Proprietário / pacote original | Auditoria S03.5, pedido de teste de JS/rede lentos/âncora e direção Obsidian Orbit v0.1. Conteúdo comercial e experiência em empresas citadas continuam dependentes de revisão, sem aprovação presumida. |
+| Codex, aplicação S03.5 | Tema/ícones/superfícies, classes de microinteração e pressão touch com cleanup; refinamentos de header/cards/CTAs/controles; exploração/inércia/entrada/saída do Hero e equivalentes de teclado; geometria pré-hidratação e navegação nativa de fallback da timeline/carrossel; atualização de acompanhamento por centro/scroll e uso da última entrada de visibilidade. Reducer/autoplay/catálogo/gates preservados. |
+| Codex, testes/evidências S03.5 | Regressões unitárias e E2E, teste com JS retido/rede 120 ms/CPU 4×, falha permanente de módulos, mouse/teclado/touch real, temas/reload/FOUC/repetição, capturas e vídeos reais. Saídas configuráveis de perfis/S03 para conservar evidências anteriores. |
+| Codex, documentação S03.5 | `ADR-012`, `docs/qa/S03.5/REPORT.md`, métricas/evidências selecionadas, scripts de reprodução, README e este registro. Logs/relatório operacional em `docs/report/S03.5` e atualização do log de continuação ficam fora do Git. |
+
+Somente labels de exploração foram acrescentados aos três dicionários; dados, aprovações, contatos e links reais permanecem herdados. A S03.5 não autoriza S04/S06/Dev Mode nem integração automática das branches. Commit local conforme autorização anterior; instrução atual proíbe merge/push/deploy sem nova autorização, portanto não executados. Consulte o QA para resultados e limitações finais.

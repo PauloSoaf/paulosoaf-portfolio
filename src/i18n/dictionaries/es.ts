@@ -41,6 +41,7 @@ export const es: Dictionary = {
   heroScene: {
     pause: "Pausar movimiento", resume: "Reanudar movimiento", staticArt: "Usar arte estático",
     enable: "Activar arte 3D", reduced: "Movimiento reducido activo",
+    exploreLeft: "Explorar objeto a la izquierda", exploreRight: "Explorar objeto a la derecha", hint: "Arrastra horizontalmente para explorar",
   },
   sections: {
     work: {

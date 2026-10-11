@@ -1,0 +1,52 @@
+/* S03.5: shared interaction vocabulary; layout, palette and typography remain v0.1. */
+.ui-cta, .ui-control {
+  transition: transform var(--oo-motion-fast) var(--oo-ease-standard), box-shadow var(--oo-motion-normal) var(--oo-ease-standard), background-color var(--oo-motion-fast), border-color var(--oo-motion-fast), color var(--oo-motion-fast);
+}
+.ui-cta svg[data-direction] { transition: transform var(--oo-motion-normal) var(--oo-ease-emphasized); }
+.ui-cta:focus-visible, .ui-control:focus-visible { outline-offset: 5px; box-shadow: 0 6px 22px var(--oo-glow); }
+@media (hover:hover) {
+  .ui-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--oo-glow); }
+  .ui-control:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 14px var(--oo-glow); }
+  .ui-cta:hover svg[data-direction="arrow-up-right"] { transform: translate(2px,-2px); }
+  .ui-cta:hover svg[data-direction="arrow-down-right"] { transform: translate(2px,2px); }
+  .ui-cta:hover svg[data-direction="arrow-down"] { transform: translateY(3px); }
+}
+.ui-cta:active, .ui-cta[data-ui-pressed], .ui-control:active:not(:disabled), .ui-control[data-ui-pressed]:not(:disabled) { transform: translateY(1px) scale(.975); box-shadow: 0 2px 8px var(--oo-glow); }
+.ui-control:disabled, .ui-cta[aria-disabled="true"] { cursor: default; opacity:.65; transform:none; box-shadow:none; }
+.ui-nav { position:relative; }
+.ui-nav::after { content:""; position:absolute; bottom:9px; inset-inline:0; height:1px; background:var(--oo-accent-primary); transform:scaleX(0); transform-origin:left; transition:transform var(--oo-motion-normal) var(--oo-ease-emphasized); }
+.ui-nav:hover::after, .ui-nav:focus-visible::after, .ui-nav[aria-current]::after { transform:scaleX(1); }
+html:has(#work:target) header .ui-nav[href$="#work"]::after,
+html:has(#about:target) header .ui-nav[href$="#about"]::after,
+html:has(#expertise:target) header .ui-nav[href$="#expertise"]::after,
+html:has(#services:target) header .ui-nav[href$="#services"]::after,
+html:has(#contact:target) header .ui-nav[href$="#contact"]::after { transform:scaleX(1); }
+.ui-card { transition:translate var(--oo-motion-normal) var(--oo-ease-standard),border-color var(--oo-motion-fast),box-shadow var(--oo-motion-normal); }
+@media (hover:hover) { .ui-card:hover { translate:0 -3px; border-color:var(--oo-border-strong); box-shadow:0 12px 28px var(--oo-glow); } }
+.ui-card:focus-within { border-color:var(--oo-border-strong); }
+.theme-icon { position:absolute; display:grid; place-items:center; opacity:1; transform:rotate(0) scale(1); }
+.theme-moon { opacity:0; transform:rotate(-65deg) scale(.45); }
+[data-theme="light"] .theme-sun { opacity:0; transform:rotate(65deg) scale(.45); }
+[data-theme="light"] .theme-moon { opacity:1; transform:rotate(0) scale(1); }
+[data-theme-switching] .theme-icon { transition:opacity 320ms var(--oo-ease-standard),transform 320ms var(--oo-ease-emphasized); }
+/* Explicit surfaces/foregrounds only. No page snapshots, canvas capture or transition:all. */
+[data-theme-switching] :where(body, header, footer, section, .bg-base, .bg-surface, .bg-elevated, .bg-band, .bg-sunken, .border-line, .border-line-strong, .project-card, .journey-panel, .journey-panel-footer, .journey-dot, .journey-tab, .journey-follow, .ui-cta, .ui-control, .text-fg, .text-fg-muted, .text-fg-subtle, .text-accent, .heading-em) {
+  /* Reset on each target: interpolated inherited colours must not restart descendant transitions. */
+  --theme-text-duration:0ms;
+  --theme-border-duration:0ms;
+  transition: background-color 320ms var(--oo-ease-standard), color var(--theme-text-duration) var(--oo-ease-standard), border-color var(--theme-border-duration) var(--oo-ease-standard), box-shadow var(--oo-motion-normal), transform var(--oo-motion-fast) var(--oo-ease-standard), translate var(--oo-motion-normal) var(--oo-ease-standard);
+}
+[data-theme-switching] :where(body, .text-fg, .text-fg-muted, .text-fg-subtle, .text-accent, .text-on-accent, .heading-em, .journey-tab, .journey-follow, .journey-panel-footer, .carousel-button) { --theme-text-duration:320ms; }
+[data-theme-switching] :where(.border-line, .border-line-strong, .project-card, .journey-panel, .journey-panel-footer, .journey-dot, .carousel-button, .journey-follow) { --theme-border-duration:320ms; }
+.hero-surface { pointer-events:auto; touch-action:pan-y pinch-zoom; cursor:grab; }
+.hero-surface[data-interacting="true"] { cursor:grabbing; }
+[data-hero-state="paused"] .hero-surface { cursor:default; }
+.journey-tab { transition:background-color var(--oo-motion-fast),color var(--oo-motion-fast); }
+.journey-tab:hover, .journey-tab:focus-visible { background:var(--oo-accent-wash); }
+.journey-tab:active .journey-dot { scale:.88; }
+.journey-dot { transition:scale var(--oo-motion-fast),border-color var(--oo-motion-fast),box-shadow var(--oo-motion-normal); }
+.journey-tab[aria-selected="true"] .journey-dot { box-shadow:0 0 0 5px var(--oo-accent-wash),0 0 18px var(--oo-glow); }
+@media (prefers-reduced-motion:reduce) {
+  .ui-cta, .ui-control, .ui-card, .ui-cta svg[data-direction], .theme-icon, .journey-dot { transition:none !important; transform:none !important; translate:none !important; scale:none !important; }
+  .ui-nav::after { transition:none; }
+}

@@ -1,6 +1,6 @@
 # Paulo Soaf — Obsidian Orbit
 
-Portfólio em Next.js App Router, React e TypeScript, com a identidade Obsidian Orbit v0.1. A fundação S00 contém landing renderizada no servidor, navegação acessível, PT-BR/EN/ES e temas Dark/Light. A S01 acrescenta um hero procedural real em Three.js/React Three Fiber, carregado progressivamente sobre o SVG local. A S02 acrescenta o carrossel cinematográfico e os candidatos comerciais NutriOpus/Déborah Lima. A S03 implementa timeline interativa e movimento compartilhado entre as seções. Cases completos continuam no roadmap S04.
+Portfólio em Next.js App Router, React e TypeScript, com a identidade Obsidian Orbit v0.1. A fundação S00 contém landing renderizada no servidor, navegação acessível, PT-BR/EN/ES e temas Dark/Light. A S01 acrescenta um hero procedural real em Three.js/React Three Fiber, carregado progressivamente sobre o SVG local. A S02 acrescenta o carrossel cinematográfico e os candidatos comerciais NutriOpus/Déborah Lima. A S03 implementa timeline interativa e movimento compartilhado entre as seções. A S03.5 refina temas/microinterações, exploração do Hero e estabilidade durante hidratação lenta. Cases completos continuam no roadmap S04.
 
 ## Desenvolvimento
 
@@ -46,9 +46,13 @@ O carrossel aprimora artigos renderizados no servidor: sem JS, todo o catálogo 
 
 A timeline S03 usa capítulos temáticos herdados, ainda rascunhos: desktop ≥64rem tem tabs verticais, Up/Down/Home/End, painel associado e progresso. “Acompanhar a rolagem” é opcional e seleção manual assume prioridade. Mobile mostra todos os cards em ordem, sem sticky. Reduced motion mantém seleção manual e suspende acompanhamento/parallax; sem JS, toda a trajetória visível no catálogo continua legível. Nenhuma empresa/período foi acrescentado ou aprovado.
 
-O Motion System utiliza WAAPI/IntersectionObserver, sem dependências extras. HTML inicial é visível; elementos já na viewport/âncora não aguardam entrada. Entradas posteriores executam uma vez, com coreografia por seção; foco/saída de viewport/removal cancelam, aba oculta pausa. Falhas/ausência de WAAPI deixam estilos normais. Scroll nativo agenda somente um frame para ornamentos visíveis, sem loop permanente, deslocamento de CTA/texto do Hero ou alteração da cena Three. Work revela uma camada externa, preservando transforms e autoplay dos slides.
+O Motion System utiliza WAAPI/IntersectionObserver, sem dependências extras. HTML inicial é visível; elementos já na viewport/âncora não aguardam entrada. Entradas posteriores executam uma vez, com coreografia por seção; foco/saída de viewport/removal cancelam, aba oculta pausa. Falhas/ausência de WAAPI deixam estilos normais. Scroll nativo agenda somente um frame para ornamentos visíveis, sem loop permanente ou deslocamento de CTA/texto do Hero. Work revela uma camada externa, preservando transforms e autoplay dos slides. Na S03.5, o controlador Three também responde discretamente à saída do Hero por evento, somente quando ativo.
 
 `qa:timeline` salva 52 PNGs e dois vídeos WebM próprios em `docs/qa/S03/`. A sequência PNG documenta timestamps controlados da animação nativa; os vídeos registram uma execução separada sem alterar tempo/frames. Nova regressão anterior: `QA_FOUNDATION_SCREENSHOT_DIR=docs/report/S03/foundation-regression`, `QA_HERO_SCREENSHOT_DIR=docs/report/S03/hero-regression`, `QA_CAROUSEL_SCREENSHOT_DIR=docs/report/S03/carousel-regression`. O perfil S03 usa `node scripts/profile-motion.mjs` com produção local em 3202, `QA_PUBLIC_SAMPLE=1` para público; depois `npm run qa:motion:summary` resume os dois perfis/quatro Lighthouse. Save-Data isola o orçamento inicial sem WebGL e mantém motion ativo; logs brutos ficam ignorados. Procedimento, métricas e limites: `docs/qa/S03/REPORT.md`.
+
+A S03.5 anima a troca solicitada de tema em 320 ms, mantendo o bootstrap sem flash e reduced motion imediato. Controles compartilham elevação, press, foco e disabled; no touch, um runtime passivo garante pressão/cancelamento. O Hero permite drag horizontal com damping e limites, setas por teclado e entrada finita de 850 ms, sem giro contínuo em repouso. Os controles mobile cabem em uma linha. Antes da hidratação, a timeline desktop permite links nativos entre capítulos e Work uma faixa horizontal navegável; sem JS continuam a lista/grid completos. O teste de rede/JS lentos inclui abertura direta em `#about`, sem variação de altura/scroll acima de 1 px nos cenários medidos.
+
+`npm run qa:polish` gera capturas PT/EN/ES, Dark/Light e vídeos reais desktop/mobile em `docs/qa/S03.5/`. `node scripts/profile-hydration.mjs` reproduz a medição contra prévia otimizada em 3202. Use `QA_MOTION_OUTPUT_DIR` / `QA_HERO_OUTPUT_DIR` para guardar os perfis em `docs/report/S03.5`; `QA_TIMELINE_SCREENSHOT_DIR` / `QA_TIMELINE_VIDEO_DIR` preservam capturas S03 anteriores. `npm run qa:polish:summary` consolida os perfis e quatro Lighthouse em métricas versionadas. Resultados, limites, arquivos e autoria: [QA S03.5](docs/qa/S03.5/REPORT.md), [ADR-012](docs/adr/ADR-012-interaction-polish-and-stable-hydration.md), [HANDOFF](docs/HANDOFF.md).
 
 Para repetir o perfil de chunks/CPU/cadência, inicie um build de produção com `npm run start -- --port 3202` e, em outro terminal, execute:
 
@@ -89,10 +93,11 @@ Esse comando **falha intencionalmente no estado editorial atual**. Um build pass
 - Hero procedural, aceite e evidências: `docs/qa/S01/REPORT.md` e `docs/adr/ADR-009-progressive-hero-webgl.md`.
 - Carrossel, catálogo e evidências S02: `docs/qa/S02/REPORT.md`, `docs/qa/S02/EDITORIAL-PENDING.md` e `docs/adr/ADR-010-cinematic-project-carousel.md`.
 - Timeline, motion e evidências S03: `docs/qa/S03/REPORT.md`, `docs/qa/S03/EDITORIAL-PENDING.md` e `docs/adr/ADR-011-timeline-and-shared-motion.md`.
+- Microinterações, hidratação lenta e evidências S03.5: `docs/qa/S03.5/REPORT.md` e `docs/adr/ADR-012-interaction-polish-and-stable-hydration.md`.
 - Ponto exato de retomada e divisão Claude/Codex: `docs/HANDOFF.md`.
 - Relatórios operacionais locais: `docs/report/` (ignorado pelo Git).
 - Decisões da implementação: `docs/adr/`.
 - Tema Dark preserva os tokens v0.1; Light é neutro com acento discreto.
 - Fontes são baixadas pelo `next/font` durante o build e servidas localmente em runtime. Build novo exige acesso ao provedor de fontes.
 
-Commit e push da S00 foram autorizados pelo proprietário após a validação local. A branch S02 remota foi confirmada em `66c8ff0` na retomada S03, com CI concluído com sucesso; `main` continua na S00. A S03 fica em `feat/s03-interactive-timeline-motion`, derivada da S02. Não houve merge, push ou deploy nesta continuação S03. O gate editorial permanece pendente.
+Commit e push da S00 foram autorizados pelo proprietário após a validação local. A S03 remota foi confirmada em `0ad2532`, com CI concluído com sucesso; `main` continua na S00. A S03.5 fica em `feat/s03-5-interaction-polish`, derivada da S03. Não houve merge, push ou deploy nesta continuação. O gate editorial permanece pendente; S04/S05 seguem no roadmap, S06 depende de autorização específica.

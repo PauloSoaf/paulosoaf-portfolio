@@ -39,7 +39,8 @@ export function ProjectCarousel({ slides, labels }: Props) {
     const syncTab = () => dispatch({ type: "tab", value: !document.hidden });
     media.addEventListener("change", syncMotion);
     document.addEventListener("visibilitychange", syncTab);
-    const observer = new IntersectionObserver(([entry]) => dispatch({ type: "visible", value: !!entry?.isIntersecting }), { threshold: 0.1 });
+    // A delayed callback can contain several transitions for this same node. Apply the newest.
+    const observer = new IntersectionObserver((entries) => dispatch({ type: "visible", value: !!entries.at(-1)?.isIntersecting }), { threshold: 0.1 });
     // Track the actual committed node. A one-shot nullable ref read can miss a hydration commit.
     observer.observe(hostNode);
     syncMotion(); syncTab();
@@ -103,15 +104,15 @@ export function ProjectCarousel({ slides, labels }: Props) {
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) dispatch({ type: "focus", value: false }); }}
       onClickCapture={(event) => { if (suppressClick.current) { event.preventDefault(); event.stopPropagation(); suppressClick.current = false; } }}>
       {/* Rotation control first in DOM/tab order; visual order remains under the stage like POC. */}
-      {enhanced && slides.length > 1 && (
+      {slides.length > 1 && (
         <div className="carousel-controls">
-          <button type="button" className="carousel-button carousel-play" disabled={state.reducedMotion}
+          <button type="button" className="carousel-button ui-control carousel-play" disabled={!enhanced || state.reducedMotion}
             onPointerDown={() => { playIntent.current = !state.isPlaying; }}
             onClick={() => { dispatch({ type: "playing", value: playIntent.current ?? !state.isPlaying }); playIntent.current = null; }}>
             {state.isPlaying ? labels.pause : labels.play}<span aria-hidden="true">{state.isPlaying ? "Ⅱ" : "▷"}</span>
           </button>
-          <button type="button" className="carousel-button carousel-prev" aria-label={labels.previous} onClick={() => step(-1)}>←</button>
-          <button type="button" className="carousel-button carousel-next" aria-label={labels.next} onClick={() => step(1)}>→</button>
+          <button type="button" className="carousel-button ui-control carousel-prev" disabled={!enhanced} aria-label={labels.previous} onClick={() => step(-1)}>←</button>
+          <button type="button" className="carousel-button ui-control carousel-next" disabled={!enhanced} aria-label={labels.next} onClick={() => step(1)}>→</button>
           <span className="carousel-position">{format(labels.position, { index: index + 1, total: slides.length })}</span>
           <span className="carousel-range" aria-hidden="true"><span style={{ transform: `scaleX(${(index + 1) / slides.length})` }} /></span>
           <span className="carousel-hint">{labels.hint}</span>
@@ -119,7 +120,7 @@ export function ProjectCarousel({ slides, labels }: Props) {
       )}
       {/* WAI basic carousel group with optional arrow-key navigation; it is not a button. */}
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-      <div ref={stage} className="carousel-stage" role="group" tabIndex={enhanced && slides.length > 1 ? 0 : undefined}
+      <div ref={stage} className="carousel-stage" role="group" tabIndex={slides.length > 1 ? 0 : undefined}
         aria-label={labels.hint}
         onKeyDown={(event) => {
           if (event.target !== event.currentTarget) return;
@@ -159,7 +160,7 @@ export function ProjectCarousel({ slides, labels }: Props) {
           </div>;
         })}
       </div>
-      {enhanced && <p className="carousel-status">{status}</p>}
+      <p className="carousel-status">{status}</p>
       <span className="sr-only" role="status" aria-live="polite" aria-atomic="true">{state.announcement}</span>
     </div>
     </CarouselMediaContext>

@@ -30,6 +30,7 @@ export function Icon({
       strokeWidth={1.75}
       strokeLinecap="round"
       strokeLinejoin="round"
+      data-direction={name.startsWith("arrow-") ? name : undefined}
       {...props}
     >
       <path d={paths[name]} />

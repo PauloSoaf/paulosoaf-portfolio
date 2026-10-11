@@ -1,4 +1,5 @@
 .journey-timeline { position:relative; min-width:0; }
+.journey-navigation { display:none; }
 .journey-panels { display:grid; gap:24px; margin:0; padding:0 0 0 20px; list-style:none; border-left:1px solid var(--oo-border-subtle); }
 .journey-item { position:relative; min-width:0; }
 .journey-item::before { content:""; position:absolute; left:-26px; top:32px; width:11px; height:11px; border:1px solid var(--oo-border-strong); background:var(--oo-bg-base); border-radius:50%; }
@@ -24,9 +25,25 @@
 @media (min-width:64rem) {
   .journey-timeline[data-desktop="true"] { display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1fr); gap:clamp(32px,5vw,80px); align-items:start; }
   .journey-timeline[data-desktop="true"] .journey-panels { padding:0; border:0; gap:0; }
+  .journey-timeline[data-desktop="true"] .journey-navigation { display:block; }
   .journey-timeline[data-desktop="true"] .journey-item { grid-area:1/1; }
   .journey-timeline[data-desktop="true"] .journey-item::before { display:none; }
   .journey-timeline[data-desktop="true"] .journey-item[aria-hidden="true"] { visibility:hidden; pointer-events:none; }
   .journey-panel { padding:40px; min-height:400px; }
+}
+/* Pre-paint geometry with native fragment links while React is delayed or unavailable.
+   Without JavaScript the bootstrap attribute is absent: every article stays in the linear list.
+   :has allows all chapters to remain browsable even if a module fails permanently. */
+@supports selector(:has(*)) {
+  @media (min-width:64rem) {
+    html[data-js] .journey-timeline[data-desktop="false"] { display:grid; grid-template-columns:minmax(0,.82fr) minmax(0,1fr); gap:clamp(32px,5vw,80px); align-items:start; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-navigation { display:block; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-panels { padding:0; border:0; gap:0; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-item { grid-area:1/1; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-item::before { display:none; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-item:not(:first-child) { visibility:hidden; }
+    html[data-js] .journey-timeline[data-desktop="false"]:has(.journey-panel:target) .journey-item { visibility:hidden; }
+    html[data-js] .journey-timeline[data-desktop="false"] .journey-item:has(.journey-panel:target) { visibility:visible; }
+  }
 }
 @media (prefers-reduced-motion:reduce) { .journey-progress { transition:none; } }

@@ -44,13 +44,20 @@
 .carousel-range > span { display: block; height: 100%; background: var(--oo-accent-primary); transform-origin: left; transition: transform var(--oo-motion-slow) var(--oo-ease-emphasized); }
 .carousel-hint { font: .65rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--oo-fg-tertiary); }
 .carousel-status { order: 2; margin-top: 1rem; font-size: .75rem; color: var(--oo-fg-secondary); }
+/* A native horizontal strip reserves the enhanced stage's maximum card height before hydration.
+   Every project is scrollable when modules are delayed/failed; no-JS retains the full grid. */
+html:not([data-js]) .carousel-controls, html:not([data-js]) .carousel-status { display:none; }
+html[data-js] .project-carousel[data-enhanced="false"] .carousel-stage { grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:min(62%,790px); gap:1.5rem; padding:1.5rem 0 2.5rem; overflow-x:auto; scrollbar-width:none; scroll-snap-type:x proximity; }
+html[data-js] .project-carousel[data-enhanced="false"] .carousel-slide { scroll-snap-align:center; }
 @media (min-width: 48rem) {
   .project-carousel[data-enhanced="false"] .carousel-stage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 79.99rem) {
+  html[data-js] .project-carousel[data-enhanced="false"] .carousel-stage { grid-auto-columns:73%; }
   .project-carousel[data-enhanced="true"] .carousel-slide { width: 73%; }
 }
 @media (max-width: 47.99rem) {
+  html[data-js] .project-carousel[data-enhanced="false"] .carousel-stage { grid-auto-columns:92%; }
   .project-media { aspect-ratio: 1.15; }
   .project-carousel[data-enhanced="true"] .carousel-slide { width: 92%; transform: translate3d(calc(var(--offset) * 103% + var(--drag-x, 0px)), 0, 0) scale(.9); }
   .project-carousel[data-enhanced="true"] .carousel-slide[data-active="true"] { transform: translate3d(var(--drag-x, 0px), 0, 0); }

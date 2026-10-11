@@ -1,15 +1,15 @@
-export type MotionPreset = "rise" | "horizontal" | "depth" | "rule" | "settle";
+export type MotionPreset = "rise" | "editorial" | "horizontal" | "depth" | "rule" | "settle";
 
 const starts: Record<MotionPreset, string> = {
-  rise: "translate3d(0,16px,0)", horizontal: "translate3d(-12px,0,0)",
-  depth: "scale(.985)", rule: "scaleX(.9)", settle: "translate3d(0,8px,0) scale(.995)",
+  rise: "translate3d(0,16px,0)", editorial: "translate3d(0,24px,0)", horizontal: "translate3d(-12px,0,0)",
+  depth: "scale(.97)", rule: "scaleX(.9)", settle: "translate3d(0,8px,0) scale(.995)",
 };
 
 /** Never changes the resting styles: cancel, missing WAAPI or a rejected animation leaves HTML visible. */
 export function revealElement(element: HTMLElement, preset: MotionPreset, delay = 0): Animation | null {
   if (typeof element.animate !== "function") return null;
   const tokens = getComputedStyle(document.documentElement);
-  const durationToken = tokens.getPropertyValue(preset === "depth" ? "--oo-motion-slow" : "--oo-motion-normal").trim();
+  const durationToken = tokens.getPropertyValue(preset === "depth" || preset === "editorial" ? "--oo-motion-slow" : "--oo-motion-normal").trim();
   const duration = (parseFloat(durationToken) * (durationToken.endsWith("ms") ? 1 : 1000)) || 280;
   try {
     return element.animate([

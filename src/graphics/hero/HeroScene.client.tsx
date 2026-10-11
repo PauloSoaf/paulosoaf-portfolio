@@ -6,7 +6,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef, type RefObject } from "react";
 import { BufferAttribute, BufferGeometry, Color, Euler, Group, OrthographicCamera, SphereGeometry, Vector3 } from "three";
 import type { Theme } from "@/theme/theme";
-import { pointerRotation, relief, seededRandom, type HeroQuality } from "./quality";
+import { explorationRotation, pointerRotation, relief, seededRandom, type HeroQuality } from "./quality";
 import { orbFragment, orbVertex } from "./shaders";
 
 interface Props {
@@ -72,6 +72,9 @@ function SceneController(props: Props) {
   const { theme, quality, active, coarse, host, onReady, onFailure, onSlow } = props;
   const group = useRef<Group>(null);
   const target = useRef<[number, number]>([0, 0]);
+  const explored = useRef(0);
+  const exit = useRef(0);
+  const entrance = useRef(0);
   const initialized = useRef(false);
   const samples = useRef({ count: 0, sum: 0, slow: false, frames: 0 });
   const { gl, scene, camera, size, invalidate, advance } = useThree();
@@ -88,7 +91,10 @@ function SceneController(props: Props) {
     return () => cancelAnimationFrame(frame);
   }, [active, theme, quality, size, advance, invalidate]);
   useEffect(() => {
-    const section = host.current?.closest("[data-hero]");
+    const element = host.current;
+    const section = element?.closest("[data-hero]");
+    const surface = element?.querySelector<HTMLElement>("[data-hero-surface]");
+    let gesture: { id: number; x: number; y: number; start: number; lastX: number; velocity: number; horizontal: boolean } | null = null;
     debug.current = new URLSearchParams(window.location.search).has("heroDebug");
     if (debug.current) {
       const context = gl.getContext() as WebGL2RenderingContext;
@@ -102,14 +108,63 @@ function SceneController(props: Props) {
     }
     const move = (event: Event) => {
       const pointer = event as PointerEvent;
+      if (gesture && pointer.pointerId === gesture.id && active && surface) {
+        const dx = pointer.clientX - gesture.x, dy = pointer.clientY - gesture.y;
+        if (!gesture.horizontal && Math.abs(dy) > Math.max(8, Math.abs(dx))) { gesture = null; return; }
+        if (!gesture.horizontal && Math.abs(dx) > Math.max(8, Math.abs(dy))) {
+          gesture.horizontal = true;
+          surface.setPointerCapture(pointer.pointerId);
+          surface.dataset.interacting = "true";
+        }
+        if (gesture.horizontal) {
+          const width = surface.getBoundingClientRect().width;
+          gesture.velocity = (pointer.clientX - gesture.lastX) / width;
+          gesture.lastX = pointer.clientX;
+          explored.current = explorationRotation(gesture.start + dx / width * 1.2);
+          invalidate();
+          return;
+        }
+      }
       if (!active || coarse || pointer.pointerType === "touch" || !section) return;
       const rect = section.getBoundingClientRect();
       target.current = pointerRotation((pointer.clientX - rect.left) / rect.width * 2 - 1, (pointer.clientY - rect.top) / rect.height * 2 - 1);
       invalidate();
     };
     const leave = () => { target.current = [0, 0]; if (active) invalidate(); };
+    const down = (event: PointerEvent) => {
+      if (!active || gesture || !event.isPrimary || event.button !== 0) return;
+      gesture = { id: event.pointerId, x: event.clientX, y: event.clientY, lastX: event.clientX, start: explored.current, velocity: 0, horizontal: false };
+    };
+    const finish = (event: PointerEvent) => {
+      if (!gesture || event.pointerId !== gesture.id) return;
+      const current = gesture; gesture = null;
+      if (current.horizontal && event.type === "pointerup") explored.current = explorationRotation(explored.current + Math.max(-.12, Math.min(.12, current.velocity * 2)));
+      surface?.removeAttribute("data-interacting");
+      if (surface?.hasPointerCapture(current.id)) surface.releasePointerCapture(current.id);
+      if (active) invalidate();
+    };
+    const nudge = (event: Event) => {
+      if (!active) return;
+      explored.current = explorationRotation(explored.current + (event as CustomEvent<number>).detail);
+      invalidate();
+    };
+    const lostCapture = (event: PointerEvent) => { if (event.target === surface) finish(event); };
+    const scroll = () => {
+      if (!active || !section) return;
+      const rect = section.getBoundingClientRect();
+      exit.current = Math.max(0, Math.min(1, -rect.top / rect.height)) * .08;
+      invalidate();
+    };
     section?.addEventListener("pointermove", move, { passive: true });
     section?.addEventListener("pointerleave", leave, { passive: true });
+    surface?.addEventListener("pointerdown", down, { passive: true });
+    surface?.addEventListener("pointerup", finish, { passive: true });
+    surface?.addEventListener("pointercancel", finish, { passive: true });
+    surface?.addEventListener("lostpointercapture", lostCapture);
+    window.addEventListener("pointerup", finish, { passive: true });
+    element?.addEventListener("portfolio:hero-explore", nudge);
+    window.addEventListener("scroll", scroll, { passive: true });
+    scroll();
     const lost = (event: Event) => { event.preventDefault(); onFailure(); };
     gl.domElement.addEventListener("webglcontextlost", lost);
     gl.debug.onShaderError = (context, program, vertex, fragment) => {
@@ -119,6 +174,12 @@ function SceneController(props: Props) {
     if (active) invalidate();
     return () => {
       section?.removeEventListener("pointermove", move); section?.removeEventListener("pointerleave", leave);
+      surface?.removeEventListener("pointerdown", down); surface?.removeEventListener("pointerup", finish); surface?.removeEventListener("pointercancel", finish);
+      surface?.removeEventListener("lostpointercapture", lostCapture);
+      window.removeEventListener("pointerup", finish);
+      if (gesture && surface?.hasPointerCapture(gesture.id)) surface.releasePointerCapture(gesture.id);
+      surface?.removeAttribute("data-interacting");
+      element?.removeEventListener("portfolio:hero-explore", nudge); window.removeEventListener("scroll", scroll);
       gl.domElement.removeEventListener("webglcontextlost", lost);
       if (gpu.current?.pending) gpu.current.context.deleteQuery(gpu.current.pending);
       gpu.current = null;
@@ -129,9 +190,15 @@ function SceneController(props: Props) {
     if (!object) return;
     if (active) {
       const amount = 1 - Math.exp(-Math.min(delta, 0.05) * 7);
-      object.rotation.x += (target.current[0] - object.rotation.x) * amount;
-      object.rotation.y += (target.current[1] - object.rotation.y) * amount;
-      if (Math.abs(target.current[0] - object.rotation.x) + Math.abs(target.current[1] - object.rotation.y) > 0.00015) invalidate();
+      const x = target.current[0] + exit.current, y = target.current[1] + explored.current;
+      object.rotation.x += (x - object.rotation.x) * amount;
+      object.rotation.y += (y - object.rotation.y) * amount;
+      entrance.current = Math.min(850, entrance.current + Math.min(delta, .05) * 1000);
+      const progress = 1 - Math.pow(1 - entrance.current / 850, 3);
+      object.scale.setScalar(.94 + progress * .06);
+      if (entrance.current < 850 || Math.abs(x - object.rotation.x) + Math.abs(y - object.rotation.y) > 0.00015) invalidate();
+    } else {
+      entrance.current = 850; object.scale.setScalar(1);
     }
     const probe = gpu.current;
     if (probe?.pending && probe.context.getQueryParameter(probe.pending, probe.context.QUERY_RESULT_AVAILABLE)) {
@@ -154,6 +221,8 @@ function SceneController(props: Props) {
     if (debug.current && host.current) {
       host.current.dataset.heroFrames = String(stats.frames);
       host.current.dataset.heroRotation = `${object.rotation.x.toFixed(5)},${object.rotation.y.toFixed(5)}`;
+      host.current.dataset.heroExploration = explored.current.toFixed(5);
+      host.current.dataset.heroEntrance = entrance.current.toFixed(0);
       host.current.dataset.heroDrawCalls = String(gl.info.render.calls);
       host.current.dataset.heroTriangles = String(gl.info.render.triangles);
       host.current.dataset.heroGeometries = String(gl.info.memory.geometries);
@@ -165,7 +234,7 @@ function SceneController(props: Props) {
       initialized.current = true; performance.mark("portfolio:hero-first-frame"); queueMicrotask(onReady);
     }
   }, 1);
-  return <group ref={group} position={[0.06, 0.12, 0]} rotation={[-0.045, -0.075, 0]}><ProceduralOrb theme={theme} quality={quality} /></group>;
+  return <group ref={group} position={[0.06, 0.12, 0]} rotation={[-0.12, -0.22, 0]}><ProceduralOrb theme={theme} quality={quality} /></group>;
 }
 
 export default function HeroScene(props: Props) {

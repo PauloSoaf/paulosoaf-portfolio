@@ -21,7 +21,7 @@ export function ButtonLink({ variant = "primary", className, ...props }: ButtonL
   return (
     <Link
       className={cx(
-        "inline-flex max-w-full items-center transition-colors duration-(--oo-motion-fast) ease-out",
+        "ui-cta inline-flex max-w-full items-center",
         variants[variant],
         className,
       )}

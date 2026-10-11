@@ -36,7 +36,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  className="inline-flex min-h-11 items-center text-xs font-medium tracking-[0.07em] text-fg-muted uppercase underline-offset-[6px] transition-colors duration-(--oo-motion-fast) hover:text-fg hover:underline"
+                  className="ui-nav inline-flex min-h-11 items-center text-xs font-medium tracking-[0.07em] text-fg-muted uppercase transition-colors duration-(--oo-motion-fast) hover:text-fg"
                 >
                   {item.label}
                 </Link>
@@ -68,7 +68,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
                 <li key={item.id} className="border-b border-line">
                   <Link
                     href={item.href}
-                    className="flex min-h-13 items-center justify-between font-display text-xl font-semibold tracking-[-0.03em]"
+                    className="ui-cta flex min-h-13 items-center justify-between font-display text-xl font-semibold tracking-[-0.03em]"
                   >
                     {item.label}
                     <Icon name="arrow-down-right" size={16} className="text-fg-subtle" />

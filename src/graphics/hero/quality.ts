@@ -16,7 +16,11 @@ export function constrainedDevice({ saveData, cores, memory }: { saveData?: bool
   return saveData === true || (cores !== undefined && cores <= 2) || (memory !== undefined && memory <= 2);
 }
 
-export const PARALLAX_LIMIT = 0.1;
+export const PARALLAX_LIMIT = 0.18;
+export const EXPLORATION_LIMIT = 0.6;
+export function explorationRotation(value: number): number {
+  return Math.max(-EXPLORATION_LIMIT, Math.min(EXPLORATION_LIMIT, value));
+}
 export function pointerRotation(x: number, y: number): [number, number] {
   const clamp = (value: number) => Math.max(-1, Math.min(1, value));
   return [clamp(y) * PARALLAX_LIMIT, clamp(x) * PARALLAX_LIMIT];

@@ -38,18 +38,18 @@ export function ThemeToggle({ labels, className }: ThemeToggleProps) {
     <button
       type="button"
       className={cx(
-        "js-only inline-flex size-11 items-center justify-center rounded-sm border border-line text-fg-muted transition-colors duration-(--oo-motion-fast) hover:border-line-strong hover:text-fg",
+        "js-only ui-control theme-toggle relative inline-flex size-11 items-center justify-center rounded-sm border border-line text-fg-muted hover:border-line-strong hover:text-fg",
         className,
       )}
       aria-label={label}
       title={label}
-      onClick={() => applyTheme(next)}
+      onClick={() => applyTheme(getDocumentTheme() === "dark" ? "light" : "dark")}
     >
       {/* Icon of the target theme, switched by CSS so it is right even before hydration. */}
-      <span data-theme-only="dark">
+      <span className="theme-icon theme-sun" aria-hidden="true">
         <Icon name="sun" size={18} />
       </span>
-      <span data-theme-only="light">
+      <span className="theme-icon theme-moon" aria-hidden="true">
         <Icon name="moon" size={18} />
       </span>
     </button>

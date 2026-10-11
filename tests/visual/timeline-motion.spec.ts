@@ -2,7 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { locales } from "../../src/i18n/config";
 
-const output = "docs/qa/S03/screenshots";
+const output = process.env.QA_TIMELINE_SCREENSHOT_DIR ?? "docs/qa/S03/screenshots";
+const videoOutput = process.env.QA_TIMELINE_VIDEO_DIR ?? "docs/qa/S03/videos";
 const viewports = [
   { width: 360, height: 800 }, { width: 390, height: 844 }, { width: 768, height: 1024 },
   { width: 1024, height: 768 }, { width: 1440, height: 900 }, { width: 1920, height: 1080 },
@@ -32,7 +33,7 @@ for (const locale of locales) for (const theme of ["dark", "light"] as const) fo
 
 for (const width of [390, 1440]) {
   test(`${width}: actual entry phases and continuous native-scroll recording`, async ({ browser }) => {
-    await mkdir(output, { recursive: true }); await mkdir("docs/qa/S03/videos", { recursive: true });
+    await mkdir(output, { recursive: true }); await mkdir(videoOutput, { recursive: true });
     const context = await browser.newContext({ viewport: { width, height: width === 390 ? 844 : 900 }, reducedMotion: "no-preference", recordVideo: { dir: "docs/report/S03/videos", size: { width, height: width === 390 ? 844 : 900 } } });
     const page = await context.newPage(); await page.goto("http://127.0.0.1:3200/pt");
     await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(350);
@@ -65,6 +66,6 @@ for (const width of [390, 1440]) {
       await livePage.waitForTimeout(1000);
       if (selector === "#about" && width >= 1024) { await livePage.getByRole("tab").nth(1).click(); await livePage.waitForTimeout(350); }
     }
-    const video = livePage.video()!; await live.close(); await video.saveAs(`docs/qa/S03/videos/scroll-${width}.webm`);
+    const video = livePage.video()!; await live.close(); await video.saveAs(`${videoOutput}/scroll-${width}.webm`);
   });
 }

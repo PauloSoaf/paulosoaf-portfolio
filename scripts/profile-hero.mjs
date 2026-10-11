@@ -5,8 +5,9 @@ import { gzipSync } from "node:zlib";
 // Run against an owned production server, never next dev. Raw logs stay outside Git.
 const origin = process.env.QA_ORIGIN || "http://127.0.0.1:3200";
 const baseline = process.env.QA_BASELINE === "1";
+const output = process.env.QA_HERO_OUTPUT_DIR ?? "docs/report/S01";
 const total = (entries) => entries.reduce((sum, [, value]) => sum + value.gzip, 0);
-await mkdir("docs/report/S01", { recursive: true });
+await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] });
 const results = [];
 try {
@@ -81,6 +82,6 @@ try {
     });
     await context.close();
   }
-  await writeFile(`docs/report/S01/profile${baseline ? "-S00" : ""}.json`, JSON.stringify(results, null, 2));
+  await writeFile(`${output}/profile${baseline ? "-S00" : ""}.json`, JSON.stringify(results, null, 2));
   console.log(results.map((result) => ({ ...result, initial: undefined, lazy: undefined })));
 } finally { await browser.close(); }

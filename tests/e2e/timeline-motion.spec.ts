@@ -23,6 +23,15 @@ test("desktop timeline selects actual details, uses keyboard tabs and preserves 
   await page.keyboard.press("Home"); await page.keyboard.press("End");
   await page.keyboard.press("ArrowDown");
   await expect(timeline(page)).toHaveAttribute("data-selected-chapter", "foundations");
+  // Let focus scrolling from the preceding End/wrap keys finish before measuring Space.
+  await expect.poll(async () => {
+    const y = await page.evaluate(() => scrollY); await page.waitForTimeout(120);
+    return await page.evaluate(() => scrollY) === y;
+  }).toBe(true);
+  await page.evaluate(() => document.addEventListener("keydown", event => Reflect.set(window, "spacePrevented", event.defaultPrevented), { once: true }));
+  const beforeSpace = await page.evaluate(() => scrollY); await page.keyboard.press("Space"); await page.waitForTimeout(160);
+  expect(await page.evaluate(() => Reflect.get(window, "spacePrevented"))).toBe(true);
+  expect(await page.evaluate(() => scrollY)).toBe(beforeSpace);
   await page.keyboard.press("Tab"); await expect(page.getByRole("button", { name: "Acompanhar a rolagem" })).toBeFocused();
   await page.keyboard.press("Tab"); await expect(page.getByRole("tabpanel")).toBeFocused();
   const titles = await page.locator(".journey-panel h3").allTextContents();
@@ -69,7 +78,7 @@ test("editorial reveal uses real intermediate transforms, runs once and does not
   await scrollTo(page, "#expertise-title");
   await expect(heading).toHaveAttribute("data-motion-state", "finished");
   const observed = await page.evaluate(() => Reflect.get(window, "measuredReveal"));
-  expect(observed.frames[0].transform).toContain("16px"); expect(observed.duration).toBe(280);
+  expect(observed.frames[0].transform).toContain("24px"); expect(observed.duration).toBe(550);
   await expect(heading).toHaveAttribute("data-motion-runs", "1");
   await scrollTo(page, "#contact"); await scrollTo(page, "#expertise-title");
   await expect(heading).toHaveAttribute("data-motion-runs", "1");

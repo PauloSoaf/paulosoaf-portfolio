@@ -70,7 +70,7 @@ export function MobileMenu({ label, children, className }: MobileMenuProps) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-11 items-center gap-2.5 rounded-sm border border-line-strong px-4 text-xs font-semibold tracking-[0.08em] uppercase transition-colors duration-(--oo-motion-fast) hover:border-accent"
+        className="ui-control inline-flex min-h-11 items-center gap-2.5 rounded-sm border border-line-strong px-4 text-xs font-semibold tracking-[0.08em] uppercase hover:border-accent"
       >
         {label}
         <Icon name={open ? "close" : "menu"} size={16} />

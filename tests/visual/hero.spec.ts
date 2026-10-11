@@ -19,7 +19,12 @@ for (const locale of locales) for (const theme of ["dark", "light"] as const) fo
     await art.scrollIntoViewIfNeeded();
     await expect(art).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
     await page.locator("[data-hero]").dispatchEvent("pointerleave");
-    await expect.poll(async () => (await art.getAttribute("data-hero-rotation"))!.split(",").map(Number).every((value) => Math.abs(value) < 0.001)).toBe(true);
+    await expect(art).toHaveAttribute("data-hero-entrance", "850");
+    // S03.5 adds bounded scroll exit pitch; settle at the current view rather than force a zero pitch.
+    await expect.poll(async () => {
+      const frames = await art.getAttribute("data-hero-frames"); await page.waitForTimeout(250);
+      return await art.getAttribute("data-hero-frames") === frames;
+    }).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.evaluate(() => window.scrollTo({ top: 0, left: 0, behavior: "instant" }));
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);

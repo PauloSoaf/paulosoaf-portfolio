@@ -21,7 +21,7 @@ export function SectionHeading({
           <p data-motion="horizontal" className="text-kicker mb-5 text-accent lg:mb-6">{kicker}</p>
           <h2
             id={headingId}
-            data-motion="rise" data-motion-delay="40"
+            data-motion="editorial" data-motion-delay="40"
             className="text-[2.75rem] leading-none font-bold tracking-[-0.05em] break-words sm:text-[clamp(2.75rem,6vw,5.5rem)]"
           >
             {titleLead} <em className="heading-em">{titleEmphasis}</em>

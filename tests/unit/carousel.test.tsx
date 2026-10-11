@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ProjectCarousel } from "@/components/carousel/ProjectCarousel.client";
@@ -16,6 +16,18 @@ beforeEach(() => {
 });
 
 describe("carousel and commercial catalog", () => {
+  it("uses the newest viewport entry when the browser batches opposite transitions", () => {
+    let callback!: IntersectionObserverCallback;
+    vi.stubGlobal("IntersectionObserver", class {
+      constructor(cb: IntersectionObserverCallback) { callback = cb; }
+      observe() {} disconnect() {}
+    });
+    const { container } = render(<ProjectCarousel slides={[{ slug: "a", title: "A", content: <p>A</p> }, { slug: "b", title: "B", content: <p>B</p> }]} labels={pt.carousel} />);
+    act(() => callback([{ isIntersecting: false }, { isIntersecting: true }] as IntersectionObserverEntry[], {} as IntersectionObserver));
+    expect(container.querySelector("[data-carousel]")).toHaveAttribute("data-visible", "true");
+    act(() => callback([{ isIntersecting: true }, { isIntersecting: false }] as IntersectionObserverEntry[], {} as IntersectionObserver));
+    expect(container.querySelector("[data-carousel]")).toHaveAttribute("data-visible", "false");
+  });
   it("configures the requested feature priority without mutating or deleting the catalog", () => {
     expect(orderProjects(projects).map((p) => p.slug)).toEqual([
       "nutriopus", "deborah-lima", "dr-manaus", "iot-devices-manager", "chess-in-react", "gol-na-hora", "game-hub",

@@ -21,7 +21,7 @@ class SceneBoundary extends Component<{ children: ReactNode; onFailure: () => vo
 interface Props {
   children: ReactNode;
   className?: string;
-  labels: { pause: string; resume: string; staticArt: string; enable: string; reduced: string };
+  labels: { pause: string; resume: string; staticArt: string; enable: string; reduced: string; exploreLeft: string; exploreRight: string; hint: string };
 }
 
 /** Only this decorative island owns state; editorial content and SVG arrive in server HTML. */
@@ -92,7 +92,7 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
       <div aria-hidden="true" className="relative aspect-[820/760] pointer-events-none sm:opacity-55 lg:opacity-100">
         <div className={cx("absolute inset-0", ready && canvasMounted && "opacity-0")}>{children}</div>
         {canvasMounted ? (
-          <div className={cx("hero-art-fade absolute inset-0", ready ? "opacity-100" : "opacity-0")}>
+          <div data-hero-surface className={cx("hero-surface hero-art-fade absolute inset-0", ready ? "opacity-100" : "opacity-0")}>
             <SceneBoundary key={attempt} onFailure={fail}>
               <HeroScene theme={theme} active={active} coarse={environment.coarse} quality={environment.quality}
                 host={host} onReady={onReady} onFailure={fail} onSlow={onSlow} />
@@ -103,15 +103,26 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
       <div className="js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3">
         {ready && !environment.reduced ? (
           <button type="button" onClick={() => setPaused((value) => !value)} aria-pressed={paused}
-            className="min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
-            {paused ? labels.resume : labels.pause}
+            aria-label={paused ? labels.resume : labels.pause} title={paused ? labels.resume : labels.pause}
+            className="ui-control min-h-11 min-w-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
+            <span className="hidden sm:inline">{paused ? labels.resume : labels.pause}</span>
+            <span className="sm:hidden" aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
           </button>
         ) : null}
+        {ready && !environment.reduced ? <>
+          <button type="button" disabled={!active} aria-label={labels.exploreLeft} title={labels.exploreLeft}
+            onClick={() => host.current?.dispatchEvent(new CustomEvent("portfolio:hero-explore", { detail: -.18 }))}
+            className="ui-control size-11 rounded-sm border border-line-strong bg-base text-fg-muted hover:border-accent">←</button>
+          <button type="button" disabled={!active} aria-label={labels.exploreRight} title={labels.exploreRight}
+            onClick={() => host.current?.dispatchEvent(new CustomEvent("portfolio:hero-explore", { detail: .18 }))}
+            className="ui-control size-11 rounded-sm border border-line-strong bg-base text-fg-muted hover:border-accent">→</button>
+        </> : null}
         <button type="button" onClick={toggleArt}
-          className="min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
+          className="ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
           {canvasMounted ? labels.staticArt : labels.enable}
         </button>
         {environment.reduced ? <span className="self-center text-xs text-fg-muted">{labels.reduced}</span> : null}
+        {ready && active ? <span className="basis-full text-center text-xs text-fg-subtle">{labels.hint}</span> : null}
       </div>
     </div>
   );

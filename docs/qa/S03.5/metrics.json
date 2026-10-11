@@ -1,0 +1,734 @@
+{
+  "baseCommit": "0ad2532814677035435367a7aa5f7ed7c62445a0",
+  "branch": "feat/s03-5-interaction-polish",
+  "baselineS03": {
+    "source": "docs/qa/S03/metrics.json",
+    "initialGzipBytes": 157083,
+    "laboratory": [
+      {
+        "sample": "preview-desktop",
+        "date": "2026-10-11T03:32:18.071Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 680.762675,
+        "cls": 0.00039530773450471157,
+        "tbtMs": 2.5,
+        "warnings": []
+      },
+      {
+        "sample": "preview-mobile",
+        "date": "2026-10-11T03:32:36.117Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 92,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 3184.1241000000005,
+        "cls": 0,
+        "tbtMs": 131.55369999999994,
+        "warnings": []
+      },
+      {
+        "sample": "public-desktop",
+        "date": "2026-10-11T03:35:41.897Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 593.8936,
+        "cls": 0.00039530773450471157,
+        "tbtMs": 2.5,
+        "warnings": []
+      },
+      {
+        "sample": "public-mobile",
+        "date": "2026-10-11T03:36:00.932Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "scores": {
+          "performance": 95,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2779.2250499999996,
+        "cls": 0,
+        "tbtMs": 107.99999999999955,
+        "warnings": []
+      }
+    ]
+  },
+  "hydrationBefore": {
+    "base": "0ad2532814677035435367a7aa5f7ed7c62445a0",
+    "results": [
+      {
+        "hash": "",
+        "before": {
+          "height": 1248,
+          "aboutTop": 3689.21875,
+          "expertiseTop": 5405.125,
+          "scrollY": 0,
+          "desktop": "false"
+        },
+        "after": {
+          "height": 470.0625,
+          "aboutTop": 2140.09375,
+          "expertiseTop": 3078.0625,
+          "scrollY": 0,
+          "desktop": "true"
+        }
+      },
+      {
+        "hash": "#about",
+        "before": {
+          "height": 1248,
+          "aboutTop": 88.21875,
+          "expertiseTop": 1804.125,
+          "scrollY": 3601,
+          "desktop": "false"
+        },
+        "after": {
+          "height": 470.0625,
+          "aboutTop": -1396.90625,
+          "expertiseTop": -458.9375,
+          "scrollY": 3601,
+          "desktop": "true"
+        }
+      }
+    ]
+  },
+  "hydrationAfter": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "scriptGateMsAfterFonts": 800,
+    "results": [
+      {
+        "width": 390,
+        "hash": "",
+        "before": {
+          "height": 1466.8125,
+          "aboutTop": 2386.25,
+          "expertiseTop": 4285.75,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 1466.8125,
+          "aboutTop": 2386.25,
+          "expertiseTop": 4285.75,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#about",
+        "before": {
+          "height": 1466.8125,
+          "aboutTop": 80.25,
+          "expertiseTop": 1979.75,
+          "scrollY": 2306
+        },
+        "after": {
+          "height": 1466.8125,
+          "aboutTop": 80.25,
+          "expertiseTop": 1979.75,
+          "scrollY": 2306
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "",
+        "before": {
+          "height": 470.0625,
+          "aboutTop": 2204.09375,
+          "expertiseTop": 3142.0625,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 470.0625,
+          "aboutTop": 2204.09375,
+          "expertiseTop": 3142.0625,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#about",
+        "before": {
+          "height": 470.0625,
+          "aboutTop": 88.09375,
+          "expertiseTop": 1026.0625,
+          "scrollY": 2116
+        },
+        "after": {
+          "height": 470.0625,
+          "aboutTop": 88.09375,
+          "expertiseTop": 1026.0625,
+          "scrollY": 2116
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      }
+    ]
+  },
+  "laboratory": [
+    {
+      "sample": "preview-desktop",
+      "date": "2026-10-11T16:41:53.480Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 653.4673999999999,
+      "cls": 0.003704120633633012,
+      "tbtMs": 10,
+      "warnings": []
+    },
+    {
+      "sample": "preview-mobile",
+      "date": "2026-10-11T16:42:12.024Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3188.885442874531,
+      "cls": 0,
+      "tbtMs": 178.37350816078128,
+      "warnings": []
+    },
+    {
+      "sample": "public-desktop",
+      "date": "2026-10-11T16:45:21.967Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 592.91435,
+      "cls": 0.003704120633633012,
+      "tbtMs": 9,
+      "warnings": []
+    },
+    {
+      "sample": "public-mobile",
+      "date": "2026-10-11T16:45:41.408Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 94,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2945.4543,
+      "cls": 0,
+      "tbtMs": 117,
+      "warnings": []
+    }
+  ],
+  "previewProfiles": [
+    {
+      "width": 390,
+      "publicSample": false,
+      "saveData": true,
+      "initialGzipBytes": 157834,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 7.299999952316284
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 1812
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 5
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 48
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 32,
+      "durationsMs": [
+        550,
+        280
+      ],
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": false,
+      "saveData": true,
+      "initialGzipBytes": 157834,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 224
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 6.3999998569488525
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 224
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 2.299999952316284
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 48
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 39,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "publicProfiles": [
+    {
+      "width": 390,
+      "publicSample": true,
+      "saveData": true,
+      "initialGzipBytes": 157834,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 88.70000004768372
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 1800
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 1800
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 6.700000047683716
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 22,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": true,
+      "saveData": true,
+      "initialGzipBytes": 157834,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 192
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 11.299999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 192
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 22,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "heroProfiles": [
+    {
+      "width": 390,
+      "initialGzipBytes": 157834,
+      "lazyGzipBytes": 245140,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "mobile",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "182",
+        "heroRotation": "-0.00042,0.17866",
+        "heroExploration": "0.00000",
+        "heroEntrance": "850",
+        "heroDrawCalls": "5",
+        "heroTriangles": "2540",
+        "heroGeometries": "5",
+        "heroCpuMs": "0.202",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 60.00268168409762,
+        "intervalP95Ms": 16.700000000000273
+      },
+      "idleFrames": 0,
+      "layoutShifts": [
+        {
+          "value": 0.00019496794871794873,
+          "sources": [
+            {
+              "node": "<button type=\"button\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Usar arte estática</button>",
+              "before": {
+                "x": 143.046875,
+                "y": 843.921875,
+                "width": 103.890625,
+                "height": 44,
+                "top": 843.921875,
+                "right": 246.9375,
+                "bottom": 887.921875,
+                "left": 143.046875
+              },
+              "after": {
+                "x": 131.9375,
+                "y": 843.921875,
+                "width": 126.125,
+                "height": 44,
+                "top": 843.921875,
+                "right": 258.0625,
+                "bottom": 887.921875,
+                "left": 131.9375
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.005876543209876544,
+          "sources": [
+            {
+              "node": "<div class=\"js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3\"><button type=\"button\" aria-pressed=\"false\" aria-label=\"Pausar mov",
+              "before": {
+                "x": 20,
+                "y": 843.921875,
+                "width": 350,
+                "height": 44,
+                "top": 843.921875,
+                "right": 370,
+                "bottom": 887.921875,
+                "left": 20
+              },
+              "after": {
+                "x": 20,
+                "y": 819.921875,
+                "width": 350,
+                "height": 68,
+                "top": 819.921875,
+                "right": 370,
+                "bottom": 887.921875,
+                "left": 20
+              }
+            }
+          ]
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 8.299999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 8
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0060715111585944925
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "initialGzipBytes": 157834,
+      "lazyGzipBytes": 245140,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "desktop",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "182",
+        "heroRotation": "-0.00647,0.05445",
+        "heroExploration": "0.00000",
+        "heroEntrance": "850",
+        "heroDrawCalls": "5",
+        "heroTriangles": "7852",
+        "heroGeometries": "5",
+        "heroCpuMs": "0.210",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 59.66865562185405,
+        "intervalP95Ms": 16.700000000000728
+      },
+      "idleFrames": 0,
+      "layoutShifts": [
+        {
+          "value": 0.00033234987193501373,
+          "sources": [
+            {
+              "node": "<button type=\"button\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar arte 3D</button>",
+              "before": {
+                "x": 1009.640625,
+                "y": 835.2265625,
+                "width": 103.890625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1113.53125,
+                "bottom": 879.2265625,
+                "left": 1009.640625
+              },
+              "after": {
+                "x": 932.1875,
+                "y": 835.2265625,
+                "width": 103.890625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1036.078125,
+                "bottom": 879.2265625,
+                "left": 932.1875
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.0003346965020576132,
+          "sources": [
+            {
+              "node": "<button type=\"button\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Ativar arte 3D</button>",
+              "before": {
+                "x": 931.640625,
+                "y": 835.2265625,
+                "width": 103.890625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1035.53125,
+                "bottom": 879.2265625,
+                "left": 931.640625
+              },
+              "after": {
+                "x": 1009.640625,
+                "y": 835.2265625,
+                "width": 103.890625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1113.53125,
+                "bottom": 879.2265625,
+                "left": 1009.640625
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.00003300238715277778,
+          "sources": [
+            {
+              "node": "<button type=\"button\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent\">Usar arte estática</button>",
+              "before": {
+                "x": 1009.640625,
+                "y": 835.2265625,
+                "width": 103.890625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1113.53125,
+                "bottom": 879.2265625,
+                "left": 1009.640625
+              },
+              "after": {
+                "x": 998.53125,
+                "y": 835.2265625,
+                "width": 126.125,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1124.65625,
+                "bottom": 879.2265625,
+                "left": 998.53125
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.003358318463863169,
+          "sources": [
+            {
+              "node": "<div class=\"js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3\"><button type=\"button\" aria-pressed=\"false\" aria-label=\"Pausar mov",
+              "before": {
+                "x": 681.59375,
+                "y": 835.2265625,
+                "width": 758.40625,
+                "height": 44,
+                "top": 835.2265625,
+                "right": 1440,
+                "bottom": 879.2265625,
+                "left": 681.59375
+              },
+              "after": {
+                "x": 681.59375,
+                "y": 811.2265625,
+                "width": 758.40625,
+                "height": 68,
+                "top": 811.2265625,
+                "right": 1440,
+                "bottom": 879.2265625,
+                "left": 681.59375
+              }
+            }
+          ]
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 9.299999952316284
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.1000001430511475
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.004058367225008574
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "One local laboratory sample per condition, not field p75 or physical GPU/device certification",
+    "Save-Data profile isolates initial external Next JS gzip with motion enabled; excludes HTML/Flight/CDN differences",
+    "S03.5 input profile adds two theme switches and mobile menu/Escape; INP is not an identical S03 interaction sequence",
+    "Separate Hero profile starts reduced then enables real Three; observed rAF cadence is not physical FPS",
+    "Raw before-hydration baseline used no network/CPU throttling and reduced motion; after includes 120ms network and 4x CPU",
+    "Native CSS transitions paused only for midpoint PNGs; videos use unmodified real time",
+    "Commercial content remains pending and filtered from public builds"
+  ]
+}

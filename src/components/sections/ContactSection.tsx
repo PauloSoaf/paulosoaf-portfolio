@@ -17,7 +17,7 @@ interface ContactSectionProps {
 }
 
 const cardClass =
-  "flex min-h-20 flex-wrap items-center justify-between gap-4 rounded-md border border-line bg-surface px-5 py-4 transition-colors duration-(--oo-motion-fast) hover:border-accent";
+  "ui-cta flex min-h-20 flex-wrap items-center justify-between gap-4 rounded-md border border-line bg-surface px-5 py-4 hover:border-accent";
 
 /**
  * Contact (RF-008). Only validated channels become links. A channel without a validated value is

@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
         super((entries, self) => {
           for (const entry of entries) if (entry.target.hasAttribute("data-carousel")) log.push({
             connected: entry.target.isConnected, current: entry.target === document.querySelector("[data-carousel]"),
-            time: entry.time, intersecting: entry.isIntersecting, ratio: entry.intersectionRatio,
+            time: entry.time, batchLength: entries.length, intersecting: entry.isIntersecting, ratio: entry.intersectionRatio,
             rect: entry.boundingClientRect.toJSON(), nowRect: entry.target.getBoundingClientRect().toJSON(),
           });
           callback(entries, self);
@@ -200,7 +200,8 @@ test("catalog stays fully accessible without JavaScript and hides unavailable ac
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   const page = await context.newPage(); await page.goto("http://127.0.0.1:3200/pt#work");
   await expect(page.locator("#work article")).toHaveCount(7);
-  await expect(page.locator("#work button")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Próximo projeto", exact: true })).toHaveCount(0);
+  await expect(page.locator(".carousel-controls")).toBeHidden();
   await expect(page.locator(".carousel-slide[inert]")).toHaveCount(0);
   await expect(page.locator('#work a[href^="https://github.com/"]')).toHaveCount(5);
   for (const title of ["NutriOpus", "Déborah Lima", "Dr-Manaus", "Game Hub"]) {

@@ -54,9 +54,9 @@ export function LanguageSwitch({ current, label, className }: LanguageSwitchProp
             aria-label={`${localeNames[locale]} (${locale.toUpperCase()})`}
             onClick={(event) => handleClick(event, locale, href)}
             className={cx(
-              "inline-flex min-h-11 min-w-10 items-center justify-center px-2 font-mono text-xs font-semibold tracking-[0.12em] uppercase transition-colors duration-(--oo-motion-fast)",
+              "ui-nav inline-flex min-h-11 min-w-10 items-center justify-center px-2 font-mono text-xs font-semibold tracking-[0.12em] uppercase transition-colors duration-(--oo-motion-fast)",
               active
-                ? "text-fg underline decoration-accent decoration-2 underline-offset-[6px]"
+                ? "text-fg"
                 : "text-fg-subtle hover:text-fg",
             )}
           >

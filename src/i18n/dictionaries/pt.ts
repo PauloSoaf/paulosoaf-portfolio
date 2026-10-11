@@ -44,6 +44,7 @@ export const pt = {
   heroScene: {
     pause: "Pausar movimento", resume: "Retomar movimento", staticArt: "Usar arte estática",
     enable: "Ativar arte 3D", reduced: "Movimento reduzido ativo",
+    exploreLeft: "Explorar objeto à esquerda", exploreRight: "Explorar objeto à direita", hint: "Arraste na horizontal para explorar",
   },
   sections: {
     work: {
