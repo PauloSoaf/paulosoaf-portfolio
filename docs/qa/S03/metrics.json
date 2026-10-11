@@ -1,0 +1,328 @@
+{
+  "baseCommit": "66c8ff0fae0b275b1b2d86bfcd70b29a8da80852",
+  "branch": "feat/s03-interactive-timeline-motion",
+  "baselineS02": {
+    "source": "docs/qa/S02/metrics.json",
+    "initialGzipBytes": 154711,
+    "laboratory": [
+      {
+        "sample": "preview-desktop",
+        "date": "2026-10-10T20:42:59.452Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 661.814775,
+        "cls": 0.00039530773450471157,
+        "tbtMs": 9.5,
+        "warnings": []
+      },
+      {
+        "sample": "preview-mobile",
+        "date": "2026-10-10T20:43:17.655Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 92,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 3177.532075,
+        "cls": 0,
+        "tbtMs": 119.63827500000002,
+        "warnings": []
+      },
+      {
+        "sample": "public-desktop",
+        "date": "2026-10-10T20:46:28.412Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 586.2801499999999,
+        "cls": 0.00039530773450471157,
+        "tbtMs": 8.5,
+        "warnings": []
+      },
+      {
+        "sample": "public-mobile",
+        "date": "2026-10-10T20:46:46.532Z",
+        "lighthouse": "13.5.0",
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "scores": {
+          "performance": 94,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 2903.6749,
+        "cls": 0,
+        "tbtMs": 100,
+        "warnings": []
+      }
+    ]
+  },
+  "laboratory": [
+    {
+      "sample": "preview-desktop",
+      "date": "2026-10-11T03:32:18.071Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 680.762675,
+      "cls": 0.00039530773450471157,
+      "tbtMs": 2.5,
+      "warnings": []
+    },
+    {
+      "sample": "preview-mobile",
+      "date": "2026-10-11T03:32:36.117Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3184.1241000000005,
+      "cls": 0,
+      "tbtMs": 131.55369999999994,
+      "warnings": []
+    },
+    {
+      "sample": "public-desktop",
+      "date": "2026-10-11T03:35:41.897Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "desktop",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 593.8936,
+      "cls": 0.00039530773450471157,
+      "tbtMs": 2.5,
+      "warnings": []
+    },
+    {
+      "sample": "public-mobile",
+      "date": "2026-10-11T03:36:00.932Z",
+      "lighthouse": "13.5.0",
+      "formFactor": "mobile",
+      "throttlingMethod": "simulate",
+      "scores": {
+        "performance": 95,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2779.2250499999996,
+      "cls": 0,
+      "tbtMs": 107.99999999999955,
+      "warnings": []
+    }
+  ],
+  "previewProfiles": [
+    {
+      "width": 390,
+      "publicSample": false,
+      "saveData": true,
+      "initialGzipBytes": 157083,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 7.200000047683716
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 1772
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5999999046325684
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 32
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 31,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "maxRunsPerTarget": 1,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": false,
+      "saveData": true,
+      "initialGzipBytes": 157083,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.3999998569488525
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 39,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "maxRunsPerTarget": 1,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "publicProfiles": [
+    {
+      "width": 390,
+      "publicSample": true,
+      "saveData": true,
+      "initialGzipBytes": 157083,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 148
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 10.099999904632568
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 148
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.2999999523162842
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 16
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 22,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "maxRunsPerTarget": 1,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": true,
+      "saveData": true,
+      "initialGzipBytes": 157083,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 164
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 6.799999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 164
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 16
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "shifts": [],
+      "revealCount": 22,
+      "durationsMs": [
+        280,
+        550
+      ],
+      "maxRunsPerTarget": 1,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "limitations": [
+    "Local laboratory samples, not field p75 or physical-device certification",
+    "Public build omits all unapproved chapters/projects; content interactions measured in preview",
+    "Profile enables Save-Data to isolate non-WebGL initial JS while leaving motion enabled; S02 used reduced motion for that budget",
+    "Unique external Next scripts gzip only, excludes HTML/Flight inline and CDN transfer differences",
+    "Videos use unmodified live animations; intermediate PNGs pause native WAAPI at controlled times",
+    "Prior sprint screenshots remain intact; new regression capture outputs and raw profiles are ignored"
+  ]
+}

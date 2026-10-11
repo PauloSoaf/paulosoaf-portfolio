@@ -21,6 +21,7 @@ const eslintConfig = defineConfig([
     "coverage/**",
     "playwright-report/**",
     "test-results/**",
+    "docs/report/**",
     // Read-only spec package (vanilla JS POCs are reference material, not app code).
     "paulo_soaf_obsidian_orbit_specs_pocs_v01/**",
   ]),

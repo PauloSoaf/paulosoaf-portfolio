@@ -123,6 +123,9 @@ export const en: Dictionary = {
     },
   },
   journey: {
+    navigation: "Journey chapters",
+    position: "Chapter {index} / {total}",
+    followScroll: "Follow scrolling",
     chapter: "Chapter {index}",
     tagsLabel: "Technologies",
   },

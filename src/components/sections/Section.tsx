@@ -17,9 +17,10 @@ export function Section({ id, heading, band = false, children }: SectionProps) {
   const headingId = `${id}-title`;
   return (
     <section id={id} aria-labelledby={headingId} className={cx("py-20 lg:py-32", band && "bg-band")}>
-      <div className="container-page">
+      <div className="container-page relative">
+        <span aria-hidden="true" data-scroll-decor className="section-orbit" />
         <SectionHeading headingId={headingId} {...heading} />
-        {children}
+        <div data-motion={id === "work" || id === "contact" ? "depth" : undefined} data-motion-delay="80">{children}</div>
       </div>
     </section>
   );

@@ -1,0 +1,11 @@
+/* Resting content is always visible. Only successful WAAPI playback adds reveal styles. */
+.section-orbit { position:absolute; right:0; top:0; width:160px; height:84px; border:1px solid var(--oo-border-subtle); border-radius:50%; pointer-events:none; opacity:var(--scroll-intensity,.35); transform:translate3d(0,var(--scroll-drift,0px),0) rotate(-14deg); }
+.section-orbit::after { content:""; position:absolute; inset:15px -12px; border:1px solid var(--oo-border-subtle); border-radius:50%; }
+.hero-grid[data-scroll-decor] { transform:translate3d(0,var(--scroll-drift,0px),0); }
+.motion-expertise:hover, .motion-expertise:focus-within { border-color:var(--oo-border-strong); box-shadow:0 8px 24px var(--oo-glow); }
+.motion-expertise { transition:border-color var(--oo-motion-fast),box-shadow var(--oo-motion-fast); }
+[data-motion="rule"] { transform-origin:left center; }
+@media (prefers-reduced-motion:reduce) {
+  .section-orbit, .hero-grid[data-scroll-decor] { transform:none; }
+  .motion-expertise { transition:none; }
+}

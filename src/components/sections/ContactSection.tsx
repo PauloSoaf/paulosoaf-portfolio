@@ -29,7 +29,7 @@ export function ContactSection({ dict, channels, preview }: ContactSectionProps)
     if (!channel.href) {
       return preview
         ? [
-            <li key={channel.kind}>
+            <li key={channel.kind} data-motion="settle">
               <EditorialNotice>{format(dict.editorial.channelPending, { channel: label })}</EditorialNotice>
             </li>,
           ]
@@ -48,7 +48,7 @@ export function ContactSection({ dict, channels, preview }: ContactSectionProps)
     const isExternal = channel.href.startsWith("https://");
 
     return [
-      <li key={channel.kind}>
+      <li key={channel.kind} data-motion="settle">
         {isExternal ? (
           <ExternalLink href={channel.href} newTabLabel={dict.a11y.newTab} className={cardClass}>
             {content}

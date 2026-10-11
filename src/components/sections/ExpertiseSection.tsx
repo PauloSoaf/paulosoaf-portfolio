@@ -18,8 +18,8 @@ export function ExpertiseSection({ locale, dict, groups, preview }: ExpertiseSec
     <Section id="expertise" heading={dict.sections.expertise} band>
       {groups.length > 0 ? (
         <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {groups.map((group) => (
-            <li key={group.id} className="flex flex-col gap-4 rounded-md border border-line bg-surface p-6 lg:p-8">
+          {groups.map((group, index) => (
+            <li key={group.id} data-motion="rise" data-motion-delay={index * 50} className="motion-expertise flex flex-col gap-4 rounded-md border border-line bg-surface p-6 lg:p-8">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <h3 className="text-xl leading-tight font-semibold tracking-[-0.03em]">{group.title[locale]}</h3>
                 <StatusBadge status={group.status} labels={dict.editorial.status} />

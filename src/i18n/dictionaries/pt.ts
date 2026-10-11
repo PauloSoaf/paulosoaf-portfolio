@@ -126,6 +126,9 @@ export const pt = {
     },
   },
   journey: {
+    navigation: "Capítulos da trajetória",
+    position: "Capítulo {index} / {total}",
+    followScroll: "Acompanhar a rolagem",
     chapter: "Capítulo {index}",
     tagsLabel: "Tecnologias",
   },

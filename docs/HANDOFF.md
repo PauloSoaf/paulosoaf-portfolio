@@ -121,3 +121,19 @@ Após ler instruções/specs, código herdado, documentação instalada do Next,
 | Codex, QA/documentação S02 | Testes unitários/E2E/visuais, 52 PNGs próprios, perfil/Lighthouse local e resumo de métricas, ADR-010, relatório/pendências, README e este marco. `qa:hero` ganhou apenas uma opção de diretório de saída para preservar S01; implementação visual do Hero permaneceu intacta. |
 
 Novos candidatos começam `draft`, sem imagem real/GitHub/demo, com verificação de stack pendente. Os links/descrições originais continuam herdados; não foi feita nova auditoria remota de stack/licenças. Cases completos, timeline, Explore Mode e Dev Mode não foram implementados. Resultados e limitações em `docs/qa/S02/REPORT.md`; pendências em `docs/qa/S02/EDITORIAL-PENDING.md`. Logs brutos e a nova regressão do Hero ficam em `docs/report/S02/`, fora do Git. Nenhum merge, force-push, push ou deploy foi realizado nesta continuação.
+
+## Continuação S03 ampliada — marco exato e autoria
+
+Codex leu os dois anexos de auditoria/extensão S03 e verificou árvore limpa em `feat/s02-cinematic-projects`, HEAD `66c8ff0fae0b275b1b2d86bfcd70b29a8da80852`. `git ls-remote` confirmou a S02 remota nesse commit e `main` ainda em `ea3cf24`. A API pública do GitHub confirmou [CI S02 concluído com sucesso](https://github.com/PauloSoaf/paulosoaf-portfolio/actions/runs/38098111251). A existência remota é uma consulta desta retomada, sem atribuir a Codex um push realizado fora da entrega anterior.
+
+**Primeira operação de versão:** criou `feat/s03-interactive-timeline-motion` da S02. Após leitura das instruções, docs instalados Next, specs/POC/mockup e código, **primeira alteração de implementação:** criou `src/features/motion/motion-engine.ts`, `MotionRuntime.client.tsx`, `JourneyTimeline.client.tsx` e estilos de movimento/timeline. O diff contra `66c8ff0` é a fronteira precisa desta continuação.
+
+| Origem | Trabalho S03 e fronteira |
+|---|---|
+| Claude, fundação herdada | Shell, tokens/tipografia, seções estáticas, capítulos e grupos temáticos, textos/editorial; atribuição S00 detalhada acima. |
+| Codex, continuação S00–S02 | Testes/fundação auditada, Hero real e carrossel em `66c8ff0`, com evidências/ADRs anteriores preservados. |
+| Proprietário | Auditoria, autorização explícita da extensão Motion System na S03 e referência v0.1. Aprovação de dados/estética continua reservada ao proprietário. |
+| Codex, S03 | Timeline progressiva/tabs/teclado/progresso/acompanhamento opcional/mobile, engine WAAPI/observadores/cleanup/stagger/parallax de ornamentos, integração nos componentes servidor e labels PT/EN/ES. Nenhum arquivo de `src/graphics/hero/` mudou; HeroEditorial só marca o grid decorativo. `ProjectCarousel`/controlador/CSS S02 não foram modificados. |
+| Codex, QA/docs S03 | Testes de lifecycle/timeline/interações, capturas/vídeos reais, perfis/Lighthouse, ADR-011, relatório, pendências e README. Testes de relógio da S02 isolam hidratação antes de instalar fake clock; teste adicional usa sete segundos nativos. Suítes visuais S00/S02 ganham saída opcional para não sobrescrever evidências. Gate E2E público passa a conferir explicitamente a ausência de timeline/artigos de trajetória draft. ESLint/TS ignoram cache/logs operacionais em `docs/report`. |
+
+Os dados `journey-data.ts`, Expertise/Services, status e filtros editoriais foram preservados integralmente. A aprovação T03-01 continua pendente; não foram inventadas datas/cargos/empresas. Logs/cache/regressões anteriores ficam em `docs/report/S03/`, ignorados; QA selecionada fica em `docs/qa/S03/`. Não houve merge, push ou deploy nesta continuação. S04/S05 seguem no roadmap; S06/Dev Mode não iniciados.

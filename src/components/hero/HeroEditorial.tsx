@@ -25,7 +25,7 @@ export function HeroEditorial({ locale, dict, profile }: HeroEditorialProps) {
   return (
     <section data-hero aria-labelledby="hero-title" className="relative isolate overflow-clip border-b border-line">
       <HeroVitals />
-      <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-0 -z-20" />
+      <div aria-hidden="true" data-scroll-decor className="hero-grid pointer-events-none absolute inset-0 -z-20" />
 
       <div className="container-page flex flex-col lg:min-h-[calc(100svh-var(--oo-header-height))]">
         <div className="relative z-10 max-w-[47.5rem] pt-12 sm:max-w-[36rem] sm:pt-20 sm:pb-16 lg:my-auto lg:max-w-[47.5rem] lg:py-20">

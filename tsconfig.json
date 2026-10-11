@@ -33,5 +33,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "paulo_soaf_obsidian_orbit_specs_pocs_v01"]
+  "exclude": ["node_modules", "paulo_soaf_obsidian_orbit_specs_pocs_v01", "docs/report"]
 }

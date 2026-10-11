@@ -1,4 +1,5 @@
 import { EditorialNotice, StatusBadge } from "@/components/editorial/Editorial";
+import { JourneyTimeline } from "@/components/timeline/JourneyTimeline.client";
 import type { JourneyChapter } from "@/features/experience/journey-data";
 import type { Locale } from "@/i18n/config";
 import { format } from "@/i18n/format";
@@ -14,16 +15,15 @@ interface AboutSectionProps {
 }
 
 /**
- * About & journey as a linear, ordered list: fully readable without JavaScript (RF-007 baseline).
- * The interactive timeline (POC-003) arrives in S03 as an enhancement of this markup.
+ * Server-rendered chapter content. S03 enhances the linear list into desktop tabs.
  */
 export function AboutSection({ locale, dict, chapters, preview }: AboutSectionProps) {
   return (
     <Section id="about" heading={dict.sections.about}>
       {chapters.length > 0 ? (
-        <ol className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-          {chapters.map((chapter, index) => (
-            <li key={chapter.id} className="flex flex-col rounded-md border border-line bg-surface p-6 lg:p-8">
+        <JourneyTimeline labels={dict.journey} chapters={chapters.map((chapter, index) => ({
+          id: chapter.id, label: chapter.label[locale], title: chapter.title[locale], summary: chapter.summary[locale],
+          content: <>
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <p className="text-kicker text-accent">
                   {format(dict.journey.chapter, { index: String(index + 1).padStart(2, "0") })} ·{" "}
@@ -31,7 +31,7 @@ export function AboutSection({ locale, dict, chapters, preview }: AboutSectionPr
                 </p>
                 <StatusBadge status={chapter.status} labels={dict.editorial.status} />
               </div>
-              <h3 className="mt-5 text-2xl leading-tight font-semibold tracking-[-0.04em]">{chapter.title[locale]}</h3>
+              <h3 id={`journey-heading-${chapter.id}`} className="mt-5">{chapter.title[locale]}</h3>
               <p className="mt-1.5 text-sm text-fg-subtle">{chapter.summary[locale]}</p>
               <p className="mt-5 leading-[1.7] text-fg-muted">{chapter.description[locale]}</p>
               <ul aria-label={dict.journey.tagsLabel} className="mt-auto flex flex-wrap gap-2 pt-6">
@@ -41,9 +41,8 @@ export function AboutSection({ locale, dict, chapters, preview }: AboutSectionPr
                   </li>
                 ))}
               </ul>
-            </li>
-          ))}
-        </ol>
+          </>,
+        }))} />
       ) : preview ? (
         <EditorialNotice>{dict.editorial.sectionPending}</EditorialNotice>
       ) : null}

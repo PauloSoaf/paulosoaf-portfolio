@@ -123,6 +123,9 @@ export const es: Dictionary = {
     },
   },
   journey: {
+    navigation: "Capítulos de la trayectoria",
+    position: "Capítulo {index} / {total}",
+    followScroll: "Seguir el desplazamiento",
     chapter: "Capítulo {index}",
     tagsLabel: "Tecnologías",
   },

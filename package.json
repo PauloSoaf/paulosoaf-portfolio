@@ -20,6 +20,8 @@
     "qa:hero:summary": "node scripts/summarize-hero-qa.mjs",
     "qa:carousel": "playwright test --config playwright.carousel-visual.config.ts",
     "qa:carousel:summary": "node scripts/summarize-carousel-qa.mjs",
+    "qa:timeline": "playwright test --config playwright.timeline-visual.config.ts",
+    "qa:motion:summary": "node scripts/summarize-motion-qa.mjs",
     "release:check": "vitest run --config vitest.release.config.mts",
     "art:light": "node scripts/derive-light-orb.mjs",
     "verify": "npm run lint && npm run typecheck && npm test && npm run build"

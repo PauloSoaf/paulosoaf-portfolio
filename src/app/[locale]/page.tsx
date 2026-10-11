@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { HeroEditorial } from "@/components/hero/HeroEditorial";
+import { MotionRuntime } from "@/components/motion/MotionRuntime.client";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
@@ -57,6 +58,7 @@ export default async function LandingPage({ params }: PageProps<"/[locale]">) {
         preview={preview}
       />
       <ContactSection dict={dict} channels={channels} preview={preview} />
+      <MotionRuntime />
     </>
   );
 }

@@ -1,6 +1,6 @@
 # Paulo Soaf — Obsidian Orbit
 
-Portfólio em Next.js App Router, React e TypeScript, com a identidade Obsidian Orbit v0.1. A fundação S00 contém landing renderizada no servidor, navegação acessível, PT-BR/EN/ES e temas Dark/Light. A S01 acrescenta um hero procedural real em Three.js/React Three Fiber, carregado progressivamente sobre o SVG local. A S02 acrescenta o carrossel cinematográfico e os candidatos comerciais NutriOpus/Déborah Lima. Timeline e cases continuam no roadmap S03/S04.
+Portfólio em Next.js App Router, React e TypeScript, com a identidade Obsidian Orbit v0.1. A fundação S00 contém landing renderizada no servidor, navegação acessível, PT-BR/EN/ES e temas Dark/Light. A S01 acrescenta um hero procedural real em Three.js/React Three Fiber, carregado progressivamente sobre o SVG local. A S02 acrescenta o carrossel cinematográfico e os candidatos comerciais NutriOpus/Déborah Lima. A S03 implementa timeline interativa e movimento compartilhado entre as seções. Cases completos continuam no roadmap S04.
 
 ## Desenvolvimento
 
@@ -31,6 +31,7 @@ npm run test:e2e
 npm run qa:screenshots
 npm run qa:hero
 npm run qa:carousel
+npm run qa:timeline
 ```
 
 Playwright inicia e encerra seu próprio servidor em `127.0.0.1:3200`; deixe essa porta livre. Os testes cobrem páginas sem JS, 404, teclado, mídia indisponível, reduced motion, responsividade, acessibilidade automatizada e persistência. A S01 também testa pixels e parallax reais, pausa, tema, touch, falha de chunk/criação WebGL e perda de contexto com recuperação. Capturas S00 ficam em `docs/qa/S00/`; `qa:hero` produz 36 capturas S01 em `docs/qa/S01/screenshots/`, sem sobrescrever a evidência anterior. Relatório interativo em `playwright-report/`.
@@ -42,6 +43,12 @@ O carrossel aprimora artigos renderizados no servidor: sem JS, todo o catálogo 
 `featuredOrder` configura destaque, sem excluir os secundários. Projetos privados não exigem GitHub; novos candidatos têm stack pendente e nenhuma demo/captura real aprovada. Produção mantém o fallback GitHub enquanto não houver projetos aprovados. Não existem rotas ou botões fictícios de case; S04 continua responsável pelos estudos de caso.
 
 `qa:carousel` salva 52 PNGs próprios em `docs/qa/S02/screenshots/` (36 combinações e 16 slides adicionais). Para guardar nova regressão do Hero sem sobrescrever S01, execute `$env:QA_HERO_SCREENSHOT_DIR='docs/report/S02/hero-regression'` antes de `npm run qa:hero`. O diretório operacional continua ignorado pelo Git. Métricas do carrossel: produção local na porta 3202, depois `node scripts/profile-carousel.mjs`; resultados brutos ficam em `docs/report/S02/`. `QA_PUBLIC_SAMPLE=1` separa o perfil do build público. `npm run qa:carousel:summary` resume os dois perfis e quatro Lighthouse atuais, preservando diagnósticos históricos quando os logs antigos não estiverem no clone. Procedimento, limites e números em `docs/qa/S02/REPORT.md`.
+
+A timeline S03 usa capítulos temáticos herdados, ainda rascunhos: desktop ≥64rem tem tabs verticais, Up/Down/Home/End, painel associado e progresso. “Acompanhar a rolagem” é opcional e seleção manual assume prioridade. Mobile mostra todos os cards em ordem, sem sticky. Reduced motion mantém seleção manual e suspende acompanhamento/parallax; sem JS, toda a trajetória visível no catálogo continua legível. Nenhuma empresa/período foi acrescentado ou aprovado.
+
+O Motion System utiliza WAAPI/IntersectionObserver, sem dependências extras. HTML inicial é visível; elementos já na viewport/âncora não aguardam entrada. Entradas posteriores executam uma vez, com coreografia por seção; foco/saída de viewport/removal cancelam, aba oculta pausa. Falhas/ausência de WAAPI deixam estilos normais. Scroll nativo agenda somente um frame para ornamentos visíveis, sem loop permanente, deslocamento de CTA/texto do Hero ou alteração da cena Three. Work revela uma camada externa, preservando transforms e autoplay dos slides.
+
+`qa:timeline` salva 52 PNGs e dois vídeos WebM próprios em `docs/qa/S03/`. A sequência PNG documenta timestamps controlados da animação nativa; os vídeos registram uma execução separada sem alterar tempo/frames. Nova regressão anterior: `QA_FOUNDATION_SCREENSHOT_DIR=docs/report/S03/foundation-regression`, `QA_HERO_SCREENSHOT_DIR=docs/report/S03/hero-regression`, `QA_CAROUSEL_SCREENSHOT_DIR=docs/report/S03/carousel-regression`. O perfil S03 usa `node scripts/profile-motion.mjs` com produção local em 3202, `QA_PUBLIC_SAMPLE=1` para público; depois `npm run qa:motion:summary` resume os dois perfis/quatro Lighthouse. Save-Data isola o orçamento inicial sem WebGL e mantém motion ativo; logs brutos ficam ignorados. Procedimento, métricas e limites: `docs/qa/S03/REPORT.md`.
 
 Para repetir o perfil de chunks/CPU/cadência, inicie um build de produção com `npm run start -- --port 3202` e, em outro terminal, execute:
 
@@ -81,10 +88,11 @@ Esse comando **falha intencionalmente no estado editorial atual**. Um build pass
 - Relatório da continuação: `docs/qa/S00/REPORT.md`.
 - Hero procedural, aceite e evidências: `docs/qa/S01/REPORT.md` e `docs/adr/ADR-009-progressive-hero-webgl.md`.
 - Carrossel, catálogo e evidências S02: `docs/qa/S02/REPORT.md`, `docs/qa/S02/EDITORIAL-PENDING.md` e `docs/adr/ADR-010-cinematic-project-carousel.md`.
+- Timeline, motion e evidências S03: `docs/qa/S03/REPORT.md`, `docs/qa/S03/EDITORIAL-PENDING.md` e `docs/adr/ADR-011-timeline-and-shared-motion.md`.
 - Ponto exato de retomada e divisão Claude/Codex: `docs/HANDOFF.md`.
 - Relatórios operacionais locais: `docs/report/` (ignorado pelo Git).
 - Decisões da implementação: `docs/adr/`.
 - Tema Dark preserva os tokens v0.1; Light é neutro com acento discreto.
 - Fontes são baixadas pelo `next/font` durante o build e servidas localmente em runtime. Build novo exige acesso ao provedor de fontes.
 
-Commit e push da S00 foram autorizados pelo proprietário após a validação local. A branch S01 remota foi confirmada em `758557e` na retomada S02; `main` continua na S00. A S02 fica numa branch derivada da S01. Não houve merge, push ou deploy nesta continuação S02. O gate editorial permanece pendente.
+Commit e push da S00 foram autorizados pelo proprietário após a validação local. A branch S02 remota foi confirmada em `66c8ff0` na retomada S03, com CI concluído com sucesso; `main` continua na S00. A S03 fica em `feat/s03-interactive-timeline-motion`, derivada da S02. Não houve merge, push ou deploy nesta continuação S03. O gate editorial permanece pendente.

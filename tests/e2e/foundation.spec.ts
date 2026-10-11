@@ -135,6 +135,7 @@ test("public build excludes editorial drafts and unapproved contact links", asyn
     await page.goto(`/${locale}`);
     await expect(page.locator("[data-editorial]")).toHaveCount(0);
     await expect(page.locator("#work article")).toHaveCount(0);
+    await expect(page.locator("#about article, #about [data-timeline]")).toHaveCount(0);
     await expect(page.locator("#contact a")).toHaveCount(0);
     await expect(page.locator('a[href^="mailto:"], a[href="#"]')).toHaveCount(0);
     await expect(page.locator("#hero-title")).toBeVisible();

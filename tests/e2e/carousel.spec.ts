@@ -41,6 +41,14 @@ async function outside(page: Page) {
   await page.mouse.move(0, 0);
   await page.locator("#hero-title").evaluate((el) => { (el as HTMLElement).tabIndex = -1; (el as HTMLElement).focus({ preventScroll: true }); });
 }
+async function readyWithClock(page: Page) {
+  // Hydration/IntersectionObserver run on the real browser clock. Install the virtual clock only
+  // after this commit, then create a fresh autoplay timeout through the actual play control.
+  await ready(page); await page.locator(".carousel-stage").focus();
+  await page.clock.install();
+  await page.getByRole("button", { name: "Reproduzir automaticamente", exact: true }).click();
+  await outside(page);
+}
 
 test("real project change, wrapping, position, verified links and inert neighbors", async ({ page }) => {
   const errors: string[] = []; page.on("pageerror", (error) => errors.push(error.message));
@@ -109,7 +117,7 @@ test("mouse drag changes pixels and project, interrupted drag cancels, dragging 
 });
 
 test("7-second autoplay, hover suspension, manual pause and focus stops until explicit restart", async ({ page }) => {
-  await page.clock.install(); await ready(page); await outside(page);
+  await readyWithClock(page);
   await expect(carousel(page)).toHaveAttribute("data-auto", "true");
   await page.clock.fastForward(7_001);
   await expect(active(page)).toHaveAttribute("data-project", "deborah-lima");
@@ -129,7 +137,7 @@ test("7-second autoplay, hover suspension, manual pause and focus stops until ex
 });
 
 test("hidden tab and offscreen suspend timers; reduced motion disables autoplay and transitions", async ({ page }) => {
-  await page.clock.install(); await ready(page); await outside(page);
+  await readyWithClock(page);
   await page.evaluate(() => { Object.defineProperty(document, "hidden", { value: true, configurable: true }); document.dispatchEvent(new Event("visibilitychange")); });
   await expect(carousel(page)).toHaveAttribute("data-auto", "false"); await page.clock.fastForward(14_000);
   await expect(active(page)).toHaveAttribute("data-project", "nutriopus");
