@@ -1,11 +1,14 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { createPortal } from "react-dom";
 import { Component, useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { cx } from "@/lib/cx";
 import { getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
 import { heroQuality, constrainedDevice, type HeroQuality } from "@/graphics/hero/quality";
 import { useCreativeExperience } from "@/features/creative/experience";
+import { installCompanion } from "@/features/creative/companion";
+const subscribeBody = () => () => {};
 
 const HeroScene = dynamic(() => import("@/graphics/hero/HeroScene.client"), { ssr: false });
 
@@ -28,6 +31,10 @@ interface Props {
 /** Only this decorative island owns state; editorial content and SVG arrive in server HTML. */
 export function HeroArtBoundary({ children, className, labels }: Props) {
   const creative = useCreativeExperience();
+  const body = useSyncExternalStore(subscribeBody, () => document.body, () => null);
+  const [portal, setPortal] = useState<HTMLDivElement | null>(null);
+  const [docked, setDocked] = useState(false);
+  const bindPortal = useCallback((node: HTMLDivElement | null) => setPortal(node), []);
   const host = useRef<HTMLDivElement>(null);
   const degraded = useRef(false);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
@@ -46,6 +53,10 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
     degraded.current = true;
     setEnvironment((previous) => ({ ...previous, quality: heroQuality(360) }));
   }, []);
+  useEffect(() => {
+    if (!creative || !portal || !host.current) return;
+    return installCompanion(portal, host.current, setDocked);
+  }, [creative, portal]);
 
   useEffect(() => {
     const element = host.current;
@@ -55,25 +66,30 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
     const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
     const limited = constrainedDevice({ saveData: device.connection?.saveData, memory: device.deviceMemory, cores: device.hardwareConcurrency });
     let visible = false;
+    let heroVisible = false;
     let ratio = 0;
     const update = () => setEnvironment({
-      visible, loadable: visible && (!coarse.matches || window.innerWidth >= 640 || ratio >= (creative ? .18 : .9)),
+      visible, loadable: heroVisible && (!coarse.matches || window.innerWidth >= 640 || ratio >= (creative ? .18 : .9)),
       reduced: reduced.matches, hidden: document.hidden, coarse: coarse.matches,
       constrained: limited, quality: heroQuality(window.innerWidth, limited || degraded.current),
     });
     const observer = new IntersectionObserver(([entry]) => {
-      visible = !!entry?.isIntersecting; ratio = entry?.intersectionRatio || 0; update();
+      heroVisible = !!entry?.isIntersecting; ratio = entry?.intersectionRatio || 0;
+      if (!creative || !portal) visible = heroVisible;
+      update();
     }, { threshold: [0, 0.01, 0.18, 0.9] });
     observer.observe(element.querySelector(".hero-view") ?? element);
+    const companionObserver = creative && portal ? new IntersectionObserver(([entry]) => { visible = !!entry?.isIntersecting; update(); }, { threshold: 0 }) : null;
+    if (companionObserver && portal) companionObserver.observe(portal);
     reduced.addEventListener("change", update);
     coarse.addEventListener("change", update);
     window.addEventListener("resize", update, { passive: true });
     document.addEventListener("visibilitychange", update);
     return () => {
-      observer.disconnect(); reduced.removeEventListener("change", update); coarse.removeEventListener("change", update);
+      observer.disconnect(); companionObserver?.disconnect(); reduced.removeEventListener("change", update); coarse.removeEventListener("change", update);
       window.removeEventListener("resize", update); document.removeEventListener("visibilitychange", update);
     };
-  }, [creative]);
+  }, [creative, portal]);
 
   useEffect(() => {
     if (armed || !environment.loadable || environment.reduced || environment.constrained || environment.hidden) return;
@@ -93,30 +109,24 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
     } else { setStaticArt(true); setReady(false); }
   }
 
-  return (
-    <div ref={host} data-hero-art data-hero-state={failed ? "error" : staticArt || !armed ? "fallback" : ready ? active ? "ready" : "paused" : "loading"}
-      data-hero-quality={environment.quality.name} className={cx("select-none", className)}>
-      <div aria-hidden="true" className="hero-view relative aspect-[820/760] pointer-events-none sm:opacity-55 lg:opacity-100">
-        <div className={cx("absolute inset-0", ready && canvasMounted && "opacity-0")}>{children}</div>
-        {canvasMounted ? (
+  const scene = canvasMounted ? (
           <div data-hero-surface className={cx("hero-surface hero-art-fade absolute inset-0", ready ? "opacity-100" : "opacity-0")}>
             <SceneBoundary key={attempt} onFailure={fail}>
               <HeroScene theme={theme} active={active} creative={creative} coarse={environment.coarse} quality={environment.quality}
                 host={host} onReady={onReady} onFailure={fail} onSlow={onSlow} />
             </SceneBoundary>
           </div>
-        ) : null}
-      </div>
-      <div className="hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3">
+        ) : null;
+  const controls = <div className={cx("hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3", docked && "companion-controls")}>
         {ready && !environment.reduced ? (
           <button type="button" onClick={() => setPaused((value) => !value)} aria-pressed={paused}
             aria-label={paused ? labels.resume : labels.pause} title={paused ? labels.resume : labels.pause}
             className="ui-control min-h-11 min-w-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
-            <span className="hidden sm:inline">{paused ? labels.resume : labels.pause}</span>
-            <span className="sm:hidden" aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
+            <span className={docked ? "sr-only" : "hidden sm:inline"}>{paused ? labels.resume : labels.pause}</span>
+            <span className={docked ? "inline" : "sm:hidden"} aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
           </button>
         ) : null}
-        {ready && !environment.reduced ? <>
+        {ready && !environment.reduced && !docked ? <>
           <button type="button" disabled={!active} aria-label={labels.exploreLeft} title={labels.exploreLeft}
             onClick={() => host.current?.dispatchEvent(new CustomEvent("portfolio:hero-explore", { detail: -.18 }))}
             className="ui-control size-11 rounded-sm border border-line-strong bg-base text-fg-muted hover:border-accent">←</button>
@@ -125,12 +135,27 @@ export function HeroArtBoundary({ children, className, labels }: Props) {
             className="ui-control size-11 rounded-sm border border-line-strong bg-base text-fg-muted hover:border-accent">→</button>
         </> : null}
         <button type="button" onClick={toggleArt}
+          aria-label={canvasMounted ? labels.staticArt : labels.enable} title={canvasMounted ? labels.staticArt : labels.enable}
           className="ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:border-accent">
-          {canvasMounted ? labels.staticArt : labels.enable}
+          {docked ? <span aria-hidden="true">◈</span> : canvasMounted ? labels.staticArt : labels.enable}
         </button>
         {environment.reduced ? <span className="self-center text-xs text-fg-muted">{labels.reduced}</span> : null}
-        {ready && active ? <span className="basis-full text-center text-xs text-fg-subtle">{labels.hint}</span> : null}
+        {ready && active && !docked ? <span className="basis-full text-center text-xs text-fg-subtle">{labels.hint}</span> : null}
+      </div>;
+  return (
+    <div ref={host} data-hero-art data-hero-state={failed ? "error" : staticArt || !armed ? "fallback" : ready ? active ? "ready" : "paused" : "loading"}
+      data-hero-quality={environment.quality.name} className={cx("select-none", className)}>
+      <div aria-hidden="true" className="hero-view relative aspect-[820/760] pointer-events-none sm:opacity-55 lg:opacity-100">
+        <div className={cx("absolute inset-0", ready && canvasMounted && "opacity-0")}>{children}</div>
+        {!creative ? scene : null}
       </div>
+      {!creative ? controls : body ? createPortal(<div ref={bindPortal} data-spatial-companion data-paused={!active} className="spatial-companion">
+        <div className="companion-art absolute inset-0" aria-hidden="true">{scene}</div>
+        {docked && !canvasMounted ? <svg className="companion-placeholder" viewBox="0 0 180 170" fill="none" aria-hidden="true">
+          <ellipse cx="90" cy="85" rx="65" ry="32" transform="rotate(-25 90 85)" /><ellipse cx="90" cy="85" rx="55" ry="32" transform="rotate(50 90 85)" /><path d="m90 73 10 12-10 12-10-12z" />
+        </svg> : null}
+        {controls}
+      </div>, body) : null}
     </div>
   );
 }

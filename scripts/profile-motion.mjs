@@ -60,13 +60,20 @@ try {
     if (publicSample) {
       await page.getByRole("link", { name: "Voltar ao topo", exact: true }).click(); await page.waitForTimeout(650);
     }
-    await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { value: "hidden", configurable: true }); document.dispatchEvent(new Event("visibilitychange")); });
+    // The owner's longer reveals need to finish before reporting an idle sample.
+    await page.waitForTimeout(1200);
+    const idleRunningAnimations = await page.evaluate(() => document.getAnimations().filter(a => a.playState === "running").length);
+    await page.evaluate(() => {
+      Object.defineProperty(document, "hidden", { value: true, configurable: true });
+      Object.defineProperty(document, "visibilityState", { value: "hidden", configurable: true });
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
     const measurements = await page.evaluate(() => ({ ...window.motionMeasurements,
       vitals: performance.getEntriesByType("measure").filter((entry) => entry.name.startsWith("portfolio:vital:")).map((entry) => ({ name: entry.name, value: entry.duration })),
       remainingAnimations: document.getAnimations().filter((a) => a.playState === "running").length,
       overflow: document.documentElement.scrollWidth > innerWidth, canvasCount: document.querySelectorAll("canvas").length,
       states: Object.fromEntries([...document.querySelectorAll("[data-motion]")].map((n, i) => [n.id || `${n.dataset.motion}-${i}`, { state: n.dataset.motionState, runs: n.dataset.motionRuns || "0" }])) }));
-    results.push({ width, publicSample, saveData: true, initialGzipBytes, ...measurements }); await page.close();
+    results.push({ width, publicSample, saveData: true, initialGzipBytes, idleRunningAnimations, ...measurements }); await page.close();
   }
 } finally { await browser.close(); }
 await writeFile(`${output}/profile-motion${publicSample ? "-public" : ""}.json`, JSON.stringify(results, null, 2));

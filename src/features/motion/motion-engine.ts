@@ -1,8 +1,8 @@
 export type MotionPreset = "rise" | "editorial" | "horizontal" | "depth" | "rule" | "settle";
 
 const starts: Record<MotionPreset, string> = {
-  rise: "translate3d(0,16px,0)", editorial: "translate3d(0,24px,0)", horizontal: "translate3d(-12px,0,0)",
-  depth: "scale(.97)", rule: "scaleX(.9)", settle: "translate3d(0,8px,0) scale(.995)",
+  rise: "translate3d(0,64px,0)", editorial: "translate3d(0,72px,0) rotate(-2deg)", horizontal: "translate3d(-56px,0,0)",
+  depth: "perspective(1400px) translate3d(0,60px,0) rotateX(7deg) scale(.92)", rule: "scaleX(.3)", settle: "translate3d(0,32px,0) scale(.97)",
 };
 
 /** Never changes the resting styles: cancel, missing WAAPI or a rejected animation leaves HTML visible. */
@@ -10,11 +10,12 @@ export function revealElement(element: HTMLElement, preset: MotionPreset, delay 
   if (typeof element.animate !== "function") return null;
   const tokens = getComputedStyle(document.documentElement);
   const durationToken = tokens.getPropertyValue(preset === "depth" || preset === "editorial" ? "--oo-motion-slow" : "--oo-motion-normal").trim();
-  const duration = (parseFloat(durationToken) * (durationToken.endsWith("ms") ? 1 : 1000)) || 280;
+  const baseDuration = (parseFloat(durationToken) * (durationToken.endsWith("ms") ? 1 : 1000)) || 280;
+  const duration = Math.max(preset === "editorial" || preset === "depth" ? 1100 : 850, baseDuration);
   try {
     return element.animate([
-      { opacity: .35, transform: starts[preset] }, { opacity: 1, transform: "none" },
-    ], { duration, delay: Math.min(140, Math.max(0, delay)), easing: tokens.getPropertyValue("--oo-ease-standard").trim() || "ease-out", fill: "none" });
+      { opacity: .12, transform: starts[preset] }, { opacity: 1, transform: "none" },
+    ], { duration, delay: Math.min(240, Math.max(0, delay)), easing: tokens.getPropertyValue("--oo-ease-standard").trim() || "ease-out", fill: "none" });
   } catch { return null; }
 }
 
@@ -61,7 +62,7 @@ export function installMotion(root: HTMLElement): () => void {
         if (!disposed && animations.get(element) === animation) { animations.delete(element); element.dataset.motionState = "finished"; }
       }, () => {});
     }
-  }, { threshold: .08 });
+  }, { threshold: .12, rootMargin: "0px 0px -18% 0px" });
   const discover = () => {
     for (const element of targets) if (!root.contains(element)) {
       observer.unobserve(element); cancel(element); targets.delete(element); decorations.delete(element);

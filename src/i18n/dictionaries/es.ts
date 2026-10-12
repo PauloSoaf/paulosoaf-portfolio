@@ -93,6 +93,9 @@ export const es: Dictionary = {
     paused: "Reproducción pausada",
     reduced: "Movimiento reducido · reproducción manual",
     single: "Proyecto seleccionado",
+    countdown: "Siguiente proyecto en {seconds} segundos",
+    countdownPaused: "Cuenta pausada: quedan {seconds} segundos",
+    selectProject: "Seleccionar proyecto: {title}",
   },
   projects: {
     conceptArt: "Arte conceptual · no es captura del proyecto",

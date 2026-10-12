@@ -27,7 +27,7 @@ describe("motion lifecycle and visible fallback", () => {
   it("plays once, caps stagger and cancels when offscreen without hiding the resting content", () => {
     const { target, cleanup } = setup(); target.dataset.motionDelay = "999";
     enter(target); expect(animate).toHaveBeenCalledTimes(1);
-    expect(animate.mock.calls[0]?.[1]).toMatchObject({ delay: 140, fill: "none" });
+    expect(animate.mock.calls[0]?.[1]).toMatchObject({ delay: 240, duration: 850, fill: "none" });
     enter(target, false); expect(cancel).toHaveBeenCalled();
     enter(target); expect(animate).toHaveBeenCalledTimes(1); expect(target.style.opacity).toBe("");
     cleanup(); expect(observer.disconnect).toHaveBeenCalled();
@@ -39,9 +39,9 @@ describe("motion lifecycle and visible fallback", () => {
     expect(revealElement(node, "rise")).toBeNull(); expect(node.style.opacity).toBe("");
   });
   it("converts computed CSS seconds into WAAPI milliseconds", () => {
-    vi.stubGlobal("getComputedStyle", () => ({ getPropertyValue: (name: string) => name.includes("ease") ? "ease-out" : "0.28s" }));
+    vi.stubGlobal("getComputedStyle", () => ({ getPropertyValue: (name: string) => name.includes("ease") ? "ease-out" : "1.4s" }));
     const node = document.createElement("div"); node.animate = animate;
-    revealElement(node, "rise"); expect(animate.mock.calls[0]?.[1]).toMatchObject({ duration: 280 });
+    revealElement(node, "rise"); expect(animate.mock.calls[0]?.[1]).toMatchObject({ duration: 1400 });
   });
   it("cancels current effects and skips future effects when reduced motion changes", () => {
     const { target, cleanup } = setup(); enter(target);

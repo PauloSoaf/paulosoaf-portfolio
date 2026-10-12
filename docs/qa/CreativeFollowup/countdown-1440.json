@@ -1,0 +1,50 @@
+{
+  "nativeClock": true,
+  "sequence": [
+    {
+      "seconds": 7,
+      "timeMs": 3173.5,
+      "project": "0"
+    },
+    {
+      "seconds": 6,
+      "timeMs": 4270.299999952316,
+      "project": "0"
+    },
+    {
+      "seconds": 5,
+      "timeMs": 5259.299999952316,
+      "project": "0"
+    },
+    {
+      "seconds": 4,
+      "timeMs": 6250.599999904633,
+      "project": "0"
+    },
+    {
+      "seconds": 3,
+      "timeMs": 7239.400000095367,
+      "project": "0"
+    },
+    {
+      "seconds": 2,
+      "timeMs": 8230,
+      "project": "0"
+    },
+    {
+      "seconds": 1,
+      "timeMs": 9219.400000095367,
+      "project": "0"
+    },
+    {
+      "seconds": 0,
+      "timeMs": 10178.5,
+      "project": "1"
+    },
+    {
+      "seconds": 7,
+      "timeMs": 10285.099999904633,
+      "project": "1"
+    }
+  ]
+}

@@ -20,6 +20,7 @@ type ButtonLinkProps = ComponentProps<typeof Link> & { variant?: Variant };
 export function ButtonLink({ variant = "primary", className, ...props }: ButtonLinkProps) {
   return (
     <Link
+      data-variant={variant}
       className={cx(
         "ui-cta inline-flex max-w-full items-center",
         variants[variant],

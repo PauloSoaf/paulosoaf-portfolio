@@ -40,6 +40,19 @@
 .carousel-button:disabled { cursor: default; color: var(--oo-fg-secondary); }
 .carousel-prev { order: -2; }.carousel-next { order: -1; }
 .carousel-position { margin-left: auto; font: .75rem var(--font-mono); color: var(--oo-fg-secondary); }
+.carousel-countdown { width:56px; height:56px; flex-shrink:0; position:relative; display:grid; place-items:center; color:var(--oo-fg-primary); font:600 1rem var(--font-mono); }
+.carousel-countdown svg { position:absolute; inset:0; width:100%; height:100%; fill:none; stroke-width:2; transform:rotate(-90deg); }
+.countdown-track { stroke:var(--oo-border-subtle); }
+.countdown-ring { stroke:var(--oo-accent-primary); stroke-dasharray:100; stroke-dashoffset:calc(100 - var(--countdown-progress,1) * 100); }
+.carousel-countdown small { font-size:.65rem; padding-left:2px; color:var(--oo-fg-secondary); }
+.carousel-countdown[data-running="false"] .countdown-ring { stroke:var(--oo-fg-tertiary); }
+.carousel-filmstrip { display:flex; flex-wrap:wrap; gap:6px; order:2; margin-top:1.5rem; }
+.filmstrip-button { display:flex; gap:10px; align-items:center; min-width:44px; min-height:44px; padding:10px; border:1px solid var(--oo-border-subtle); border-radius:var(--oo-radius-sm); background:var(--oo-bg-surface); color:var(--oo-fg-secondary); font: .75rem var(--font-mono); }
+.filmstrip-button[aria-pressed="true"] { border-color:var(--oo-accent-primary); color:var(--oo-fg-primary); background:var(--oo-accent-wash); }
+.filmstrip-title { font-family:var(--font-display); font-size:.875rem; }
+.filmstrip-button:not([aria-pressed="true"]) .filmstrip-title { display:none; }
+@media(max-width:47.99rem) { .filmstrip-title { display:none; } .carousel-filmstrip { gap:2px; } }
+html:not([data-js]) .carousel-filmstrip { display:none; }
 .carousel-range { display: block; width: 160px; height: 2px; background: var(--oo-border-subtle); margin-inline: auto; }
 .carousel-range > span { display: block; height: 100%; background: var(--oo-accent-primary); transform-origin: left; transition: transform var(--oo-motion-slow) var(--oo-ease-emphasized); }
 .carousel-hint { font: .65rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--oo-fg-tertiary); }
@@ -67,6 +80,7 @@ html[data-js] .project-carousel[data-enhanced="false"] .carousel-slide { scroll-
   .carousel-play { grid-column: 3; grid-row: 1; }
   .carousel-position { grid-column: 1 / 3; grid-row: 2; margin-left: 0; }
   .carousel-range { grid-column: 3; grid-row: 2; justify-self: end; width: 80px; margin: .5rem 0; }
+  .carousel-countdown { grid-column:3; grid-row:2; justify-self:start; width:48px; height:48px; }
   .carousel-hint { grid-column: 1 / -1; grid-row: 3; justify-self: end; }
 }
 @media (prefers-reduced-motion: reduce) {

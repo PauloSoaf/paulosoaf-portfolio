@@ -16,7 +16,9 @@ test("opening, independent 3D layers, scroll camera and editorial continuity cha
   await expect.poll(async () => Number(await art.getAttribute("data-hero-scroll"))).toBeGreaterThan(.35);
   await expect.poll(async () => Number((await art.getAttribute("data-hero-rotation"))!.split(",")[0])).toBeGreaterThan(.2);
   await expect(page.locator("#work-title")).toBeInViewport();
-  await page.locator("#contact").scrollIntoViewIfNeeded(); await expect(art).toHaveAttribute("data-hero-state", "paused");
+  await page.locator("#contact").scrollIntoViewIfNeeded(); await expect(art).toHaveAttribute("data-hero-state", "ready");
+  await expect(page.locator("[data-spatial-companion]")).toHaveAttribute("data-docked", "true");
+  await page.getByRole("button", { name: "Pausar movimento", exact: true }).click();
   await page.waitForTimeout(150); const frames = await art.getAttribute("data-hero-frames"); await page.waitForTimeout(350);
   expect(await art.getAttribute("data-hero-frames")).toBe(frames);
 });

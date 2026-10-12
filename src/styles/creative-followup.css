@@ -1,0 +1,39 @@
+/* Follow-up requested by owner: persistent sculpture, deadline timer and authored UI effects. */
+.spatial-companion { position:fixed; top:0; left:0; z-index:20; visibility:hidden; pointer-events:none; }
+.spatial-companion[data-positioned="true"] { visibility:visible; }
+.spatial-companion .hero-controls { pointer-events:auto; }
+.spatial-companion[data-docked="true"] .hero-surface { pointer-events:none; cursor:default; touch-action:auto; }
+.spatial-companion[data-paused="true"] .hero-surface { cursor:default; }
+.spatial-companion[data-docked="true"] .hero-controls { inset:calc(100% + 12px) 0 auto; }
+.companion-controls button { width:44px; padding:0; }
+.companion-placeholder { width:100%; height:100%; stroke:var(--oo-fg-tertiary); stroke-width:1.5; }
+.companion-placeholder path { stroke:var(--oo-accent-primary); }
+@media (min-width:80rem) and (prefers-reduced-motion:no-preference) {
+  html[data-js]:not([data-experience="classic"]) #main section:not([data-hero]) > .container-page { width:min(var(--oo-content-max),calc(100% - 320px)); margin-left:max(24px,calc((100% - var(--oo-content-max) - 320px)/2)); margin-right:296px; }
+}
+@media (max-width:79.99rem) {
+  /* Keep the compact ornament from competing with text under it on narrow screens. */
+  .spatial-companion[data-docked="true"] .companion-art { opacity:.25; }
+  .spatial-companion[data-docked="true"]:focus-within .companion-art { opacity:.85; }
+}
+.spotlight-card { position:relative; isolation:isolate; overflow:hidden; }
+.spotlight-card::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(260px circle at var(--spot-x,50%) var(--spot-y,20%),var(--oo-accent-wash),transparent 75%); opacity:.8; pointer-events:none; }
+.spotlight-card::after { content:""; position:absolute; width:160px; height:160px; border:1px solid var(--oo-border-strong); right:-48px; top:-50px; border-radius:50%; opacity:.5; pointer-events:none; transform:rotateX(45deg); transition:transform 650ms var(--oo-ease-emphasized); }
+.spotlight-card > * { position:relative; }
+.expertise-symbol { width:180px; max-width:100%; height:70px; stroke:var(--oo-fg-tertiary); stroke-width:1.5; }
+.expertise-symbol path { stroke:var(--oo-accent-primary); stroke-dasharray:180; stroke-dashoffset:0; transition:stroke-dashoffset 950ms var(--oo-ease-emphasized); }
+.spotlight-card:hover .expertise-symbol path { stroke-dashoffset:180; }
+.spotlight-card:hover::after { transform:rotateX(15deg) translate(-20px,20px); }
+.service-emblem { display:grid; place-items:center; width:52px; height:52px; border:1px solid var(--oo-border-strong); border-radius:14px; color:var(--oo-accent-primary); background:var(--oo-accent-wash); transform:rotate(-8deg); transition:transform 650ms var(--oo-ease-emphasized); }
+.spotlight-card:hover .service-emblem { transform:rotate(8deg) scale(1.12); }
+.ui-cta[data-variant="primary"] { position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--oo-accent-edge); }
+.ui-cta[data-variant="primary"]::before { content:""; position:absolute; inset:-80% -40%; background:linear-gradient(110deg,transparent 30%,color-mix(in srgb,var(--oo-on-accent) 15%,transparent) 45%,transparent 60%); transform:translateX(-90%); transition:transform 850ms var(--oo-ease-emphasized); pointer-events:none; }
+.ui-cta[data-variant="primary"]:hover::before,.ui-cta[data-variant="primary"]:focus-visible::before { transform:translateX(70%); }
+.ui-cta[data-variant="primary"] > svg { box-sizing:content-box; padding:7px; border-radius:50%; background:color-mix(in srgb,var(--oo-on-accent) 10%,transparent); margin-block:-7px; }
+@media (prefers-reduced-motion:reduce) {
+  .spotlight-card::after,.spotlight-card:hover::after,
+  .service-emblem,.spotlight-card:hover .service-emblem,
+  .ui-cta[data-variant="primary"]::before,.ui-cta[data-variant="primary"]:hover::before,.ui-cta[data-variant="primary"]:focus-visible::before { transition:none; transform:none; }
+  .expertise-symbol path { transition:none; }
+  .spotlight-card:hover .expertise-symbol path { stroke-dashoffset:0; }
+}

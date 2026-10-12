@@ -1,0 +1,1048 @@
+{
+  "date": "2026-10-12",
+  "baseCommit": "922fd77a29549694eaed3bc00ac437b027df7360",
+  "branch": "feat/creative-direction-recovery",
+  "baseline": {
+    "source": "docs/qa/CreativeRecovery/metrics.json",
+    "laboratory": [
+      {
+        "sample": "preview-desktop",
+        "date": "2026-10-11T20:29:19.870Z",
+        "lighthouse": "13.5.0",
+        "throttling": "simulate",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 659.79355,
+        "cls": 0.003738377246586639,
+        "tbtMs": 16.5,
+        "warnings": []
+      },
+      {
+        "sample": "preview-mobile",
+        "date": "2026-10-11T20:29:42.096Z",
+        "lighthouse": "13.5.0",
+        "throttling": "simulate",
+        "scores": {
+          "performance": 80,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 63
+        },
+        "lcpMs": 3263.5534000000002,
+        "cls": 0,
+        "tbtMs": 494.49999999999955,
+        "warnings": []
+      },
+      {
+        "sample": "public-desktop",
+        "date": "2026-10-11T20:34:20.303Z",
+        "lighthouse": "13.5.0",
+        "throttling": "simulate",
+        "scores": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 611.3907499999999,
+        "cls": 0.003738377246586639,
+        "tbtMs": 12,
+        "warnings": []
+      },
+      {
+        "sample": "public-mobile",
+        "date": "2026-10-11T20:34:42.818Z",
+        "lighthouse": "13.5.0",
+        "throttling": "simulate",
+        "scores": {
+          "performance": 81,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100
+        },
+        "lcpMs": 3013.1668,
+        "cls": 0,
+        "tbtMs": 506.5,
+        "warnings": []
+      }
+    ],
+    "initialGzipBytes": 158508,
+    "lazyGzipBytes": 246204
+  },
+  "laboratory": [
+    {
+      "sample": "preview-desktop",
+      "date": "2026-10-12T04:47:45.026Z",
+      "lighthouse": "13.5.0",
+      "throttling": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 657.3634999999999,
+      "cls": 0.003738377246586639,
+      "tbtMs": 5,
+      "warnings": []
+    },
+    {
+      "sample": "preview-mobile",
+      "date": "2026-10-12T04:48:04.502Z",
+      "lighthouse": "13.5.0",
+      "throttling": "simulate",
+      "scores": {
+        "performance": 87,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3119.3156,
+      "cls": 0,
+      "tbtMs": 309,
+      "warnings": []
+    },
+    {
+      "sample": "public-desktop",
+      "date": "2026-10-12T04:50:21.141Z",
+      "lighthouse": "13.5.0",
+      "throttling": "simulate",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 591.1205,
+      "cls": 0.003738377246586639,
+      "tbtMs": 27,
+      "warnings": []
+    },
+    {
+      "sample": "public-mobile",
+      "date": "2026-10-12T04:50:39.764Z",
+      "lighthouse": "13.5.0",
+      "throttling": "simulate",
+      "scores": {
+        "performance": 87,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "lcpMs": 2955.6485999999995,
+      "cls": 0,
+      "tbtMs": 343.00000000000045,
+      "warnings": []
+    }
+  ],
+  "heroProfiles": [
+    {
+      "width": 390,
+      "initialGzipBytes": 160275,
+      "lazyGzipBytes": 246280,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "mobile",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "182",
+        "heroRotation": "-0.06448,0.17881",
+        "heroExploration": "0.00000",
+        "heroEntrance": "850",
+        "heroAmbient": "running",
+        "heroScroll": "0.000",
+        "heroDrawCalls": "6",
+        "heroTriangles": "1936",
+        "heroGeometries": "6",
+        "heroCpuMs": "0.201",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 60.004693104488624,
+        "intervalP95Ms": 16.700000000000273
+      },
+      "visibleAmbientFramesIn500Ms": 15,
+      "visibleCompanionFramesOutsideHeroIn500Ms": 16,
+      "pausedFramesIn500Ms": 0,
+      "layoutShifts": [
+        {
+          "value": 0.00019496794871794873,
+          "sources": [
+            {
+              "node": "<button type=\"button\" aria-label=\"Usar arte estática\" title=\"Usar arte estática\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted ",
+              "before": {
+                "x": 143.046875,
+                "y": 844.1130981445312,
+                "width": 103.890625,
+                "height": 44,
+                "top": 844.1130981445312,
+                "right": 246.9375,
+                "bottom": 888.1130981445312,
+                "left": 143.046875
+              },
+              "after": {
+                "x": 131.9375,
+                "y": 844.1130981445312,
+                "width": 126.125,
+                "height": 44,
+                "top": 844.1130981445312,
+                "right": 258.0625,
+                "bottom": 888.1130981445312,
+                "left": 131.9375
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.005876543209876544,
+          "sources": [
+            {
+              "node": "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3\"><button type=\"button\" aria-pressed=\"false\" aria-lab",
+              "before": {
+                "x": 20,
+                "y": 844.1130981445312,
+                "width": 350,
+                "height": 44,
+                "top": 844.1130981445312,
+                "right": 370,
+                "bottom": 888.1130981445312,
+                "left": 20
+              },
+              "after": {
+                "x": 20,
+                "y": 820.1130981445312,
+                "width": 350,
+                "height": 68,
+                "top": 820.1130981445312,
+                "right": 370,
+                "bottom": 888.1130981445312,
+                "left": 20
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.005698045267489712,
+          "sources": [
+            {
+              "node": "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-press",
+              "before": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "after": {
+                "x": 274,
+                "y": 799.9849853515625,
+                "width": 104,
+                "height": 100.0150146484375,
+                "top": 799.9849853515625,
+                "right": 378,
+                "bottom": 900,
+                "left": 274
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.0006373662551440329,
+          "sources": [
+            {
+              "node": "<button type=\"button\" aria-label=\"Usar arte estática\" title=\"Usar arte estática\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted ",
+              "before": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "after": {
+                "x": 330,
+                "y": 799.9849853515625,
+                "width": 44,
+                "height": 44,
+                "top": 799.9849853515625,
+                "right": 374,
+                "bottom": 843.9849853515625,
+                "left": 330
+              }
+            }
+          ]
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 9.799999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 172
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5999999046325684
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 16
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.006335411522633745
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "initialGzipBytes": 160275,
+      "lazyGzipBytes": 246280,
+      "measurements": {
+        "heroArt": "true",
+        "heroState": "ready",
+        "heroQuality": "desktop",
+        "heroRenderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "heroGpuTimer": "unavailable",
+        "heroFrames": "183",
+        "heroRotation": "0.00566,0.01689",
+        "heroExploration": "0.00000",
+        "heroEntrance": "850",
+        "heroAmbient": "running",
+        "heroScroll": "0.000",
+        "heroDrawCalls": "6",
+        "heroTriangles": "3472",
+        "heroGeometries": "6",
+        "heroCpuMs": "0.204",
+        "heroDpr": "1"
+      },
+      "cadence": {
+        "observedRafHz": 60.00268168409761,
+        "intervalP95Ms": 16.700000000000728
+      },
+      "visibleAmbientFramesIn500Ms": 22,
+      "visibleCompanionFramesOutsideHeroIn500Ms": 23,
+      "pausedFramesIn500Ms": 0,
+      "layoutShifts": [
+        {
+          "value": 0.0003285901063100137,
+          "sources": [
+            {
+              "node": "<button type=\"button\" aria-label=\"Ativar arte 3D\" title=\"Ativar arte 3D\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:bo",
+              "before": {
+                "x": 943.046875,
+                "y": 820.3093872070312,
+                "width": 103.890625,
+                "height": 44,
+                "top": 820.3093872070312,
+                "right": 1046.9375,
+                "bottom": 864.3093872070312,
+                "left": 943.046875
+              },
+              "after": {
+                "x": 1020.046875,
+                "y": 820.3093872070312,
+                "width": 103.890625,
+                "height": 44,
+                "top": 820.3093872070312,
+                "right": 1123.9375,
+                "bottom": 864.3093872070312,
+                "left": 1020.046875
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.00003300238715277778,
+          "sources": [
+            {
+              "node": "<button type=\"button\" aria-label=\"Usar arte estática\" title=\"Usar arte estática\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted ",
+              "before": {
+                "x": 1020.046875,
+                "y": 795.3093872070312,
+                "width": 103.890625,
+                "height": 44,
+                "top": 795.3093872070312,
+                "right": 1123.9375,
+                "bottom": 839.3093872070312,
+                "left": 1020.046875
+              },
+              "after": {
+                "x": 1008.9375,
+                "y": 795.3093872070312,
+                "width": 126.125,
+                "height": 44,
+                "top": 795.3093872070312,
+                "right": 1135.0625,
+                "bottom": 839.3093872070312,
+                "left": 1008.9375
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.003491233442644033,
+          "sources": [
+            {
+              "node": "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3\"><button type=\"button\" aria-pressed=\"false\" aria-lab",
+              "before": {
+                "x": 652,
+                "y": 795.3093872070312,
+                "width": 788,
+                "height": 44,
+                "top": 795.3093872070312,
+                "right": 1440,
+                "bottom": 839.3093872070312,
+                "left": 652
+              },
+              "after": {
+                "x": 652,
+                "y": 771.3093872070312,
+                "width": 788,
+                "height": 68,
+                "top": 771.3093872070312,
+                "right": 1440,
+                "bottom": 839.3093872070312,
+                "left": 652
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.00893915513278035,
+          "sources": [
+            {
+              "node": "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-press",
+              "before": {
+                "x": 0,
+                "y": 0,
+                "width": 0,
+                "height": 0,
+                "top": 0,
+                "right": 0,
+                "bottom": 0,
+                "left": 0
+              },
+              "after": {
+                "x": 1239.5999755859375,
+                "y": 483.7349853515625,
+                "width": 174.390625,
+                "height": 188,
+                "top": 483.7349853515625,
+                "right": 1413.9906005859375,
+                "bottom": 671.7349853515625,
+                "left": 1239.5999755859375
+              }
+            }
+          ]
+        },
+        {
+          "value": 0.0006301611796982167,
+          "sources": [
+            {
+              "node": "<button type=\"button\" aria-label=\"Usar arte estática\" title=\"Usar arte estática\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted ",
+              "before": {
+                "x": 1263.7249755859375,
+                "y": 587.7349853515625,
+                "width": 126.125,
+                "height": 44,
+                "top": 587.7349853515625,
+                "right": 1389.8499755859375,
+                "bottom": 631.7349853515625,
+                "left": 1263.7249755859375
+              },
+              "after": {
+                "x": 1330.7874755859375,
+                "y": 483.7349853515625,
+                "width": 44,
+                "height": 44,
+                "top": 483.7349853515625,
+                "right": 1374.7874755859375,
+                "bottom": 527.7349853515625,
+                "left": 1330.7874755859375
+              }
+            },
+            {
+              "node": "<button type=\"button\" aria-pressed=\"false\" aria-label=\"Pausar movimento\" title=\"Pausar movimento\" class=\"ui-control min-h-11 min-w-11 rounded-sm border border-line-strong bg-base p",
+              "before": {
+                "x": 1261.1937255859375,
+                "y": 483.7349853515625,
+                "width": 131.1875,
+                "height": 44,
+                "top": 483.7349853515625,
+                "right": 1392.3812255859375,
+                "bottom": 527.7349853515625,
+                "left": 1261.1937255859375
+              },
+              "after": {
+                "x": 1278.7874755859375,
+                "y": 483.7349853515625,
+                "width": 44,
+                "height": 44,
+                "top": 483.7349853515625,
+                "right": 1322.7874755859375,
+                "bottom": 527.7349853515625,
+                "left": 1278.7874755859375
+              }
+            }
+          ]
+        }
+      ],
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 6.299999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 188
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.5999999046325684
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 16
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.009569316312478567
+        }
+      ]
+    }
+  ],
+  "previewProfiles": [
+    {
+      "width": 390,
+      "publicSample": false,
+      "initialGzipBytes": 160275,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 82
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 1892
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 1892
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 9.700000047683716
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 64
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0008626466049382717
+        }
+      ],
+      "shifts": [
+        {
+          "value": 0.0004338888888888888,
+          "time": 1834.8999998569489,
+          "sources": [
+            "<button type=\"button\" aria-label=\"Ativar arte 3D\" title=\"Ativar arte 3D\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:bo"
+          ]
+        },
+        {
+          "value": 0.0000566338239949351,
+          "time": 2640.0999999046326,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0001563034188034188,
+          "time": 3990.2000000476837,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.00042513057929724593,
+          "time": 4655.899999856949,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0002812126068376069,
+          "time": 5323,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        }
+      ],
+      "idleRunningAnimations": 0,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": false,
+      "initialGzipBytes": 160275,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 204
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 15.5
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 204
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 2.1999998092651367
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 56
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.002466009864754801
+        }
+      ],
+      "shifts": [
+        {
+          "value": 0.002392603443287037,
+          "time": 1014.2000000476837,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.00007340642146776406,
+          "time": 1036.2999999523163,
+          "sources": [
+            "<button type=\"button\" aria-label=\"Ativar arte 3D\" title=\"Ativar arte 3D\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:bo"
+          ]
+        },
+        {
+          "value": 0.00030662538714206107,
+          "time": 3346.4000000953674,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0001059705234849404,
+          "time": 4026.7000000476837,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.00019931797274836787,
+          "time": 4695.400000095367,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0005604769483024692,
+          "time": 5359.400000095367,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0005256679875042867,
+          "time": 6026.099999904633,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        }
+      ],
+      "idleRunningAnimations": 0,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "publicProfiles": [
+    {
+      "width": 390,
+      "publicSample": true,
+      "initialGzipBytes": 160275,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 78.70000004768372
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 548
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 548
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.4000000953674316
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.0123399785424426
+        }
+      ],
+      "shifts": [
+        {
+          "value": 0.00868083403468698,
+          "time": 1007,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3\"><button type=\"button\" aria-label=\"Ativar arte 3D\" t"
+          ]
+        },
+        {
+          "value": 0.0007169476100031655,
+          "time": 1673.5,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0004297168803418803,
+          "time": 1700.6000001430511,
+          "sources": [
+            "<button type=\"button\" aria-label=\"Ativar arte 3D\" title=\"Ativar arte 3D\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:bo"
+          ]
+        },
+        {
+          "value": 0.0004613888888888889,
+          "time": 2338.300000190735,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0007809354226020894,
+          "time": 3021.600000143051,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0007454257676479899,
+          "time": 3687.9000000953674,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.000524729938271605,
+          "time": 4354.800000190735,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        }
+      ],
+      "idleRunningAnimations": 0,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "publicSample": true,
+      "initialGzipBytes": 160275,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 160
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 7.799999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 160
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.2999999523162842
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 24
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0.004952698713680028
+        }
+      ],
+      "shifts": [
+        {
+          "value": 0.0022764360425240058,
+          "time": 933.2000000476837,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0000734447337962963,
+          "time": 957,
+          "sources": [
+            "<button type=\"button\" aria-label=\"Ativar arte 3D\" title=\"Ativar arte 3D\" class=\"ui-control min-h-11 rounded-sm border border-line-strong bg-base px-3 text-xs text-fg-muted hover:bo"
+          ]
+        },
+        {
+          "value": 0.000555346780156893,
+          "time": 1599.5,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0003063625980143031,
+          "time": 2265,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0004907455632716049,
+          "time": 2930.7999999523163,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.0006490226337448559,
+          "time": 3614.9000000953674,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        },
+        {
+          "value": 0.000601340362172068,
+          "time": 4281.400000095367,
+          "sources": [
+            "<div class=\"hero-controls js-only absolute inset-x-5 bottom-3 z-20 flex flex-wrap justify-center gap-2 sm:bottom-14 lg:bottom-3 companion-controls\"><button type=\"button\" aria-label"
+          ]
+        }
+      ],
+      "idleRunningAnimations": 0,
+      "remainingAnimations": 0,
+      "canvasCount": 0,
+      "overflow": false
+    }
+  ],
+  "hydration": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "scriptGateMsAfterFonts": 800,
+    "results": [
+      {
+        "width": 390,
+        "hash": "",
+        "before": {
+          "height": 1515.234375,
+          "aboutTop": 2516.125,
+          "expertiseTop": 4464.046875,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 1515.234375,
+          "aboutTop": 2516.125,
+          "expertiseTop": 4464.046875,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#about",
+        "before": {
+          "height": 1515.234375,
+          "aboutTop": 80.125,
+          "expertiseTop": 2028.046875,
+          "scrollY": 2436
+        },
+        "after": {
+          "height": 1515.234375,
+          "aboutTop": 80.125,
+          "expertiseTop": 2028.046875,
+          "scrollY": 2436
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "",
+        "before": {
+          "height": 513.9375,
+          "aboutTop": 2208.21875,
+          "expertiseTop": 3190.0625,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 513.9375,
+          "aboutTop": 2208.21875,
+          "expertiseTop": 3190.0625,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#about",
+        "before": {
+          "height": 513.9375,
+          "aboutTop": 88.21875,
+          "expertiseTop": 1070.0625,
+          "scrollY": 2120
+        },
+        "after": {
+          "height": 513.9375,
+          "aboutTop": 88.21875,
+          "expertiseTop": 1070.0625,
+          "scrollY": 2120
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      }
+    ]
+  },
+  "automaticLoad": {
+    "renderer": "Chromium SwiftShader",
+    "throttled": false,
+    "results": [
+      {
+        "width": 390,
+        "firstFrameMs": 1939.5,
+        "paints": [
+          {
+            "name": "first-paint",
+            "timeMs": 180
+          },
+          {
+            "name": "first-contentful-paint",
+            "timeMs": 180
+          }
+        ],
+        "quality": "mobile"
+      },
+      {
+        "width": 1440,
+        "firstFrameMs": 1033.3999998569489,
+        "paints": [
+          {
+            "name": "first-paint",
+            "timeMs": 180
+          },
+          {
+            "name": "first-contentful-paint",
+            "timeMs": 180
+          }
+        ],
+        "quality": "desktop"
+      }
+    ]
+  },
+  "counters": [
+    {
+      "width": 1440,
+      "nativeClock": true,
+      "seconds": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        7
+      ],
+      "firstObservedSevenToZeroMs": 7005,
+      "projectAtZero": "1"
+    },
+    {
+      "width": 390,
+      "nativeClock": true,
+      "seconds": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1,
+        0,
+        7
+      ],
+      "firstObservedSevenToZeroMs": 6999,
+      "projectAtZero": "1"
+    }
+  ],
+  "limitations": [
+    "Single local Lighthouse sample per condition, simulated throttling, not field p75",
+    "Chromium SwiftShader is software rendering; no physical GPU or phone certification",
+    "GPU timer availability is reported, never estimated",
+    "Browser rAF cadence is not rendered GPU FPS; ambient frames are counted separately",
+    "External JS gzip excludes HTML/Flight/CSS",
+    "Hero profiling begins reduced then enables Three; normal automatic loading is measured separately",
+    "The same scene remains visible outside Hero by request; compare paused frames rather than expecting it to stop while visible",
+    "Videos use native recording and real time; countdown records observed DOM changes without controlling time",
+    "Aesthetic acceptance and commercial/editorial approvals remain with the owner"
+  ]
+}

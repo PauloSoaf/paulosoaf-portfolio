@@ -23,9 +23,9 @@ export function ServicesSection({ locale, dict, offers, preview }: ServicesSecti
         <>
           <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2">
             {offers.map((offer, index) => (
-              <li key={offer.id} data-motion="horizontal" data-motion-delay={index * 40} className="ui-card flex flex-col gap-3 bg-surface p-6 lg:p-8">
+              <li key={offer.id} data-motion="horizontal" data-motion-delay={index * 120} data-spotlight className="spotlight-card ui-card flex flex-col gap-3 bg-surface p-6 lg:p-8">
                 <div className="flex items-center justify-between gap-3">
-                  <span aria-hidden="true" className="font-mono text-xs text-fg-subtle">
+                  <span aria-hidden="true" className="service-emblem font-mono text-xs">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <StatusBadge status={offer.status} labels={dict.editorial.status} />

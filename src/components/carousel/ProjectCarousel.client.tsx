@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 
-import { AUTOPLAY_INTERVAL, DRAG_THRESHOLD, carouselReducer, initialCarouselState, selectedIndex, shouldAutoAdvance, slideOffset, wrapIndex } from "@/features/projects/carousel-controller";
+import { DRAG_THRESHOLD, carouselReducer, initialCarouselState, selectedIndex, shouldAutoAdvance, slideOffset, wrapIndex } from "@/features/projects/carousel-controller";
+import { createCarouselClock } from "@/features/projects/carousel-clock";
+import { CarouselCountdown } from "./CarouselCountdown.client";
 import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { CarouselMediaContext } from "./CarouselMediaContext.client";
@@ -25,6 +27,7 @@ export function ProjectCarousel({ slides, labels }: Props) {
   const enhanced = useSyncExternalStore(subscribeHydration, hydrated, serverHydrated);
   const [state, dispatch] = useReducer(carouselReducer, initialCarouselState);
   const slugs = useMemo(() => slides.map((slide) => slide.slug), [slides]);
+  const clock = useMemo(() => createCarouselClock(() => dispatch({ type: "step", delta: 1, slugs })), [slugs]);
   const index = selectedIndex(state, slugs);
   const auto = enhanced && shouldAutoAdvance(state, slides.length);
   const media = useMemo(() => enhanced && slugs.length > 0 ? {
@@ -35,23 +38,26 @@ export function ProjectCarousel({ slides, labels }: Props) {
   useEffect(() => {
     if (!enhanced || !hostNode) return;
     const media = matchMedia("(prefers-reduced-motion: reduce)");
-    const syncMotion = () => dispatch({ type: "reduced", value: media.matches });
-    const syncTab = () => dispatch({ type: "tab", value: !document.hidden });
+    const syncMotion = () => { if (media.matches) clock.pause(); dispatch({ type: "reduced", value: media.matches }); };
+    const syncTab = () => { if (document.hidden) clock.pause(); dispatch({ type: "tab", value: !document.hidden }); };
     media.addEventListener("change", syncMotion);
     document.addEventListener("visibilitychange", syncTab);
     // A delayed callback can contain several transitions for this same node. Apply the newest.
-    const observer = new IntersectionObserver((entries) => dispatch({ type: "visible", value: !!entries.at(-1)?.isIntersecting }), { threshold: 0.1 });
+    const observer = new IntersectionObserver((entries) => {
+      const visible = !!entries.at(-1)?.isIntersecting;
+      if (!visible) clock.pause(); dispatch({ type: "visible", value: visible });
+    }, { threshold: 0.1 });
     // Track the actual committed node. A one-shot nullable ref read can miss a hydration commit.
     observer.observe(hostNode);
     syncMotion(); syncTab();
     return () => { observer.disconnect(); media.removeEventListener("change", syncMotion); document.removeEventListener("visibilitychange", syncTab); };
-  }, [enhanced, hostNode]);
+  }, [enhanced, hostNode, clock]);
 
   useEffect(() => {
-    if (!auto) return;
-    const timer = setTimeout(() => dispatch({ type: "step", delta: 1, slugs }), AUTOPLAY_INTERVAL);
-    return () => clearTimeout(timer);
-  }, [auto, index, slugs]);
+    if (auto) clock.start(); else clock.pause();
+    return () => clock.pause();
+  }, [auto, index, clock]);
+  useEffect(() => () => clock.dispose(), [clock]);
 
   useEffect(() => {
     // A catalog update can remove the dragged slide. Drop its capture/session before new input.
@@ -72,6 +78,7 @@ export function ProjectCarousel({ slides, labels }: Props) {
   }, [enhanced, index, slides]);
 
   function step(delta: number) {
+    clock.reset();
     const next = wrapIndex(index + delta, slides.length);
     dispatch({ type: "step", delta, slugs, announcement: slides[next] ? `${format(labels.position, { index: next + 1, total: slides.length })}: ${slides[next].title}` : "" });
   }
@@ -98,9 +105,9 @@ export function ProjectCarousel({ slides, labels }: Props) {
       data-playing={state.isPlaying} data-auto={auto} data-hovered={state.isHovered} data-focus={state.hasFocus}
       data-dragging={state.isDragging} data-visible={state.visible} data-reduced={state.reducedMotion}
       role={enhanced ? "group" : undefined} aria-roledescription={enhanced ? labels.role : undefined} aria-labelledby="work-title"
-      onMouseEnter={() => dispatch({ type: "hover", value: true })} onMouseLeave={() => dispatch({ type: "hover", value: false })}
+      onMouseEnter={() => { clock.pause(); dispatch({ type: "hover", value: true }); }} onMouseLeave={() => dispatch({ type: "hover", value: false })}
       onPointerDownCapture={() => { suppressClick.current = false; }}
-      onFocusCapture={() => dispatch({ type: "focus", value: true })}
+      onFocusCapture={() => { clock.pause(); dispatch({ type: "focus", value: true }); }}
       onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) dispatch({ type: "focus", value: false }); }}
       onClickCapture={(event) => { if (suppressClick.current) { event.preventDefault(); event.stopPropagation(); suppressClick.current = false; } }}>
       {/* Rotation control first in DOM/tab order; visual order remains under the stage like POC. */}
@@ -114,10 +121,16 @@ export function ProjectCarousel({ slides, labels }: Props) {
           <button type="button" className="carousel-button ui-control carousel-prev" disabled={!enhanced} aria-label={labels.previous} onClick={() => step(-1)}>←</button>
           <button type="button" className="carousel-button ui-control carousel-next" disabled={!enhanced} aria-label={labels.next} onClick={() => step(1)}>→</button>
           <span className="carousel-position">{format(labels.position, { index: index + 1, total: slides.length })}</span>
+          <CarouselCountdown clock={clock} running={auto} reduced={state.reducedMotion} labels={labels} />
           <span className="carousel-range" aria-hidden="true"><span style={{ transform: `scaleX(${(index + 1) / slides.length})` }} /></span>
           <span className="carousel-hint">{labels.hint}</span>
         </div>
       )}
+      {slides.length > 1 && <div className="carousel-filmstrip" role="group" aria-label={labels.role}>
+        {slides.map((slide, targetIndex) => <button type="button" key={slide.slug} className="ui-control filmstrip-button"
+          disabled={!enhanced} aria-label={format(labels.selectProject, { title: slide.title })} aria-pressed={targetIndex === index}
+          onClick={() => step(targetIndex - index)}><span aria-hidden="true">{String(targetIndex + 1).padStart(2, "0")}</span><span className="filmstrip-title">{slide.title}</span></button>)}
+      </div>}
       {/* WAI basic carousel group with optional arrow-key navigation; it is not a button. */}
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div ref={stage} className="carousel-stage" role="group" tabIndex={slides.length > 1 ? 0 : undefined}
@@ -129,6 +142,7 @@ export function ProjectCarousel({ slides, labels }: Props) {
         onPointerDown={(event) => {
           if (!enhanced || slides.length < 2 || gesture.current || !event.isPrimary || event.button !== 0 || (event.target as Element).closest("button")) return;
           gesture.current = { id: event.pointerId, x: event.clientX, y: event.clientY, horizontal: false, delta: 0 };
+          clock.pause();
           dispatch({ type: "drag", value: true });
         }}
         onPointerMove={(event) => {

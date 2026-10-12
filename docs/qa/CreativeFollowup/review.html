@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revisão — contador, movimento e escultura</title>
+<style>
+  :root { color-scheme:dark; font:16px/1.6 system-ui; background:#0b1116; color:#eef2f3; }
+  body { max-width:1280px; margin:32px auto; padding:0 24px; }
+  a { color:#6bdcbe; } h1 { font-size:clamp(24px,4vw,42px); } h2 { font-size:20px; }
+  .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+  article { padding:20px; border:1px solid #33434a; border-radius:12px; background:#111b21; }
+  video { display:block; width:100%; max-height:600px; background:#080c10; }
+  @media(max-width:760px) { .grid { grid-template-columns:1fr; } }
+</style>
+<h1>Contador, movimento e escultura</h1>
+<p>12/10/2026 · Gravações nativas em tempo real, sem acelerar ou injetar frames. Desktop 1440×900; celular 390×844 com touch. Pausa, volume e velocidade pertencem aos controles do navegador.</p>
+<p><a href="http://localhost:1010/pt">Abrir experiência local</a> · <a href="REPORT.md">Relatório e limites</a> · <a href="../CreativeRecovery/review.html">Revisão anterior</a></p>
+<div class="grid">
+  <article><h2>7 → 0 · desktop</h2><video controls preload="metadata" poster="screenshots/countdown-1440-start.png" src="videos/countdown-1440.webm"></video><p>O relógio real chega a zero e o projeto muda. <a href="countdown-1440.json">Sequência observada</a>.</p></article>
+  <article><h2>7 → 0 · celular</h2><video controls preload="metadata" poster="screenshots/countdown-390-start.png" src="videos/countdown-390.webm"></video><p>Mesma lógica no viewport touch. <a href="countdown-390.json">Sequência observada</a>.</p></article>
+  <article><h2>Página completa · desktop Dark</h2><video controls preload="metadata" poster="screenshots/after-pt-dark-1440-opening.png" src="videos/after-pt-dark-1440.webm"></video></article>
+  <article><h2>Página completa · celular Dark</h2><video controls preload="metadata" poster="screenshots/after-pt-dark-390-opening.png" src="videos/after-pt-dark-390.webm"></video></article>
+  <article><h2>Página completa · desktop Light</h2><video controls preload="metadata" poster="screenshots/after-pt-light-1440-opening.png" src="videos/after-pt-light-1440.webm"></video></article>
+  <article><h2>Página completa · celular Light</h2><video controls preload="metadata" poster="screenshots/after-pt-light-390-opening.png" src="videos/after-pt-light-390.webm"></video></article>
+</div>
+</html>

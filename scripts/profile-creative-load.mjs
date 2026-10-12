@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
 const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300";
-const output = "docs/report/CreativeRecovery";
+const output = process.env.QA_CREATIVE_PROFILE_DIR ?? "docs/report/CreativeRecovery";
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] }), results = [];
 try {

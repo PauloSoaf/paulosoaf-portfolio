@@ -100,7 +100,7 @@ function SceneController(props: Props) {
   useEffect(() => {
     const element = host.current;
     const section = element?.closest("[data-hero]");
-    const surface = element?.querySelector<HTMLElement>("[data-hero-surface]");
+    const surface = creative ? document.querySelector<HTMLElement>("[data-spatial-companion] [data-hero-surface]") : element?.querySelector<HTMLElement>("[data-hero-surface]");
     let gesture: { id: number; x: number; y: number; start: number; lastX: number; velocity: number; horizontal: boolean } | null = null;
     debug.current = new URLSearchParams(window.location.search).has("heroDebug");
     if (debug.current) {
@@ -163,6 +163,7 @@ function SceneController(props: Props) {
       invalidate();
     };
     section?.addEventListener("pointermove", move, { passive: true });
+    if (creative) surface?.addEventListener("pointermove", move, { passive: true });
     section?.addEventListener("pointerleave", leave, { passive: true });
     surface?.addEventListener("pointerdown", down, { passive: true });
     surface?.addEventListener("pointerup", finish, { passive: true });
@@ -181,6 +182,7 @@ function SceneController(props: Props) {
     if (active) invalidate();
     return () => {
       section?.removeEventListener("pointermove", move); section?.removeEventListener("pointerleave", leave);
+      if (creative) surface?.removeEventListener("pointermove", move);
       surface?.removeEventListener("pointerdown", down); surface?.removeEventListener("pointerup", finish); surface?.removeEventListener("pointercancel", finish);
       surface?.removeEventListener("lostpointercapture", lostCapture);
       window.removeEventListener("pointerup", finish);
@@ -197,7 +199,9 @@ function SceneController(props: Props) {
     if (!object) return;
     if (active) {
       const amount = 1 - Math.exp(-Math.min(delta, 0.05) * 7);
-      const x = target.current[0] + exit.current * (creative ? .7 : 1), y = target.current[1] + explored.current;
+      const chapter = creative ? Number(document.querySelector<HTMLElement>("[data-spatial-companion]")?.dataset.spatialChapter ?? 0) : 0;
+      const x = target.current[0] + exit.current * (creative ? .7 : 1) + Math.sin(chapter * 1.5) * .22;
+      const y = target.current[1] + explored.current + chapter * .24;
       object.rotation.x += (x - object.rotation.x) * amount;
       object.rotation.y += (y - object.rotation.y) * amount;
       entrance.current = Math.min(850, entrance.current + Math.min(delta, .05) * 1000);

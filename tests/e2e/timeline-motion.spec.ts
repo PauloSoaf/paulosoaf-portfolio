@@ -78,7 +78,7 @@ test("editorial reveal uses real intermediate transforms, runs once and does not
   await scrollTo(page, "#expertise-title");
   await expect(heading).toHaveAttribute("data-motion-state", "finished");
   const observed = await page.evaluate(() => Reflect.get(window, "measuredReveal"));
-  expect(observed.frames[0].transform).toContain("24px"); expect(observed.duration).toBe(550);
+  expect(observed.frames[0].transform).toContain("72px"); expect(observed.duration).toBe(1100);
   await expect(heading).toHaveAttribute("data-motion-runs", "1");
   await scrollTo(page, "#contact"); await scrollTo(page, "#expertise-title");
   await expect(heading).toHaveAttribute("data-motion-runs", "1");
@@ -160,6 +160,7 @@ test("S02 explicit play while focused remains suspended until focus leaves, then
   await page.goto("/pt#work");
   await expect(page.locator("[data-carousel]")).toHaveAttribute("data-enhanced", "true");
   await scrollTo(page, ".carousel-stage");
+  await page.locator(".filmstrip-button").first().click();
   await page.clock.install();
   await page.getByRole("button", { name: "Próximo projeto", exact: true }).focus();
   await page.getByRole("button", { name: "Reproduzir automaticamente", exact: true }).click();

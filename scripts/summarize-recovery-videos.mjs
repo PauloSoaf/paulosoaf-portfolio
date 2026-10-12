@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { createHash } from "node:crypto";
 import { readFile, readdir, writeFile } from "node:fs/promises";
-const output = "docs/qa/CreativeRecovery", browser = await chromium.launch(), metadata = [];
+const output = process.env.QA_CREATIVE_OUTPUT_DIR ?? "docs/qa/CreativeRecovery", browser = await chromium.launch(), metadata = [];
 try {
   const page = await browser.newPage();
   for (const filename of (await readdir(`${output}/videos`)).filter(name => name.endsWith(".webm")).sort()) {

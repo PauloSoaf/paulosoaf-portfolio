@@ -45,6 +45,7 @@ async function readyWithClock(page: Page) {
   // Hydration/IntersectionObserver run on the real browser clock. Install the virtual clock only
   // after this commit, then create a fresh autoplay timeout through the actual play control.
   await ready(page); await page.locator(".carousel-stage").focus();
+  await page.locator(".filmstrip-button").first().click(); // Explicit selection resets the cycle; hover/focus now preserve remaining time.
   await page.clock.install();
   await page.getByRole("button", { name: "Reproduzir automaticamente", exact: true }).click();
   await outside(page);

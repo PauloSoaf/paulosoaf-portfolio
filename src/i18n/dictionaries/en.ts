@@ -93,6 +93,9 @@ export const en: Dictionary = {
     paused: "Rotation paused",
     reduced: "Reduced motion · manual rotation",
     single: "Selected project",
+    countdown: "Next project in {seconds} seconds",
+    countdownPaused: "Countdown paused: {seconds} seconds remaining",
+    selectProject: "Select project: {title}",
   },
   projects: {
     conceptArt: "Concept art · not a project screenshot",

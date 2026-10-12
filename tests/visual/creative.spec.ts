@@ -2,13 +2,14 @@ import { mkdir } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import { dictionaries } from "../../src/i18n/get-dictionary";
 
-const output = "docs/qa/CreativeRecovery";
+const output = process.env.QA_CREATIVE_OUTPUT_DIR ?? "docs/qa/CreativeFollowup";
+const recordings = process.env.QA_CREATIVE_RAW_DIR ?? "docs/report/CreativeFollowup/recordings";
 for (const locale of ["pt", "en", "es"] as const) for (const theme of ["dark", "light"] as const) for (const width of [1440, 390]) {
   test(`${locale}/${theme}/${width}: real scene, signature transitions and gallery`, async ({ browser }) => {
     await mkdir(`${output}/screenshots`, { recursive: true }); await mkdir(`${output}/videos`, { recursive: true });
     const height = width === 390 ? 844 : 900, dict = dictionaries[locale];
     const context = await browser.newContext({ viewport: { width, height }, hasTouch: width === 390, isMobile: width === 390, reducedMotion: "no-preference",
-      recordVideo: locale === "pt" ? { dir: "docs/report/CreativeRecovery/recordings", size: { width, height } } : undefined });
+      recordVideo: locale === "pt" ? { dir: recordings, size: { width, height } } : undefined });
     await context.addCookies([{ name: "ps-theme", value: theme, url: "http://127.0.0.1:3200" }]);
     const page = await context.newPage(), errors: string[] = []; page.on("pageerror", error => errors.push(error.message));
     await page.goto(`http://127.0.0.1:3200/${locale}?heroDebug=1`); await page.evaluate(() => document.fonts.ready);
@@ -46,7 +47,13 @@ for (const locale of ["pt", "en", "es"] as const) for (const theme of ["dark", "
     if (width === 1440) { await page.getByRole("tab").nth(1).click(); await page.waitForTimeout(800); await page.getByRole("tab").nth(2).click(); await page.waitForTimeout(800); }
     else await navigate(".journey-item:nth-child(2)");
     await page.screenshot({ path: `${output}/screenshots/after-${locale}-${theme}-${width}-about.png` });
-    for (const selector of ["#expertise", "#services", "#contact"]) await navigate(selector);
+    for (const selector of ["#expertise", "#services", "#contact"]) {
+      await navigate(selector);
+      if (locale === "pt") {
+        await page.waitForTimeout(600);
+        await page.screenshot({ path: `${output}/screenshots/after-${locale}-${theme}-${width}-${selector.slice(1)}.png` });
+      }
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); expect(errors).toEqual([]);
     await expect(page.getByRole("heading", { name: `${dict.hero.titleLead} ${dict.hero.titleEmphasis}` })).toBeAttached();
     const video = page.video(); await context.close();

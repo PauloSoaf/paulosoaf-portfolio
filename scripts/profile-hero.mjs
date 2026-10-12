@@ -66,23 +66,28 @@ try {
     const idleStart = await art.getAttribute("data-hero-frames");
     await page.waitForTimeout(500);
     const idleEnd = await art.getAttribute("data-hero-frames");
-    await page.locator("#contact").scrollIntoViewIfNeeded(); await page.waitForTimeout(200);
-    const offscreenStart = Number(await art.getAttribute("data-hero-frames"));
+    await page.locator("#contact").scrollIntoViewIfNeeded(); await page.waitForTimeout(1800);
+    const companionStart = Number(await art.getAttribute("data-hero-frames"));
     await page.waitForTimeout(500);
-    const offscreenFrames = Number(await art.getAttribute("data-hero-frames")) - offscreenStart;
+    const companionFrames = Number(await art.getAttribute("data-hero-frames")) - companionStart;
+    await page.getByRole("button", { name: "Pausar movimento", exact: true }).click(); await page.waitForTimeout(200);
+    const pausedStart = Number(await art.getAttribute("data-hero-frames")); await page.waitForTimeout(500);
+    const pausedFrames = Number(await art.getAttribute("data-hero-frames")) - pausedStart;
+    await page.getByRole("button", { name: "Retomar movimento", exact: true }).click();
     await art.scrollIntoViewIfNeeded();
     await page.mouse.click(40, 200);
     await page.waitForTimeout(100);
     await page.getByRole("button", { name: "Pausar movimento", exact: true }).click();
     await page.getByRole("button", { name: "Retomar movimento", exact: true }).click();
     await page.evaluate(() => {
+      Object.defineProperty(document, "hidden", { configurable: true, value: true });
       Object.defineProperty(document, "visibilityState", { configurable: true, value: "hidden" });
       document.dispatchEvent(new Event("visibilitychange"));
     });
     await page.waitForTimeout(100);
     results.push({ width, initialGzipBytes: total([...initial]), lazyGzipBytes: total(lazy), initial: [...initial], lazy,
       measurements, cadence, idleFrames: Number(idleEnd) - Number(idleStart),
-      visibleAmbientFramesIn500Ms: Number(idleEnd) - Number(idleStart), offscreenFramesIn500Ms: offscreenFrames,
+      visibleAmbientFramesIn500Ms: Number(idleEnd) - Number(idleStart), visibleCompanionFramesOutsideHeroIn500Ms: companionFrames, pausedFramesIn500Ms: pausedFrames,
       layoutShifts: await page.evaluate(() => window.__heroShifts),
       vitals: await page.evaluate(() => performance.getEntriesByType("measure").filter((entry) => entry.name.startsWith("portfolio:vital:")).map((entry) => ({ name: entry.name, value: entry.duration }))),
     });

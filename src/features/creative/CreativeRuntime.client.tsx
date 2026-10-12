@@ -55,5 +55,23 @@ export function installSpatialStory(root: Document = document) {
 export function CreativeRuntime() {
   const creative = useCreativeExperience();
   useEffect(() => creative ? installSpatialStory() : undefined, [creative]);
+  useEffect(() => {
+    if (!creative) return;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let pending = 0, target: HTMLElement | null = null, x = 0, y = 0;
+    const paint = () => {
+      pending = 0;
+      if (!target?.isConnected || reduced.matches || document.hidden) return;
+      const rect = target.getBoundingClientRect();
+      target.style.setProperty("--spot-x", `${x - rect.left}px`); target.style.setProperty("--spot-y", `${y - rect.top}px`);
+    };
+    const pointer = (event: PointerEvent) => {
+      if (event.pointerType === "touch" || reduced.matches) return;
+      target = (event.target as Element).closest<HTMLElement>("[data-spotlight]"); x = event.clientX; y = event.clientY;
+      if (target && !pending) pending = requestAnimationFrame(paint);
+    };
+    document.addEventListener("pointermove", pointer, { passive: true });
+    return () => { cancelAnimationFrame(pending); document.removeEventListener("pointermove", pointer); };
+  }, [creative]);
   return null;
 }

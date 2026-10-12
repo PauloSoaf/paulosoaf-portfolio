@@ -126,6 +126,15 @@ test("rapid switches preserve canvas, timeline, carousel, URL and scroll without
   await page.locator("#about").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
   await page.getByRole("tab").nth(1).click();
   await page.locator(".carousel-next").click();
+  // Finish the browser's scroll from the real carousel click before measuring theme stability.
+  await page.evaluate(() => new Promise<void>(resolve => {
+    let previous = scrollY, stable = 0;
+    const tick = () => {
+      stable = scrollY === previous ? stable + 1 : 0; previous = scrollY;
+      if (stable >= 6) resolve(); else requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }));
   await page.locator("#about").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
   const before = await position(page), url = page.url();
   // Coordinate clicks exercise a sticky header without automation's scroll-into-view changing the page.
@@ -207,6 +216,8 @@ test("real touch drag explores the orb, vertical swipe scrolls, and touch CTA pr
   for (let step = 1; step <= 8; step++) { await touch("touchMove", x + step * 12, y); await page.waitForTimeout(25); }
   await touch("touchEnd");
   await expect.poll(async () => Number(await art(page).getAttribute("data-hero-exploration"))).toBeGreaterThan(.2);
+  await expect(page.locator("[data-hero-surface]")).not.toHaveAttribute("data-interacting", "true");
+  await page.waitForTimeout(100); // Allow the completed gesture's bounded inertia to reach the renderer probe.
   const angle = await art(page).getAttribute("data-hero-exploration"), before = await page.evaluate(() => scrollY);
   await touch("touchStart", x, y);
   for (let step = 1; step <= 8; step++) { await touch("touchMove", x, y - step * 25); await page.waitForTimeout(25); }

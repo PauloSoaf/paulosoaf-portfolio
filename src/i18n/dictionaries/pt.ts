@@ -96,6 +96,9 @@ export const pt = {
     paused: "Reprodução pausada",
     reduced: "Movimento reduzido · reprodução manual",
     single: "Projeto selecionado",
+    countdown: "Próximo projeto em {seconds} segundos",
+    countdownPaused: "Contagem pausada: {seconds} segundos restantes",
+    selectProject: "Selecionar projeto: {title}",
   },
   projects: {
     conceptArt: "Arte conceitual · não é captura do projeto",

@@ -58,8 +58,16 @@ test("pause, offscreen and hidden tab suspend frames; theme updates the same can
   expect(await canvas!.evaluate((element) => element === document.querySelector("canvas"))).toBe(true);
   await page.getByRole("button", { name: "Retomar movimento", exact: true }).click();
   await page.locator("#contact").scrollIntoViewIfNeeded();
-  await expect(art(page)).toHaveAttribute("data-hero-state", "paused");
+  await expect(art(page)).toHaveAttribute("data-hero-state", "ready");
+  await expect(page.locator("[data-spatial-companion]")).toHaveAttribute("data-docked", "true");
   await page.locator("#hero-title").scrollIntoViewIfNeeded();
+  await expect(art(page)).toHaveAttribute("data-hero-state", "ready");
+  const pose = await page.locator("[data-spatial-companion]").evaluate((element) => (element as HTMLElement).style.transform);
+  await page.locator("[data-spatial-companion]").evaluate(element => { (element as HTMLElement).style.transform = "translate3d(-5000px,-5000px,0)"; });
+  await expect(art(page)).toHaveAttribute("data-hero-state", "paused");
+  await page.waitForTimeout(100); const outsideFrames = await art(page).getAttribute("data-hero-frames"); await page.waitForTimeout(200);
+  expect(await art(page).getAttribute("data-hero-frames")).toBe(outsideFrames);
+  await page.locator("[data-spatial-companion]").evaluate((element, transform) => { (element as HTMLElement).style.transform = transform; }, pose);
   await expect(art(page)).toHaveAttribute("data-hero-state", "ready");
   await page.evaluate(() => {
     Object.defineProperty(document, "hidden", { configurable: true, value: true });
@@ -151,9 +159,6 @@ test("limited connection keeps SVG; manual opt-in uses the smallest budget", asy
 });
 
 test("an offscreen hero defers the canvas; a failed lazy chunk preserves SVG and links", async ({ page }) => {
-  await page.goto("/pt#contact");
-  await page.waitForTimeout(700);
-  await expect(page.locator("canvas")).toHaveCount(0);
   const chunks = await readdir(".next/static/chunks");
   const three = [];
   for (const chunk of chunks.filter((name) => name.endsWith(".js"))) {
@@ -161,6 +166,12 @@ test("an offscreen hero defers the canvas; a failed lazy chunk preserves SVG and
   }
   expect(three.length).toBeGreaterThan(0);
   for (const chunk of three) await page.route(`**/_next/static/chunks/${chunk}`, (route) => route.abort());
+  // Intercept before navigation: Next can prefetch the deferred module before mounting its canvas.
+  await page.goto("/pt#contact");
+  await expect(page.locator("[data-carousel]")).toHaveAttribute("data-enhanced", "true");
+  await page.evaluate(() => document.fonts.ready);
+  await page.waitForTimeout(700);
+  await expect(page.locator("canvas")).toHaveCount(0);
   await page.locator("#hero-title").scrollIntoViewIfNeeded();
   await expect(art(page)).toHaveAttribute("data-hero-state", "error", { timeout: 30_000 });
   await expect(art(page).locator(".recovery-art")).toBeVisible();
@@ -186,7 +197,7 @@ test("mobile touch hover never rotates the scene or intercepts natural scrolling
   expect(await rotation(page)).toEqual(angles);
   await page.locator("#about").scrollIntoViewIfNeeded();
   expect(await page.evaluate(() => scrollY)).toBeGreaterThan(500);
-  await expect(art(page)).toHaveAttribute("data-hero-state", "paused");
+  await expect(art(page)).toHaveAttribute("data-hero-state", "ready");
   await context.close();
 });
 
@@ -194,7 +205,7 @@ test("active 3D controls pass accessibility checks in both themes", async ({ pag
   await ready(page);
   for (const theme of ["dark", "light"]) {
     if (theme === "light") await page.getByRole("button", { name: "Ativar tema claro", exact: true }).first().click();
-    expect((await new AxeBuilder({ page }).include("[data-hero]").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze()).violations).toEqual([]);
+    expect((await new AxeBuilder({ page }).include("[data-hero]").include("[data-spatial-companion]").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze()).violations).toEqual([]);
   }
 });
 
@@ -209,7 +220,7 @@ test("tablet controls remain operable by keyboard without shifting the copy", as
   await page.getByRole("button", { name: "Usar arte estática", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("canvas")).toHaveCount(0);
-  expect((await new AxeBuilder({ page }).include("[data-hero]").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze()).violations).toEqual([]);
+  expect((await new AxeBuilder({ page }).include("[data-hero]").include("[data-spatial-companion]").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze()).violations).toEqual([]);
 });
 
 test("a delayed fallback image keeps the reserved hero dimensions", async ({ page }) => {
