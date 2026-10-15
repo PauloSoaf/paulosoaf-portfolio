@@ -139,9 +139,11 @@ test("public build excludes editorial drafts and unapproved contact links", asyn
     await expect(page.locator("#contact a")).toHaveCount(0);
     await expect(page.locator('a[href^="mailto:"], a[href="#"]')).toHaveCount(0);
     await expect(page.locator("#hero-title")).toBeVisible();
+    expect((await request.get(`/${locale}`)).headers()["content-security-policy"]).not.toContain("'wasm-unsafe-eval'");
     expect((await request.get(`/${locale}/workstation-lab`)).status()).toBe(404);
   }
   const fixture = await request.get("/workstation/embed-fixture");
   expect(fixture.status()).toBe(404);
   expect(fixture.headers()["x-frame-options"]).toBe("DENY");
+  expect(fixture.headers()["content-security-policy"]).not.toContain("'wasm-unsafe-eval'");
 });

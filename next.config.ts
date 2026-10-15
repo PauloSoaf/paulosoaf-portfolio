@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
         { key: "X-Frame-Options", value: "SAMEORIGIN" },
       ] },
       { source: "/:locale(pt|en|es)/workstation-lab", headers: [
-        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-src 'self'", "frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br") },
+        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-src 'self'", "frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br").replace("script-src 'self'", "script-src 'self' 'wasm-unsafe-eval'") },
         { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ] },
     ] : [])];

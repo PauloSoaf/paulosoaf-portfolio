@@ -8,7 +8,7 @@ import { getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
 import { constrainedDevice } from "@/graphics/hero/quality";
 import { workstationLabels } from "../labels";
 import { PROJECT_REQUEST, siteForProject, workstationSites } from "../sites";
-import { initialWorkstationState, isScreenInteractive, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
+import { initialWorkstationState, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
 import { WorkbenchScreen } from "../screen/WorkbenchScreen.client";
 import { createMotionRig, installWorkstationPosition } from "./position";
 import { NotebookInputController } from "../input/NotebookInputController";
@@ -29,11 +29,13 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const [state, dispatch] = useReducer(workstationReducer, initialWorkstationState);
   const [rig] = useState(createMotionRig), [input] = useState(() => new NotebookInputController()), [pointer] = useState(() => new NotebookPointerController());
   const [inputMode, setInputMode] = useState(false), [feedback, setFeedback] = useState<"local" | "external" | "ready">("ready");
+  const [tool, setTool] = useState<"move" | "rotate" | "lid">("move"), [touchManipulation, setTouchManipulation] = useState(false), [keyboardView, setKeyboardView] = useState(false);
   const [armed, setArmed] = useState(false), [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
   const [surface, setSurface] = useState<HTMLDivElement | null>(null);
   const [environment, setEnvironment] = useState({ visible: false, loadable: false, hidden: false, reduced: false, mobile: false, limited: false });
   const anchor = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null);
   const screenElement = useRef<HTMLDivElement>(null);
+  const sceneElement = useRef<HTMLDivElement>(null);
   const bindScreen = useCallback((node: HTMLDivElement | null) => {
     screenElement.current = node;
     if (node && host.current?.dataset.displayMatrix) {
@@ -49,6 +51,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   useEffect(() => surface && anchor.current ? installWorkstationPosition(surface, anchor.current, rig) : undefined, [surface, rig]);
   useEffect(() => {
     rig.paused = focused; rig.locked = state.mode === "MANIPULATE"; rig.wake();
+    if (focused) rig.manipulation.cancel();
     input.wake = () => rig.wake(); input.onFeedback = setFeedback;
     pointer.onExternal = () => setFeedback("external"); input.onEscape = () => dispatch({ type: "CLOSE_X" });
   }, [rig, input, pointer, focused, state.mode]);
@@ -99,10 +102,10 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
     </div>
     {body ? createPortal(<>
       <div ref={bind} className="workstation-companion" data-workstation data-input-mode={inputMode} data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected">
-        <div className="workstation-scene"><div className="workstation-dom-layer">
-          {ready && !failed && isScreenInteractive(state) && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
+        <div ref={sceneElement} className="workstation-scene"><div className="workstation-dom-layer">
+          {ready && !failed && state.lidAngle >= 15 && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
         </div>
-          {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} screen={sceneScreen} screenElement={screenElement} host={host} rig={rig} input={input} pointer={pointer} inputMode={inputMode} onReady={onReady} onFailure={fail} /></SceneBoundary> : null}
+          {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} screen={sceneScreen} screenElement={screenElement} sceneElement={sceneElement} host={host} rig={rig} input={input} pointer={pointer} inputMode={inputMode} tool={tool} touchManipulation={touchManipulation} keyboardView={keyboardView} onReady={onReady} onFailure={fail} /></SceneBoundary> : null}
         </div>
         <div className="workstation-controls">
           <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
@@ -111,11 +114,18 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
             <button type="button" aria-label={text.left} title={text.left} onClick={() => dispatch({ type: "ROTATE", axis: 1, delta: -.25 })}>←</button>
             <button type="button" aria-label={text.right} title={text.right} onClick={() => dispatch({ type: "ROTATE", axis: 1, delta: .25 })}>→</button>
             <button type="button" aria-label={text.tilt} title={text.tilt} onClick={() => dispatch({ type: "ROTATE", axis: 2, delta: state.rotation[2] > 0 ? -.2 : .2 })}>↶</button>
-            <button type="button" aria-label={text.reset} title={text.reset} onClick={() => dispatch({ type: "RESET" })}>↺</button>
-            <button type="button" aria-pressed={inputMode} onClick={() => setInputMode(!inputMode)}>{inputMode ? text.inputExit : text.inputMode}</button>
+            <button type="button" aria-label={text.reset} title={text.reset} onClick={() => { rig.manipulation.follow(); dispatch({ type: "RESET" }); setKeyboardView(false); setTouchManipulation(false); setTool("move"); }}>↺</button>
+            <button type="button" aria-pressed={inputMode} onClick={() => { setInputMode(!inputMode); setTouchManipulation(false); }}>{inputMode ? text.inputExit : text.inputMode}</button>
+            <details className="workstation-tools"><summary>{text.tools}</summary><div>
+              <button type="button" data-notebook-tool="move" aria-pressed={tool === "move"} onClick={(event) => { setTool("move"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.move}</button>
+              <button type="button" data-notebook-tool="rotate" aria-pressed={tool === "rotate"} onClick={(event) => { setTool("rotate"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.rotate}</button>
+              <button type="button" data-notebook-tool="lid" aria-pressed={tool === "lid"} onClick={(event) => { setTool("lid"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.adjustLid}</button>
+              <button type="button" data-keyboard-view aria-pressed={keyboardView} onClick={(event) => { setKeyboardView(!keyboardView); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{keyboardView ? text.wholeView : text.keyboardView}</button>
+            </div></details>
+            <button type="button" className="workstation-rejoin" onClick={() => { rig.manipulation.follow(); setTouchManipulation(false); }}>{text.followPage}</button>
           </> : <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button>}
         </div>
-        <p className="workstation-hint" role="status">{ready ? feedback === "external" ? text.inputExternal : feedback === "local" ? text.inputLocal : text.inputReady : text.fallback}</p>
+        <p className="workstation-hint" role="status">{ready ? feedback === "external" ? environment.mobile ? text.inputExternalCompact : text.inputExternal : feedback === "local" ? text.inputLocal : environment.mobile ? text.inputReadyCompact : text.inputReady : text.fallback}</p>
       </div>
       <dialog ref={dialog} className="workstation-focus" aria-label={text.title} data-workstation-focus onCancel={(event) => { event.preventDefault(); dispatch({ type: "EXIT_FOCUS" }); }}>
         <div className="workstation-focus-heading"><span>{text.title}</span><button type="button" onClick={() => dispatch({ type: "EXIT_FOCUS" })}>{text.exitFocus} <span aria-hidden="true">×</span></button></div>

@@ -1,0 +1,632 @@
+{
+  "date": "2026-10-15",
+  "base": "349d7cfffdc47a13e9aeffbc8ee141c4ffa2e5d3",
+  "environment": "Windows / Chromium / SwiftShader; unthrottled laboratory; Save-Data isolates initial/lazy JS; CPU gl.render timing is not GPU FPS",
+  "recordingProjectionComparison": "See trajectory.projectionComparison. Anchor consistency is not independent physical verification; all four viewport E2E compare the physical mesh.",
+  "studioAsset": {
+    "width": 336,
+    "height": 256,
+    "revision": "186",
+    "colorSpace": "srgb-linear",
+    "source": "Three.js RoomEnvironment (MIT), PMREM fromScene; generated locally by scripts/bake-workstation-environment.mjs, no external HDR photograph",
+    "faceSize": 64,
+    "sigma": 0.02,
+    "near": 0.1,
+    "far": 100,
+    "format": "OOEN magic uint32 LE, width/height uint32 LE, RGBA16F little-endian CubeUV; gzip",
+    "rawBytes": 688140,
+    "packedBytes": 112750,
+    "sha256": "c7a4fddff7c984966841e7dd15b38022a665642bac7793fb2c315318187a49ab"
+  },
+  "studioValidation": {
+    "results": [
+      {
+        "width": 1440,
+        "height": 900,
+        "theme": "dark",
+        "url": "http://localhost:1010/pt/workstation-lab",
+        "screenshot": "baked-final-dark-1440.png",
+        "errors": [],
+        "data": {
+          "studio": "baked",
+          "pose": "0.0800,-0.1400,0.0120",
+          "chassisWidth": "520.6944790577527",
+          "canvasCount": 1,
+          "horizontalOverflow": false
+        }
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "theme": "light",
+        "url": "http://localhost:1010/pt/workstation-lab",
+        "screenshot": "baked-final-light-390.png",
+        "errors": [],
+        "data": {
+          "studio": "baked",
+          "pose": "0.0800,-0.1400,0.0120",
+          "chassisWidth": "227.20291541856892",
+          "canvasCount": 1,
+          "horizontalOverflow": false
+        }
+      }
+    ],
+    "comparison": {
+      "region": {
+        "left": 740,
+        "top": 188,
+        "width": 640,
+        "height": 550
+      },
+      "meanAbsoluteRGBDifference255": 0,
+      "channelsDifferentByMoreThan1": 0,
+      "note": "Same settled default pose, runtime PMREM screenshot vs baked atlas; file screenshots and native DOM also inspected."
+    }
+  },
+  "physicalProjectionRegression": {
+    "viewports": [
+      390,
+      768,
+      1440,
+      1920
+    ],
+    "assertionLimitLogicalPx": 0.25,
+    "source": "tests/workstation/input-motion.spec.ts and visual-physics.spec.ts; physical mesh matrix, not DOM anchor"
+  },
+  "trajectories": [
+    {
+      "id": "pt-dark-1440",
+      "projectionComparison": "anchor-consistency",
+      "framesSampled": 673,
+      "maxPixelsPerSecond": 1801.801801801841,
+      "maxAnchorConsistencyErrorLogicalPx": 0.000921406142373983,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 502.62421739413,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 574.0891018294299,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 471.03312909649253,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 507.22530424960877,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 508.02509848233325,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-light-1440",
+      "projectionComparison": "anchor-consistency",
+      "framesSampled": 685,
+      "maxPixelsPerSecond": 1801.8018018018408,
+      "maxAnchorConsistencyErrorLogicalPx": 0.0008622653971087139,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 502.62421739413,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 574.0891018294299,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 471.0331290964924,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 507.22530424960877,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 508.02514041823196,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-1920",
+      "projectionComparison": "anchor-consistency",
+      "framesSampled": 743,
+      "maxPixelsPerSecond": 2400.0000000000064,
+      "maxAnchorConsistencyErrorLogicalPx": 0.0009214061423461973,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 502.62421956141935,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 574.0891018437665,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 471.0331290968323,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 520.0376472044974,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 508.02514041823196,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-768",
+      "projectionComparison": "anchor-consistency",
+      "framesSampled": 726,
+      "maxPixelsPerSecond": 2400,
+      "maxAnchorConsistencyErrorLogicalPx": 0.000920859515731727,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 480.0577627261252,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 506.63363236927347,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 466.54159249444723,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 483.9203579354297,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 485.2161990500473,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-390",
+      "projectionComparison": "physical-mesh",
+      "framesSampled": 691,
+      "maxPixelsPerSecond": 2146.70826753976,
+      "maxPhysicalProjectionErrorLogicalPx": 0.17742055758014535,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 232.5492280807447,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 245.42309103650624,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 226.62907013435523,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 234.42034332677184,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 235.04807376076485,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-light-390",
+      "projectionComparison": "physical-mesh",
+      "framesSampled": 665,
+      "maxPixelsPerSecond": 1737.887405447198,
+      "maxPhysicalProjectionErrorLogicalPx": 0.17742055758014535,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 232.62079291165907,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 245.67916223946108,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 226.00173457699694,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 234.4203433179448,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 235.0480737886458,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "width": 390,
+      "path": "/pt",
+      "initialGzipBytes": 173085,
+      "lazyGzipBytes": 0,
+      "cls": 0,
+      "inpMs": null,
+      "scene": null
+    },
+    {
+      "width": 390,
+      "path": "/pt/workstation-lab",
+      "initialGzipBytes": 173085,
+      "lazyGzipBytes": 252556,
+      "cls": 0,
+      "inpMs": 200,
+      "scene": {
+        "idleFrames600ms": 0,
+        "drawCalls": 20,
+        "triangles": 9366,
+        "renderCpuMs": 1.6974
+      }
+    },
+    {
+      "width": 1440,
+      "path": "/pt",
+      "initialGzipBytes": 173085,
+      "lazyGzipBytes": 0,
+      "cls": 0,
+      "inpMs": null,
+      "scene": null
+    },
+    {
+      "width": 1440,
+      "path": "/pt/workstation-lab",
+      "initialGzipBytes": 173085,
+      "lazyGzipBytes": 252556,
+      "cls": 0,
+      "inpMs": 240,
+      "scene": {
+        "idleFrames600ms": 0,
+        "drawCalls": 20,
+        "triangles": 9366,
+        "renderCpuMs": 2.8844
+      }
+    }
+  ],
+  "physics": {
+    "environment": "Windows/Chromium/SwiftShader, cold page, Save-Data isolates bootstrap; gzip per resource. Readiness includes pointer automation/network/WASM, not an isolated benchmark or field percentile.",
+    "results": [
+      {
+        "width": 1440,
+        "initialGzipBytes": 173085,
+        "sceneLazyGzipBytes": 252556,
+        "studioAssetBytes": 112750,
+        "sceneReadyAfterEnableMs": 2153,
+        "physicsLazyGzipBytes": 1644937,
+        "physicsReadyAfterDragMs": 645,
+        "beforePhysics": "deferred",
+        "afterFollowPhysics": "deferred",
+        "physicsResources": [
+          {
+            "path": "/_next/static/chunks/2y3f5v7gi810-.js",
+            "gzipBytes": 1644937
+          }
+        ],
+        "scene": {
+          "drawCalls": 20,
+          "triangles": 9366,
+          "renderCpuMs": 2.5132,
+          "frames": 38,
+          "physics": "deferred",
+          "idleFrames600ms": 0
+        }
+      },
+      {
+        "width": 390,
+        "initialGzipBytes": 173085,
+        "sceneLazyGzipBytes": 252556,
+        "studioAssetBytes": 112750,
+        "sceneReadyAfterEnableMs": 3523,
+        "physicsLazyGzipBytes": 1644937,
+        "physicsReadyAfterDragMs": 562,
+        "beforePhysics": "deferred",
+        "afterFollowPhysics": "deferred",
+        "physicsResources": [
+          {
+            "path": "/_next/static/chunks/2y3f5v7gi810-.js",
+            "gzipBytes": 1644937
+          }
+        ],
+        "scene": {
+          "drawCalls": 20,
+          "triangles": 9366,
+          "renderCpuMs": 5.2421,
+          "frames": 38,
+          "physics": "deferred",
+          "idleFrames600ms": 0
+        }
+      }
+    ]
+  },
+  "lighthouse": [
+    {
+      "name": "workstation-mobile",
+      "version": "13.5.0",
+      "performance": 92,
+      "lcpMs": 3199.2257499999996,
+      "cls": 0,
+      "tbtMs": 71,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 60
+    },
+    {
+      "name": "workstation-desktop",
+      "version": "13.5.0",
+      "performance": 98,
+      "lcpMs": 681.54595,
+      "cls": 0.0012964565031216074,
+      "tbtMs": 118.5,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 60
+    },
+    {
+      "name": "control-mobile",
+      "version": "13.5.0",
+      "performance": 81,
+      "lcpMs": 3284.0366000000004,
+      "cls": 0,
+      "tbtMs": 431.5,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 63
+    }
+  ],
+  "hydration": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "scriptGateMsAfterFonts": 800,
+    "results": [
+      {
+        "width": 390,
+        "hash": "",
+        "nativeAnchorWaitMs": 0,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 3030.25,
+          "expertiseTop": 5430.34375,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 3030.25,
+          "expertiseTop": 5430.34375,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#work",
+        "nativeAnchorWaitMs": 190,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 1894.25,
+          "expertiseTop": 4294.34375,
+          "scrollY": 1136
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 1894.25,
+          "expertiseTop": 4294.34375,
+          "scrollY": 1136
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#about",
+        "nativeAnchorWaitMs": 259,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 80.25,
+          "expertiseTop": 2480.34375,
+          "scrollY": 2950
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 80.25,
+          "expertiseTop": 2480.34375,
+          "scrollY": 2950
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "",
+        "nativeAnchorWaitMs": 0,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 2484.453125,
+          "expertiseTop": 4179.109375,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 2484.453125,
+          "expertiseTop": 4179.109375,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#work",
+        "nativeAnchorWaitMs": 194,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 1568.453125,
+          "expertiseTop": 3263.109375,
+          "scrollY": 916
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 1568.453125,
+          "expertiseTop": 3263.109375,
+          "scrollY": 916
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#about",
+        "nativeAnchorWaitMs": 195,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 88.453125,
+          "expertiseTop": 1783.109375,
+          "scrollY": 2396
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 88.453125,
+          "expertiseTop": 1783.109375,
+          "scrollY": 2396
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      }
+    ]
+  }
+}

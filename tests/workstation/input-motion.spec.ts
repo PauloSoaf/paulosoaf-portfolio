@@ -4,8 +4,8 @@ const host = (page: Page) => page.locator("[data-workstation]");
 async function open(page: Page) {
   await page.goto("/pt/workstation-lab");
   if (page.viewportSize()!.width < 1280) await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
-  await expect(host(page)).toHaveAttribute("data-scene", "ready");
-  await expect(host(page)).toHaveAttribute("data-motion", "settled");
+  await expect(host(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
+  await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
 }
 async function key(page: Page, label: string) {
   const point = await host(page).evaluate((node, label) => (JSON.parse(node.dataset.keyPoints!) as { label: string; x: number; y: number }[]).find((key) => key.label === label)!, label);
@@ -63,7 +63,7 @@ test("trackpad moves cursor, clicks, double clicks, drags and scrolls owned cont
   await expect.poll(() => page.locator("[data-input-scroll]").evaluate((node) => node.scrollTop)).toBeGreaterThan(50);
   expect(await page.evaluate(() => scrollY)).toBe(beforeScroll);
   await page.getByRole("button", { name: "Girar à direita", exact: true }).click();
-  await page.waitForTimeout(1000); await moveCursor(page, 2, -2);
+  await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 }); await moveCursor(page, 2, -2);
   const cursor = page.locator("[data-notebook-cursor]");
   await expect(cursor).toHaveAttribute("style", /left: 100%; top: 0%;/);
   await expect(page.locator("canvas")).toHaveCount(1);
@@ -80,11 +80,11 @@ for (const width of [1440, 1920, 768, 390]) {
         const portal = document.querySelector<HTMLElement>("[data-workstation]")!;
         const [stamp, x, y, width] = portal.dataset.trajectory!.split(",").map(Number) as [number, number, number, number];
         if (stamp !== previous.time) {
-          // DOM layer and canvas share the identical ancestor scale; record the display matrix.
+          // Compare with the physical mesh matrix, independently of the DOM anchor formula.
           const screen = document.querySelector<HTMLElement>(".workstation-projected-screen");
           let screenError = 0;
-          if (screen && portal.dataset.displayCorners) {
-            const points = portal.dataset.displayCorners.split(";").map((point) => point.split(",").map(Number));
+          if (screen && portal.dataset.physicalDisplayCorners) {
+            const points = portal.dataset.physicalDisplayCorners.split(";").map((point) => point.split(",").map(Number));
             const matrix = new DOMMatrix(screen.style.transform), corners = [[0, 0], [800, 0], [0, 458.5366]];
             screenError = Math.max(...corners.map(([x, y], index) => { const point = matrix.transformPoint(new DOMPoint(x, y)); return Math.hypot(point.x - points[index]![0]!, point.y - points[index]![1]!); }));
           }
@@ -98,7 +98,7 @@ for (const width of [1440, 1920, 768, 390]) {
     for (const id of sections) {
       await page.locator(`[data-workstation-section-anchor="${id}"]`).evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
       await expect(host(page)).toHaveAttribute("data-chapter", id);
-      await expect(host(page)).toHaveAttribute("data-motion", "settled");
+      await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
       await expect(page.locator("[data-workstation-screen]")).toBeVisible();
       await expect(page.locator("canvas")).toHaveCount(1);
       const overlap = await page.evaluate((id) => {
@@ -114,12 +114,12 @@ for (const width of [1440, 1920, 768, 390]) {
     await page.mouse.move(12, 400);
     for (const delta of [45, 45, 45, -45, -45, 1100, -1100]) { await page.mouse.wheel(0, delta); await page.waitForTimeout(80); }
     await page.setViewportSize({ width: width === 390 ? 420 : width - 80, height: 900 });
-    await expect(host(page)).toHaveAttribute("data-motion", "settled");
+    await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
     const samples = await page.evaluate(() => (window as unknown as { trajectorySamples: { dt: number; shift: number; screenError: number }[] }).trajectorySamples);
     expect(samples.length).toBeGreaterThan(100);
     // First paint is initial placement. No later frame may snap to a distant scroll target.
     expect(samples.slice(1).every((sample) => sample.dt <= 0 || sample.shift / Math.min(sample.dt / 1000, .05) < 2401)).toBe(true);
-    expect(samples.every((sample) => sample.screenError < .01)).toBe(true);
+    expect(samples.every((sample) => sample.screenError < .25)).toBe(true);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   });
 }
@@ -128,7 +128,7 @@ test("direct anchor navigation and reduced motion avoid an animated spatial chas
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/pt/workstation-lab#about");
   await expect(host(page)).toHaveAttribute("data-chapter", "about");
-  await expect(host(page)).toHaveAttribute("data-motion", "settled");
+  await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
   await expect(page.locator("canvas")).toHaveCount(0);
   await page.locator('header nav a[href$="#about"]').filter({ visible: true }).click();
   await page.locator('[data-workstation-section-anchor="about"]').evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
@@ -173,7 +173,7 @@ test("native iframe survives all six chapters without virtual cross-origin input
   await frame.locator("input").fill("Persistent native screen");
   for (const id of ["work", "about", "expertise", "services", "contact"]) {
     await page.locator(`[data-workstation-section-anchor="${id}"]`).evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
-    await expect(host(page)).toHaveAttribute("data-motion", "settled");
+    await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
     expect(await original!.evaluate((node) => node === document.querySelector("iframe"))).toBe(true);
     await expect(frame.locator("input")).toHaveValue("Persistent native screen");
   }
@@ -187,7 +187,7 @@ for (const locale of ["en", "es"]) for (const theme of ["dark", "light"]) for (c
     await page.context().addCookies([{ name: "ps-theme", value: theme, url: process.env.QA_ORIGIN ?? "http://127.0.0.1:3300" }]);
     await page.goto(`/${locale}/workstation-lab`);
     if (width < 1280) await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
-    await expect(host(page)).toHaveAttribute("data-scene", "ready"); await expect(host(page)).toHaveAttribute("data-motion", "settled");
+    await expect(host(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 }); await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
     await expect(page.locator("html")).toHaveAttribute("lang", locale);
     await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
     await page.locator('[data-input-action="notes"]').click(); await key(page, "shift"); await key(page, "A");

@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 const workstation = (page: Page) => page.locator("[data-workstation]");
 async function open(page: Page) {
   await page.goto("/pt/workstation-lab");
-  await expect(workstation(page)).toHaveAttribute("data-scene", "ready");
+  await expect(workstation(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
   await expect(page.locator("[data-workstation-screen]")).toBeVisible();
   await expect(workstation(page)).toHaveAttribute("data-motion", "settled");
 }
@@ -26,6 +26,8 @@ test("real mesh hinge, three axes, chassis drag and quiet renderer", async ({ pa
   await page.getByRole("button", { name: "Inclinar notebook", exact: true }).click();
   await page.waitForTimeout(700);
   const pose = await workstation(page).getAttribute("data-pose");
+  await page.locator(".workstation-tools summary").click();
+  await page.locator('[data-notebook-tool="rotate"]').click();
   const box = (await page.locator("canvas").boundingBox())!;
   const point = (await workstation(page).getAttribute("data-drag-point"))!.split(",").map(Number);
   const scale = box.width / 800;

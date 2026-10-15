@@ -1,0 +1,15 @@
+{
+  "width": 336,
+  "height": 256,
+  "revision": "186",
+  "colorSpace": "srgb-linear",
+  "source": "Three.js RoomEnvironment (MIT), PMREM fromScene; generated locally by scripts/bake-workstation-environment.mjs, no external HDR photograph",
+  "faceSize": 64,
+  "sigma": 0.02,
+  "near": 0.1,
+  "far": 100,
+  "format": "OOEN magic uint32 LE, width/height uint32 LE, RGBA16F little-endian CubeUV; gzip",
+  "rawBytes": 688140,
+  "packedBytes": 112750,
+  "sha256": "c7a4fddff7c984966841e7dd15b38022a665642bac7793fb2c315318187a49ab"
+}

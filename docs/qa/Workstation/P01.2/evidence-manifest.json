@@ -1,0 +1,881 @@
+{
+  "date": "2026-10-15",
+  "screenshots": [
+    {
+      "file": "screenshots/after-hydration-about-after-js.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 60647,
+      "sha256": "86c2631173043c69c187815d3993825810524e9bb2475eed782e75629e748c9d"
+    },
+    {
+      "file": "screenshots/after-hydration-about-before-js.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 51333,
+      "sha256": "005079acbb55087ad0859830564c26fdb682eebc07f7453c839d9f6c8300aa7b"
+    },
+    {
+      "file": "screenshots/baked-final-dark-1440.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 284936,
+      "sha256": "c5a1eab2c290b3f3e5327dca6eb98f6b16ff57bbf2f598b5a9994a8e38e39468"
+    },
+    {
+      "file": "screenshots/baked-final-light-390.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 91067,
+      "sha256": "55bf7817440c24985ee217c5d9bcddc6b9259d0eea92cb0eb6d61dce5896c852"
+    },
+    {
+      "file": "screenshots/before-p01.1-angle.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 235656,
+      "sha256": "46cdee397b2cfd17082a8665b60896a3345fdd5bdcd32d3325067037dc0ee8d4"
+    },
+    {
+      "file": "screenshots/before-p01.1-front.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 250605,
+      "sha256": "6698969a7defb48d11e791b4a5718b97b325d187cc5f1e76e3581d19a29443a0"
+    },
+    {
+      "file": "screenshots/en-dark-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 117394,
+      "sha256": "9299adf2ae7b60a833300b174a96f439ee623793e2e389c6a04dc194e9fc160f"
+    },
+    {
+      "file": "screenshots/en-dark-1440-notes.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 234533,
+      "sha256": "27767b68e24b53da9373e3b5c6c6f5b6cd2ec9e943e8bee1e2e350e974262789"
+    },
+    {
+      "file": "screenshots/en-dark-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 50334,
+      "sha256": "8ebfddde162c5f5cbeb4e8005e1be48b2874b1a0999b28b5f184c1baa25c1e8e"
+    },
+    {
+      "file": "screenshots/en-dark-390-notes.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 82900,
+      "sha256": "b2c04f21138d0b488feacdb686f214578c865a6c52f8a656f7b1dacba9d327ec"
+    },
+    {
+      "file": "screenshots/en-light-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 129358,
+      "sha256": "935c81205bfc977cbd119e57dfb0bc1e469458d890b2366ad127badcce187322"
+    },
+    {
+      "file": "screenshots/en-light-1440-notes.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 239213,
+      "sha256": "6e82505588920fe36f3ba1b0b6cd7b94373335cf8e7c961c05d526b680d0bdd5"
+    },
+    {
+      "file": "screenshots/en-light-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 51995,
+      "sha256": "b1d89ded822cbc0a7474a0bb0a0e52dc83019fbdcf7893f7ae06c469c0269dc8"
+    },
+    {
+      "file": "screenshots/en-light-390-notes.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 82641,
+      "sha256": "7923348b1eba41af24ef3f6b8d092c877f5f3c53b718e8f7f9c37f1f35d07123"
+    },
+    {
+      "file": "screenshots/es-dark-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 121432,
+      "sha256": "30e3c5b0b2efc2fd70f383c4123bb2c272bb572023a7b69ea12f995dcd2253e0"
+    },
+    {
+      "file": "screenshots/es-dark-1440-notes.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 241979,
+      "sha256": "ff878392205519d39a959478f4aefebac6f634446d465d0f02e55db0710d1003"
+    },
+    {
+      "file": "screenshots/es-dark-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 48497,
+      "sha256": "c32194f155ee7ea9ea5bdd984479415a2e83ae6413269b133b53aec50cd02812"
+    },
+    {
+      "file": "screenshots/es-dark-390-notes.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 84497,
+      "sha256": "907eed4d02e4b1e1fb673e6b9908ba44c47bab8d3ff998a52d75e217024bf8f2"
+    },
+    {
+      "file": "screenshots/es-light-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 133178,
+      "sha256": "ad46bb0f347cfbf0b6475b6c22504900e705aa0fefd13b62af56c8e93cf5a7c9"
+    },
+    {
+      "file": "screenshots/es-light-1440-notes.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 246807,
+      "sha256": "160e7ed9715d42d2654b85884f936fd5070661b3a06fee69e01863f8b0707fc7"
+    },
+    {
+      "file": "screenshots/es-light-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 49944,
+      "sha256": "313631298378f3d6491abe9edc84326973b2fa509bf27faec1ff86e59369b789"
+    },
+    {
+      "file": "screenshots/es-light-390-notes.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 83659,
+      "sha256": "7edcd21471fcc86b0497bae51d816b750ac6882b3dffbb04f4b8efe742f1ff3d"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 154821,
+      "sha256": "c2203cd65c953131656ff84906ef6b0481fa16165012383536a2d21dc5380905"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-angle.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 229053,
+      "sha256": "fa53b27faf4244ed46200a1ff11c0fdfb49098f3a85eef9e1fbdc01c0cb19b85"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-closed.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 150887,
+      "sha256": "3338640edafcd14b2b1f9c325b908b2b50cb38ca6ebd81257f1872338449914b"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-contact.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 229549,
+      "sha256": "c3b82386a3284771ba52685105e25b027403b7da357450b51d8fc3f0558ea688"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-drag.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 282438,
+      "sha256": "d8a6cbc8da61dfc808deeaa6fccd3736e8310a6ad5c4abbe3f374d6374908ba6"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-expertise.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 361346,
+      "sha256": "2b684b7e441061e5c7f9569482dcdf07c22daceca3098813d2467e5b9fc22c5c"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 79829,
+      "sha256": "18e047b74f83266b620821a4c49a468bf688b95041ad3b98811a79fb23783d18"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-grazing.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 243559,
+      "sha256": "b5b784b7c0d099323cba1554ddc3e775846e02f4774a5a8164b35b326fed4948"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 284936,
+      "sha256": "c5a1eab2c290b3f3e5327dca6eb98f6b16ff57bbf2f598b5a9994a8e38e39468"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-keyboard-view.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 278385,
+      "sha256": "b5f727358faf5447a5aa7dfc67b8f58cdc206802d3999d507f24c3dd6084f65a"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-keys.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 241216,
+      "sha256": "9f15e02119cee67924367fb41881f90a58ae5740c1a0d6475547337333c38002"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-lid-half.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 234959,
+      "sha256": "fcf0a30f8b8a3d2ac87fe232e1c999d93273ba9af697b06025d073effd352d58"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-pointer.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 252415,
+      "sha256": "c00dc7c434e6ed08b0094d9c7beb9e135d3be9638013e28210a9dbf7e8858fae"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-services.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 225862,
+      "sha256": "f0d8fa81d0bf9aa63b32a0537f3caf315a3136ec6a0481790064a3c71fe06f78"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-throw.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 277071,
+      "sha256": "ff285e9eabedc59b31d1c9e3c26fb4beeb2549f7d6de7a63c9b3e431a2214b1a"
+    },
+    {
+      "file": "screenshots/pt-dark-1440-work.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 346319,
+      "sha256": "a40e7d893fe4708e79658433a27c3abe3c979f11530834b3e005f237f93faea4"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-about.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 218278,
+      "sha256": "7b7514763703207c6b6734b2a932604bf38233a8ed55a89c733260f2655d8928"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-angle.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 269421,
+      "sha256": "d2734a3da817869c5b09b137a43b42c36232888f3766033936d81136e0cd7ace"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-closed.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 175838,
+      "sha256": "82ac955346f7cac104a22a1232bfce6bcde0d03b82186f7f4b344e555b15fb22"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-contact.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 254527,
+      "sha256": "1e761b5e490c750e1a55e6df2d0786804d263ad77482487dc24780f2eab81327"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-drag.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 392654,
+      "sha256": "fe36f085cf721923752bd6c9e1c826f2b8d2cbd356f4d52923b62b352087ff7b"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-expertise.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 390182,
+      "sha256": "f9cb6ab7c47469a24765488a47e5e9c8cc4285582991b379099e6f3be08106f9"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-focus.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 110272,
+      "sha256": "dc1d7fc11f8ad312a372aa172e6e249afa6741ca92d0a19b087e0ce5bfeb70c9"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-grazing.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 334388,
+      "sha256": "a212e90837047908f431543b3fca3bc7febd115e99359fa2acc8047455f87472"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-hero.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 397735,
+      "sha256": "3636d8f7f4e26cbfa63539b4a648542df55513b805dfbcc26a1612bdfbcc38a5"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-keyboard-view.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 387295,
+      "sha256": "cbd61ba077c5cbe727d0f117fb60111a05d1fcafe7e3611dca31fe3f9d5ba8dc"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-keys.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 326702,
+      "sha256": "0b6c9e14aa2500f810c9f7c026bcdfa122475407b1363620ce7142f066f98dae"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-lid-half.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 316444,
+      "sha256": "021e608d32f53e02ded1f41cf44472b6795b4569e287278ab21f2c58a34a1a94"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-pointer.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 330079,
+      "sha256": "90048cade07eb29eab31521a228d146178d1906129fd1c85c1aeaa83b536e827"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-services.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 207851,
+      "sha256": "84235b65d9e9c1979f7e005e5ba560204145d64c2e3a2bf4c4cdaf2d0517caf2"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-throw.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 389518,
+      "sha256": "f961c671155c2c42ecbcac31bd747456388d79223793f62956841b619069122e"
+    },
+    {
+      "file": "screenshots/pt-dark-1920-work.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 371798,
+      "sha256": "dd65f3f99958d233a3f9d337d94de81d7cb81aae002e901ce9437a09ddc8f722"
+    },
+    {
+      "file": "screenshots/pt-dark-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 102423,
+      "sha256": "f33233f6ee4eb1822c15c076846d95d927824bccab1a82607d3c507f3bff1d51"
+    },
+    {
+      "file": "screenshots/pt-dark-390-angle.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 95043,
+      "sha256": "ade08b2736a0a09e1f0a43befc4a9fcb859346b58227702f4b8e677dc38bba89"
+    },
+    {
+      "file": "screenshots/pt-dark-390-closed.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 55404,
+      "sha256": "a8d624d1f6b2004d277e8301ca3d32b27b4fabac844c0c46de19a82641aa5cff"
+    },
+    {
+      "file": "screenshots/pt-dark-390-contact.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 96704,
+      "sha256": "3de182b65d7f6e27f3eef8d0cf497920d67dd6dcc1ea8ba645411c63b4a81c24"
+    },
+    {
+      "file": "screenshots/pt-dark-390-drag.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 87928,
+      "sha256": "d53ab5058367c5f4968d21ff6da025c7e814745dee9f140056be669796e58f4d"
+    },
+    {
+      "file": "screenshots/pt-dark-390-expertise.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 101469,
+      "sha256": "d068b3f6042dad834d6559a390155e60de39a86897a6a6dc6c93b175fb0fd4a1"
+    },
+    {
+      "file": "screenshots/pt-dark-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 54593,
+      "sha256": "f45fffb1260aefd0b8fd9732f833f5dca0ce6dbcfe55a33d8819ac09af66dc83"
+    },
+    {
+      "file": "screenshots/pt-dark-390-grazing.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 83293,
+      "sha256": "85592d145cb1107b6042a910f308dd94c0538eb8b83ccd66c86e111ca146835e"
+    },
+    {
+      "file": "screenshots/pt-dark-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 93034,
+      "sha256": "f014ce23d174bfe75aeb5e9640c04a1fed6b8354fd54e4c3495b54e03851108c"
+    },
+    {
+      "file": "screenshots/pt-dark-390-keyboard-view.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 92620,
+      "sha256": "6dee31c88b9b8e4b13e1affc7d27c065751fb6b6afbf240546b4ea7018bda7a5"
+    },
+    {
+      "file": "screenshots/pt-dark-390-keys.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 83679,
+      "sha256": "2fbc524533564aa754623cebc22125c04de057cd31794027be40e3c0866fd371"
+    },
+    {
+      "file": "screenshots/pt-dark-390-lid-half.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 79380,
+      "sha256": "72d1bb5cf80debf70b79bf4bcc667bff433a28ff3cbe392d42a0f806ed97c63d"
+    },
+    {
+      "file": "screenshots/pt-dark-390-pointer.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 82939,
+      "sha256": "67fee3d777fe649fb4895fe48415c5e8be43717e6a32b51f181042b2cfa66408"
+    },
+    {
+      "file": "screenshots/pt-dark-390-services.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 120925,
+      "sha256": "3064e3b6438df1983509b0a2c2bf0137f52be936687cd9c57ba148ecfd29c740"
+    },
+    {
+      "file": "screenshots/pt-dark-390-throw.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 87841,
+      "sha256": "553ca2b6a3482da01d69b69da5137fd34562243d53d9e99ad57a801cc6a93531"
+    },
+    {
+      "file": "screenshots/pt-dark-390-work.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 111607,
+      "sha256": "88fe96e0e90671cd083aef66a92a42797fd5076c3d3feccbef5f2415dd07b700"
+    },
+    {
+      "file": "screenshots/pt-dark-768-about.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 128764,
+      "sha256": "e90f747186fe335320fe6936c3bbab25120c05648494364e7761119dedbad2fb"
+    },
+    {
+      "file": "screenshots/pt-dark-768-angle.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 293366,
+      "sha256": "4b70e86e2043568dac3eb13e62eadf0a4064a8cf060ad902a8b978f5abd5ed73"
+    },
+    {
+      "file": "screenshots/pt-dark-768-closed.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 221716,
+      "sha256": "6dd09b3fa8f74ed389655b9380b84324b273b6d5c246a9bd176408a7d76a5f80"
+    },
+    {
+      "file": "screenshots/pt-dark-768-contact.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 187312,
+      "sha256": "9d48f49060752e60dadfbc897467e86f11b15e7b2b42499f8c84deeb7dce03d9"
+    },
+    {
+      "file": "screenshots/pt-dark-768-drag.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 281579,
+      "sha256": "45f5a03c2c0b063121bc6d1033c8105e6267c96f7fc687a66fcc5a24375609c1"
+    },
+    {
+      "file": "screenshots/pt-dark-768-expertise.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 201801,
+      "sha256": "a36a749446fd97975b29cc69154e97d36b7363659f804189eca8c7ddd8070748"
+    },
+    {
+      "file": "screenshots/pt-dark-768-focus.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 66262,
+      "sha256": "a8b01704596647d5d3da5817686ce4a2e340a1219a93c021710ba9af21061280"
+    },
+    {
+      "file": "screenshots/pt-dark-768-grazing.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 328276,
+      "sha256": "2da2ae82c23b5ffed06c43942c2082b3a0fb7fb52d3bb0325d5f35c896922c6c"
+    },
+    {
+      "file": "screenshots/pt-dark-768-hero.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 301511,
+      "sha256": "fd14753e729c5f83ad32bc93ba6f0446fb02f0f390f02bb30d11b7ba3849e942"
+    },
+    {
+      "file": "screenshots/pt-dark-768-keyboard-view.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 300802,
+      "sha256": "6fe6d46457b94122b5bcd7d1d5aa62716cf8b4cd26779980bd431182e3058f63"
+    },
+    {
+      "file": "screenshots/pt-dark-768-keys.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 263143,
+      "sha256": "73bf01b5f36a2b73c2e883ddfe7f01ca0df781772352c69c384be0eab0b3013d"
+    },
+    {
+      "file": "screenshots/pt-dark-768-lid-half.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 290380,
+      "sha256": "810aa23a7af2189686ff294256629fcd95bdfcb65f0bfd44c581a498a9137697"
+    },
+    {
+      "file": "screenshots/pt-dark-768-pointer.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 269666,
+      "sha256": "f3a817dde37504193d21507f0163cccac0a52bb59b77d29f5141651206aa5b8f"
+    },
+    {
+      "file": "screenshots/pt-dark-768-services.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 192665,
+      "sha256": "216403a62e6da8f9821c1d896af0fcd777e45b3ea93f65dd37888edecbdec158"
+    },
+    {
+      "file": "screenshots/pt-dark-768-throw.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 280892,
+      "sha256": "7eb218b90fd9e5e02f4b5a44e477975729251f9c9b9fd38468cb7ed9a2b35172"
+    },
+    {
+      "file": "screenshots/pt-dark-768-work.png",
+      "width": 768,
+      "height": 900,
+      "bytes": 181482,
+      "sha256": "a626526bb0f97b4e0bcb04a1a22c560f4849e256c8c69f8e6b3f0f94dd745efe"
+    },
+    {
+      "file": "screenshots/pt-light-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 153162,
+      "sha256": "7c708152da0c8fbd0fd2178c3548ac0d569ad19ec4f7f513bac6a8537c9d8614"
+    },
+    {
+      "file": "screenshots/pt-light-1440-angle.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 233033,
+      "sha256": "6c8317c95de6a554204c40af90684afd71b34de53322e6ade29e4c9b11116fb8"
+    },
+    {
+      "file": "screenshots/pt-light-1440-closed.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 150855,
+      "sha256": "ead730034ab9c722f8e5f4c74814dd36e647a8086d1a65aa41dd2a8a5631c385"
+    },
+    {
+      "file": "screenshots/pt-light-1440-contact.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 229685,
+      "sha256": "641ea2d59607d178ed52c689e835e4b07af9c529e5e4b42911f83cf9152171c4"
+    },
+    {
+      "file": "screenshots/pt-light-1440-drag.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 286975,
+      "sha256": "1f5ba90218a40b596b71471cdc908f8778cf8c40cb3a628b971caa76fbf2edf6"
+    },
+    {
+      "file": "screenshots/pt-light-1440-expertise.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 357819,
+      "sha256": "aa53b7bc091dc73ff888db1b8a99f293910298170b4ec3e9461ab951b37e7b35"
+    },
+    {
+      "file": "screenshots/pt-light-1440-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 87771,
+      "sha256": "e41b98416ccf6fb3a37a7591d905a4500eafc91bd001c7b05ca04070c9b1c92e"
+    },
+    {
+      "file": "screenshots/pt-light-1440-grazing.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 248255,
+      "sha256": "a53c5581e3f89f5eb364bd02d3b4d639cf9f6de86e096ee3b59ea3d06b5ecbd9"
+    },
+    {
+      "file": "screenshots/pt-light-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 287605,
+      "sha256": "f449d303e5fe18d5a760ea8a78ad8a8de022d41b838af4dbe5b3f27f84ee73ea"
+    },
+    {
+      "file": "screenshots/pt-light-1440-keyboard-view.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 284120,
+      "sha256": "2d7b46e6fe7b316bd9ea12f3f09a7d7b8fff881ee2a9e0f544103128c357384b"
+    },
+    {
+      "file": "screenshots/pt-light-1440-keys.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 245749,
+      "sha256": "bfbf74d9529872e211ee5fd93adb48287e2e0fa3a111b0ea8fae8809ba6b921f"
+    },
+    {
+      "file": "screenshots/pt-light-1440-lid-half.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 238226,
+      "sha256": "cd17e2b40368ac3a37ff26d92a741905bb19fc476ea458d12568ea2417390c18"
+    },
+    {
+      "file": "screenshots/pt-light-1440-pointer.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 253022,
+      "sha256": "27bae5f3b6b8248d9af25dfe5ed9f6d3c0f27a7ec7b0a006ea44c6c607f18799"
+    },
+    {
+      "file": "screenshots/pt-light-1440-services.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 226451,
+      "sha256": "87d02418f6c9144d402a096d477c3ec0bf02d8428d8e4299dd268aa424dd69f5"
+    },
+    {
+      "file": "screenshots/pt-light-1440-throw.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 280904,
+      "sha256": "5128e7422d05f15c6de1b7f79ba4afa7cb46764855ceda8527b439d4f0469bde"
+    },
+    {
+      "file": "screenshots/pt-light-1440-work.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 346943,
+      "sha256": "e4df1d6446d112ac8652ef1e002e42b87cd6222885c09f130ff10ba3a5b20f92"
+    },
+    {
+      "file": "screenshots/pt-light-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 103573,
+      "sha256": "cfc7753cbd6f0c44d5b2f3bb8f353557445cc7f61f416e59cf25dbb00f2cbefa"
+    },
+    {
+      "file": "screenshots/pt-light-390-angle.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 94834,
+      "sha256": "16ea37b1c34231169c33d456cc82d809b656ba9dbdc9d1948542161fff001ef2"
+    },
+    {
+      "file": "screenshots/pt-light-390-closed.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 53435,
+      "sha256": "5018d0d93d6acc0a7903c5f9f5d58182e62a2212ac51227c0b7001a0661b313f"
+    },
+    {
+      "file": "screenshots/pt-light-390-contact.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 95235,
+      "sha256": "e600ced4d348d983ca2d66814a8cf82748ceab9c004345173e35e67ec0f876a2"
+    },
+    {
+      "file": "screenshots/pt-light-390-drag.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 88037,
+      "sha256": "8fdfdd40fbb33fc806899430ed63a0606b92fcf86e75726c459f83bd26ae8891"
+    },
+    {
+      "file": "screenshots/pt-light-390-expertise.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 119716,
+      "sha256": "417c5aca019c71ad1fd7994b833048ac7a8a2b01b142294252962c39b2b7e130"
+    },
+    {
+      "file": "screenshots/pt-light-390-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 56297,
+      "sha256": "fe34806d2869b83dca76acef64cc249099869b2f92e0375e0b401e14e34fa7d5"
+    },
+    {
+      "file": "screenshots/pt-light-390-grazing.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 81238,
+      "sha256": "22a71c499022a73d0108ea8b787d7c0c6a455e88446d3742c7e85ff952c9e5bc"
+    },
+    {
+      "file": "screenshots/pt-light-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 91041,
+      "sha256": "afffaf6115d40445e14bd29f208e3ec5810817951ee80ee26df49c2c2fd3bfc1"
+    },
+    {
+      "file": "screenshots/pt-light-390-keyboard-view.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 90799,
+      "sha256": "37033f5c323079120fef62addcf22c60b803111cef138cf221f0553381b8f5d1"
+    },
+    {
+      "file": "screenshots/pt-light-390-keys.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 81928,
+      "sha256": "60c7de871c44ab9f0582249210013c18b6d75afdc7fffdb04d29ac1e995b9cef"
+    },
+    {
+      "file": "screenshots/pt-light-390-lid-half.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 77714,
+      "sha256": "b52b8f61cc583af66e323935cc45753f00cc3f59737dda2c898b76d6d0fc3ebe"
+    },
+    {
+      "file": "screenshots/pt-light-390-pointer.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 82251,
+      "sha256": "6cb5737727e55eb50a9f48d08b79c87c04a2a59a8e27b7a7b40b78d36e777357"
+    },
+    {
+      "file": "screenshots/pt-light-390-services.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 119931,
+      "sha256": "f6b44daab3306a1094bd3f9f42873473e3b241e7cd686e43afac09b69600341c"
+    },
+    {
+      "file": "screenshots/pt-light-390-throw.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 87502,
+      "sha256": "afd41e5db9825249b0910f0fc2a002f101796814a6a337da945b1633885ae1c4"
+    },
+    {
+      "file": "screenshots/pt-light-390-work.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 105816,
+      "sha256": "78146b5c13ca819209eb73848b446e55510cf090d4c9014793899e14005b9d2d"
+    }
+  ],
+  "videos": [
+    {
+      "file": "videos/pt-dark-1440.webm",
+      "width": 1440,
+      "height": 900,
+      "durationSeconds": 82.24,
+      "bytes": 9719500,
+      "sha256": "e8fcf159b592f86209a3b73d538380ad0d17f9492ae51595eca37705571003fc"
+    },
+    {
+      "file": "videos/pt-dark-1920.webm",
+      "width": 1920,
+      "height": 1080,
+      "durationSeconds": 77.32,
+      "bytes": 9249865,
+      "sha256": "97f33f034f6fe0e71c04a107b0ed2ab9c21d55984846646c177aaacbff7f5282"
+    },
+    {
+      "file": "videos/pt-dark-390.webm",
+      "width": 390,
+      "height": 844,
+      "durationSeconds": 69.76,
+      "bytes": 6931326,
+      "sha256": "dab65f8a0b2fbfc2778d988d7cf86f6d6f864f81b58bf6e577125392145af887"
+    },
+    {
+      "file": "videos/pt-dark-768.webm",
+      "width": 768,
+      "height": 900,
+      "durationSeconds": 68.88,
+      "bytes": 7836243,
+      "sha256": "6596baae07b104883d6bfb94a5bd0b6e6b523053c5ff166cf56f059a5b5677f3"
+    },
+    {
+      "file": "videos/pt-light-1440.webm",
+      "width": 1440,
+      "height": 900,
+      "durationSeconds": 71.84,
+      "bytes": 8469735,
+      "sha256": "875ffcf607f8b67a220c32c9192d5a85e7330015e0a5165f615d9881e8389670"
+    },
+    {
+      "file": "videos/pt-light-390.webm",
+      "width": 390,
+      "height": 844,
+      "durationSeconds": 73.4,
+      "bytes": 7421204,
+      "sha256": "a4fd7f412fd5b16109e0e8ddf4373c18b9d581f6967da29afbaf62d5decf0cd5"
+    }
+  ]
+}
