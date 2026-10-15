@@ -1,0 +1,66 @@
+[
+  {
+    "file": "videos/live-deborah.webm",
+    "bytes": 927361,
+    "sha256": "b9ce0747e3bddbb64d1112b9e151980822b6adf9ec453cf4a141f4dc93c177d6",
+    "durationSeconds": 8.92,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/live-nutriopus.webm",
+    "bytes": 978593,
+    "sha256": "d68f6140f4104d7f04bb75e1a4844bbc1939faf630ebbd1b2001fba60d278203",
+    "durationSeconds": 9.88,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-dark-1440.webm",
+    "bytes": 4240354,
+    "sha256": "5d8145edd4f45f4e21a097f0a49c26b90aea7b1f6061a9a9720b4d5f0206fff5",
+    "durationSeconds": 35.48,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-dark-1920.webm",
+    "bytes": 3886142,
+    "sha256": "71146ad5253e4317b4a10e53eff4d7ef39fe74379cac23c66d608ed4f7d60f17",
+    "durationSeconds": 30,
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "file": "videos/pt-dark-390.webm",
+    "bytes": 2969360,
+    "sha256": "32bb44b3f7c5d5232f2f97057f217d4f935234db6112d14deaa7e93eacee539b",
+    "durationSeconds": 29,
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "videos/pt-dark-768.webm",
+    "bytes": 3552103,
+    "sha256": "78f0e473d64f2be76b59b56bbd6d262b93a83ba7349c56ed331ecfdc35426daf",
+    "durationSeconds": 31.2,
+    "width": 768,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-light-1440.webm",
+    "bytes": 3953682,
+    "sha256": "02dac3474108584514ea80c3d2a1ba215a5066190440877874b2c339c0e14168",
+    "durationSeconds": 30.44,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-light-390.webm",
+    "bytes": 2955345,
+    "sha256": "2ff7ffe11f342b20e4c5ac65e22fe9c93cb45ba653b7985c4fb04808b903a1ac",
+    "durationSeconds": 27.68,
+    "width": 390,
+    "height": 844
+  }
+]

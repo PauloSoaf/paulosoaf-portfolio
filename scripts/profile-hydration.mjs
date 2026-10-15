@@ -21,6 +21,21 @@ try {
     await page.route("**/_next/**/*.js", async route => { await gate; await route.continue(); });
     await page.goto(`${origin}${pagePath}${hash}`, { waitUntil: "commit" });
     await page.locator("[data-timeline]").waitFor(); await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(800);
+    // Long native hash scrolls can exceed 800ms with CPU4x. Finish the browser's own
+    // navigation while JS is still blocked, then measure hydration independently.
+    const anchorWaitStart = Date.now();
+    if (hash) await page.evaluate(() => new Promise((resolve, reject) => {
+      let previous = scrollY, stableSince = performance.now();
+      const timeout = setTimeout(() => reject(new Error("Native anchor did not settle before hydration")), 6000);
+      const check = () => {
+        const target = document.getElementById(location.hash.slice(1));
+        const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop);
+        if (scrollY !== previous) { previous = scrollY; stableSince = performance.now(); }
+        if (target && Math.abs(target.getBoundingClientRect().top - padding) <= 1 && performance.now() - stableSince >= 180) { clearTimeout(timeout); resolve(); }
+        else requestAnimationFrame(check);
+      }; requestAnimationFrame(check);
+    }));
+    const nativeAnchorWaitMs = Date.now() - anchorWaitStart;
     const measure = () => page.evaluate(() => ({ height: document.querySelector("[data-timeline]").getBoundingClientRect().height,
       aboutTop: document.querySelector("#about").getBoundingClientRect().top, expertiseTop: document.querySelector("#expertise").getBoundingClientRect().top, scrollY }));
     const before = await measure();
@@ -31,7 +46,7 @@ try {
     if (hash && width === 1440) await page.screenshot({ path: `${screenshots}/after-hydration-about-after-js.png` });
     const delta = Object.fromEntries(Object.keys(before).map(key => [key, after[key] - before[key]]));
     if (Object.values(delta).some(value => Math.abs(value) > 1)) throw new Error(`Hydration shift: ${JSON.stringify({ width, hash, delta })}`);
-    results.push({ width, hash, before, after, delta }); await page.close();
+    results.push({ width, hash, nativeAnchorWaitMs, before, after, delta }); await page.close();
   }
   await writeFile(`${output}/hydration.json`, JSON.stringify({ latencyMs: 120, downloadBytesPerSecond: 180000, cpuSlowdown: 4, scriptGateMsAfterFonts: 800, results }, null, 2));
   console.log(results);

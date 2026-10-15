@@ -21,7 +21,7 @@ export function Section({ id, heading, band = false, children, sceneAnchor }: Se
       <div className="container-page relative">
         <span aria-hidden="true" data-scroll-decor className="section-orbit" />
         <SectionHeading headingId={headingId} {...heading} />
-        {sceneAnchor}
+        {sceneAnchor ?? <div className="workstation-section-anchor" data-workstation-section-anchor={id} aria-hidden="true" />}
         <div data-motion={id === "work" || id === "contact" ? "depth" : undefined} data-motion-delay="80">{children}</div>
       </div>
     </section>

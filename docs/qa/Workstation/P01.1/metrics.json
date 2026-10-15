@@ -1,0 +1,500 @@
+{
+  "date": "2026-10-15",
+  "base": "3c395abeabed80004893fa30ac60fe4d0b9b1922",
+  "environment": "Windows / Chromium / SwiftShader; unthrottled laboratory; Save-Data isolates initial/lazy JS; CPU gl.render timing is not GPU FPS",
+  "trajectories": [
+    {
+      "id": "pt-dark-1440",
+      "framesSampled": 394,
+      "maxPixelsPerSecond": 2400.0000000000014,
+      "maxScreenErrorLogicalPixels": 0.0008657022121680574,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-light-1440",
+      "framesSampled": 413,
+      "maxPixelsPerSecond": 2400.0000000000014,
+      "maxScreenErrorLogicalPixels": 0.0008806939946892088,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-1920",
+      "framesSampled": 430,
+      "maxPixelsPerSecond": 2400.0000000000027,
+      "maxScreenErrorLogicalPixels": 0.0008584428225378762,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-390",
+      "framesSampled": 572,
+      "maxPixelsPerSecond": 2400.0000000000023,
+      "maxScreenErrorLogicalPixels": 0.0008394668944206433,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 270.60819624159444,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 272.60922611359246,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 269.8711573716166,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 271.66601143466465,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 271.260878407139,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-light-390",
+      "framesSampled": 562,
+      "maxPixelsPerSecond": 2400.0000000000027,
+      "maxScreenErrorLogicalPixels": 0.0008888285919042667,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 270.60819624159444,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 272.60922611359246,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 269.8711573716166,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 271.66601143466465,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 271.260878407139,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    },
+    {
+      "id": "pt-dark-768",
+      "framesSampled": 535,
+      "maxPixelsPerSecond": 2400.000000000001,
+      "maxScreenErrorLogicalPixels": 0.0008394668944311356,
+      "idleFrames600ms": 0,
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 558.6239372706599,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 562.754718234492,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 557.1024476735712,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 560.8076142481674,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 559.9712870042108,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "width": 390,
+      "path": "/pt",
+      "initialGzipBytes": 171152,
+      "lazyGzipBytes": 0,
+      "cls": 0,
+      "inpMs": null,
+      "scene": null
+    },
+    {
+      "width": 390,
+      "path": "/pt/workstation-lab",
+      "initialGzipBytes": 171152,
+      "lazyGzipBytes": 250144,
+      "cls": 0,
+      "inpMs": 88,
+      "scene": {
+        "idleFrames600ms": 0,
+        "drawCalls": 17,
+        "triangles": 8000,
+        "renderCpuMs": 1.8124
+      }
+    },
+    {
+      "width": 1440,
+      "path": "/pt",
+      "initialGzipBytes": 171152,
+      "lazyGzipBytes": 0,
+      "cls": 0,
+      "inpMs": null,
+      "scene": null
+    },
+    {
+      "width": 1440,
+      "path": "/pt/workstation-lab",
+      "initialGzipBytes": 171152,
+      "lazyGzipBytes": 250144,
+      "cls": 0,
+      "inpMs": 192,
+      "scene": {
+        "idleFrames600ms": 0,
+        "drawCalls": 17,
+        "triangles": 8000,
+        "renderCpuMs": 1.782
+      }
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "workstation-mobile",
+      "version": "13.5.0",
+      "performance": 82,
+      "lcpMs": 3292.3665,
+      "cls": 0,
+      "tbtMs": 412,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 60
+    },
+    {
+      "name": "workstation-desktop",
+      "version": "13.5.0",
+      "performance": 99,
+      "lcpMs": 634.2130000000002,
+      "cls": 0.0009801522034563503,
+      "tbtMs": 69.00000000000011,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 60
+    },
+    {
+      "name": "control-mobile",
+      "version": "13.5.0",
+      "performance": 84,
+      "lcpMs": 3102.279,
+      "cls": 0,
+      "tbtMs": 395,
+      "accessibility": 100,
+      "bestPractices": 100,
+      "seo": 63
+    }
+  ],
+  "hydration": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "scriptGateMsAfterFonts": 800,
+    "results": [
+      {
+        "width": 390,
+        "hash": "",
+        "nativeAnchorWaitMs": 0,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 3030.25,
+          "expertiseTop": 5430.34375,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 3030.25,
+          "expertiseTop": 5430.34375,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#work",
+        "nativeAnchorWaitMs": 219,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 1894.25,
+          "expertiseTop": 4294.34375,
+          "scrollY": 1136
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 1894.25,
+          "expertiseTop": 4294.34375,
+          "scrollY": 1136
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#about",
+        "nativeAnchorWaitMs": 222,
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 80.25,
+          "expertiseTop": 2480.34375,
+          "scrollY": 2950
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 80.25,
+          "expertiseTop": 2480.34375,
+          "scrollY": 2950
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "",
+        "nativeAnchorWaitMs": 0,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 2484.453125,
+          "expertiseTop": 4179.109375,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 2484.453125,
+          "expertiseTop": 4179.109375,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#work",
+        "nativeAnchorWaitMs": 192,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 1568.453125,
+          "expertiseTop": 3263.109375,
+          "scrollY": 916
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 1568.453125,
+          "expertiseTop": 3263.109375,
+          "scrollY": 916
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#about",
+        "nativeAnchorWaitMs": 190,
+        "before": {
+          "height": 486.75,
+          "aboutTop": 88.453125,
+          "expertiseTop": 1783.109375,
+          "scrollY": 2396
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 88.453125,
+          "expertiseTop": 1783.109375,
+          "scrollY": 2396
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      }
+    ]
+  }
+}

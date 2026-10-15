@@ -1,0 +1,7482 @@
+{
+  "id": "pt-light-1440",
+  "stats": {
+    "framesSampled": 413,
+    "maxPixelsPerSecond": 2400.0000000000014,
+    "maxScreenErrorLogicalPixels": 0.0008806939946892088,
+    "idleFrames600ms": 0
+  },
+  "stages": [
+    {
+      "chapter": "work",
+      "chassisWidth": 584.8836142085777,
+      "screen": true,
+      "canvas": 1,
+      "horizontalOverflow": false
+    },
+    {
+      "chapter": "about",
+      "chassisWidth": 637.6824002657133,
+      "screen": true,
+      "canvas": 1,
+      "horizontalOverflow": false
+    },
+    {
+      "chapter": "expertise",
+      "chassisWidth": 562.4658410149754,
+      "screen": true,
+      "canvas": 1,
+      "horizontalOverflow": false
+    },
+    {
+      "chapter": "services",
+      "chassisWidth": 587.8153463790991,
+      "screen": true,
+      "canvas": 1,
+      "horizontalOverflow": false
+    },
+    {
+      "chapter": "contact",
+      "chassisWidth": 586.2942998759563,
+      "screen": true,
+      "canvas": 1,
+      "horizontalOverflow": false
+    }
+  ],
+  "samples": [
+    {
+      "time": 2251.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 14,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2634.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 15,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2718.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 16,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2784.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 17,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2818.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 18,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2868.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 19,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2918.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 20,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 2985,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 21,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3051.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 22,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3085,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 23,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3134.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 24,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3168.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 25,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3268.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 26,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3335,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 27,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3368.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 28,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3418.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 29,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3468.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 30,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3568.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 31,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3634.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 32,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3701.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 33,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3734.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 34,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3801.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 35,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3835,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 36,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3885,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 37,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3934.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 38,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 3968.3,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 39,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4068.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 40,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4101.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 41,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4151.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 42,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4184.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 43,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4234.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 44,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4318.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 45,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4368.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 46,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4401.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 47,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4451.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 48,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4501.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 49,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4601.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 50,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4634.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 51,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4684.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 52,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4718.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 53,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4768.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 54,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4851.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 55,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4901.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 56,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4934.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 57,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 4984.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 58,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5018.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 59,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5151.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 60,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5184.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 61,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5218.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 62,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5268.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 63,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5318.1,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 64,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5401.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 65,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5434.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 66,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5468.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 67,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5518.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 68,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5551.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 69,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5668.1,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 70,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5701.6,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 71,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5751.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 72,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5784.8,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 73,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5834.9,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 74,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 5951.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 75,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6018.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 76,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6068.1,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 77,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6118.2,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 78,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6418.1,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 79,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6801.5,
+      "x": 667.96875,
+      "y": 175.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 0,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 80,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6918.1,
+      "x": 667.96875,
+      "y": 171.9995697723046,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 81,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 6968.2,
+      "x": 667.96875,
+      "y": 139.53980905189349,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 82,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7001.5,
+      "x": 667.96875,
+      "y": 114.2990751321686,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 83,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7034.8,
+      "x": 667.96875,
+      "y": 92.03487464485715,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 84,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7068.1,
+      "x": 667.96875,
+      "y": 74.03351920517741,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 85,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7101.5,
+      "x": 667.96875,
+      "y": 60.17365625658817,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 86,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7134.8,
+      "x": 667.96875,
+      "y": 49.92277427955348,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 87,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7168.2,
+      "x": 667.96875,
+      "y": 42.478224932591786,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 88,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7218.2,
+      "x": 667.96875,
+      "y": 35.17799527265046,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 89,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7251.5,
+      "x": 667.96875,
+      "y": 32.09278067016357,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 90,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7284.7,
+      "x": 667.96875,
+      "y": 29.968315302779317,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 91,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7318.1,
+      "x": 667.96875,
+      "y": 28.505096435641953,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 92,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7368.1,
+      "x": 667.96875,
+      "y": 27.145186448577014,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 93,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7418.1,
+      "x": 667.96875,
+      "y": 26.392903167339206,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 94,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7451.4,
+      "x": 667.96875,
+      "y": 26.091916562363654,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 95,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7501.5,
+      "x": 667.96875,
+      "y": 25.817592250136176,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 96,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7551.5,
+      "x": 667.96875,
+      "y": 25.66945846084571,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 97,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7584.8,
+      "x": 667.96875,
+      "y": 25.611223399561002,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 98,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7634.8,
+      "x": 667.96875,
+      "y": 25.558891609754795,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 99,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7684.8,
+      "x": 667.96875,
+      "y": 25.531062063190692,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 100,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7718.1,
+      "x": 667.96875,
+      "y": 25.520247129922648,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 101,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7768.1,
+      "x": 667.96875,
+      "y": 25.510620621616003,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 102,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7818.1,
+      "x": 667.96875,
+      "y": 25.505555208455817,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 103,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7851.5,
+      "x": 667.96875,
+      "y": 25.503598029132515,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 104,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7901.4,
+      "x": 667.96875,
+      "y": 25.501876652565198,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 105,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 7951.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 106,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8068,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 107,
+      "alignmentError": 0.00024612604298456686,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8101.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 108,
+      "alignmentError": 0.00022218273914277785,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8201.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 109,
+      "alignmentError": 0.0002522729132174143,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8234.8,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 110,
+      "alignmentError": 0.00033337598505029173,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8284.8,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 111,
+      "alignmentError": 0.0004032670793491263,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8334.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 112,
+      "alignmentError": 0.00020378880900935874,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8384.8,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 113,
+      "alignmentError": 0.00038042959778612686,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8434.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 114,
+      "alignmentError": 0.00016414431652965767,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8501.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 115,
+      "alignmentError": 0.00008349962770905212,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8551.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 116,
+      "alignmentError": 0.00008036229344050924,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8601.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 117,
+      "alignmentError": 0.00012846471708078243,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8651.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 118,
+      "alignmentError": 0.00006966933283953553,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 8701.4,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "NOTES",
+      "frame": 119,
+      "alignmentError": 0.000264531245568778,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9434.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 120,
+      "alignmentError": 0.0003840445470074525,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9484.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 121,
+      "alignmentError": 0.0007441499502497304,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9551.3,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 122,
+      "alignmentError": 0.0004975814230157483,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9618,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 123,
+      "alignmentError": 0.00013826597857546563,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9684.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 124,
+      "alignmentError": 0.0005327887189233725,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9734.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 125,
+      "alignmentError": 0.0004177765093249122,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9768,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 126,
+      "alignmentError": 0.00007709843885738767,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9851.3,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 127,
+      "alignmentError": 0.00017868554470767506,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9901.3,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 128,
+      "alignmentError": 0.0005013033513844535,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9934.6,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 129,
+      "alignmentError": 0.00036615526134195373,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 9984.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 130,
+      "alignmentError": 0.0002034847075727317,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10034.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 131,
+      "alignmentError": 0.00039492124266078714,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10084.7,
+      "x": 667.96875,
+      "y": 25.5,
+      "width": 770.03125,
+      "pitch": -0.06,
+      "yaw": -0.16,
+      "roll": 0.015,
+      "scrollY": 150,
+      "chapter": "hero",
+      "state": "DESKTOP",
+      "frame": 132,
+      "alignmentError": 0.00027271988852694043,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10667.9,
+      "x": 668.8480145219298,
+      "y": 39.501720910781614,
+      "width": 769.3114740344301,
+      "pitch": -0.059533275969640614,
+      "yaw": -0.15346586357496866,
+      "roll": 0.014183232946871082,
+      "scrollY": 850,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 133,
+      "alignmentError": 0.0002309370560143306,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10768,
+      "x": 676.3688268905162,
+      "y": 159.26581144428218,
+      "width": 762.6369357362956,
+      "pitch": -0.055205307873585796,
+      "yaw": -0.09287431023020123,
+      "roll": 0.006609288778775153,
+      "scrollY": 850,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 134,
+      "alignmentError": 0.0005959346360419945,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10818,
+      "x": 683.8896392591025,
+      "y": 279.02990197778274,
+      "width": 755.0483097989447,
+      "pitch": -0.050284618309346114,
+      "yaw": -0.023984656330845622,
+      "roll": -0.0020019179586442983,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 135,
+      "alignmentError": 0.0001676552974963986,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10884.7,
+      "x": 684.5831057291812,
+      "y": 316.92385522751283,
+      "width": 749.1574304460592,
+      "pitch": -0.046464797857627,
+      "yaw": 0.029492829993221947,
+      "roll": -0.008686603749152744,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 136,
+      "alignmentError": 0.00047446660796727786,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 10968,
+      "x": 679.9971462387041,
+      "y": 287.38674044181477,
+      "width": 745.178114336596,
+      "pitch": -0.04388449156577651,
+      "yaw": 0.06561711807912889,
+      "roll": -0.013202139759891112,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 137,
+      "alignmentError": 0.0003809284822356622,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11017.9,
+      "x": 675.279914220296,
+      "y": 248.77874613565166,
+      "width": 742.6825044916228,
+      "pitch": -0.04226626431067742,
+      "yaw": 0.08827229965051613,
+      "roll": -0.016034037456314515,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 138,
+      "alignmentError": 0.00016504494375296422,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11101.3,
+      "x": 671.714868338995,
+      "y": 217.62700763426733,
+      "width": 741.1798122931235,
+      "pitch": -0.041291874232623156,
+      "yaw": 0.10191376074327578,
+      "roll": -0.017739220092909472,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 139,
+      "alignmentError": 0.00007289716908714486,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11184.6,
+      "x": 669.3399231463146,
+      "y": 196.22787317296647,
+      "width": 740.3043485140597,
+      "pitch": -0.040724197618032656,
+      "yaw": 0.10986123334754275,
+      "roll": -0.018732654168442844,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 140,
+      "alignmentError": 0.0001681029605517148,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11267.9,
+      "x": 667.8603268769658,
+      "y": 182.65680593423406,
+      "width": 739.8054229545788,
+      "pitch": -0.040400679524752264,
+      "yaw": 0.11439048665346829,
+      "roll": -0.019298810831683538,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 141,
+      "alignmentError": 0.00010157291036942968,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11351.2,
+      "x": 666.976489625202,
+      "y": 174.45538242832993,
+      "width": 739.5257914634886,
+      "pitch": -0.0402193581931436,
+      "yaw": 0.11692898529598954,
+      "roll": -0.01961612316199869,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 142,
+      "alignmentError": 0.0001749814682944359,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11434.6,
+      "x": 666.4635523927442,
+      "y": 169.6565536404459,
+      "width": 739.3711032137842,
+      "pitch": -0.04011905375564523,
+      "yaw": 0.11833324742096679,
+      "roll": -0.01979165592762085,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 143,
+      "alignmentError": 0.00008131236108147625,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11517.9,
+      "x": 666.1720697928356,
+      "y": 166.9129440740525,
+      "width": 739.2864276675646,
+      "pitch": -0.04006414762638426,
+      "yaw": 0.11910193323062036,
+      "roll": -0.019887741653827548,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 144,
+      "alignmentError": 0.00027323598573487603,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11584.6,
+      "x": 666.0090666062014,
+      "y": 165.3714483035953,
+      "width": 739.2404760566127,
+      "pitch": -0.04003435124238309,
+      "yaw": 0.11951908260663671,
+      "roll": -0.019939885325829593,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 145,
+      "alignmentError": 0.0002296044448268076,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11651.2,
+      "x": 665.9190553564731,
+      "y": 164.51704580197773,
+      "width": 739.2157189998621,
+      "pitch": -0.04001829803435842,
+      "yaw": 0.1197438275189821,
+      "roll": -0.019967978439872767,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 146,
+      "alignmentError": 0.00023569274443597577,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11734.6,
+      "x": 665.8698549198281,
+      "y": 164.04860652724952,
+      "width": 739.2024625465161,
+      "pitch": -0.040009702157822034,
+      "yaw": 0.11986416979049155,
+      "roll": -0.01998302122381145,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 147,
+      "alignmentError": 0.0002800784009486438,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11834.6,
+      "x": 665.8431869931756,
+      "y": 163.79405947103504,
+      "width": 739.1954016417229,
+      "pitch": -0.04,
+      "yaw": 0.11992826878435879,
+      "roll": -0.01999103359804485,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 148,
+      "alignmentError": 0.0002433959868152395,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 11917.9,
+      "x": 665.8288338705603,
+      "y": 163.65676651949508,
+      "width": 739.1916579597671,
+      "pitch": -0.04,
+      "yaw": 0.1199622539822553,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 149,
+      "alignmentError": 0.00020811481038400558,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12001.2,
+      "x": 665.821155000799,
+      "y": 163.58318172664005,
+      "width": 739.1896810425692,
+      "pitch": -0.04,
+      "yaw": 0.11998020046461963,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 150,
+      "alignmentError": 0.0002080225832367463,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12067.9,
+      "x": 665.8170680095126,
+      "y": 163.5439554982317,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.11998964373679315,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 151,
+      "alignmentError": 0.0003498024991283593,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12134.5,
+      "x": 665.8149025158631,
+      "y": 163.52314294764054,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 152,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12184.6,
+      "x": 665.8125,
+      "y": 163.51214560295693,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 153,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12251.2,
+      "x": 665.8125,
+      "y": 163.50635567524338,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 154,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12317.9,
+      "x": 665.8125,
+      "y": 163.50331720102864,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 155,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12367.9,
+      "x": 665.8125,
+      "y": 163.50172725634226,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 156,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 12434.5,
+      "x": 665.8125,
+      "y": 163.5,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": 0.12,
+      "roll": -0.02,
+      "scrollY": 1312,
+      "chapter": "work",
+      "state": "DESKTOP",
+      "frame": 157,
+      "alignmentError": 0.0004137410242213511,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13417.9,
+      "x": 684.8125435734116,
+      "y": 178.64191313182369,
+      "width": 740.6066327548115,
+      "pitch": -0.03953327596964061,
+      "yaw": 0.11719965581784368,
+      "roll": -0.019299913954460922,
+      "scrollY": 2012,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 158,
+      "alignmentError": 0.00021627828551910018,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13451.3,
+      "x": 747.5004216246922,
+      "y": 228.60045139534418,
+      "width": 748.6821242509869,
+      "pitch": -0.03687741031827765,
+      "yaw": 0.10126446190966591,
+      "roll": -0.015316115477416478,
+      "scrollY": 2012,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 159,
+      "alignmentError": 0.00023974431573641167,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13501.2,
+      "x": 841.1568621863396,
+      "y": 303.2391058668943,
+      "width": 763.9993749568335,
+      "pitch": -0.03183987668428905,
+      "yaw": 0.07103926010573436,
+      "roll": -0.0077598150264335895,
+      "scrollY": 2012,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 160,
+      "alignmentError": 0.0001852413877769668,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13534.5,
+      "x": 903.6570519799809,
+      "y": 353.04806766854745,
+      "width": 773.0256529043975,
+      "pitch": -0.02887131661931428,
+      "yaw": 0.05322789971588573,
+      "roll": -0.0033069749289714317,
+      "scrollY": 2012,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 161,
+      "alignmentError": 0.0002584820952794817,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13601.2,
+      "x": 997.5011807992641,
+      "y": 427.8362986019622,
+      "width": 783.3329825602282,
+      "pitch": -0.025481444584508718,
+      "yaw": 0.03288866750705235,
+      "roll": 0.0017778331232369132,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 162,
+      "alignmentError": 0.00012858235348002284,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13651.2,
+      "x": 941.5737600859891,
+      "y": 423.46782288785596,
+      "width": 790.0986002608311,
+      "pitch": -0.02325636990394046,
+      "yaw": 0.01953821942364278,
+      "roll": 0.005115445144089305,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 163,
+      "alignmentError": 0.00019672499811279696,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13717.9,
+      "x": 830.9649368759138,
+      "y": 376.9308673784727,
+      "width": 794.2762567037388,
+      "pitch": -0.021882423283456943,
+      "yaw": 0.011294539700741662,
+      "roll": 0.007176365074814585,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 164,
+      "alignmentError": 0.0005311420900239204,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13767.9,
+      "x": 721.5573951665729,
+      "y": 327.63594048818516,
+      "width": 796.7570015072555,
+      "pitch": -0.02106655654437644,
+      "yaw": 0.006399339266258634,
+      "roll": 0.008400165183435341,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 165,
+      "alignmentError": 0.0004358786298164322,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13817.8,
+      "x": 612.6233271526945,
+      "y": 277.8782634328047,
+      "width": 798.1884705043316,
+      "pitch": -0.02059577537370391,
+      "yaw": 0.0035746522422234537,
+      "roll": 0.009106336939444137,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 166,
+      "alignmentError": 0.0005215981711447507,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13867.8,
+      "x": 513.5397469333957,
+      "y": 232.45881323433116,
+      "width": 799.001478229921,
+      "pitch": -0.02032839359344838,
+      "yaw": 0.001970361560690294,
+      "roll": 0.009507409609827426,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 167,
+      "alignmentError": 0.0006949810061214822,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13901.2,
+      "x": 460.2970927779577,
+      "y": 208.0244697230013,
+      "width": 799.3330139939727,
+      "pitch": -0.020219358193143598,
+      "yaw": 0.0013161491588615983,
+      "roll": 0.0096709627102846,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 168,
+      "alignmentError": 0.0004710112274395023,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 13984.5,
+      "x": 402.2460298442235,
+      "y": 181.3683294966139,
+      "width": 799.6380021742413,
+      "pitch": -0.020119053755645225,
+      "yaw": 0.0007143225338713572,
+      "roll": 0.00982141936653216,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 169,
+      "alignmentError": 0.0003908867830228717,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14017.8,
+      "x": 375.7186899351349,
+      "y": 169.1827531890081,
+      "width": 799.7600271603418,
+      "pitch": -0.020078922208315152,
+      "yaw": 0.00047353324989091823,
+      "roll": 0.00988161668752727,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 170,
+      "alignmentError": 0.00047853521611309686,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14067.8,
+      "x": 349.16125459841896,
+      "y": 156.98042555023383,
+      "width": 799.8712428085906,
+      "pitch": -0.02004234563335149,
+      "yaw": 0.00025407380010893874,
+      "roll": 0.009936481549972766,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 171,
+      "alignmentError": 0.0004709294677021389,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14117.8,
+      "x": 333.4480566800695,
+      "y": 149.75915632169037,
+      "width": 799.9312987156654,
+      "pitch": -0.020022594461446094,
+      "yaw": 0.00013556676867656792,
+      "roll": 0.009966108307830858,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 172,
+      "alignmentError": 0.0003498365988149769,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14167.9,
+      "x": 324.391153280543,
+      "y": 145.5962609232012,
+      "width": 799.9635190361829,
+      "pitch": -0.02001199785038176,
+      "yaw": 0.00007198710229057555,
+      "roll": 0.009982003224427357,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 173,
+      "alignmentError": 0.0006042099334708495,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14217.9,
+      "x": 319.2709299288949,
+      "y": 143.2425386385438,
+      "width": 799.9807097071364,
+      "pitch": -0.02,
+      "yaw": 0.000038065120553041734,
+      "roll": 0.00999048371986174,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 174,
+      "alignmentError": 0.0007619978131458935,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14251.2,
+      "x": 317.1909234658644,
+      "y": 142.28630118571215,
+      "width": 799.9874069218814,
+      "pitch": -0.02,
+      "yaw": 0.000024849650552553446,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 175,
+      "alignmentError": 0.0005467062468484144,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14301.2,
+      "x": 315.27251990940067,
+      "y": 141.40430280450983,
+      "width": 799.9933805853198,
+      "pitch": -0.02,
+      "yaw": 0.0000130619488037674,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 176,
+      "alignmentError": 0.0003035148172946044,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14351.2,
+      "x": 314.2235309763697,
+      "y": 140.921992435349,
+      "width": 799.9965312067309,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 177,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14401.1,
+      "x": 313.655601310705,
+      "y": 140.6608524260065,
+      "width": 799.9981848650821,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 178,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14451.1,
+      "x": 313.34902915993507,
+      "y": 140.51988098872036,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 179,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14501.1,
+      "x": 313.1849762100609,
+      "y": 140.44444141238796,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 180,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14551.2,
+      "x": 313.09764340376745,
+      "y": 140.40428017096335,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 181,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14601.1,
+      "x": 313.0514281885165,
+      "y": 140.38302682202598,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 182,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14651.1,
+      "x": 313.0269675227965,
+      "y": 140.37177761683895,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 183,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14717.8,
+      "x": 313.01410131585163,
+      "y": 140.36586044699825,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 184,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14767.8,
+      "x": 313.00735490318544,
+      "y": 140.3627577076783,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 185,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14801.2,
+      "x": 313.004755356614,
+      "y": 140.36156213232056,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 186,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14851.2,
+      "x": 313.00247107538723,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 187,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14884.5,
+      "x": 313.001596117267,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 188,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 14934.5,
+      "x": 313,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 189,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15417.8,
+      "x": 340.2333471714703,
+      "y": 124.02403393742156,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 3384,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 190,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15467.7,
+      "x": 442.93446423209434,
+      "y": 62.42096457800697,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 3384,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 191,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15484.4,
+      "x": 477.30537916019574,
+      "y": 41.80430609499844,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 3384,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 192,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15517.8,
+      "x": 546.0472090164022,
+      "y": 0.5709891289791074,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 3384,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 193,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15567.8,
+      "x": 648.9541399388681,
+      "y": -61.15553327524211,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 3384,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 194,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15617.8,
+      "x": 751.861070861334,
+      "y": -122.88205567946332,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 4084,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 195,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15684.4,
+      "x": 697.3174482778944,
+      "y": -54.70400886146126,
+      "width": 786.4133185434649,
+      "pitch": -0.02311609967109208,
+      "yaw": -0.02181269769764453,
+      "roll": 0.004546825575588869,
+      "scrollY": 4084,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 196,
+      "alignmentError": 0.0004885952573034283,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15751.1,
+      "x": 608.5895289405324,
+      "y": 26.088047245946896,
+      "width": 764.406537090929,
+      "pitch": -0.02816334573080289,
+      "yaw": -0.05714342011562022,
+      "roll": -0.004285855028905054,
+      "scrollY": 4084,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 197,
+      "alignmentError": 0.0003730378550676596,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15817.7,
+      "x": 518.6738325132416,
+      "y": 105.55607563469746,
+      "width": 745.9004829819947,
+      "pitch": -0.032407701448315125,
+      "yaw": -0.08685391013820584,
+      "roll": -0.01171347753455146,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 198,
+      "alignmentError": 0.0001654908184207538,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15884.4,
+      "x": 408.51645131574355,
+      "y": 153.15178308515044,
+      "width": 732.9476194709858,
+      "pitch": -0.03537843524048344,
+      "yaw": -0.10764904668338404,
+      "roll": -0.01691226167084601,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 199,
+      "alignmentError": 0.00038246684852785056,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 15967.8,
+      "x": 290.15511309242225,
+      "y": 168.9949930833998,
+      "width": 724.6467529056221,
+      "pitch": -0.03728223549199134,
+      "yaw": -0.12097564844393935,
+      "roll": -0.020243912110984835,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 200,
+      "alignmentError": 0.00040217040088917665,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16034.5,
+      "x": 192.75656683213566,
+      "y": 173.94457338584988,
+      "width": 719.5967130316006,
+      "pitch": -0.03844046001067032,
+      "yaw": -0.12908322007469225,
+      "roll": -0.022270805018673057,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 201,
+      "alignmentError": 0.0002951183280752773,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16084.5,
+      "x": 125.21074011906018,
+      "y": 174.95346357745657,
+      "width": 716.6281303547045,
+      "pitch": -0.03912130319763093,
+      "yaw": -0.1338491223834165,
+      "roll": -0.023462280595854125,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 202,
+      "alignmentError": 0.0004209874274545118,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16117.8,
+      "x": 94.28494615162087,
+      "y": 174.86355326133327,
+      "width": 715.3904647311751,
+      "pitch": -0.039405161287241676,
+      "yaw": -0.13583612901069175,
+      "roll": -0.023959032252672936,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 203,
+      "alignmentError": 0.0005945216158983049,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16184.4,
+      "x": 63.28640024013474,
+      "y": 174.4257834065775,
+      "width": 714.226429733375,
+      "pitch": -0.039672132223845205,
+      "yaw": -0.13770492556691644,
+      "roll": -0.024426231391729107,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 204,
+      "alignmentError": 0.0004967267330805827,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16251.1,
+      "x": 44.92576459537106,
+      "y": 173.98421810353057,
+      "width": 713.577095389701,
+      "pitch": -0.03982105678215065,
+      "yaw": -0.13874739747505455,
+      "roll": -0.024686849368763638,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 205,
+      "alignmentError": 0.0008406439968107295,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16317.8,
+      "x": 34.33466824483133,
+      "y": 173.65362114030387,
+      "width": 713.2192431014491,
+      "pitch": -0.039903130053779795,
+      "yaw": -0.13932191037645855,
+      "roll": -0.024830477594114643,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 206,
+      "alignmentError": 0.00041951491060569454,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16384.5,
+      "x": 28.343579653434368,
+      "y": 173.4341706165843,
+      "width": 713.0239586046342,
+      "pitch": -0.03994791847089556,
+      "yaw": -0.13963542929626888,
+      "roll": -0.024908857324067224,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 207,
+      "alignmentError": 0.0005060162280046404,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16451.1,
+      "x": 25.005138761890283,
+      "y": 173.29774301402742,
+      "width": 712.9182530701036,
+      "pitch": -0.03997216199073059,
+      "yaw": -0.1398051339351141,
+      "roll": -0.024951283483778525,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 208,
+      "alignmentError": 0.0002792788113057302,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16501,
+      "x": 23.16956093352525,
+      "y": 173.216485918006,
+      "width": 712.8615078740045,
+      "pitch": -0.039985176477562126,
+      "yaw": -0.13989623534293488,
+      "roll": -0.02497405883573372,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 209,
+      "alignmentError": 0.0005314248955769557,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16551.1,
+      "x": 22.165882426957438,
+      "y": 173.16925173228523,
+      "width": 712.8310973269558,
+      "pitch": -0.039992151123722716,
+      "yaw": -0.139945057866059,
+      "roll": -0.02498626446651475,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 210,
+      "alignmentError": 0.0002562787945045412,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16617.7,
+      "x": 21.622913019057805,
+      "y": 173.14242958339852,
+      "width": 712.8149253387553,
+      "pitch": -0.04,
+      "yaw": -0.13997102113684864,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 211,
+      "alignmentError": 0.0004557931841617395,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16667.7,
+      "x": 21.331155834808314,
+      "y": 173.12743842028502,
+      "width": 712.8063629439823,
+      "pitch": -0.04,
+      "yaw": -0.13998476760829923,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 212,
+      "alignmentError": 0.0003738695716724875,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16734.4,
+      "x": 21.175285782361815,
+      "y": 173.11916389818907,
+      "width": 712.8018469883544,
+      "pitch": -0.04,
+      "yaw": -0.1399920177359512,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 213,
+      "alignmentError": 0.0004655293284267525,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16801,
+      "x": 21.092426663513635,
+      "y": 173.11464266136133,
+      "width": 712.7994733345148,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 214,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16851,
+      "x": 21.048570503806136,
+      "y": 173.112192773861,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 215,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16901.1,
+      "x": 21.02544666216603,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 216,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16951,
+      "x": 21.013312844891654,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 217,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 16984.4,
+      "x": 21.008616774349296,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 218,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17051.1,
+      "x": 21.00448430507891,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 219,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17084.4,
+      "x": 21.00289917052759,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 220,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17134.4,
+      "x": 21,
+      "y": 173.109375,
+      "width": 712.796875,
+      "pitch": -0.04,
+      "yaw": -0.14,
+      "roll": -0.025,
+      "scrollY": 4454,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 221,
+      "alignmentError": 0.0001328629439820633,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17767.7,
+      "x": 52.59838657223372,
+      "y": 186.03908915354987,
+      "width": 713.4316926069185,
+      "pitch": -0.03976663798482031,
+      "yaw": -0.13486603566604677,
+      "roll": -0.023833189924101536,
+      "scrollY": 5154,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 222,
+      "alignmentError": 0.0002857195588176247,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17801.1,
+      "x": 126.78767844129645,
+      "y": 216.39653588357288,
+      "width": 717.04408487178,
+      "pitch": -0.038438705159138914,
+      "yaw": -0.10565151350105613,
+      "roll": -0.017193525795694567,
+      "scrollY": 5154,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 223,
+      "alignmentError": 0.00045951565153502935,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17834.3,
+      "x": 200.53272305366465,
+      "y": 246.57220149545466,
+      "width": 721.6366367995315,
+      "pitch": -0.03675046091229172,
+      "yaw": -0.0685101400704179,
+      "roll": -0.008752304561458611,
+      "scrollY": 5154,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 224,
+      "alignmentError": 0.0002683632379280684,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17867.7,
+      "x": 274.72201492273547,
+      "y": 276.92964822548095,
+      "width": 726.0113121276785,
+      "pitch": -0.035142309154673056,
+      "yaw": -0.03313080140280726,
+      "roll": -0.0007115457733652859,
+      "scrollY": 5154,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 225,
+      "alignmentError": 0.00027656592273745333,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17917.7,
+      "x": 385.7838290979863,
+      "y": 322.3749277614465,
+      "width": 731.206864788962,
+      "pitch": -0.0332323989288135,
+      "yaw": 0.00888722356610297,
+      "roll": 0.008838005355932491,
+      "scrollY": 5154,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 226,
+      "alignmentError": 0.0004670108398557178,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 17967.7,
+      "x": 496.84564327323716,
+      "y": 367.8202072974121,
+      "width": 734.7164845187367,
+      "pitch": -0.031942245782888255,
+      "yaw": 0.03727059277645842,
+      "roll": 0.01528877108555873,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 227,
+      "alignmentError": 0.00037767021768683463,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18017.7,
+      "x": 538.1059208450594,
+      "y": 362.6264597388981,
+      "width": 736.9209281658706,
+      "pitch": -0.031131881662172785,
+      "yaw": 0.05509860343219874,
+      "roll": 0.01934059168913608,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 228,
+      "alignmentError": 0.0002039469569729262,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18084.4,
+      "x": 498.8355974018693,
+      "y": 310.79864869005553,
+      "width": 738.2448552323245,
+      "pitch": -0.030645199684843364,
+      "yaw": 0.065805606933446,
+      "roll": 0.021774001575783183,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 229,
+      "alignmentError": 0.00020921301126733136,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18151,
+      "x": 449.65880722722306,
+      "y": 260.6055524803976,
+      "width": 739.0161315707464,
+      "pitch": -0.03036167478157514,
+      "yaw": 0.07204315480534694,
+      "roll": 0.023191626092124305,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 230,
+      "alignmentError": 0.0002767312119354885,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18184.4,
+      "x": 422.07312460047876,
+      "y": 234.31064264672312,
+      "width": 739.3366088041087,
+      "pitch": -0.03024386580434834,
+      "yaw": 0.07463495230433655,
+      "roll": 0.023780670978258305,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 231,
+      "alignmentError": 0.00026822422171505274,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18251,
+      "x": 391.3737976294472,
+      "y": 206.003746429411,
+      "width": 739.6356350424682,
+      "pitch": -0.030133942316381595,
+      "yaw": 0.07705326903960488,
+      "roll": 0.024330288418092018,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 232,
+      "alignmentError": 0.00019988378146291606,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18301,
+      "x": 371.544241526872,
+      "y": 188.168626651228,
+      "width": 739.8017136885586,
+      "pitch": -0.03007289100478028,
+      "yaw": 0.0783963978948338,
+      "roll": 0.02463554497609859,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 233,
+      "alignmentError": 0.00024588552893036613,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18367.7,
+      "x": 359.42047007048683,
+      "y": 177.43570457061696,
+      "width": 739.8929191558844,
+      "pitch": -0.030039363434941947,
+      "yaw": 0.07913400443127716,
+      "roll": 0.024803182825290263,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 234,
+      "alignmentError": 0.00019705273539440826,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18417.6,
+      "x": 352.28015758682875,
+      "y": 171.18353852653217,
+      "width": 739.9424753331384,
+      "pitch": -0.030021146345084095,
+      "yaw": 0.07953478040814992,
+      "roll": 0.024894268274579526,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 235,
+      "alignmentError": 0.00023360672941222978,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18484.3,
+      "x": 348.16297795586354,
+      "y": 167.6073929206385,
+      "width": 739.969306742035,
+      "pitch": -0.030011282989717197,
+      "yaw": 0.07975177422622169,
+      "roll": 0.02494358505141402,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 236,
+      "alignmentError": 0.00022297581526057767,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18534.3,
+      "x": 345.83925926755006,
+      "y": 165.60144912642048,
+      "width": 739.983701766538,
+      "pitch": -0.03,
+      "yaw": 0.07986819119635527,
+      "roll": 0.024970043453717106,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 237,
+      "alignmentError": 0.00017029484194719898,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18617.7,
+      "x": 344.5466941630244,
+      "y": 164.49107135856647,
+      "width": 739.9913819377977,
+      "pitch": -0.03,
+      "yaw": 0.07993030309258518,
+      "roll": 0.02498415979376936,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 238,
+      "alignmentError": 0.00021511529619260594,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18667.6,
+      "x": 343.8370136398688,
+      "y": 163.88382053623928,
+      "width": 739.9954540499548,
+      "pitch": -0.03,
+      "yaw": 0.07996323551026079,
+      "roll": 0.02499164443415018,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 239,
+      "alignmentError": 0.00008092208927423732,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18717.7,
+      "x": 343.4494204560073,
+      "y": 163.55324847480006,
+      "width": 739.997613002261,
+      "pitch": -0.03,
+      "yaw": 0.07998069561851573,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 240,
+      "alignmentError": 0.00025102486439513666,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18767.7,
+      "x": 343.23994616498356,
+      "y": 163.37508031795477,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.0799898934672628,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 241,
+      "alignmentError": 0.0001991095664353693,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18801,
+      "x": 343.15754520877834,
+      "y": 163.30513717178601,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 242,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18851,
+      "x": 343.0834594830274,
+      "y": 163.24235690383594,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 243,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18901,
+      "x": 343.0440393352986,
+      "y": 163.20901350828564,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 244,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18934.3,
+      "x": 343.02871358795204,
+      "y": 163.19606845433128,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 245,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 18984.3,
+      "x": 343.0150670843082,
+      "y": 163.18455527659248,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 246,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19017.7,
+      "x": 343.00977788320455,
+      "y": 163.1800980372051,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 247,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19067.7,
+      "x": 343.00510703749194,
+      "y": 163.17616569112317,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 248,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19134.3,
+      "x": 343.0026609632168,
+      "y": 163.17410861230059,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 249,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19167.6,
+      "x": 343.00172162071635,
+      "y": 163.171875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 250,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19201,
+      "x": 343,
+      "y": 163.171875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 251,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19767.6,
+      "x": 369.5332611259312,
+      "y": 146.83653393742156,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 6418,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 252,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19801,
+      "x": 437.7939452205542,
+      "y": 104.81148656166427,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 6418,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 253,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19834.3,
+      "x": 505.8502560095002,
+      "y": 62.91226268104671,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 6418,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 254,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19867.6,
+      "x": 573.9065667984462,
+      "y": 21.013038800429094,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 6418,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 255,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19900.9,
+      "x": 641.9628775873996,
+      "y": -20.8861850801931,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 6418,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 256,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 19951,
+      "x": 744.1495304236571,
+      "y": -83.79793264868933,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 7118,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 257,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20001,
+      "x": 789.4439104759648,
+      "y": -32.11545765537551,
+      "width": 739.8734084508619,
+      "pitch": -0.03155804983554604,
+      "yaw": 0.05195510296017128,
+      "roll": 0.021104875411134903,
+      "scrollY": 7118,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 258,
+      "alignmentError": 0.0003549589913080163,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20050.9,
+      "x": 771.039144476702,
+      "y": 86.2218660785725,
+      "width": 739.6687568638373,
+      "pitch": -0.034076838598925456,
+      "yaw": 0.006616905219341787,
+      "roll": 0.014807903502686362,
+      "scrollY": 7118,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 259,
+      "alignmentError": 0.00011503117411391952,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20100.9,
+      "x": 741.1052749508776,
+      "y": 202.42842120869813,
+      "width": 739.4962297537162,
+      "pitch": -0.036200249185030856,
+      "yaw": -0.03160448533055536,
+      "roll": 0.00949937703742287,
+      "scrollY": 7118,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 260,
+      "alignmentError": 0.00020571813096965447,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20134.2,
+      "x": 721.7193534136601,
+      "y": 270.4032607418086,
+      "width": 739.4103332793276,
+      "pitch": -0.03725743656212154,
+      "yaw": -0.05063385811818775,
+      "roll": 0.0068564085946961496,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 261,
+      "alignmentError": 0.0006191687721919137,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20184.3,
+      "x": 698.2345788596429,
+      "y": 300.25865992135095,
+      "width": 739.3198845838745,
+      "pitch": -0.03837065127539111,
+      "yaw": -0.07067172295704002,
+      "roll": 0.004073371811522223,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 262,
+      "alignmentError": 0.0001532317071790039,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20234.2,
+      "x": 682.224810366965,
+      "y": 273.17109416798326,
+      "width": 739.2641160744521,
+      "pitch": -0.03905703292982076,
+      "yaw": -0.08302659273677375,
+      "roll": 0.0023574176754480925,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 263,
+      "alignmentError": 0.00016249811391295672,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20284.2,
+      "x": 672.0804525928739,
+      "y": 238.83055973014987,
+      "width": 739.230912192411,
+      "pitch": -0.03946569609340358,
+      "yaw": -0.09038252968126449,
+      "roll": 0.0013357597664910433,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 264,
+      "alignmentError": 0.00008694984431383998,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20317.6,
+      "x": 667.6491892105541,
+      "y": 219.51792869395075,
+      "width": 739.21694351797,
+      "pitch": -0.03963761824036948,
+      "yaw": -0.09347712832665078,
+      "roll": 0.0009059543990762806,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 265,
+      "alignmentError": 0.0007092499805632519,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20367.6,
+      "x": 663.3646412429002,
+      "y": 198.0001029307797,
+      "width": 739.2037905794023,
+      "pitch": -0.039799500561202864,
+      "yaw": -0.09639101010165167,
+      "roll": 0.0005012485969928233,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 266,
+      "alignmentError": 0.00028249534921436994,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20417.6,
+      "x": 660.901025797037,
+      "y": 184.08922958584031,
+      "width": 739.1964186425037,
+      "pitch": -0.039890232092262536,
+      "yaw": -0.09802417766072576,
+      "roll": 0.00027441976934364454,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 267,
+      "alignmentError": 0.00038330322860678664,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20467.6,
+      "x": 659.5107918685043,
+      "y": 175.5795895576617,
+      "width": 739.1923405261728,
+      "pitch": -0.039940424293258656,
+      "yaw": -0.09892763727865592,
+      "roll": 0.00014893926685334444,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 268,
+      "alignmentError": 0.00054883059199077,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20517.6,
+      "x": 658.7375724822907,
+      "y": 170.55844433320274,
+      "width": 739.1901081581561,
+      "pitch": -0.0399678995919248,
+      "yaw": -0.09942219265464657,
+      "roll": 0.00008025102018797704,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 269,
+      "alignmentError": 0.00010887213093186703,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20550.9,
+      "x": 658.4270215961964,
+      "y": 168.45994637873002,
+      "width": 739.1892217267072,
+      "pitch": -0.03997880951745034,
+      "yaw": -0.09961857131410619,
+      "roll": 0.00005297620637414022,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 270,
+      "alignmentError": 0.0004482846139951706,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20600.9,
+      "x": 658.143123918903,
+      "y": 166.48278015443412,
+      "width": 739.1875,
+      "pitch": -0.03998869326540934,
+      "yaw": -0.09979647877736819,
+      "roll": 0.000028266836476640835,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 271,
+      "alignmentError": 0.00010212718748659052,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20634.2,
+      "x": 658.0305661766881,
+      "y": 165.6772529309873,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.0998664190947615,
+      "roll": 0.0000185529035053472,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 272,
+      "alignmentError": 0.00036349849349349625,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20667.6,
+      "x": 657.9558045835868,
+      "y": 165.13249380799212,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.09991260643780438,
+      "roll": 0.000012137994749392678,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 273,
+      "alignmentError": 0.0004754139665256752,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20717.5,
+      "x": 657.888729402043,
+      "y": 164.6344150393745,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.0999537885459112,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 274,
+      "alignmentError": 0.0005235902759121877,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20750.9,
+      "x": 657.8623408065678,
+      "y": 164.43496653836976,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.09996989417884009,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 275,
+      "alignmentError": 0.00016336139555993596,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20784.2,
+      "x": 657.8450719978908,
+      "y": 164.30286370014895,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.09998039022683296,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 276,
+      "alignmentError": 0.00013659833339917693,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20834.3,
+      "x": 657.8296461613367,
+      "y": 164.18332084054546,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.09998972378751711,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 277,
+      "alignmentError": 0.00023306350985460844,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20850.9,
+      "x": 657.8263461677973,
+      "y": 164.15747999302891,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.09999171312405943,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 278,
+      "alignmentError": 0.00023945365757412196,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20900.9,
+      "x": 657.8197581486103,
+      "y": 164.1054704496094,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 279,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20950.9,
+      "x": 657.8162941569242,
+      "y": 164.07779542281244,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 280,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 20984.3,
+      "x": 657.8149565150075,
+      "y": 164.06700961447046,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 281,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21017.5,
+      "x": 657.8140929547604,
+      "y": 164.06000118270555,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 282,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21050.9,
+      "x": 657.8125,
+      "y": 164.05539886822592,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 283,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21084.2,
+      "x": 657.8125,
+      "y": 164.05241053419599,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 284,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21117.6,
+      "x": 657.8125,
+      "y": 164.0504610546013,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 285,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21150.9,
+      "x": 657.8125,
+      "y": 164.0491986472035,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 286,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21184.2,
+      "x": 657.8125,
+      "y": 164.046875,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 7434,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 287,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 21984.2,
+      "x": 676.9992331855553,
+      "y": 180.38221606257844,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 6734,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 288,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22017.6,
+      "x": 738.0344848801341,
+      "y": 232.3468545254657,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 6734,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 289,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22050.9,
+      "x": 798.8869963001874,
+      "y": 284.15591023847196,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 6734,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 290,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22100.8,
+      "x": 890.0743932929881,
+      "y": 361.7917024330267,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 6734,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 291,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22134.2,
+      "x": 951.1096449875736,
+      "y": 413.7563408959196,
+      "width": 739.1875,
+      "pitch": -0.04,
+      "yaw": -0.1,
+      "roll": 0,
+      "scrollY": 6034,
+      "chapter": "contact",
+      "state": "DESKTOP",
+      "frame": 292,
+      "alignmentError": 0.0004447435931619902,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22184.2,
+      "x": 908.2005093874109,
+      "y": 369.61334275967556,
+      "width": 739.3140915491381,
+      "pitch": -0.03844195016445396,
+      "yaw": -0.07195510296017128,
+      "roll": 0.003895124588865099,
+      "scrollY": 6034,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 293,
+      "alignmentError": 0.0001618419778682186,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22234.2,
+      "x": 820.3949104882764,
+      "y": 287.81984178334903,
+      "width": 739.5191359203138,
+      "pitch": -0.035918327134598554,
+      "yaw": -0.02652988842277397,
+      "roll": 0.010204182163503616,
+      "scrollY": 6034,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 294,
+      "alignmentError": 0.0004770543792103333,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22284.2,
+      "x": 732.2727143490545,
+      "y": 206.36753335933628,
+      "width": 739.6915628713377,
+      "pitch": -0.03379614927584244,
+      "yaw": 0.01166931303483612,
+      "roll": 0.015509626810393907,
+      "scrollY": 6034,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 295,
+      "alignmentError": 0.0005649112754872952,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22334.2,
+      "x": 644.093754064543,
+      "y": 124.97668029130075,
+      "width": 739.8122489316446,
+      "pitch": -0.03231078237975828,
+      "yaw": 0.03840591716435093,
+      "roll": 0.019223044050604297,
+      "scrollY": 6034,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 296,
+      "alignmentError": 0.0004311508310057967,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22384.2,
+      "x": 555.902241828194,
+      "y": 43.599428129127716,
+      "width": 739.8895908168621,
+      "pitch": -0.03135888225400433,
+      "yaw": 0.05554011942792203,
+      "roll": 0.021602794364989172,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 297,
+      "alignmentError": 0.00016920170408699472,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22450.9,
+      "x": 481.10310735008505,
+      "y": 23.82026817185408,
+      "width": 739.9366436879335,
+      "pitch": -0.03077976999466484,
+      "yaw": 0.06596414009603288,
+      "roll": 0.0230505750133379,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 298,
+      "alignmentError": 0.00012649593035380497,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22500.8,
+      "x": 427.74530314338017,
+      "y": 54.18511014996872,
+      "width": 739.964261413879,
+      "pitch": -0.0304398595214904,
+      "yaw": 0.07208252861317277,
+      "roll": 0.023900351196273997,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 299,
+      "alignmentError": 0.0001745585809933372,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22550.8,
+      "x": 393.07901719940577,
+      "y": 89.30175175314547,
+      "width": 739.9801466368792,
+      "pitch": -0.030244349084563842,
+      "yaw": 0.07560171647785079,
+      "roll": 0.024389127288590388,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 300,
+      "alignmentError": 0.00010087358361868382,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22600.8,
+      "x": 371.83907347561563,
+      "y": 116.68204513453927,
+      "width": 739.9890952501198,
+      "pitch": -0.030134212306218235,
+      "yaw": 0.0775841784880717,
+      "roll": 0.024664469234454405,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 301,
+      "alignmentError": 0.0003098927367341194,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22650.8,
+      "x": 359.2927865273498,
+      "y": 135.2156905447651,
+      "width": 739.9940655020056,
+      "pitch": -0.0300730399753165,
+      "yaw": 0.07868528044430291,
+      "roll": 0.024817400061708742,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 302,
+      "alignmentError": 0.00005827085308037434,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22700.9,
+      "x": 352.06988873260946,
+      "y": 146.87086519788141,
+      "width": 739.9967951092342,
+      "pitch": -0.030039444809425903,
+      "yaw": 0.07928999343033365,
+      "roll": 0.024901387976435232,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 303,
+      "alignmentError": 0.00023667006549287636,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22750.8,
+      "x": 347.9962125715576,
+      "y": 153.86548343187164,
+      "width": 739.9982782732928,
+      "pitch": -0.030021190482549653,
+      "yaw": 0.07961857131410616,
+      "roll": 0.024947023793625858,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 304,
+      "alignmentError": 0.00007999709104143246,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22800.8,
+      "x": 345.72283458552,
+      "y": 157.9532571897708,
+      "width": 740,
+      "pitch": -0.030011306734590654,
+      "yaw": 0.07979647877736817,
+      "roll": 0.02497173316352336,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 305,
+      "alignmentError": 0.00013753939811930025,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22834.2,
+      "x": 344.80705673846427,
+      "y": 159.65245843480446,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07986658829805912,
+      "roll": 0.02498147059695266,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 306,
+      "alignmentError": 0.0004135602332219023,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22900.8,
+      "x": 343.972581404717,
+      "y": 161.23838777781427,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07992936011350443,
+      "roll": 0.024990188904653397,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 307,
+      "alignmentError": 0.00022738028303632515,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22950.8,
+      "x": 343.52032455927105,
+      "y": 162.1194697606112,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07996274146166252,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 308,
+      "alignmentError": 0.0003222245434373688,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 22984.2,
+      "x": 343.3416186701221,
+      "y": 162.47392595103926,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07997574511360252,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 309,
+      "alignmentError": 0.00015259997691340166,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23017.5,
+      "x": 343.22410396270476,
+      "y": 162.70984198617873,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07998421230390948,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 310,
+      "alignmentError": 0.00038974543247708457,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23067.5,
+      "x": 343.1185779101521,
+      "y": 162.9244275319868,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07999173459298116,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 311,
+      "alignmentError": 0.00014349435854435448,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23117.5,
+      "x": 343.0625047382614,
+      "y": 163.04005338629761,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 312,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23150.8,
+      "x": 343.0407271908229,
+      "y": 163.0854358773903,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 313,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23200.9,
+      "x": 343.0213525454791,
+      "y": 163.12616447368163,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 314,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23250.8,
+      "x": 343.0111780369451,
+      "y": 163.14776130555376,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 315,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23284.2,
+      "x": 343.00723784318046,
+      "y": 163.15618783858835,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 316,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23334.1,
+      "x": 343.00377365357974,
+      "y": 163.1636432887781,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 317,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23384.1,
+      "x": 343.0019607247203,
+      "y": 163.16757290360385,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 318,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23417.5,
+      "x": 343,
+      "y": 163.1690900127653,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 319,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23467.4,
+      "x": 343,
+      "y": 163.171875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5718,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 320,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23667.5,
+      "x": 335.4857431112139,
+      "y": 159.57664145363785,
+      "width": 739.3651823930815,
+      "pitch": -0.03023336201517969,
+      "yaw": 0.07486603566604677,
+      "roll": 0.023833189924101536,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 321,
+      "alignmentError": 0.00045036309442921153,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23717.5,
+      "x": 265.80545676473133,
+      "y": 126.2377622137156,
+      "width": 733.4784695374319,
+      "pitch": -0.0323973460632071,
+      "yaw": 0.027258386609443797,
+      "roll": 0.013013269683964504,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 322,
+      "alignmentError": 0.00020076276633307564,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23750.8,
+      "x": 211.62201461705664,
+      "y": 100.3134250836655,
+      "width": 728.9009572713653,
+      "pitch": -0.03408006165785538,
+      "yaw": -0.009761356472818422,
+      "roll": 0.0045996917107230945,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 323,
+      "alignmentError": 0.0003090268641164498,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23834.1,
+      "x": 143.27465375564753,
+      "y": 67.61229066530885,
+      "width": 723.1268522995236,
+      "pitch": -0.03620265050448299,
+      "yaw": -0.056458311098625896,
+      "roll": -0.006013252522414969,
+      "scrollY": 5318,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 324,
+      "alignmentError": 0.0003073247942487736,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23884.1,
+      "x": 145.60198680205903,
+      "y": 131.0478081475938,
+      "width": 723.3234694789589,
+      "pitch": -0.03613037308068139,
+      "yaw": -0.0548682077749907,
+      "roll": -0.005651865403406977,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 325,
+      "alignmentError": 0.0007919881675843628,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23934.1,
+      "x": 190.58077250442489,
+      "y": 242.29936470632535,
+      "width": 727.59822704512,
+      "pitch": -0.034558951574453316,
+      "yaw": -0.020296934637973024,
+      "roll": 0.002205242127733407,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 326,
+      "alignmentError": 0.0006166812243913097,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 23984.1,
+      "x": 238.15877427242822,
+      "y": 346.3650491889688,
+      "width": 731.7953054148659,
+      "pitch": -0.03301608531561506,
+      "yaw": 0.013646123056468534,
+      "roll": 0.009919573421924666,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 327,
+      "alignmentError": 0.00020579317095069483,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24034.1,
+      "x": 276.4608948911539,
+      "y": 426.97189493189774,
+      "width": 734.9095780520174,
+      "pitch": -0.031871263668414036,
+      "yaw": 0.03883219929489114,
+      "roll": 0.015643681657929804,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 328,
+      "alignmentError": 0.00041778034600117473,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24084.1,
+      "x": 302.76884451136607,
+      "y": 481.3659630498121,
+      "width": 736.9675953158314,
+      "pitch": -0.031114726592686888,
+      "yaw": 0.05547601496088845,
+      "roll": 0.019426367036565556,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 329,
+      "alignmentError": 0.0001681990027819151,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24117.4,
+      "x": 314.75595828006266,
+      "y": 505.92717579603993,
+      "width": 737.886694368004,
+      "pitch": -0.030776861346626883,
+      "yaw": 0.06290905037420856,
+      "roll": 0.021115693266865583,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 330,
+      "alignmentError": 0.00017909771163905316,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24150.8,
+      "x": 323.41748169019144,
+      "y": 523.5870671967901,
+      "width": 738.5435228145823,
+      "pitch": -0.030535408040590083,
+      "yaw": 0.06822102310701814,
+      "roll": 0.02232295979704958,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 331,
+      "alignmentError": 0.0001861844590992537,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24184.1,
+      "x": 329.5336399034786,
+      "y": 536.0097326163622,
+      "width": 739.0033644144263,
+      "pitch": -0.030366368049837562,
+      "yaw": 0.07193990290357358,
+      "roll": 0.02316815975081218,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 332,
+      "alignmentError": 0.00034296252072173877,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24217.4,
+      "x": 333.8107358963391,
+      "y": 544.6707014422545,
+      "width": 739.3227389053702,
+      "pitch": -0.030248964446044278,
+      "yaw": 0.07452278218702586,
+      "roll": 0.023755177769778608,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 333,
+      "alignmentError": 0.00042391336661597845,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24267.4,
+      "x": 337.88445197442195,
+      "y": 552.8957493629607,
+      "width": 739.6249170701163,
+      "pitch": -0.03013788229473037,
+      "yaw": 0.07696658951593181,
+      "roll": 0.02431058852634814,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 334,
+      "alignmentError": 0.00026268497460943185,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24300.8,
+      "x": 339.56395045095377,
+      "y": 556.2782081493117,
+      "width": 739.7487856705245,
+      "pitch": -0.030092347599577452,
+      "yaw": 0.07796835280929601,
+      "roll": 0.02453826200211273,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 335,
+      "alignmentError": 0.00019842683567198032,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24334.1,
+      "x": 340.69970754424855,
+      "y": 558.5619143840604,
+      "width": 739.8322449452113,
+      "pitch": -0.030061667567527164,
+      "yaw": 0.07864331351440237,
+      "roll": 0.024691662162364174,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 336,
+      "alignmentError": 0.0003635764124591036,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24367.5,
+      "x": 341.4680069887668,
+      "y": 560.1046263231638,
+      "width": 739.8885240710031,
+      "pitch": -0.030040979089349835,
+      "yaw": 0.07909846003430362,
+      "roll": 0.024795104553250822,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 337,
+      "alignmentError": 0.00041934133877654837,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24417.4,
+      "x": 342.17067221779433,
+      "y": 561.5135370008967,
+      "width": 739.9398276051653,
+      "pitch": -0.03002211966266181,
+      "yaw": 0.0795133674214402,
+      "roll": 0.024889401686690953,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 338,
+      "alignmentError": 0.0003890345189584503,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24450.7,
+      "x": 342.45143573834105,
+      "y": 562.0757579471498,
+      "width": 739.9602654551156,
+      "pitch": -0.030014606610411255,
+      "yaw": 0.07967865457095238,
+      "roll": 0.024926966947943722,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 339,
+      "alignmentError": 0.0002128736302673926,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24500.7,
+      "x": 342.7065203915505,
+      "y": 562.586023686616,
+      "width": 739.9787894796533,
+      "pitch": -0.03,
+      "yaw": 0.07982846402844296,
+      "roll": 0.024961014551918854,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 340,
+      "alignmentError": 0.00017345043818609547,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24550.8,
+      "x": 342.84379896041503,
+      "y": 562.8603238324907,
+      "width": 739.9887327527522,
+      "pitch": -0.03,
+      "yaw": 0.07990887832208604,
+      "roll": 0.024979290527746827,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 341,
+      "alignmentError": 0.00023018345249554577,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24600.7,
+      "x": 342.9171313560251,
+      "y": 563.006710108964,
+      "width": 739.9940325319152,
+      "pitch": -0.03,
+      "yaw": 0.07995173925868322,
+      "roll": 0.024989031649700733,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 342,
+      "alignmentError": 0.0003982764877468889,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24634.1,
+      "x": 342.9459048764556,
+      "y": 563.0641059508865,
+      "width": 739.9961085146439,
+      "pitch": -0.03,
+      "yaw": 0.07996852836656347,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 343,
+      "alignmentError": 0.00009442599504939992,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24684.1,
+      "x": 342.9715183625999,
+      "y": 563.1151674140168,
+      "width": 739.9979539239584,
+      "pitch": -0.03,
+      "yaw": 0.07998345275665499,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 344,
+      "alignmentError": 0.0003363494012412216,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24717.4,
+      "x": 342.98145474832637,
+      "y": 563.1349643522866,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.07998923461406464,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 345,
+      "alignmentError": 0.00020251745628539552,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24767.4,
+      "x": 342.99028636758004,
+      "y": 563.1525515445857,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 346,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24817.4,
+      "x": 342.9949259085459,
+      "y": 563.1617855657088,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 347,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24850.7,
+      "x": 342.99671196266127,
+      "y": 563.1653387908804,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 348,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24900.7,
+      "x": 342.99828918339847,
+      "y": 563.1684754060927,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 349,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24934.1,
+      "x": 343,
+      "y": 563.169680770973,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 350,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 24984.1,
+      "x": 343,
+      "y": 563.171875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 351,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 25500.7,
+      "x": 342.2999139544609,
+      "y": 563.0912921791332,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 352,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25550.8,
+      "x": 335.8079618103787,
+      "y": 562.3440414375488,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 353,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25600.7,
+      "x": 328.4403271399141,
+      "y": 561.4959959885005,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 354,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25634.1,
+      "x": 324.392048486551,
+      "y": 561.0300222476707,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 355,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25667.4,
+      "x": 321.2221668767629,
+      "y": 560.665155666544,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 356,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25717.4,
+      "x": 317.8845548559106,
+      "y": 560.2809826162272,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 357,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25767.4,
+      "x": 315.8236349251854,
+      "y": 560.0437621450344,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 358,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25800.7,
+      "x": 314.9378113489347,
+      "y": 559.9418001604764,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 359,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25850.7,
+      "x": 314.086296427049,
+      "y": 559.8437872449886,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 360,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25884,
+      "x": 313.73333755542325,
+      "y": 559.8031602082025,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 361,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25917.4,
+      "x": 313.4919987304616,
+      "y": 559.7753811038709,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 362,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 25967.4,
+      "x": 313.2685239798313,
+      "y": 559.7496582289285,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 363,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26000.7,
+      "x": 313.17858063346785,
+      "y": 559.7393053749981,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 364,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26050.7,
+      "x": 313.09622143957637,
+      "y": 559.729825488618,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 365,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26084,
+      "x": 313.06351845002723,
+      "y": 559.7260612382584,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 366,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26134,
+      "x": 313.03389169216916,
+      "y": 559.722651074984,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 367,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26167.4,
+      "x": 313.0222165029214,
+      "y": 559.721307212055,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 368,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26217.4,
+      "x": 313.01176330567125,
+      "y": 559.71875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 369,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26250.7,
+      "x": 313.0076854873901,
+      "y": 559.71875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 370,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26300.7,
+      "x": 313.0040442161869,
+      "y": 559.71875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 371,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26334.1,
+      "x": 313.0026290181837,
+      "y": 559.71875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 372,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26384,
+      "x": 313,
+      "y": 559.71875,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5281,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 373,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1380,
+        900
+      ]
+    },
+    {
+      "time": 26584,
+      "x": 313.7000860455391,
+      "y": 559.7993328208668,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 374,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26634,
+      "x": 320.1920381896213,
+      "y": 560.5465835624512,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 375,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26667.4,
+      "x": 325.2546839077098,
+      "y": 561.1293151789604,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 376,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26717.4,
+      "x": 331.61875085039696,
+      "y": 561.8618458010093,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 377,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26750.7,
+      "x": 334.78611238189177,
+      "y": 562.226422310624,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 378,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26800.7,
+      "x": 338.1206778837808,
+      "y": 562.6102446939143,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 379,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26834,
+      "x": 339.60435501348167,
+      "y": 562.7810221135309,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 380,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26867.3,
+      "x": 340.6598081193179,
+      "y": 562.902509163734,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 381,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26917.3,
+      "x": 341.6814438659673,
+      "y": 563.020103694989,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 382,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 26967.3,
+      "x": 342.2675330160477,
+      "y": 563.0875649982013,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 383,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27000.7,
+      "x": 342.5085922378879,
+      "y": 563.1153119190485,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 384,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27050.6,
+      "x": 342.73147602016877,
+      "y": 563.1409667710715,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 5318,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 385,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27100.7,
+      "x": 342.8546352689954,
+      "y": 563.155142913775,
+      "width": 740,
+      "pitch": -0.03,
+      "yaw": 0.08,
+      "roll": 0.025,
+      "scrollY": 4618,
+      "chapter": "services",
+      "state": "DESKTOP",
+      "frame": 386,
+      "alignmentError": 0.0002765095854634692,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27150.7,
+      "x": 292.7526405153765,
+      "y": 476.83718035844964,
+      "width": 735.7616175567412,
+      "pitch": -0.03155804983554604,
+      "yaw": 0.04572290361798714,
+      "roll": 0.017209750822269804,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 387,
+      "alignmentError": 0.00033629560320190386,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27200.7,
+      "x": 232.47512329832387,
+      "y": 373.07485136498536,
+      "width": 728.8965742833376,
+      "pitch": -0.034081672865401445,
+      "yaw": -0.00979680303883182,
+      "roll": 0.004591635672992769,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 388,
+      "alignmentError": 0.0001833415147532477,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27250.6,
+      "x": 172.3113930379831,
+      "y": 269.5239790308534,
+      "width": 723.1333846388461,
+      "pitch": -0.036200249185030724,
+      "yaw": -0.05640548207067589,
+      "roll": -0.006001245925153609,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 389,
+      "alignmentError": 0.0005050490700050323,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27284,
+      "x": 135.5257432852087,
+      "y": 206.21275748312175,
+      "width": 720.2499929344234,
+      "pitch": -0.037260197887403215,
+      "yaw": -0.07972435352287076,
+      "roll": -0.011300989437016079,
+      "scrollY": 4618,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 390,
+      "alignmentError": 0.0002013019149289609,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27334,
+      "x": 92.53782272220553,
+      "y": 132.22806027410223,
+      "width": 717.2244647330928,
+      "pitch": -0.03837239665182115,
+      "yaw": -0.10419272634006532,
+      "roll": -0.016861983259105755,
+      "scrollY": 3918,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 391,
+      "alignmentError": 0.0007177072710430913,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27400.6,
+      "x": 202.800441418108,
+      "y": 179.57945854619157,
+      "width": 715.3563107308156,
+      "pitch": -0.03905913907655255,
+      "yaw": -0.11930105968415607,
+      "roll": -0.02029569538276274,
+      "scrollY": 3918,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 392,
+      "alignmentError": 0.0006685257874456496,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27450.6,
+      "x": 306.823881132772,
+      "y": 239.40523885810788,
+      "width": 714.2470011540836,
+      "pitch": -0.03946692662917086,
+      "yaw": -0.12827238584175893,
+      "roll": -0.0223346331458543,
+      "scrollY": 3918,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 393,
+      "alignmentError": 0.0002195390599302498,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27500.7,
+      "x": 410.05686067009714,
+      "y": 300.58490815965126,
+      "width": 713.6059485929002,
+      "pitch": -0.03970258064362084,
+      "yaw": -0.13345677415965848,
+      "roll": -0.0235129032181042,
+      "scrollY": 3918,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 394,
+      "alignmentError": 0.0006950707094151555,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27550.6,
+      "x": 512.9822166149971,
+      "y": 361.81258738738603,
+      "width": 713.2433626956326,
+      "pitch": -0.03983586896886566,
+      "yaw": -0.13638911731504447,
+      "roll": -0.024179344844328286,
+      "scrollY": 3218,
+      "chapter": "expertise",
+      "state": "DESKTOP",
+      "frame": 395,
+      "alignmentError": 0.0003832559918910842,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27600.6,
+      "x": 611.6459229019966,
+      "y": 293.5083191333985,
+      "width": 726.6272442412394,
+      "pitch": -0.03679431952350254,
+      "yaw": -0.116216524583437,
+      "roll": -0.019098921548561944,
+      "scrollY": 3218,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 396,
+      "alignmentError": 0.0004282165246560484,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27634,
+      "x": 651.4726589207405,
+      "y": 223.94211542718898,
+      "width": 741.354874938069,
+      "pitch": -0.033427856007484096,
+      "yaw": -0.09310245488109525,
+      "roll": -0.01330536495931693,
+      "scrollY": 3218,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 397,
+      "alignmentError": 0.0006490283742994361,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27683.9,
+      "x": 702.5699218187722,
+      "y": 115.62994009897265,
+      "width": 761.4187472364247,
+      "pitch": -0.02883652119348263,
+      "yaw": -0.06137414223325058,
+      "roll": -0.00535958576235024,
+      "scrollY": 3218,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 398,
+      "alignmentError": 0.0005079559824924002,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27733.9,
+      "x": 751.4958946469194,
+      "y": 6.056908823848232,
+      "width": 776.1548315438757,
+      "pitch": -0.025462414231808762,
+      "yaw": -0.03797904972189229,
+      "roll": 0.0004966425728346272,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 399,
+      "alignmentError": 0.0004516245231241484,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27800.6,
+      "x": 707.8457948239221,
+      "y": -28.728985088833156,
+      "width": 785.8316993530777,
+      "pitch": -0.02324604996335607,
+      "yaw": -0.022584998748469937,
+      "roll": 0.004349171946381765,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 400,
+      "alignmentError": 0.00026660835095818937,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27834,
+      "x": 634.4876677007067,
+      "y": -8.428267832808672,
+      "width": 790.149582649215,
+      "pitch": -0.022256933846242173,
+      "yaw": -0.01570859114146159,
+      "roll": 0.006069854021893482,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 401,
+      "alignmentError": 0.00033147756795355284,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27884,
+      "x": 527.7426129646713,
+      "y": 34.61700473839085,
+      "width": 794.3844245280408,
+      "pitch": -0.02128673736184269,
+      "yaw": -0.008959600401429008,
+      "roll": 0.007758514528593753,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 402,
+      "alignmentError": 0.000571030664114185,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27933.9,
+      "x": 447.13110046007455,
+      "y": 71.96569677177807,
+      "width": 796.8481680900077,
+      "pitch": -0.02072224228122805,
+      "yaw": -0.005030607784296417,
+      "roll": 0.008741511781115898,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 403,
+      "alignmentError": 0.00023935724857013796,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 27967.3,
+      "x": 408.5000717636308,
+      "y": 90.88063525622282,
+      "width": 797.8746889815612,
+      "pitch": -0.020487029982597098,
+      "yaw": -0.0033928894585002686,
+      "roll": 0.009151233621385618,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 404,
+      "alignmentError": 0.0008806939946892088,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28017.3,
+      "x": 368.9479457985452,
+      "y": 110.86040912173233,
+      "width": 798.8325909584796,
+      "pitch": -0.020267530335728437,
+      "yaw": -0.0018641599243324836,
+      "roll": 0.009533674938057993,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 405,
+      "alignmentError": 0.0004170403282449364,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28067.3,
+      "x": 345.0158275686349,
+      "y": 123.2631761360884,
+      "width": 799.3646588975141,
+      "pitch": -0.02014560315102527,
+      "yaw": -0.001014752605225187,
+      "roll": 0.00974616286696198,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 406,
+      "alignmentError": 0.0002227767451453863,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28100.6,
+      "x": 334.8548065051875,
+      "y": 128.61089937393947,
+      "width": 799.5781572811264,
+      "pitch": -0.020096676813050524,
+      "yaw": -0.000673840693808495,
+      "roll": 0.009831443259963038,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 407,
+      "alignmentError": 0.000291696297346455,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28150.7,
+      "x": 325.17152968040097,
+      "y": 133.76275635912586,
+      "width": 799.7731898608022,
+      "pitch": -0.020051981001890574,
+      "yaw": -0.00036235910502602263,
+      "roll": 0.009909359960136562,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 408,
+      "alignmentError": 0.00037364657997555927,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28200.6,
+      "x": 319.70715028898496,
+      "y": 136.7005842445668,
+      "width": 799.8786113556816,
+      "pitch": -0.02002782077089016,
+      "yaw": -0.00019396114856917645,
+      "roll": 0.009951483571268975,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 409,
+      "alignmentError": 0.00022441425344660586,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28234,
+      "x": 317.47650874372016,
+      "y": 137.908440765795,
+      "width": 799.9203430534508,
+      "pitch": -0.02001825660621957,
+      "yaw": -0.00012729048647437316,
+      "roll": 0.009968160519812653,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 410,
+      "alignmentError": 0.0004436980007734455,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28283.9,
+      "x": 315.4299850152237,
+      "y": 139.022676490611,
+      "width": 799.9577087115083,
+      "pitch": -0.02000969291455664,
+      "yaw": -0.00006758818325339368,
+      "roll": 0.009983094213565216,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 411,
+      "alignmentError": 0.00035373763226290926,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28317.3,
+      "x": 314.6079005689735,
+      "y": 139.47248925343837,
+      "width": 799.9723807459933,
+      "pitch": -0.02,
+      "yaw": -0.000044142853552634895,
+      "roll": 0.009988958660797768,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 412,
+      "alignmentError": 0.00039201571400499473,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28367.3,
+      "x": 313.8620234951706,
+      "y": 139.88220829143984,
+      "width": 799.9854494178996,
+      "pitch": -0.02,
+      "yaw": -0.00002325774181262138,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 413,
+      "alignmentError": 0.0003602549184662743,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28417.3,
+      "x": 313.4596329998204,
+      "y": 140.10417038260618,
+      "width": 799.992359613719,
+      "pitch": -0.02,
+      "yaw": -0.000012213411901246789,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 414,
+      "alignmentError": 0.0006863697357875635,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28450.6,
+      "x": 313.3015542952527,
+      "y": 140.19163848853756,
+      "width": 799.9950332501711,
+      "pitch": -0.02,
+      "yaw": -0.00000793989848826257,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 415,
+      "alignmentError": 0.00040166543467098616,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28500.6,
+      "x": 313.1595814001002,
+      "y": 140.27039355176686,
+      "width": 799.9974043605811,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 416,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28550.6,
+      "x": 313.08412918242357,
+      "y": 140.3123645554635,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 417,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28584,
+      "x": 313.054751003421,
+      "y": 140.32874108962199,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 418,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28633.9,
+      "x": 313.0287450091451,
+      "y": 140.3432634197844,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 419,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28683.9,
+      "x": 313.0150298627673,
+      "y": 140.35093739103863,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 420,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28717.3,
+      "x": 313.009732456311,
+      "y": 140.35390598608836,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 421,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28750.6,
+      "x": 313.00630374135534,
+      "y": 140.35582948725755,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 422,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28783.9,
+      "x": 313.0040789332806,
+      "y": 140.357078866875,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 423,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28833.9,
+      "x": 313.0021180558276,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 424,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 28867.3,
+      "x": 313,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "DESKTOP",
+      "frame": 425,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    {
+      "time": 29583.9,
+      "x": 313,
+      "y": 140.359375,
+      "width": 800,
+      "pitch": -0.02,
+      "yaw": 0,
+      "roll": 0.01,
+      "scrollY": 2684,
+      "chapter": "about",
+      "state": "NOTES",
+      "frame": 426,
+      "alignmentError": 0.0003635514405466848,
+      "viewport": [
+        1440,
+        900
+      ]
+    }
+  ]
+}

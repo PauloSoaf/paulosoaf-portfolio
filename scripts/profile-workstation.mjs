@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
 import { gzipSync } from "node:zlib";
-const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300", output = "docs/report/Workstation/performance";
+const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300", output = process.env.QA_WORKSTATION_PROFILE_OUTPUT ?? "docs/report/Workstation/performance";
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] }), results = [];
 try {

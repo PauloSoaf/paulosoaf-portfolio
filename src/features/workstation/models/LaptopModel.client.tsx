@@ -1,32 +1,17 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, type ReactNode, type RefObject } from "react";
+import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import {
   BoxGeometry, CanvasTexture, CircleGeometry, CylinderGeometry, Group, InstancedMesh,
   Matrix4, MeshBasicMaterial, MeshStandardMaterial, PlaneGeometry, SRGBColorSpace,
-  TorusGeometry,
+  TorusGeometry, Color,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import type { LaptopHitTarget } from "./hit-targets";
+import { NOTEBOOK_KEYS as KEYS } from "../input/keyboard-layout";
+import type { NotebookInputController } from "../input/NotebookInputController";
 
-type Key = { label: string; x: number; z: number; width: number };
-type KeyUnit = readonly [label: string, width: number];
-const KEY_ROWS: readonly (readonly KeyUnit[])[] = [
-  [["esc", 1], ..."1234567890".split("").map((label): KeyUnit => [label, 1]), ["⌫", 2]],
-  [["tab", 1.5], ..."QWERTYUIOP".split("").map((label): KeyUnit => [label, 1]), ["\\", 1.5]],
-  [["caps", 1.75], ..."ASDFGHJKL".split("").map((label): KeyUnit => [label, 1]), ["enter", 2.25]],
-  [["shift", 1.75], ..."ZXCVBNM,.".split("").map((label): KeyUnit => [label, 1]), ["shift", 2.25]],
-  [["ctrl", 1.25], ["fn", 1], ["alt", 1.25], ["space", 5], ["alt", 1.25], ["←", 1], ["↓", 1], ["→", 1.25]],
-];
-const KEYS: readonly Key[] = KEY_ROWS.flatMap((row, rowIndex) => {
-  let offset = -1.495;
-  return row.map(([label, units]) => {
-    const width = units * .23;
-    const key = { label, x: offset + width / 2, z: -.76 + rowIndex * .24, width: width - .035 };
-    offset += width;
-    return key;
-  });
-});
 const target = (hitTarget: LaptopHitTarget) => ({ hitTarget });
 const CHASSIS = target("chassis"), LID = target("lid"), SCREEN = target("screen"), TRACKPAD = target("trackpad");
 const KEYBOARD = { hitTarget: "keyboard", keys: KEYS.map(({ label }) => label) };
@@ -52,10 +37,12 @@ function createLegends() {
 }
 
 /** Original procedural assembly. The scene owns the root pose, camera and hinge animation. */
-export function LaptopModel({ theme, hingeRef, children }: {
+export function LaptopModel({ theme, hingeRef, children, input, trackpad }: {
   theme: "dark" | "light";
   hingeRef: RefObject<Group | null>;
   children?: ReactNode;
+  input: NotebookInputController;
+  trackpad: { onPointerDown: (event: ThreeEvent<PointerEvent>) => void; onPointerMove: (event: ThreeEvent<PointerEvent>) => void; onPointerUp: (event: ThreeEvent<PointerEvent>) => void; onPointerCancel: (event: ThreeEvent<PointerEvent>) => void };
 }) {
   const keycaps = useRef<InstancedMesh>(null);
   const ports = useRef<InstancedMesh>(null);
@@ -78,6 +65,21 @@ export function LaptopModel({ theme, hingeRef, children }: {
     seam: new BoxGeometry(2.8, .012, .006),
   }), []);
   const legends = useMemo(() => createLegends(), []);
+  const frameResources = useMemo(() => ({ matrix: new Matrix4(), normal: new Color("#ffffff"), pressed: new Color("#65e6c3") }), []);
+  useFrame(() => {
+    const mesh = keycaps.current; if (!mesh) return;
+    const now = performance.now();
+    KEYS.forEach((key, index) => {
+      const until = input.pressed.get(key.label) ?? 0;
+      if (until && until < now) input.pressed.delete(key.label);
+      const down = until >= now || (key.label === "shift" && input.shift) || (key.label === "caps" && input.caps);
+      const depth = until >= now ? .024 * Math.sin(Math.PI * Math.min(1, (until - now) / 160)) : 0;
+      mesh.setMatrixAt(index, frameResources.matrix.makeScale(key.width, 1, 1).setPosition(key.x, .126 - depth, key.z));
+      mesh.setColorAt(index, down ? frameResources.pressed : frameResources.normal);
+    });
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+  }, -2);
   const material = useMemo(() => ({
     chassis: new MeshStandardMaterial({ color: theme === "dark" ? "#38434b" : "#53616b", metalness: .72, roughness: .36 }),
     deck: new MeshStandardMaterial({ color: theme === "dark" ? "#46515a" : "#69767d", metalness: .62, roughness: .4 }),
@@ -120,10 +122,13 @@ export function LaptopModel({ theme, hingeRef, children }: {
       <mesh name="chassis" geometry={geometry.base} material={material.chassis} userData={CHASSIS} />
       <mesh name="palmRest" geometry={geometry.deck} material={material.deck} position={[0, .09, 0]} userData={CHASSIS} />
       <mesh name="keyboardRecess" geometry={geometry.well} material={material.black} position={[0, .108, -.27]} userData={KEYBOARD} />
-      <instancedMesh ref={keycaps} name="keyboardLayout" args={[geometry.key, material.keys, KEYS.length]} userData={KEYBOARD} />
-      <mesh name="keyboardLegends" geometry={geometry.labels} material={material.legends} position={[0, .144, -.27]} rotation={[-Math.PI / 2, 0, 0]} userData={KEYBOARD} />
-      <mesh name="trackpadRim" geometry={geometry.trackpadRim} material={material.edge} position={[0, .109, .75]} userData={TRACKPAD} />
-      <mesh name="trackpadPlane" geometry={geometry.trackpad} material={material.chassis} position={[0, .112, .75]} userData={TRACKPAD} />
+      <instancedMesh ref={keycaps} name="keyboardLayout" args={[geometry.key, material.keys, KEYS.length]} userData={KEYBOARD}
+        onPointerDown={(event) => { event.stopPropagation(); const key = KEYS[event.instanceId ?? -1]; if (key && event.button === 0) input.key(key.label); }} />
+      <mesh name="keyboardLegends" geometry={geometry.labels} material={material.legends} position={[0, .144, -.27]} rotation={[-Math.PI / 2, 0, 0]} userData={KEYBOARD} raycast={() => {}} />
+      <group {...trackpad}>
+        <mesh name="trackpadRim" geometry={geometry.trackpadRim} material={material.edge} position={[0, .109, .75]} userData={TRACKPAD} />
+        <mesh name="trackpadPlane" geometry={geometry.trackpad} material={material.chassis} position={[0, .112, .75]} userData={TRACKPAD} />
+      </group>
       <instancedMesh ref={ports} name="ports" args={[geometry.port, material.black, 5]} userData={CHASSIS} />
       <mesh name="frontSeam" geometry={geometry.seam} material={material.black} position={[0, -.002, 1.175]} userData={CHASSIS} />
       {[-1.2, 1.2].map((x) => <mesh key={x} name="hingeBarrel" geometry={geometry.hinge} material={material.edge} position={[x, .12, -1.1]} rotation={[0, 0, Math.PI / 2]} userData={CHASSIS} />)}

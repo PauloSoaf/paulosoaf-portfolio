@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react-hooks/immutability -- Stable imperative input/render controllers, not React view state. */
 import dynamic from "next/dynamic";
 import { createPortal } from "react-dom";
 import { Component, useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
@@ -9,7 +10,9 @@ import { workstationLabels } from "../labels";
 import { PROJECT_REQUEST, siteForProject, workstationSites } from "../sites";
 import { initialWorkstationState, isScreenInteractive, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
 import { WorkbenchScreen } from "../screen/WorkbenchScreen.client";
-import { installWorkstationPosition } from "./position";
+import { createMotionRig, installWorkstationPosition } from "./position";
+import { NotebookInputController } from "../input/NotebookInputController";
+import { NotebookPointerController } from "../input/NotebookPointerController";
 const Scene = dynamic(() => import("../scene/WorkstationScene.client"), { ssr: false });
 const noopSubscribe = () => () => {};
 class SceneBoundary extends Component<{ children: ReactNode; fail: () => void }, { failed: boolean }> {
@@ -24,16 +27,31 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const body = useSyncExternalStore(noopSubscribe, () => document.body, () => null);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
   const [state, dispatch] = useReducer(workstationReducer, initialWorkstationState);
+  const [rig] = useState(createMotionRig), [input] = useState(() => new NotebookInputController()), [pointer] = useState(() => new NotebookPointerController());
+  const [inputMode, setInputMode] = useState(false), [feedback, setFeedback] = useState<"local" | "external" | "ready">("ready");
   const [armed, setArmed] = useState(false), [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
   const [surface, setSurface] = useState<HTMLDivElement | null>(null);
   const [environment, setEnvironment] = useState({ visible: false, loadable: false, hidden: false, reduced: false, mobile: false, limited: false });
   const anchor = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null);
   const screenElement = useRef<HTMLDivElement>(null);
+  const bindScreen = useCallback((node: HTMLDivElement | null) => {
+    screenElement.current = node;
+    if (node && host.current?.dataset.displayMatrix) {
+      node.style.transform = host.current.dataset.displayMatrix;
+      node.style.visibility = host.current.dataset.displayFront === "true" ? "visible" : "hidden";
+    }
+    rig.wake();
+  }, [rig]);
   const dialog = useRef<HTMLDialogElement>(null), returnFocus = useRef<HTMLElement | null>(null);
   const bind = useCallback((node: HTMLDivElement | null) => { host.current = node; setSurface(node); }, []);
   const fail = useCallback(() => { setFailed(true); setReady(false); }, []), onReady = useCallback(() => setReady(true), []);
   const focused = state.mode === "FOCUS_SCREEN";
-  useEffect(() => surface && anchor.current ? installWorkstationPosition(surface, anchor.current) : undefined, [surface]);
+  useEffect(() => surface && anchor.current ? installWorkstationPosition(surface, anchor.current, rig) : undefined, [surface, rig]);
+  useEffect(() => {
+    rig.paused = focused; rig.locked = state.mode === "MANIPULATE"; rig.wake();
+    input.wake = () => rig.wake(); input.onFeedback = setFeedback;
+    pointer.onExternal = () => setFeedback("external"); input.onEscape = () => dispatch({ type: "CLOSE_X" });
+  }, [rig, input, pointer, focused, state.mode]);
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
@@ -66,11 +84,11 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
     if (focused && !modal.open) { returnFocus.current = document.activeElement as HTMLElement; modal.showModal(); }
     if (!focused && modal.open) { modal.close(); returnFocus.current?.focus({ preventScroll: true }); }
   }, [focused]);
-  const screenDispatch = (event: WorkstationEvent) => {
+  const screenDispatch = useCallback((event: WorkstationEvent) => {
     dispatch(event);
     if (environment.mobile && (event.type === "OPEN_SITE" || event.type === "OPEN_CODE")) dispatch({ type: "FOCUS_SCREEN" });
-  };
-  const screen = <WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} />;
+  }, [environment.mobile]);
+  const screen = <WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} />;
   const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" ? <div className="workbench-screen workbench-code"><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
   const active = environment.visible && !environment.hidden && !focused;
   return <>
@@ -80,11 +98,11 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       <noscript><p>{text.fallback}</p>{Object.values(workstationSites).map((site) => <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>)}</noscript>
     </div>
     {body ? createPortal(<>
-      <div ref={bind} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected">
+      <div ref={bind} className="workstation-companion" data-workstation data-input-mode={inputMode} data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected">
         <div className="workstation-scene"><div className="workstation-dom-layer">
-          {ready && !failed && active && isScreenInteractive(state) && !focused ? <div ref={screenElement} className="workstation-projected-screen" style={{ visibility: "hidden" }}>{sceneScreen}</div> : null}
+          {ready && !failed && isScreenInteractive(state) && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
         </div>
-          {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} screen={sceneScreen} screenElement={screenElement} host={host} onReady={onReady} onFailure={fail} /></SceneBoundary> : null}
+          {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} screen={sceneScreen} screenElement={screenElement} host={host} rig={rig} input={input} pointer={pointer} inputMode={inputMode} onReady={onReady} onFailure={fail} /></SceneBoundary> : null}
         </div>
         <div className="workstation-controls">
           <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
@@ -94,9 +112,10 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
             <button type="button" aria-label={text.right} title={text.right} onClick={() => dispatch({ type: "ROTATE", axis: 1, delta: .25 })}>→</button>
             <button type="button" aria-label={text.tilt} title={text.tilt} onClick={() => dispatch({ type: "ROTATE", axis: 2, delta: state.rotation[2] > 0 ? -.2 : .2 })}>↶</button>
             <button type="button" aria-label={text.reset} title={text.reset} onClick={() => dispatch({ type: "RESET" })}>↺</button>
+            <button type="button" aria-pressed={inputMode} onClick={() => setInputMode(!inputMode)}>{inputMode ? text.inputExit : text.inputMode}</button>
           </> : <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button>}
         </div>
-        <p className="workstation-hint">{ready ? text.hint : text.fallback}</p>
+        <p className="workstation-hint" role="status">{ready ? feedback === "external" ? text.inputExternal : feedback === "local" ? text.inputLocal : text.inputReady : text.fallback}</p>
       </div>
       <dialog ref={dialog} className="workstation-focus" aria-label={text.title} data-workstation-focus onCancel={(event) => { event.preventDefault(); dispatch({ type: "EXIT_FOCUS" }); }}>
         <div className="workstation-focus-heading"><span>{text.title}</span><button type="button" onClick={() => dispatch({ type: "EXIT_FOCUS" })}>{text.exitFocus} <span aria-hidden="true">×</span></button></div>

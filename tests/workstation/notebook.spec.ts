@@ -5,6 +5,7 @@ async function open(page: Page) {
   await page.goto("/pt/workstation-lab");
   await expect(workstation(page)).toHaveAttribute("data-scene", "ready");
   await expect(page.locator("[data-workstation-screen]")).toBeVisible();
+  await expect(workstation(page)).toHaveAttribute("data-motion", "settled");
 }
 async function focus(page: Page) {
   await page.locator(".workstation-controls").getByRole("button", { name: "Focar tela", exact: false }).click();
@@ -27,9 +28,10 @@ test("real mesh hinge, three axes, chassis drag and quiet renderer", async ({ pa
   const pose = await workstation(page).getAttribute("data-pose");
   const box = (await page.locator("canvas").boundingBox())!;
   const point = (await workstation(page).getAttribute("data-drag-point"))!.split(",").map(Number);
-  await page.mouse.move(box.x + point[0]!, box.y + point[1]!);
+  const scale = box.width / 800;
+  await page.mouse.move(box.x + point[0]! * scale, box.y + point[1]! * scale);
   await page.mouse.down();
-  await page.mouse.move(box.x + point[0]! - 80, box.y + point[1]! - 20, { steps: 10 });
+  await page.mouse.move(box.x + point[0]! * scale - 80, box.y + point[1]! * scale - 20, { steps: 10 });
   await page.mouse.up();
   await expect.poll(() => workstation(page).getAttribute("data-pose")).not.toBe(pose);
   await expect(workstation(page)).not.toHaveAttribute("data-state", "MANIPULATE");
@@ -44,8 +46,9 @@ test("keyboard and trackpad hit targets block the chassis ray behind them", asyn
   const box = (await page.locator("canvas").boundingBox())!, before = await workstation(page).getAttribute("data-pose");
   for (const target of ["keyboard", "trackpad"]) {
     const [x, y] = (await workstation(page).getAttribute(`data-${target}-point`))!.split(",").map(Number);
-    await page.mouse.move(box.x + x!, box.y + y!); await page.mouse.down();
-    await page.mouse.move(box.x + x! + 60, box.y + y!, { steps: 10 }); await page.mouse.up();
+    const scale = box.width / 800;
+    await page.mouse.move(box.x + x! * scale, box.y + y! * scale); await page.mouse.down();
+    await page.mouse.move(box.x + x! * scale + 60, box.y + y! * scale, { steps: 10 }); await page.mouse.up();
     expect(await workstation(page).getAttribute("data-state")).toBe("DESKTOP");
     expect(await workstation(page).getAttribute("data-pose")).toBe(before);
   }

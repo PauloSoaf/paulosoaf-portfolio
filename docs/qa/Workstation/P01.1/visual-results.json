@@ -1,0 +1,336 @@
+{
+  "origin": "http://127.0.0.1:3300",
+  "environment": "Windows / Chromium / SwiftShader. Native wheel and mesh clicks, unchanged clock and playback. Logical projection error is not a physical pixel/GPU measurement.",
+  "results": [
+    {
+      "id": "pt-dark-1440",
+      "width": 1440,
+      "height": 900,
+      "theme": "dark",
+      "stats": {
+        "framesSampled": 394,
+        "maxPixelsPerSecond": 2400.0000000000014,
+        "maxScreenErrorLogicalPixels": 0.0008657022121680574,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-dark-1440.webm",
+        "bytes": 4240354,
+        "sha256": "5d8145edd4f45f4e21a097f0a49c26b90aea7b1f6061a9a9720b4d5f0206fff5"
+      }
+    },
+    {
+      "id": "pt-light-1440",
+      "width": 1440,
+      "height": 900,
+      "theme": "light",
+      "stats": {
+        "framesSampled": 413,
+        "maxPixelsPerSecond": 2400.0000000000014,
+        "maxScreenErrorLogicalPixels": 0.0008806939946892088,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-light-1440.webm",
+        "bytes": 3953682,
+        "sha256": "02dac3474108584514ea80c3d2a1ba215a5066190440877874b2c339c0e14168"
+      }
+    },
+    {
+      "id": "pt-dark-1920",
+      "width": 1920,
+      "height": 1080,
+      "theme": "dark",
+      "stats": {
+        "framesSampled": 430,
+        "maxPixelsPerSecond": 2400.0000000000027,
+        "maxScreenErrorLogicalPixels": 0.0008584428225378762,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 584.8836142085777,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 637.6824002657133,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 562.4658410149754,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 587.8153463790991,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 586.2942998759563,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-dark-1920.webm",
+        "bytes": 3886142,
+        "sha256": "71146ad5253e4317b4a10e53eff4d7ef39fe74379cac23c66d608ed4f7d60f17"
+      }
+    },
+    {
+      "id": "pt-dark-390",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "stats": {
+        "framesSampled": 572,
+        "maxPixelsPerSecond": 2400.0000000000023,
+        "maxScreenErrorLogicalPixels": 0.0008394668944206433,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 270.60819624159444,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 272.60922611359246,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 269.8711573716166,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 271.66601143466465,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 271.260878407139,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-dark-390.webm",
+        "bytes": 2969360,
+        "sha256": "32bb44b3f7c5d5232f2f97057f217d4f935234db6112d14deaa7e93eacee539b"
+      }
+    },
+    {
+      "id": "pt-light-390",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "stats": {
+        "framesSampled": 562,
+        "maxPixelsPerSecond": 2400.0000000000027,
+        "maxScreenErrorLogicalPixels": 0.0008888285919042667,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 270.60819624159444,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 272.60922611359246,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 269.8711573716166,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 271.66601143466465,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 271.260878407139,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-light-390.webm",
+        "bytes": 2955345,
+        "sha256": "2ff7ffe11f342b20e4c5ac65e22fe9c93cb45ba653b7985c4fb04808b903a1ac"
+      }
+    },
+    {
+      "id": "pt-dark-768",
+      "width": 768,
+      "height": 900,
+      "theme": "dark",
+      "stats": {
+        "framesSampled": 535,
+        "maxPixelsPerSecond": 2400.000000000001,
+        "maxScreenErrorLogicalPixels": 0.0008394668944311356,
+        "idleFrames600ms": 0
+      },
+      "stages": [
+        {
+          "chapter": "work",
+          "chassisWidth": 558.6239372706599,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "about",
+          "chassisWidth": 562.754718234492,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "expertise",
+          "chassisWidth": 557.1024476735712,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "services",
+          "chassisWidth": 560.8076142481674,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        },
+        {
+          "chapter": "contact",
+          "chassisWidth": 559.9712870042108,
+          "screen": true,
+          "canvas": 1,
+          "horizontalOverflow": false
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-dark-768.webm",
+        "bytes": 3552103,
+        "sha256": "78f0e473d64f2be76b59b56bbd6d262b93a83ba7349c56ed331ecfdc35426daf"
+      }
+    }
+  ]
+}

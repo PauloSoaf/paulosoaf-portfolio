@@ -1,7 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile, readFile, copyFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
-const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300", output = "docs/qa/Workstation/P01", raw = "docs/report/Workstation/live-videos";
+const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300", output = process.env.QA_WORKSTATION_OUTPUT ?? "docs/qa/Workstation/P01", raw = process.env.QA_WORKSTATION_RAW_OUTPUT ?? "docs/report/Workstation/live-videos";
 await mkdir(`${output}/screenshots`, { recursive: true }); await mkdir(`${output}/videos`, { recursive: true }); await mkdir(raw, { recursive: true });
 const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader"] }), results = [];
 try {

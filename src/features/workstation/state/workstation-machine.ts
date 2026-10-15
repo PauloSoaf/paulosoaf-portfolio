@@ -1,7 +1,8 @@
 export type ScreenApp =
   | { readonly kind: "DESKTOP" }
   | { readonly kind: "PREVIEW"; readonly siteId: "fixture" | "nutriopus" | "deborah" }
-  | { readonly kind: "CODE" };
+  | { readonly kind: "CODE" }
+  | { readonly kind: "NOTES" };
 
 export type WorkstationMode =
   | ScreenApp["kind"]
@@ -20,6 +21,7 @@ export type WorkstationState = {
 export type WorkstationEvent =
   | { type: "OPEN_SITE"; siteId: unknown }
   | { type: "OPEN_CODE" }
+  | { type: "OPEN_NOTES" }
   | { type: "CLOSE_X" }
   | { type: "FOCUS_SCREEN" }
   | { type: "EXIT_FOCUS" }
@@ -67,6 +69,8 @@ export function workstationReducer(
     case "OPEN_CODE":
       // No component path or external source is accepted by the P01 stub.
       return openApp(state, { kind: "CODE" });
+    case "OPEN_NOTES":
+      return openApp(state, { kind: "NOTES" });
     case "CLOSE_X": {
       if (state.mode === "BROKEN") return state;
       const focused = state.mode === "FOCUS_SCREEN";

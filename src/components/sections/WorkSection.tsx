@@ -26,7 +26,7 @@ interface WorkSectionProps {
  */
 export function WorkSection({ locale, dict, projects, github, preview, workstation = false }: WorkSectionProps) {
   return (
-    <Section id="work" heading={dict.sections.work} band sceneAnchor={workstation ? <div data-workstation-work-anchor className="workstation-work-anchor" aria-hidden="true" /> : undefined}>
+    <Section id="work" heading={dict.sections.work} band sceneAnchor={workstation ? <div data-workstation-work-anchor data-workstation-section-anchor="work" className="workstation-work-anchor" aria-hidden="true" /> : undefined}>
       {projects.length > 0 ? (
         <ProjectCarousel labels={dict.carousel} slides={orderProjects(projects).map((project, index) => ({
           slug: project.slug,
