@@ -1,0 +1,174 @@
+{
+  "inspectedAt": "2026-10-14T16:40:20.115Z",
+  "note": "Read-only anonymous GET and local iframe audit. No forms/authentication. Cookie values are never persisted.",
+  "sites": [
+    {
+      "id": "nutriopus",
+      "url": "https://www.nutriopus.com.br/",
+      "redirects": [
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "cookies": []
+        }
+      ],
+      "dns": [
+        {
+          "address": "64.29.17.65",
+          "family": 4
+        },
+        {
+          "address": "216.198.79.65",
+          "family": 4
+        }
+      ],
+      "finalUrl": "https://www.nutriopus.com.br/",
+      "title": "NutriOpus | Plataforma para Nutricionistas",
+      "bodyBytes": 238617,
+      "browser": {
+        "console": [],
+        "errors": [],
+        "documentResponses": [
+          {
+            "url": "http://127.0.0.1:60398/nutriopus",
+            "status": 200,
+            "headers": {
+              "content-security-policy": "default-src 'self'; script-src 'none'; style-src 'unsafe-inline'; frame-src https://www.nutriopus.com.br https://xn--advogadadborahlima-jwb.com.br https://www.xn--advogadadborahlima-jwb.com.br; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+              "x-frame-options": "DENY",
+              "content-type": "text/html; charset=utf-8"
+            }
+          },
+          {
+            "url": "https://www.nutriopus.com.br/",
+            "status": 200,
+            "headers": {
+              "content-type": "text/html; charset=utf-8",
+              "strict-transport-security": "max-age=63072000"
+            }
+          }
+        ],
+        "failedRequests": [
+          {
+            "url": "https://www.nutriopus.com.br/demo/dashboard",
+            "resourceType": "fetch",
+            "error": "net::ERR_ABORTED"
+          }
+        ],
+        "frameUrl": "https://www.nutriopus.com.br/",
+        "content": {
+          "title": "NutriOpus | Plataforma para Nutricionistas",
+          "scrollHeight": 6311,
+          "clientHeight": 700,
+          "scrollY": 0,
+          "heading": "Tudo que a nutricionista precisa em uma única plataforma",
+          "linkCount": 21
+        },
+        "nativeWheel": {
+          "before": 0,
+          "after": 660
+        },
+        "nativeAnchorClick": {
+          "href": "#recursos",
+          "text": "Recursos",
+          "afterUrl": "https://www.nutriopus.com.br/",
+          "afterScrollY": 713
+        },
+        "cookieCount": 0
+      }
+    },
+    {
+      "id": "deborah",
+      "url": "https://xn--advogadadborahlima-jwb.com.br/",
+      "redirects": [
+        {
+          "url": "https://xn--advogadadborahlima-jwb.com.br/",
+          "status": 308,
+          "headers": {
+            "location": "https://www.xn--advogadadborahlima-jwb.com.br/",
+            "content-type": "text/plain",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "cookies": []
+        },
+        {
+          "url": "https://www.xn--advogadadborahlima-jwb.com.br/",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "cookies": []
+        }
+      ],
+      "dns": [
+        {
+          "address": "216.198.79.1",
+          "family": 4
+        }
+      ],
+      "finalUrl": "https://www.xn--advogadadborahlima-jwb.com.br/",
+      "title": "Déborah Lima | Advogada em Manaus — OAB/AM 21.897",
+      "canonical": "<link rel=\"canonical\" href=\"https://advogadadeborahlima.com.br\"/>",
+      "bodyBytes": 71832,
+      "browser": {
+        "console": [],
+        "errors": [],
+        "documentResponses": [
+          {
+            "url": "http://127.0.0.1:60398/deborah",
+            "status": 200,
+            "headers": {
+              "content-security-policy": "default-src 'self'; script-src 'none'; style-src 'unsafe-inline'; frame-src https://www.nutriopus.com.br https://xn--advogadadborahlima-jwb.com.br https://www.xn--advogadadborahlima-jwb.com.br; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+              "x-frame-options": "DENY",
+              "content-type": "text/html; charset=utf-8"
+            }
+          },
+          {
+            "url": "https://xn--advogadadborahlima-jwb.com.br/",
+            "status": 308,
+            "headers": {
+              "location": "https://www.xn--advogadadborahlima-jwb.com.br/",
+              "content-type": "text/html",
+              "strict-transport-security": "max-age=63072000"
+            }
+          },
+          {
+            "url": "https://www.xn--advogadadborahlima-jwb.com.br/",
+            "status": 200,
+            "headers": {
+              "content-type": "text/html; charset=utf-8",
+              "strict-transport-security": "max-age=63072000"
+            }
+          }
+        ],
+        "failedRequests": [],
+        "frameUrl": "https://www.xn--advogadadborahlima-jwb.com.br/",
+        "content": {
+          "title": "Déborah Lima | Advogada em Manaus — OAB/AM 21.897",
+          "scrollHeight": 5680,
+          "clientHeight": 700,
+          "scrollY": 0,
+          "heading": "Déborah Lima",
+          "linkCount": 16
+        },
+        "nativeWheel": {
+          "before": 0,
+          "after": 660
+        },
+        "nativeAnchorClick": {
+          "href": "#topo",
+          "text": "DL\nDÉBORAH LIMA",
+          "afterUrl": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+          "afterScrollY": 0
+        },
+        "cookieCount": 0
+      }
+    }
+  ],
+  "parentTestOrigin": "http://127.0.0.1:60398",
+  "parentCsp": "default-src 'self'; script-src 'none'; style-src 'unsafe-inline'; frame-src https://www.nutriopus.com.br https://xn--advogadadborahlima-jwb.com.br https://www.xn--advogadadborahlima-jwb.com.br; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+}

@@ -74,7 +74,7 @@ html[data-js] .project-carousel[data-enhanced="false"] .carousel-slide { scroll-
   .project-media { aspect-ratio: 1.15; }
   .project-carousel[data-enhanced="true"] .carousel-slide { width: 92%; transform: translate3d(calc(var(--offset) * 103% + var(--drag-x, 0px)), 0, 0) scale(.9); }
   .project-carousel[data-enhanced="true"] .carousel-slide[data-active="true"] { transform: translate3d(var(--drag-x, 0px), 0, 0); }
-  .carousel-controls { display: grid; grid-template-columns: 44px 44px minmax(0, 1fr); gap: .5rem; }
+  .carousel-controls { display: grid; grid-template-columns: 44px 44px minmax(0, 1fr); gap: .375rem; }
   .carousel-prev { grid-column: 1; grid-row: 1; }
   .carousel-next { grid-column: 2; grid-row: 1; }
   .carousel-play { grid-column: 3; grid-row: 1; }

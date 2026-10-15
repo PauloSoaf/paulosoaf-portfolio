@@ -17,6 +17,10 @@ A POC Creative Direction Recovery usa escultura procedural em camadas, abertura 
 
 A continuação solicitada acrescenta contador funcional 7→0, seleção direta dos sete projetos, entradas de scroll mais tardias e longas, escultura acompanhando as seções com tamanho variável e cards/CTAs com efeitos próprios. Evidências atuais: [QA da continuação](docs/qa/CreativeFollowup/REPORT.md), [ADR-014](docs/adr/ADR-014-visible-motion-and-page-companion.md).
 
+A POC **Obsidian Workstation P00/P01** está em http://localhost:1010/pt/workstation-lab (também `/en/workstation-lab` e `/es/workstation-lab`). Notebook Three.js autoral com tampa, giro por arraste, desktop DOM projetado, browser de laboratório com input/scroll reais e foco 2D acessível. NutriOpus e Déborah têm prévias reais testadas localmente; a validação no futuro domínio HTTPS e o aceite de publicação continuam pendentes. A landing normal permanece como comparação. A barra de rolagem nativa foi personalizada em Dark/Light. [QA da Workstation](docs/qa/Workstation/P01/REPORT.md), [matriz de incorporação](docs/qa/Workstation/P00/EMBED-MATRIX.md), [ADR-015](docs/adr/ADR-015-workstation-dom-screen.md).
+
+Para uma prévia otimizada da POC, use `PORTFOLIO_CONTENT_PREVIEW=1` **e** `EXPERIMENTAL_WORKSTATION=1` no build e no servidor. Com esse servidor em `127.0.0.1:3300`, execute `npm run test:workstation` e `npm run qa:workstation`. `QA_LIVE_EMBEDS=1` inclui os dois testes de rede real; `QA_ORIGIN` altera a origem de QA. Um build público normal retorna 404 para laboratório e fixture. P02–P07 seguem no backlog do pacote; Code é um stub P03, sem fonte externa. Jogos, destruição, teclado e trackpad virtuais não foram antecipados.
+
 `next dev` mostra candidatos editoriais com avisos. Produção filtra coleções por `status: "approved"`. Perfil e textos da interface ainda exigem aprovação, verificada pelo gate de publicação.
 
 ## Verificação

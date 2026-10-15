@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink as Link } from "@/components/ui/PageLink.client";
 
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Icon } from "@/components/ui/Icon";

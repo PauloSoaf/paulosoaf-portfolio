@@ -1,0 +1,106 @@
+{
+  "package": "Obsidian Workstation 3D notebook specification",
+  "created_date": "2026-10-14",
+  "source_repo": "PauloSoaf/paulosoaf-portfolio",
+  "source_branch": "feat/creative-direction-recovery",
+  "source_sha": "5c607eb17d29d536620e0cd2080f8202586441b3",
+  "numbers": {
+    "requirements_functional": 20,
+    "requirements_nonfunctional": 10,
+    "web_references": 10,
+    "github_references": 10,
+    "files_including_manifest": 18
+  },
+  "notes": [
+    "Documentation only; no implementation or deployment",
+    "Commercial live embed status not verified; requires real tests",
+    "Source-code inspection limited to portfolio repository"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4933,
+      "sha256": "54d4ed73946818dce6178ef37dd19e54b7f3b3de75a5d722178b2f78fe0c4e27"
+    },
+    {
+      "path": "agents/PROMPT-CLAUDE-CODEX.md",
+      "bytes": 8026,
+      "sha256": "35407b5f5a8a8cece0580e626825c0a1a29c0cd6826325815cf7565e8c7fbec6"
+    },
+    {
+      "path": "examples/contracts.ts",
+      "bytes": 2958,
+      "sha256": "e53405b270a7301685e810e01a98ecd4c80ed823c3541c877d7c77ebeac8c88b"
+    },
+    {
+      "path": "planning/01-roteiro-tecnico.md",
+      "bytes": 6302,
+      "sha256": "cae16034efb41d9a32562cc72b62c43960214645a04c0fcb9b72ddac01858f6f"
+    },
+    {
+      "path": "planning/02-testes-criterios-de-aceite.md",
+      "bytes": 5812,
+      "sha256": "e439af8237ef07297c1d5bd1adaef2a7d412ef650ae5a2c78efb2949f8fa9db8"
+    },
+    {
+      "path": "planning/03-riscos-e-decisoes.md",
+      "bytes": 3496,
+      "sha256": "f5a1f0d2cd8dfe2fb913597647e8ba5a88b154daf685c0cbc1347ce25e4139a8"
+    },
+    {
+      "path": "planning/04-checklist-entrega.md",
+      "bytes": 1767,
+      "sha256": "316fe48192422610cedf036511c7286e3c0b1fcc53a73e6f11126c1d9edebc1d"
+    },
+    {
+      "path": "research/10-referencias-github.md",
+      "bytes": 3007,
+      "sha256": "5d542610092f9e5e55cb7393eb2b2ed7025663f1fbeba71dfeefbb7ed83db34a"
+    },
+    {
+      "path": "research/10-referencias-web.md",
+      "bytes": 3124,
+      "sha256": "ced5b5c7c74827cc5a19ad1ace2bb078f65ab5a49c3be97043269a6aab4a1393"
+    },
+    {
+      "path": "specs/00-escopo-e-ux.md",
+      "bytes": 5074,
+      "sha256": "a27c6298aed561da99321c45641d1149ff6506b9e3e47bf7251648256001b557"
+    },
+    {
+      "path": "specs/01-requisitos-funcionais.md",
+      "bytes": 5058,
+      "sha256": "665ad708ca5aad42a50151ec87e6b1f3a92886a8b8ecaba559ce60e37270012f"
+    },
+    {
+      "path": "specs/02-requisitos-nao-funcionais.md",
+      "bytes": 3098,
+      "sha256": "82183be1eecbecab11e60c8d65bd94ec494943ccf53d6e75b5aa15e04a2a42ed"
+    },
+    {
+      "path": "specs/03-arquitetura.md",
+      "bytes": 7451,
+      "sha256": "9072c373ba8861bc635455a2e36cfe33525b2df9874a79574ac7814222ac0f15"
+    },
+    {
+      "path": "specs/04-3d-fisica-controles.md",
+      "bytes": 5397,
+      "sha256": "a2225cd0e7fab1a4a995d0f597eb0ac473d49ca612526a769886873a3fff1738"
+    },
+    {
+      "path": "specs/05-browser-sites-reais.md",
+      "bytes": 6901,
+      "sha256": "da8210f22d8dfc7d50f9baea26250cdb0953c115008acec4953178d8c7ed40a3"
+    },
+    {
+      "path": "specs/06-code-mode-e-mini-os.md",
+      "bytes": 5409,
+      "sha256": "ab5ae5c6d28d063f1ab02b19866dc9d29829aebde9af890c21e7e909b96ab2c8"
+    },
+    {
+      "path": "specs/07-acessibilidade-seguranca.md",
+      "bytes": 3725,
+      "sha256": "2ac5c2a0e655df356d6d3b022f4736ddaef7789a3ac93795fdfca7bd31c78ed5"
+    }
+  ]
+}

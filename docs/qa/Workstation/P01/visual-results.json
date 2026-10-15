@@ -1,0 +1,107 @@
+{
+  "environment": "Chromium / Windows / software SwiftShader; native time and input, no speed changes",
+  "cases": [
+    {
+      "id": "pt-dark-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "pt-light-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "en-dark-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "en-light-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "es-dark-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "es-light-1440",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "pt-dark-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "pt-light-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "en-dark-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "en-light-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "es-dark-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "id": "es-light-390",
+      "fixtureNativeScroll": 650,
+      "canvasCount": 1,
+      "errors": [],
+      "overflow": false
+    }
+  ],
+  "videos": [
+    {
+      "path": "docs/qa/Workstation/P01/videos/pt-dark-1440.webm",
+      "sha256": "2bcf9bd4e65175bd23e4a34c1a8dfbf32733733cf86e500aef420cacc031f4fd"
+    },
+    {
+      "path": "docs/qa/Workstation/P01/videos/pt-light-1440.webm",
+      "sha256": "ecd1e8e50ce5d0873a597f3cba6e562d5e840842b53435e90b1d93e09d714d46"
+    },
+    {
+      "path": "docs/qa/Workstation/P01/videos/pt-dark-390.webm",
+      "sha256": "09b7d16fa6475ed1d5032d469b2dd7849ab7ca12fcc5acde25a113a4db8cf03e"
+    },
+    {
+      "path": "docs/qa/Workstation/P01/videos/pt-light-390.webm",
+      "sha256": "245ed3d3c4170ef3800cb15e2620d72fc4bdacd9ecae75717b9a589c0911eab2"
+    }
+  ]
+}

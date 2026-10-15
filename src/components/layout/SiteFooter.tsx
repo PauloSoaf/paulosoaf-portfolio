@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink as Link } from "@/components/ui/PageLink.client";
 
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { LanguageSwitch } from "@/components/ui/LanguageSwitch.client";

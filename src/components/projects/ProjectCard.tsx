@@ -7,6 +7,7 @@ import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 import { ProjectMedia } from "./ProjectMedia.client";
+import { ProjectNotebookButton } from "@/features/workstation/ProjectNotebookButton.client";
 
 interface ProjectCardProps {
   project: Project;
@@ -14,6 +15,7 @@ interface ProjectCardProps {
   dict: Dictionary;
   position: number;
   total: number;
+  notebookLabel?: string;
 }
 
 const pad = (value: number) => String(value).padStart(2, "0");
@@ -22,7 +24,7 @@ const pad = (value: number) => String(value).padStart(2, "0");
  * Semantic project card (S00 static grid; S02 reuses it as the carousel slide and no-JS fallback).
  * Shows only verified links: "Código" when a public repository was checked, never an unverified demo.
  */
-export function ProjectCard({ project, locale, dict, position, total }: ProjectCardProps) {
+export function ProjectCard({ project, locale, dict, position, total, notebookLabel }: ProjectCardProps) {
   const titleId = `project-${project.slug}-title`;
   const categories = project.categories.map((category) => dict.projects.categories[category]).join(" / ");
   const repository = publicRepository(project);
@@ -50,6 +52,7 @@ export function ProjectCard({ project, locale, dict, position, total }: ProjectC
         </div>
 
         <p className="text-sm leading-relaxed text-fg-muted">{project.summary[locale]}</p>
+        {notebookLabel ? <ProjectNotebookButton slug={project.slug} label={notebookLabel} /> : null}
         <p className="font-mono text-xs leading-relaxed text-fg-subtle">{project.stackVerification === "confirmed" ? project.tech.join(" • ") : dict.projects.stackPending}</p>
         {project.teamCredits?.length ? (
           <p className="text-xs text-fg-subtle">

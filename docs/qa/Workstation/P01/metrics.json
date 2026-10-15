@@ -1,0 +1,465 @@
+{
+  "baseSha": "5c607eb17d29d536620e0cd2080f8202586441b3",
+  "branch": "feat/workstation-notebook-poc",
+  "performance": {
+    "environment": "Windows / Chromium / SwiftShader; unthrottled laboratory; Save-Data isolates initial/lazy JS; CPU gl.render timing is not GPU FPS",
+    "results": [
+      {
+        "width": 390,
+        "path": "/pt",
+        "initialGzipBytes": 166070,
+        "lazyGzipBytes": 0,
+        "scene": null,
+        "shifts": [],
+        "lcp": [
+          228
+        ],
+        "cls": 0,
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 228
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 13.799999713897705
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 228
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 228
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 228
+          }
+        ]
+      },
+      {
+        "width": 390,
+        "path": "/pt/workstation-lab",
+        "initialGzipBytes": 166070,
+        "lazyGzipBytes": 248617,
+        "scene": {
+          "workstation": "true",
+          "state": "DESKTOP",
+          "lid": "108",
+          "scene": "ready",
+          "screenStrategy": "projected",
+          "positioned": "true",
+          "chapter": "hero",
+          "controlsVisible": "true",
+          "frames": "125",
+          "lidRendered": "108.00",
+          "pose": "-0.0800,-0.2798,0.0250",
+          "drawCalls": "17",
+          "triangles": "8000",
+          "dragPoint": "239.9765872441689,254.18123186204883",
+          "keyboardPoint": "172.49897837526277,229.1804379812418",
+          "trackpadPoint": "154.63974697150474,246.89011487666434",
+          "renderCpuMs": "1.4840",
+          "idleFrames600ms": 0
+        },
+        "shifts": [
+          0.00015292993755755712
+        ],
+        "lcp": [
+          216
+        ],
+        "cls": 0.00015292993755755712,
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 216
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 10.600000381469727
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 216
+          },
+          {
+            "name": "portfolio:vital:FID",
+            "value": 1.700000286102295
+          },
+          {
+            "name": "portfolio:vital:INP",
+            "value": 64
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0.00015292993755755712
+          }
+        ],
+        "firstFrame": 1627.8000001907349,
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 216
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 216
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "path": "/pt",
+        "initialGzipBytes": 166070,
+        "lazyGzipBytes": 0,
+        "scene": null,
+        "shifts": [],
+        "lcp": [
+          264
+        ],
+        "cls": 0,
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 264
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 11
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 264
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0
+          }
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 264
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 264
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "path": "/pt/workstation-lab",
+        "initialGzipBytes": 166070,
+        "lazyGzipBytes": 248617,
+        "scene": {
+          "workstation": "true",
+          "state": "DESKTOP",
+          "lid": "108",
+          "scene": "ready",
+          "screenStrategy": "projected",
+          "positioned": "true",
+          "chapter": "hero",
+          "controlsVisible": "true",
+          "frames": "115",
+          "lidRendered": "108.00",
+          "pose": "-0.0800,-0.2799,0.0250",
+          "drawCalls": "17",
+          "triangles": "8000",
+          "dragPoint": "468.48701945480764,414.5824083107433",
+          "keyboardPoint": "336.76088338836223,365.7733918395667",
+          "trackpadPoint": "301.8907278217045,400.3465783715613",
+          "renderCpuMs": "1.6243",
+          "idleFrames600ms": 0
+        },
+        "shifts": [],
+        "lcp": [
+          308
+        ],
+        "cls": 0,
+        "vitals": [
+          {
+            "name": "portfolio:vital:FCP",
+            "value": 308
+          },
+          {
+            "name": "portfolio:vital:TTFB",
+            "value": 8.699999809265137
+          },
+          {
+            "name": "portfolio:vital:LCP",
+            "value": 308
+          },
+          {
+            "name": "portfolio:vital:FID",
+            "value": 2.3000001907348633
+          },
+          {
+            "name": "portfolio:vital:INP",
+            "value": 304
+          },
+          {
+            "name": "portfolio:vital:CLS",
+            "value": 0
+          }
+        ],
+        "firstFrame": 1748.5,
+        "paints": [
+          {
+            "name": "first-paint",
+            "time": 308
+          },
+          {
+            "name": "first-contentful-paint",
+            "time": 308
+          }
+        ]
+      }
+    ]
+  },
+  "hydration": {
+    "latencyMs": 120,
+    "downloadBytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "scriptGateMsAfterFonts": 800,
+    "results": [
+      {
+        "width": 390,
+        "hash": "",
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 2656.0625,
+          "expertiseTop": 4681.96875,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 2656.0625,
+          "expertiseTop": 4681.96875,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#work",
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 1520.0625,
+          "expertiseTop": 3545.96875,
+          "scrollY": 1136
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 1520.0625,
+          "expertiseTop": 3545.96875,
+          "scrollY": 1136
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 390,
+        "hash": "#about",
+        "before": {
+          "height": 1593.21875,
+          "aboutTop": 81.0625,
+          "expertiseTop": 2106.96875,
+          "scrollY": 2575
+        },
+        "after": {
+          "height": 1593.21875,
+          "aboutTop": 80.0625,
+          "expertiseTop": 2105.96875,
+          "scrollY": 2576
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": -1,
+          "expertiseTop": -1,
+          "scrollY": 1
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "",
+        "before": {
+          "height": 486.75,
+          "aboutTop": 2335.96875,
+          "expertiseTop": 3290.625,
+          "scrollY": 0
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 2335.96875,
+          "expertiseTop": 3290.625,
+          "scrollY": 0
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#work",
+        "before": {
+          "height": 486.75,
+          "aboutTop": 1419.96875,
+          "expertiseTop": 2374.625,
+          "scrollY": 916
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 1419.96875,
+          "expertiseTop": 2374.625,
+          "scrollY": 916
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      },
+      {
+        "width": 1440,
+        "hash": "#about",
+        "before": {
+          "height": 486.75,
+          "aboutTop": 87.96875,
+          "expertiseTop": 1042.625,
+          "scrollY": 2248
+        },
+        "after": {
+          "height": 486.75,
+          "aboutTop": 87.96875,
+          "expertiseTop": 1042.625,
+          "scrollY": 2248
+        },
+        "delta": {
+          "height": 0,
+          "aboutTop": 0,
+          "expertiseTop": 0,
+          "scrollY": 0
+        }
+      }
+    ]
+  },
+  "lighthouse": [
+    {
+      "sample": "baseline-mobile",
+      "scores": {
+        "performance": 81,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "metrics": {
+        "first-contentful-paint": 1362.2042999999999,
+        "largest-contentful-paint": 3177.2043,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 472.5
+      }
+    },
+    {
+      "sample": "workstation-desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "metrics": {
+        "first-contentful-paint": 337.75775000000004,
+        "largest-contentful-paint": 648.2577500000002,
+        "cumulative-layout-shift": 0.0006899733755272612,
+        "total-blocking-time": 38.999999999999886
+      }
+    },
+    {
+      "sample": "workstation-mobile",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "metrics": {
+        "first-contentful-paint": 1396.989,
+        "largest-contentful-paint": 3224.489,
+        "cumulative-layout-shift": 0,
+        "total-blocking-time": 123.5
+      }
+    }
+  ],
+  "screenshotCount": 89,
+  "videos": [
+    {
+      "file": "videos/live-deborah.webm",
+      "bytes": 838340,
+      "sha256": "d61dc330bf69ee88147a46ec12e5dc820f815248ac6315934c31ed01d70c3aeb",
+      "durationSeconds": 7.92,
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "videos/live-nutriopus.webm",
+      "bytes": 915273,
+      "sha256": "ecd39e23fe706f89efb709de407b0f719579cd89285e9d9ad933b964942dde3f",
+      "durationSeconds": 8.6,
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "videos/pt-dark-1440.webm",
+      "bytes": 1358447,
+      "sha256": "2bcf9bd4e65175bd23e4a34c1a8dfbf32733733cf86e500aef420cacc031f4fd",
+      "durationSeconds": 11.92,
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "videos/pt-dark-390.webm",
+      "bytes": 295237,
+      "sha256": "09b7d16fa6475ed1d5032d469b2dd7849ab7ca12fcc5acde25a113a4db8cf03e",
+      "durationSeconds": 4.56,
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "videos/pt-light-1440.webm",
+      "bytes": 1293441,
+      "sha256": "ecd1e8e50ce5d0873a597f3cba6e562d5e840842b53435e90b1d93e09d714d46",
+      "durationSeconds": 11.16,
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "videos/pt-light-390.webm",
+      "bytes": 291976,
+      "sha256": "245ed3d3c4170ef3800cb15e2620d72fc4bdacd9ecae75717b9a589c0911eab2",
+      "durationSeconds": 4.6,
+      "width": 390,
+      "height": 844
+    }
+  ]
+}

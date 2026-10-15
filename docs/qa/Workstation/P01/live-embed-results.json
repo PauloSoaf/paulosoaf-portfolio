@@ -1,0 +1,76 @@
+{
+  "environment": "Anonymous public landing pages in Chromium; native input, no private sessions or authentication",
+  "origin": "http://127.0.0.1:3300",
+  "results": [
+    {
+      "id": "nutriopus",
+      "title": "NutriOpus | Plataforma para Nutricionistas",
+      "wheel": {
+        "before": 0,
+        "after": 650
+      },
+      "afterClick": {
+        "url": "https://www.nutriopus.com.br/",
+        "scrollY": 713
+      },
+      "errors": [],
+      "policies": [
+        {
+          "url": "http://127.0.0.1:3300/pt/workstation-lab",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+            "x-frame-options": "DENY",
+            "content-type": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8"
+          }
+        }
+      ],
+      "video": {
+        "path": "docs/qa/Workstation/P01/videos/live-nutriopus.webm",
+        "sha256": "ecd39e23fe706f89efb709de407b0f719579cd89285e9d9ad933b964942dde3f"
+      }
+    },
+    {
+      "id": "deborah",
+      "title": "Déborah Lima | Advogada em Manaus — OAB/AM 21.897",
+      "wheel": {
+        "before": 0,
+        "after": 650
+      },
+      "afterClick": {
+        "url": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+        "scrollY": 0
+      },
+      "errors": [],
+      "policies": [
+        {
+          "url": "http://127.0.0.1:3300/pt/workstation-lab",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+            "x-frame-options": "DENY",
+            "content-type": "text/html; charset=utf-8"
+          }
+        },
+        {
+          "url": "https://www.xn--advogadadborahlima-jwb.com.br/",
+          "status": 200,
+          "headers": {
+            "content-type": "text/html; charset=utf-8"
+          }
+        }
+      ],
+      "video": {
+        "path": "docs/qa/Workstation/P01/videos/live-deborah.webm",
+        "sha256": "d61dc330bf69ee88147a46ec12e5dc820f815248ac6315934c31ed01d70c3aeb"
+      }
+    }
+  ]
+}

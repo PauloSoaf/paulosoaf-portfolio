@@ -129,7 +129,7 @@ test("200% text zoom preserves mobile content and controls", async ({ page, cont
   }
 });
 
-test("public build excludes editorial drafts and unapproved contact links", async ({ page }) => {
+test("public build excludes editorial drafts and unapproved contact links", async ({ page, request }) => {
   test.skip(process.env.QA_EXPECT_PUBLIC_CONTENT !== "1", "Requires a build without editorial preview.");
   for (const locale of locales) {
     await page.goto(`/${locale}`);
@@ -139,5 +139,9 @@ test("public build excludes editorial drafts and unapproved contact links", asyn
     await expect(page.locator("#contact a")).toHaveCount(0);
     await expect(page.locator('a[href^="mailto:"], a[href="#"]')).toHaveCount(0);
     await expect(page.locator("#hero-title")).toBeVisible();
+    expect((await request.get(`/${locale}/workstation-lab`)).status()).toBe(404);
   }
+  const fixture = await request.get("/workstation/embed-fixture");
+  expect(fixture.status()).toBe(404);
+  expect(fixture.headers()["x-frame-options"]).toBe("DENY");
 });

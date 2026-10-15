@@ -1,0 +1,50 @@
+[
+  {
+    "file": "videos/live-deborah.webm",
+    "bytes": 838340,
+    "sha256": "d61dc330bf69ee88147a46ec12e5dc820f815248ac6315934c31ed01d70c3aeb",
+    "durationSeconds": 7.92,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/live-nutriopus.webm",
+    "bytes": 915273,
+    "sha256": "ecd39e23fe706f89efb709de407b0f719579cd89285e9d9ad933b964942dde3f",
+    "durationSeconds": 8.6,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-dark-1440.webm",
+    "bytes": 1358447,
+    "sha256": "2bcf9bd4e65175bd23e4a34c1a8dfbf32733733cf86e500aef420cacc031f4fd",
+    "durationSeconds": 11.92,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-dark-390.webm",
+    "bytes": 295237,
+    "sha256": "09b7d16fa6475ed1d5032d469b2dd7849ab7ca12fcc5acde25a113a4db8cf03e",
+    "durationSeconds": 4.56,
+    "width": 390,
+    "height": 844
+  },
+  {
+    "file": "videos/pt-light-1440.webm",
+    "bytes": 1293441,
+    "sha256": "ecd1e8e50ce5d0873a597f3cba6e562d5e840842b53435e90b1d93e09d714d46",
+    "durationSeconds": 11.16,
+    "width": 1440,
+    "height": 900
+  },
+  {
+    "file": "videos/pt-light-390.webm",
+    "bytes": 291976,
+    "sha256": "245ed3d3c4170ef3800cb15e2620d72fc4bdacd9ecae75717b9a589c0911eab2",
+    "durationSeconds": 4.6,
+    "width": 390,
+    "height": 844
+  }
+]

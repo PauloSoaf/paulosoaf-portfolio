@@ -1,13 +1,15 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
 const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3202";
+const pagePath = process.env.QA_HYDRATION_PAGE_PATH ?? "/pt";
+const hashes = process.env.QA_HYDRATION_HASHES?.split(",") ?? ["", "#about"];
 const output = process.env.QA_HYDRATION_OUTPUT_DIR ?? "docs/report/S03.5";
 const screenshots = process.env.QA_HYDRATION_SCREENSHOT_DIR ?? "docs/qa/S03.5/screenshots";
 const results = [], browser = await chromium.launch();
 await mkdir(output, { recursive: true });
 await mkdir(screenshots, { recursive: true });
 try {
-  for (const width of [390, 1440]) for (const hash of ["", "#about"]) {
+  for (const width of [390, 1440]) for (const hash of hashes) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: "no-preference" });
     await page.addInitScript(() => Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: true } }));
     const cdp = await page.context().newCDPSession(page);
@@ -17,7 +19,7 @@ try {
     let release;
     const gate = new Promise(resolve => { release = resolve; });
     await page.route("**/_next/**/*.js", async route => { await gate; await route.continue(); });
-    await page.goto(`${origin}/pt${hash}`, { waitUntil: "commit" });
+    await page.goto(`${origin}${pagePath}${hash}`, { waitUntil: "commit" });
     await page.locator("[data-timeline]").waitFor(); await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(800);
     const measure = () => page.evaluate(() => ({ height: document.querySelector("[data-timeline]").getBoundingClientRect().height,
       aboutTop: document.querySelector("#about").getBoundingClientRect().top, expertiseTop: document.querySelector("#expertise").getBoundingClientRect().top, scrollY }));

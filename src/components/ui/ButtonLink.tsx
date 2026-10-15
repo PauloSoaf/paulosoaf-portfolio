@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink as Link } from "./PageLink.client";
 import type { ComponentProps } from "react";
 
 import { cx } from "@/lib/cx";

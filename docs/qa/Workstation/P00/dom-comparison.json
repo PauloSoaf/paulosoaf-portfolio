@@ -1,0 +1,14 @@
+[
+  {
+    "strategy": "drei",
+    "screens": 0,
+    "visible": false,
+    "logs": []
+  },
+  {
+    "strategy": "projected",
+    "screens": 1,
+    "visible": true,
+    "logs": []
+  }
+]

@@ -9,6 +9,7 @@ const isDev = process.env.NODE_ENV === "development";
  */
 const contentSecurityPolicy = [
   "default-src 'self'",
+  "frame-src 'self'",
   `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
@@ -43,7 +44,17 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    const lab = isDev || (process.env.PORTFOLIO_CONTENT_PREVIEW === "1" && process.env.EXPERIMENTAL_WORKSTATION === "1");
+    return [{ source: "/:path*", headers: securityHeaders }, ...(lab ? [
+      { source: "/workstation/embed-fixture", headers: [
+        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-ancestors 'none'", "frame-ancestors 'self'") },
+        { key: "X-Frame-Options", value: "SAMEORIGIN" },
+      ] },
+      { source: "/:locale(pt|en|es)/workstation-lab", headers: [
+        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-src 'self'", "frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br") },
+        { key: "X-Robots-Tag", value: "noindex, nofollow" },
+      ] },
+    ] : [])];
   },
 };
 

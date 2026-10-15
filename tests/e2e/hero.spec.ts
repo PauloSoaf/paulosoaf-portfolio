@@ -189,7 +189,7 @@ test("mobile touch hover never rotates the scene or intercepts natural scrolling
   await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
   await expect.poll(async () => {
     const angles = await rotation(page); await page.waitForTimeout(250);
-    return (await rotation(page)).every((value, index) => Math.abs(value - angles[index]!) < .0001);
+    return (await rotation(page)).every((value, index) => Object.is(value, angles[index]));
   }).toBe(true);
   const angles = await rotation(page);
   await page.locator("[data-hero]").dispatchEvent("pointermove", { clientX: 390, clientY: 0, pointerType: "touch" });

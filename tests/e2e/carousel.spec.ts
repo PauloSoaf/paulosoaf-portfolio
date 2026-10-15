@@ -223,7 +223,7 @@ for (const locale of ["pt", "en", "es"] as const) for (const theme of ["dark", "
     }
     await expect(page.getByRole("button", { name: dictionaries[locale].carousel.next, exact: true })).toBeVisible();
     await page.setViewportSize({ width: 360, height: 800 });
-    expect((await page.locator(".carousel-play").boundingBox())!.width).toBeGreaterThan(190);
+    await expect.poll(async () => (await page.locator(".carousel-play").boundingBox())!.width).toBeGreaterThan(190);
     const scan = await new AxeBuilder({ page }).include("#work").withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
     expect(scan.violations).toEqual([]);
     await page.setViewportSize({ width: 390, height: 844 }); await page.addStyleTag({ content: "html { font-size: 200%; }" });

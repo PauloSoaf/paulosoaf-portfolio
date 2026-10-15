@@ -9,6 +9,7 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
 
 import { Section } from "./Section";
+import { workstationLabels } from "@/features/workstation/labels";
 
 interface WorkSectionProps {
   locale: Locale;
@@ -17,21 +18,22 @@ interface WorkSectionProps {
   projects: readonly Project[];
   github: ContactChannel | undefined;
   preview: boolean;
+  workstation?: boolean;
 }
 
 /**
  * Server filters stay upstream. S02 enhances server cards; without JS the entire list remains.
  */
-export function WorkSection({ locale, dict, projects, github, preview }: WorkSectionProps) {
+export function WorkSection({ locale, dict, projects, github, preview, workstation = false }: WorkSectionProps) {
   return (
-    <Section id="work" heading={dict.sections.work} band>
+    <Section id="work" heading={dict.sections.work} band sceneAnchor={workstation ? <div data-workstation-work-anchor className="workstation-work-anchor" aria-hidden="true" /> : undefined}>
       {projects.length > 0 ? (
         <ProjectCarousel labels={dict.carousel} slides={orderProjects(projects).map((project, index) => ({
           slug: project.slug,
           title: project.title,
           content: (
             <ProjectCard project={project} locale={locale} dict={dict}
-              position={index + 1} total={projects.length} />
+              position={index + 1} total={projects.length} notebookLabel={workstation ? workstationLabels[locale].project : undefined} />
           ),
         }))} />
       ) : github?.href ? (

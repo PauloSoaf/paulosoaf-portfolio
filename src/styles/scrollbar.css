@@ -1,0 +1,44 @@
+/* Native scrollbars: page and nested panels keep wheel, touch and keyboard behavior. */
+@media (forced-colors: none) {
+  :root {
+    --oo-scroll-thumb: color-mix(in srgb, var(--oo-fg-secondary) 76%, var(--oo-accent-primary));
+    scrollbar-color: var(--oo-scroll-thumb) var(--oo-bg-base);
+    scrollbar-width: auto;
+    scrollbar-gutter: stable;
+  }
+
+  /* Chromium/Safari can add the rounded graphite rail; Firefox uses the standard colors. */
+  @supports selector(::-webkit-scrollbar) {
+    :root {
+      /* A non-auto standard color would suppress the pseudo-element styling. */
+      scrollbar-color: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 14px;
+      height: 14px;
+    }
+
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+      background: var(--oo-bg-base);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      min-width: 44px;
+      min-height: 44px;
+      border: 3px solid var(--oo-bg-base);
+      border-radius: 999px;
+      background: var(--oo-scroll-thumb);
+      background-clip: padding-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: var(--oo-accent-primary);
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+      background-color: var(--oo-accent-hover);
+    }
+  }
+}

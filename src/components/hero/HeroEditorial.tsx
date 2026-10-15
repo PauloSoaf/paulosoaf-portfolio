@@ -8,18 +8,20 @@ import { sectionHref } from "@/i18n/paths";
 import { HeroFallback } from "./HeroFallback";
 import { HeroArtBoundary } from "./HeroArtBoundary.client";
 import { HeroVitals } from "./HeroVitals.client";
+import type { ReactNode } from "react";
 
 interface HeroEditorialProps {
   locale: Locale;
   dict: Dictionary;
   profile: Profile;
+  art?: ReactNode;
 }
 /**
  * Hero (RF-001): name, role, summary and two CTAs (projects, contact) rendered on the server, so
  * they are visible and clickable without JavaScript or WebGL (AC-001). Layout per responsive.md:
  * desktop copy left / art right; tablet art behind the copy with an overlay; mobile copy above art.
  */
-export function HeroEditorial({ locale, dict, profile }: HeroEditorialProps) {
+export function HeroEditorial({ locale, dict, profile, art }: HeroEditorialProps) {
   const { hero } = dict;
 
   return (
@@ -58,9 +60,9 @@ export function HeroEditorial({ locale, dict, profile }: HeroEditorialProps) {
           </div>
         </div>
 
-        <HeroArtBoundary labels={dict.heroScene} className="relative -mx-5 mt-6 w-[calc(100%+2.5rem)] max-w-[37.5rem] self-center sm:absolute sm:-right-[12%] sm:bottom-[3%] sm:mx-0 sm:mt-0 sm:w-[72vw] sm:max-w-none sm:self-auto lg:top-1/2 lg:right-[-1.5%] lg:bottom-auto lg:w-[min(58vw,800px)] lg:-translate-y-1/2">
+        {art ?? <HeroArtBoundary labels={dict.heroScene} className="relative -mx-5 mt-6 w-[calc(100%+2.5rem)] max-w-[37.5rem] self-center sm:absolute sm:-right-[12%] sm:bottom-[3%] sm:mx-0 sm:mt-0 sm:w-[72vw] sm:max-w-none sm:self-auto lg:top-1/2 lg:right-[-1.5%] lg:bottom-auto lg:w-[min(58vw,800px)] lg:-translate-y-1/2">
           <HeroFallback />
-        </HeroArtBoundary>
+        </HeroArtBoundary>}
 
         {/* Tablet: art sits behind the copy; this wash keeps the text contrast intact. */}
         <div

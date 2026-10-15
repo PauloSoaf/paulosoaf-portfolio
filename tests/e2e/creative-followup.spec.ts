@@ -6,7 +6,8 @@ test("countdown reaches zero at the real deadline, selects a new project, freeze
   await expect(carousel).toHaveAttribute("data-enhanced","true"); await page.locator(".carousel-stage").scrollIntoViewIfNeeded();
   await page.locator(".carousel-stage").focus(); await expect(carousel).toHaveAttribute("data-auto","false");
   await page.locator(".filmstrip-button").first().click();
-  await page.clock.install(); await page.clock.pauseAt(new Date());
+  const clockStart = new Date("2026-10-14T12:00:00Z");
+  await page.clock.install({ time: clockStart }); await page.clock.pauseAt(new Date(clockStart.getTime() + 1000));
   await page.getByRole("button",{name:"Reproduzir automaticamente",exact:true}).click();
   await page.locator("#hero-title").evaluate(el=>{(el as HTMLElement).tabIndex=-1;(el as HTMLElement).focus({preventScroll:true});}); await page.mouse.move(0,0);
   await expect(carousel).toHaveAttribute("data-auto","true"); await expect(timer).toHaveAttribute("data-countdown","7");

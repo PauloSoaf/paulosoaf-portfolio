@@ -27,7 +27,9 @@
     "verify": "npm run lint && npm run typecheck && npm test && npm run build",
     "qa:polish": "playwright test --config playwright.polish-visual.config.ts",
     "qa:polish:summary": "node scripts/summarize-polish-qa.mjs",
-    "qa:creative": "playwright test --config playwright.creative-visual.config.ts"
+    "qa:creative": "playwright test --config playwright.creative-visual.config.ts",
+    "test:workstation": "playwright test --config playwright.workstation.config.ts",
+    "qa:workstation": "node scripts/qa-workstation.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.1",
