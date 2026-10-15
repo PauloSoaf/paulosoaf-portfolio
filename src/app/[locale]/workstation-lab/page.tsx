@@ -8,5 +8,5 @@ export const metadata: Metadata = { title: "Obsidian Workstation · P01", robots
 export default async function WorkstationLab({ params }: PageProps<"/[locale]/workstation-lab">) {
   const { locale } = await params;
   if (!isLocale(locale) || !workstationAvailable()) notFound();
-  return <><div className="workstation-lab-bar"><span>{workstationLabels[locale].lab}</span><a href={`/${locale}`}>{workstationLabels[locale].returnPortfolio} ↗</a></div><LandingContent locale={locale} workstation /></>;
+  return <><div className="workstation-lab-bar"><span>{workstationLabels[locale].lab}</span><a href={`/${locale}?experience=recovery`}>{workstationLabels[locale].returnPortfolio} ↗</a></div><LandingContent locale={locale} workstation /></>;
 }

@@ -13,6 +13,8 @@ npm run dev
 
 Abra http://localhost:1010/pt. `npm run dev` usa a porta 1010. `/en` e `/es` têm textos e metadata próprios. A raiz escolhe idioma pelo cookie, depois `Accept-Language`, depois português. Uma URL com idioma sempre prevalece sobre preferências.
 
+Em desenvolvimento, `/pt`, `/en` e `/es` abrem automaticamente a Workstation na rota do laboratório. A experiência anterior continua acessível em http://localhost:1010/pt?experience=recovery; `?experience=classic` mantém a comparação original. Esse encaminhamento é local ao `next dev`; o build público continua protegido pelos gates da POC.
+
 A POC Creative Direction Recovery usa escultura procedural em camadas, abertura tipográfica, transição Hero → Work pelo scroll, vitrines ampliadas e profundidade na trajetória. Compare a experiência padrão com http://localhost:1010/pt?experience=classic. O parâmetro serve apenas à revisão visual; conteúdo/editorial/SEO continuam iguais. Vídeos, medições, diferenças intencionais e pendências: [QA Recovery](docs/qa/CreativeRecovery/REPORT.md). Aceite estético pertence ao proprietário; S04 ainda não foi iniciada.
 
 A continuação solicitada acrescenta contador funcional 7→0, seleção direta dos sete projetos, entradas de scroll mais tardias e longas, escultura acompanhando as seções com tamanho variável e cards/CTAs com efeitos próprios. Evidências atuais: [QA da continuação](docs/qa/CreativeFollowup/REPORT.md), [ADR-014](docs/adr/ADR-014-visible-motion-and-page-companion.md).

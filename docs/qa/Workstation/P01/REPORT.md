@@ -4,7 +4,7 @@ Data: **14/10/2026**. Branch: **`feat/workstation-notebook-poc`**. Base exata: *
 
 **POC P01 funcional em Chromium local.** Notebook Three.js autoral, tela DOM projetada clicável, tampa, rotação/damping em três eixos, fixture com input/click/scroll nativos e modo de foco 2D desktop/mobile. As duas landings comerciais também foram navegadas de verdade na tela. P02–P07, domínio HTTPS de publicação e aceite artístico permanecem pendentes; esta entrega não declara os vinte RFs completos nem autoriza release.
 
-Preview: **http://localhost:1010/pt/workstation-lab**, também EN/ES. A landing normal permanece em `/pt`, `/en`, `/es`. Build otimizado da POC exige `PORTFOLIO_CONTENT_PREVIEW=1` e `EXPERIMENTAL_WORKSTATION=1`. Um build público normal retorna 404 no laboratório e fixture e preserva os filtros editoriais.
+Preview: **http://localhost:1010/pt/workstation-lab**, também EN/ES. Após o ajuste de entrada solicitado pelo proprietário, `next dev` encaminha `/pt`, `/en` e `/es` para a Workstation; a comparação anterior fica em `/pt?experience=recovery`. Nos builds otimizados, as raízes continuam na landing normal. Build otimizado da POC exige `PORTFOLIO_CONTENT_PREVIEW=1` e `EXPERIMENTAL_WORKSTATION=1`. Um build público normal retorna 404 no laboratório e fixture e preserva os filtros editoriais.
 
 ## O que foi implementado
 
