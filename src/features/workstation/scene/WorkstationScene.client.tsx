@@ -353,6 +353,7 @@ function Assembly(props: Props) {
       pose: [pose.angle, pose.pitch, pose.yaw].map((n) => n.toFixed(4)).join(","),
       drawCalls: String(renderer.info.render.calls), triangles: String(renderer.info.render.triangles),
       pressedKeys: [...input.pressed.keys()].join(","),
+      keysAnimating: String(input.animating),
       inputIntent: gesture.current ? gesture.current.part.toUpperCase() : state.mode === "MANIPULATE" ? "MANIPULATE" : "SCREEN",
       chassisWidth: pose.width.toFixed(1), logicalViewport: `${size.width},${size.height}`,
     });

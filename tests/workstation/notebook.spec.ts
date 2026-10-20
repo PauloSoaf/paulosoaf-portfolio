@@ -212,6 +212,26 @@ test("mobile defers WebGL while the slot is a peek, then loads when most of it i
   await expect(workstation(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
 });
 
+test("a failed lazy OS chunk keeps the portfolio readable and the focus dialog dismissible", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  let blocked = 0;
+  await page.route("**/_next/static/chunks/*.js", async (route) => {
+    const response = await route.fetch();
+    if ((await response.text()).includes("workbench-toolbar")) { blocked++; await route.abort(); }
+    else await route.fulfill({ response });
+  });
+  await page.goto("/pt/workstation-lab");
+  await page.locator(".workstation-fallback").getByRole("button", { name: /Focar tela/ }).click();
+  await expect(page.locator("dialog [data-screen-error]")).toContainText("A tela não carregou", { timeout: 20_000 });
+  expect(blocked).toBeGreaterThan(0);
+  await expect(page.getByRole("button", { name: "Recarregar página", exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("dialog")).not.toBeVisible();
+  await expect(page.locator("h1")).toBeVisible();
+  await page.locator('header nav a[href$="#contact"]').filter({ visible: true }).click();
+  await expect(page.locator("#contact")).toBeInViewport();
+});
+
 test("options menu and focus screen meet automated accessibility checks", async ({ page }) => {
   await open(page);
   await menu(page);

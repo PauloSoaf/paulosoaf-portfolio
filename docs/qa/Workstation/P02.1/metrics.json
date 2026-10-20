@@ -1,0 +1,759 @@
+{
+  "environment": "Windows/Chromium/SwiftShader, cold contexts, unthrottled CPU/network; Save-Data isolates bootstrap from explicit 3D activation. INP is the Next/web-vitals value for this local scripted visit, not a field p75. Enable time includes loading and spring settling. CPU render time is not GPU FPS. Videos and Lighthouse run separately.",
+  "source": {
+    "sha": "17ff916637674df95be03ed58ee44fd22e64981b",
+    "indexSha256": "2283e738b2ccaf27e92600f3db1e007cf6ca60feec68ad06905d780862981ad9",
+    "files": [
+      {
+        "path": "src/features/workstation/scene/WorkstationScene.client.tsx",
+        "sha256": "eb5015378cb26d3c22712636120bb4e6866e197f6ca6e9e6c61791ab10539e8d",
+        "dirty": true
+      },
+      {
+        "path": "src/features/workstation/models/LaptopModel.client.tsx",
+        "sha256": "5776cf2ae0bcedd57a96c46419a9b31c3c0c5f83ad6eb7274da41a625d68ce70",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/orchestrator/position.ts",
+        "sha256": "1a15dad80a9aadd39890ebe2ea519f5774c96740c7c45b365567a4760a643a9c",
+        "dirty": true
+      },
+      {
+        "path": "src/features/workstation/orchestrator/trajectory.ts",
+        "sha256": "efbc3049bbbe67d081c35c2b2460f83d740399abcf07cc3db1999c6b6725ca1a",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/physics/body.ts",
+        "sha256": "c93bf546463c38d563645cfc9464e24710a0bd4c59b9fa0fbab571faa10dbc4e",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/physics/scroll-inertia.ts",
+        "sha256": "98dc97bfeff295b8c846136de24ba2937eac2abb85007aaca36943767b98f127",
+        "dirty": true
+      },
+      {
+        "path": "src/features/workstation/physics/hinge.ts",
+        "sha256": "0f7b587783ca6c8ca83f332d321d898669a5a189b3403ea27765961639091453",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/audio/notebook-sound.ts",
+        "sha256": "25c0e5ffce15a42e20f0e5c3d34499bef8bde2cd87815e62e45f319855f6c693",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/page/page-reactions.ts",
+        "sha256": "d1798baf00a773164c1cc8cc5109ef0776482a8251fded53df3f58a3548f485c",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/orchestrator/WorkstationOrchestrator.client.tsx",
+        "sha256": "55fc351a38e3fbbd246ff8ded63e43741db910ba2f6a2cb892e6edcf05a5cba8",
+        "dirty": true
+      },
+      {
+        "path": "src/features/workstation/state/workstation-machine.ts",
+        "sha256": "453bc8ba95ce44919a020980cb1539baf7504083c0199ab7c1c845648127ff83",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/terminal/commands.ts",
+        "sha256": "d6c12b14edd7411fc28a5a45de203e1016d4ca8bada9daa5f2d1443f713f7433",
+        "dirty": false
+      },
+      {
+        "path": "src/features/workstation/code/highlight.ts",
+        "sha256": "acfc2ba0cd3e72cd53da11835dc19fde9b9ec36e212ac012365d966493609e6a",
+        "dirty": false
+      },
+      {
+        "path": "scripts/generate-workstation-code.mjs",
+        "sha256": "0348722f9f1bea984e5a66b9733c0d68591aa1994005eec95ddadc80e12aecfa",
+        "dirty": true
+      },
+      {
+        "path": "src/components/hero/HeroEditorial.tsx",
+        "sha256": "2f1c028dee06d5de7bb959b97fba8e2caa9d37c509e2c1130ee72300197b3ea7",
+        "dirty": false
+      },
+      {
+        "path": "src/components/layout/SiteHeader.tsx",
+        "sha256": "a641df54160b1bdf3fcb206a2e6115cf1d3f47ed89449e0307d18062eda19184",
+        "dirty": false
+      },
+      {
+        "path": "src/components/ui/ThemeToggle.client.tsx",
+        "sha256": "b5b504da3fc5cced6756f84e550040ed406611c6afe2e561e072c071d934d802",
+        "dirty": false
+      },
+      {
+        "path": "src/components/carousel/ProjectCarousel.client.tsx",
+        "sha256": "94e5cfe98dac6fc39635c5275ed720b919df82312c71363b19dd1a27995234b2",
+        "dirty": false
+      },
+      {
+        "path": "src/components/carousel/CarouselCountdown.client.tsx",
+        "sha256": "fdc84f64dae707bb398b6fecb9af50f58bbd982ec187daaf0179c7be356fde15",
+        "dirty": false
+      },
+      {
+        "path": "src/components/projects/ProjectCard.tsx",
+        "sha256": "652c871a358ade43432e3d865a75426178994b9d4318b90465fc1cdab291adfe",
+        "dirty": false
+      },
+      {
+        "path": "src/components/timeline/JourneyTimeline.client.tsx",
+        "sha256": "ff8344a97aaf0df3e18ed5b3b7741f6dedcf09f2934c40d5db97200aebfd76c9",
+        "dirty": false
+      },
+      {
+        "path": "src/components/sections/Section.tsx",
+        "sha256": "ddeaed00df64c4f7be7f7878490c3ed1dd01890dff72e56a1567a16773d221f5",
+        "dirty": false
+      },
+      {
+        "path": "src/components/sections/ExpertiseSection.tsx",
+        "sha256": "6016a39fab94539d08296961eed12e0130b5d51c84b1a43e5191c9f16d14c177",
+        "dirty": false
+      },
+      {
+        "path": "src/components/sections/ServicesSection.tsx",
+        "sha256": "57fe1441df4abdb5a0422b25dd29bee72f564330f39af8edcb4baddb5045e8d7",
+        "dirty": false
+      },
+      {
+        "path": "src/components/sections/ContactSection.tsx",
+        "sha256": "3bcf4dc0f5a0285b47a57a5a7fde193bb5e8d3dff4c533df3cfbdec3d843de52",
+        "dirty": false
+      },
+      {
+        "path": "src/components/layout/SiteFooter.tsx",
+        "sha256": "4a3175ef655da75cd1b69280863c9dcb8c7d10e9cbf28ecfa8becbf56404d26f",
+        "dirty": false
+      },
+      {
+        "path": "src/features/motion/motion-engine.ts",
+        "sha256": "4832aae072dfdcb2c07aeff3a1f1113d8e3c91f9c52acc9913ef7ef8b2b39d41",
+        "dirty": false
+      },
+      {
+        "path": "src/graphics/hero/HeroScene.client.tsx",
+        "sha256": "4d9a3b1ac07a1d2e3d2112c1a63870e450f604129a5ae208d64b34b2469a54f8",
+        "dirty": false
+      },
+      {
+        "path": "src/theme/theme-client.ts",
+        "sha256": "38514e9f678b63a53acd7d6ad6b0c055a123f8cfac9583eadc2e2285f39b69f5",
+        "dirty": false
+      },
+      {
+        "path": "src/styles/workstation.css",
+        "sha256": "57708972fb1ca207d8b859f8b9d3ee3d9127ac3c9fb5288c5cc373bdbb856ed1",
+        "dirty": false
+      },
+      {
+        "path": "src/styles/tokens.css",
+        "sha256": "0ba68877b0cbcb9cb8c75aec1681730eeedb5b678a1800f990c5b47ad4024abb",
+        "dirty": false
+      }
+    ]
+  },
+  "hydration": [
+    {
+      "width": 390,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    }
+  ],
+  "validation": {
+    "method": "Consolidated unique scenarios: initial full run, then affected brake/reduced-motion scenarios and added rotation repeated after corrections. Not a single clean full run. Initial failure and follow-up reports are retained in ignored docs/report/Workstation/P02.1.",
+    "total": 40,
+    "passed": 38,
+    "skipped": 2,
+    "failures": [],
+    "runs": [
+      {
+        "name": "workstation-e2e-initial",
+        "stats": {
+          "startTime": "2026-10-20T15:23:12.133Z",
+          "duration": 574825.703,
+          "expected": 36,
+          "skipped": 2,
+          "unexpected": 1,
+          "flaky": 0
+        }
+      },
+      {
+        "name": "workstation-brake-final",
+        "stats": {
+          "startTime": "2026-10-20T15:40:42.922Z",
+          "duration": 85096.171,
+          "expected": 2,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      },
+      {
+        "name": "workstation-rotation-final",
+        "stats": {
+          "startTime": "2026-10-20T15:50:34.684Z",
+          "duration": 11937.691,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        }
+      }
+    ]
+  },
+  "profile": [
+    {
+      "width": 1440,
+      "initialGzipBytes": 182949,
+      "sceneLazyGzipBytes": 259156,
+      "throwLazyGzipBytes": 0,
+      "codeLazyGzipBytes": 72006,
+      "studioAssetBytes": 112750,
+      "sceneReadyAndSettledMs": 2329,
+      "idleFrames600ms": 0,
+      "renderCpuMs": 0.9177,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 200
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 11.899999976158142
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 200
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.199999988079071
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 360
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "slowestEvents": [
+        {
+          "name": "pointerdown",
+          "interaction": 8955,
+          "time": 3392.899999976158,
+          "duration": 360,
+          "inputDelay": 132.60000002384186,
+          "processing": 75.19999998807907,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "pointerup",
+          "interaction": 8955,
+          "time": 7044.599999964237,
+          "duration": 264,
+          "inputDelay": 106.20000004768372,
+          "processing": 0.5999999642372131,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "click",
+          "interaction": 8955,
+          "time": 7044.599999964237,
+          "duration": 264,
+          "inputDelay": 107.20000004768372,
+          "processing": 0.19999998807907104,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "pointerdown",
+          "interaction": 8969,
+          "time": 33325.39999997616,
+          "duration": 224,
+          "inputDelay": 1.5,
+          "processing": 0.9000000357627869,
+          "action": "switch-source",
+          "target": ""
+        },
+        {
+          "name": "pointerup",
+          "interaction": 8969,
+          "time": 33325.39999997616,
+          "duration": 224,
+          "inputDelay": 2.900000035762787,
+          "processing": 0.09999996423721313,
+          "action": "switch-source",
+          "target": ""
+        },
+        {
+          "name": "click",
+          "interaction": 8969,
+          "time": 33325.39999997616,
+          "duration": 224,
+          "inputDelay": 3,
+          "processing": 51.80000001192093,
+          "action": "switch-source",
+          "target": ""
+        },
+        {
+          "name": "pointerdown",
+          "interaction": 8962,
+          "time": 30693.5,
+          "duration": 192,
+          "inputDelay": 1.5,
+          "processing": 0.699999988079071,
+          "action": "open-code"
+        },
+        {
+          "name": "pointerup",
+          "interaction": 8962,
+          "time": 30693.5,
+          "duration": 192,
+          "inputDelay": 3.699999988079071,
+          "processing": 0.19999998807907104,
+          "action": "open-code"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "initialGzipBytes": 182949,
+      "sceneLazyGzipBytes": 259156,
+      "throwLazyGzipBytes": 0,
+      "codeLazyGzipBytes": 72006,
+      "studioAssetBytes": 112750,
+      "sceneReadyAndSettledMs": 2151,
+      "idleFrames600ms": 0,
+      "renderCpuMs": 1.6479,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 152
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.400000035762787
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 152
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.0999999642372131
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 216
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "slowestEvents": [
+        {
+          "name": "keyup",
+          "interaction": 4598,
+          "time": 13139.699999988079,
+          "duration": 216,
+          "inputDelay": 71.20000004768372,
+          "processing": 0.09999996423721313,
+          "action": "switch-source",
+          "target": "workstation-options-trigger"
+        },
+        {
+          "name": "pointerdown",
+          "interaction": 4577,
+          "time": 3157.699999988079,
+          "duration": 168,
+          "inputDelay": 66.40000003576279,
+          "processing": 28.19999998807907,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "keydown",
+          "interaction": 4598,
+          "time": 13113.300000011921,
+          "duration": 136,
+          "inputDelay": 0.19999998807907104,
+          "processing": 25.30000001192093,
+          "action": "switch-source"
+        },
+        {
+          "name": "pointerup",
+          "interaction": 4577,
+          "time": 4829.300000011921,
+          "duration": 96,
+          "inputDelay": 43.10000002384186,
+          "processing": 0.7999999523162842,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "click",
+          "interaction": 4577,
+          "time": 4829.300000011921,
+          "duration": 96,
+          "inputDelay": 44.39999997615814,
+          "processing": 0,
+          "action": "drag-and-throw",
+          "target": "workstation-hit"
+        },
+        {
+          "name": "keyup",
+          "interaction": 4626,
+          "time": 15129.199999988079,
+          "duration": 80,
+          "inputDelay": 0.10000002384185791,
+          "processing": 0.19999998807907104,
+          "action": "type-notes",
+          "target": "workbench-notes-text"
+        },
+        {
+          "name": "keyup",
+          "interaction": 4633,
+          "time": 15191.300000011921,
+          "duration": 80,
+          "inputDelay": 0.19999998807907104,
+          "processing": 0.19999998807907104,
+          "action": "type-notes",
+          "target": "workbench-notes-text"
+        },
+        {
+          "name": "keydown",
+          "interaction": 4640,
+          "time": 15194.300000011921,
+          "duration": 80,
+          "inputDelay": 0.30000001192092896,
+          "processing": 0.30000001192092896,
+          "action": "type-notes",
+          "target": "workbench-notes-text"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "mobile",
+      "version": "13.5.0",
+      "url": "http://127.0.0.1:3300/pt/workstation-lab",
+      "categories": {
+        "performance": 90,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 3272.0733499999997,
+      "tbtMs": 156,
+      "cls": 0
+    },
+    {
+      "name": "desktop",
+      "version": "13.5.0",
+      "url": "http://127.0.0.1:3300/pt/workstation-lab",
+      "categories": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 751.5920000000002,
+      "tbtMs": 102,
+      "cls": 0.0003364385632242331
+    },
+    {
+      "name": "control-mobile",
+      "version": "13.5.0",
+      "url": "http://127.0.0.1:3300/pt",
+      "categories": {
+        "performance": 83,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 63
+      },
+      "lcpMs": 3253.5365250000004,
+      "tbtMs": 381.5,
+      "cls": 0
+    }
+  ],
+  "cases": [
+    {
+      "id": "pt-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.005000000000006821,
+      "screenshots": 9,
+      "video": {
+        "path": "videos/pt-dark-1440-gestures.webm",
+        "bytes": 10177903,
+        "sha256": "42720b06ab834b119d9598d43809abc9c4d3face5da55478eb468f8ee23f3136",
+        "durationSeconds": 93.68,
+        "width": 1440,
+        "height": 900
+      },
+      "errors": []
+    },
+    {
+      "id": "pt-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.004218503949910013,
+      "screenshots": 10,
+      "video": {
+        "path": "videos/pt-dark-390-gestures.webm",
+        "bytes": 4446963,
+        "sha256": "a10cd4dd1778fa7e039e70a3b396c426169da0085adc953af1c1828d6d55ffc9",
+        "durationSeconds": 45.64,
+        "width": 390,
+        "height": 844
+      },
+      "errors": []
+    },
+    {
+      "id": "pt-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.003885151219743404,
+      "screenshots": 4,
+      "errors": []
+    },
+    {
+      "id": "pt-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.006201967429820954,
+      "screenshots": 5,
+      "errors": []
+    },
+    {
+      "id": "en-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.003885151219743404,
+      "screenshots": 4,
+      "errors": []
+    },
+    {
+      "id": "en-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.0062513759256615205,
+      "screenshots": 5,
+      "errors": []
+    },
+    {
+      "id": "en-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.003885151219743404,
+      "screenshots": 4,
+      "errors": []
+    },
+    {
+      "id": "en-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.0062513759256615205,
+      "screenshots": 5,
+      "errors": []
+    },
+    {
+      "id": "es-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.003885151219743404,
+      "screenshots": 4,
+      "errors": []
+    },
+    {
+      "id": "es-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.006085425211148419,
+      "screenshots": 5,
+      "errors": []
+    },
+    {
+      "id": "es-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.003885151219743404,
+      "screenshots": 4,
+      "errors": []
+    },
+    {
+      "id": "es-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.006085425211148419,
+      "screenshots": 5,
+      "errors": []
+    }
+  ]
+}

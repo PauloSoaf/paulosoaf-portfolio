@@ -114,6 +114,27 @@ describe("scroll brake detector", () => {
     const inertia = new ScrollInertia(); inertia.suppress(0, 2000);
     expect(run(inertia, [[300, 4800], [400, 0]])).toBe(0);
   });
+  it("detects the same abrupt stop at sparse frame cadences without widening the brake window", () => {
+    for (const ms of [16, 50, 125, 200]) for (const direction of [1, -1]) {
+      const inertia = new ScrollInertia(); let time = 100, y = 10000, brakes = 0;
+      inertia.sample(y, time);
+      for (let i = 0; i < 30; i++) { time += ms; y += direction * 5000 * ms / 1000; inertia.sample(y, time); }
+      for (let stopped = 0; stopped < 500; stopped += ms) { time += ms; if (inertia.sample(y, time)) brakes++; }
+      expect(brakes, `${ms}ms frames, direction ${direction}`).toBe(1);
+    }
+  });
+  it("still ignores gradual trackpad decay with sparse frames", () => {
+    for (const ms of [16, 50, 125, 200]) {
+      const inertia = new ScrollInertia(); let time = 100, y = 0, brakes = 0;
+      inertia.sample(y, time);
+      for (let i = 0; i < 20; i++) { time += ms; y += 5000 * ms / 1000; inertia.sample(y, time); }
+      for (let elapsed = ms; elapsed < 3000; elapsed += ms) {
+        time += ms; y += 5000 * Math.exp(-elapsed / 550) * ms / 1000;
+        if (inertia.sample(y, time)) brakes++;
+      }
+      expect(brakes, `${ms}ms frames`).toBe(0);
+    }
+  });
 });
 
 describe("lid hinge", () => {
@@ -177,6 +198,9 @@ describe("motion rig", () => {
     value.release(time); expect(value.mode).toBe("AIRBORNE");
     for (let i = 0; i < 60 * 12 && value.mode !== "FOLLOW"; i++) { time += 16; value.step(time, 0); }
     expect(value.mode).toBe("FOLLOW");
+    let moving = true;
+    for (let i = 0; i < 60 * 12 && moving; i++) { time += 16; moving = value.step(time, 0); }
+    expect(moving).toBe(false);
   });
 });
 

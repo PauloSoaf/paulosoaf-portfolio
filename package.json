@@ -34,7 +34,11 @@
     "qa:polish:summary": "node scripts/summarize-polish-qa.mjs",
     "qa:creative": "playwright test --config playwright.creative-visual.config.ts",
     "test:workstation": "playwright test --config playwright.workstation.config.ts",
-    "qa:workstation": "node scripts/qa-workstation.mjs"
+    "qa:workstation": "node scripts/qa-workstation-p02.mjs",
+    "qa:workstation:p01": "node scripts/qa-workstation.mjs",
+    "profile:workstation": "node scripts/profile-workstation-p02.mjs",
+    "qa:workstation:summary": "node scripts/summarize-workstation-p02.mjs",
+    "qa:workstation:hydration": "playwright test --config playwright.workstation.config.ts hydration.spec.ts"
   },
   "dependencies": {
     "@react-three/fiber": "9.8.1",

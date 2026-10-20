@@ -86,19 +86,33 @@ export function scanSecrets(content, path) {
   for (const pattern of SECRET_PATTERNS) if (pattern.test(content)) throw new Error(`Secret-like content refused in ${path} (${pattern.source.slice(0, 24)}…)`);
 }
 
-function git(args, fallback = "") {
-  try { return execFileSync("git", args, { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim(); } catch { return fallback; }
+function git(args, fallback = "", cwd = ROOT) {
+  // Porcelain starts with two status columns, including a significant leading space.
+  try { return execFileSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trimEnd(); } catch { return fallback; }
 }
-function repositoryUrl() {
-  const remote = git(["config", "--get", "remote.origin.url"]);
+function repositoryUrl(root) {
+  const remote = git(["config", "--get", "remote.origin.url"], "", root);
   const match = /github\.com[:/]([\w.-]+)\/([\w.-]+?)(?:\.git)?$/.exec(remote);
   return match ? `https://github.com/${match[1]}/${match[2]}` : null;
 }
 
 export function buildIndex({ root = ROOT, manifest = MANIFEST } = {}) {
-  const sha = process.env.WORKSTATION_CODE_SHA || process.env.VERCEL_GIT_COMMIT_SHA || git(["rev-parse", "HEAD"], "unknown");
-  const dirty = new Set(git(["status", "--porcelain", "--", ...manifest.map(([, , path]) => path)]).split("\n").filter(Boolean).map((line) => line.slice(3).trim()));
-  const repository = repositoryUrl(), ids = new Set();
+  const sha = process.env.WORKSTATION_CODE_SHA || process.env.VERCEL_GIT_COMMIT_SHA || git(["rev-parse", "HEAD"], "unknown", root);
+  const status = git(["status", "--porcelain=v1", "-z", "--untracked-files=all", "--", ...manifest.map(([, , path]) => path)], "", root).split("\0");
+  const dirty = new Set();
+  for (let i = 0; i < status.length; i++) {
+    if (status[i].length < 4) continue;
+    dirty.add(status[i].slice(3));
+    if (/[RC]/.test(status[i].slice(0, 2))) i++; // -z puts the old rename/copy path in the next field.
+  }
+  const repository = repositoryUrl(root), ids = new Set();
+  // Local handoff commits may not exist on GitHub yet. A clean file alone is not enough
+  // to promise a working link; require a known origin ref or the build provider's commit.
+  const published = sha !== "unknown" && (
+    Boolean(git(["for-each-ref", "--format=%(refname)", "--contains", sha, "refs/remotes/origin"], "", root)) ||
+    process.env.VERCEL_GIT_COMMIT_SHA === sha ||
+    (process.env.GITHUB_ACTIONS === "true" && process.env.GITHUB_SHA === sha)
+  );
   const files = manifest.map(([group, id, path]) => {
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) || ids.has(id)) throw new Error(`Invalid or duplicate id: ${id}`);
     ids.add(id);
@@ -110,11 +124,11 @@ export function buildIndex({ root = ROOT, manifest = MANIFEST } = {}) {
     return {
       id, group, path, language, lines: content.split("\n").length, bytes: Buffer.byteLength(content),
       sha256: createHash("sha256").update(content).digest("hex"), dirty: changed,
-      url: repository && sha !== "unknown" && !changed ? `${repository}/blob/${sha}/${path}` : null,
+      url: repository && published && !changed ? `${repository}/blob/${sha}/${path}` : null,
       content,
     };
   });
-  return { version: 1, sha, files };
+  return { version: 1, sha, published, files };
 }
 
 function main() {

@@ -23,10 +23,10 @@ function SpeakerIcon({ muted }: { muted: boolean }) {
   </svg>;
 }
 
-export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer, sound, session, prompt, inspecting, onInspect }: {
+export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer, sound, session, prompt, inspecting, onInspect, onReady }: {
   state: WorkstationState; dispatch: Dispatch<WorkstationEvent>; locale: Locale; theme: Theme;
   input: NotebookInputController; pointer: NotebookPointerController; sound: NotebookSound; session: TerminalSession;
-  prompt: string; inspecting: boolean; onInspect: () => void;
+  prompt: string; inspecting: boolean; onInspect: () => void; onReady: () => void;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const muted = useSyncExternalStore(sound.subscribe, sound.getMuted, unmuted);
@@ -43,6 +43,8 @@ export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer
       pointer.register("desktop-prompt", { click: () => input.port?.focus() }), pointer.register("terminal-prompt", { click: () => input.port?.focus() })];
     return () => { pointer.bind(null); unregister.forEach((fn) => fn()); };
   }, [pointer, input, sound, app.kind, dispatch]);
+  // "Ready" includes the native text port and trackpad bindings, not just the first 3D frame.
+  useEffect(onReady, [onReady]);
   return <div ref={root} className="workbench-screen" data-workstation-screen data-app={app.kind}>
     <div className="workbench-toolbar" onDoubleClick={(event) => { if (!(event.target as Element).closest("button") && state.mode !== "FOCUS_SCREEN") dispatch({ type: "FOCUS_SCREEN" }); }}>
       <span className="workbench-mark" aria-hidden="true">◈</span><span className="workbench-title">{title}</span>

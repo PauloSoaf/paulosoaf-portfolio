@@ -348,7 +348,7 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
       trajectory: [time, pose.x, pose.y, pose.width, pose.angle, pose.pitch, pose.yaw, scrollY].map((n) => +n.toFixed(3)).join(","),
     });
     const needsRender = rig.render?.(time / 1000) ?? false;
-    setData(host, { motion: moving || needsRender ? "moving" : "settled" });
+    setData(host, { motion: moving || needsRender ? "moving" : "settled", motionDriver: moving ? "rig" : needsRender ? "scene" : "idle" });
     if (moving || needsRender) pending = requestAnimationFrame(paint);
   }
   const wake = () => { if (!pending && !document.hidden) pending = requestAnimationFrame(paint); };

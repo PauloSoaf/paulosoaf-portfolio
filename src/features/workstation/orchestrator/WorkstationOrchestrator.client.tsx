@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
-import { Component, useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { Component, lazy, Suspense, useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { Locale } from "@/i18n/config";
 import { switchLocalePath } from "@/i18n/paths";
 import { applyTheme, getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
@@ -11,7 +11,6 @@ import { constrainedDevice } from "@/graphics/hero/quality";
 import { workstationLabels } from "../labels";
 import { PROJECT_REQUEST, siteForProject, workstationSites } from "../sites";
 import { initialWorkstationState, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
-import { WorkbenchScreen } from "../screen/WorkbenchScreen.client";
 import { createMotionRig, installWorkstationPosition, type Impact } from "./position";
 import { NotebookInputController } from "../input/NotebookInputController";
 import { NotebookPointerController } from "../input/NotebookPointerController";
@@ -23,6 +22,10 @@ import { knock, tremor } from "../page/page-reactions";
 import { startInspect } from "../code/inspect";
 import type { HoverPart } from "../scene/WorkstationScene.client";
 const Scene = dynamic(() => import("../scene/WorkstationScene.client"), { ssr: false });
+// The OS is needed only with a ready 3D screen or an explicitly opened 2D dialog.
+// Keep it off the editorial/low-data bootstrap without changing the notebook's interface.
+const loadScreen = () => import("../screen/WorkbenchScreen.client");
+const WorkbenchScreen = lazy(() => loadScreen().then((module) => ({ default: module.WorkbenchScreen })));
 const noopSubscribe = () => () => {};
 const chapterPaths: Record<Locale, Record<string, string>> = {
   pt: { work: "projetos", about: "sobre", expertise: "especialidades", services: "servicos", contact: "contato" },
@@ -35,6 +38,12 @@ class SceneBoundary extends Component<{ children: ReactNode; fail: () => void },
   override componentDidCatch() { this.props.fail(); }
   override render() { return this.state.failed ? null : this.props.children; }
 }
+class ScreenBoundary extends Component<{ children: ReactNode; fallback: ReactNode; onFailure: () => void }, { failed: boolean }> {
+  override state = { failed: false };
+  static getDerivedStateFromError() { return { failed: true }; }
+  override componentDidCatch() { this.props.onFailure(); }
+  override render() { return this.state.failed ? this.props.fallback : this.props.children; }
+}
 
 export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const text = workstationLabels[locale], router = useRouter();
@@ -44,6 +53,8 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const [rig] = useState(createMotionRig), [input] = useState(() => new NotebookInputController()), [pointer] = useState(() => new NotebookPointerController());
   const [sound] = useState(() => new NotebookSound()), [session] = useState(() => new TerminalSession());
   const [armed, setArmed] = useState(false), [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
+  const [screenReady, setScreenReady] = useState(false);
+  const onScreenReady = useCallback(() => setScreenReady(true), []);
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null), [inspecting, setInspecting] = useState(false), [chapter, setChapter] = useState("hero");
   const [environment, setEnvironment] = useState({ hidden: false, reduced: false, mobile: false, limited: false, loadable: false });
   const anchor = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null), hit = useRef<HTMLDivElement>(null), badge = useRef<HTMLDivElement>(null);
@@ -60,6 +71,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const fail = useCallback(() => { setFailed(true); setReady(false); }, []), onReady = useCallback(() => setReady(true), []);
   const onMenu = useCallback((x: number, y: number) => setMenu({ x, y }), []);
   const focused = state.mode === "FOCUS_SCREEN";
+  useEffect(() => { if (armed || focused) void loadScreen().catch(() => {}); }, [armed, focused]);
   const announce = useCallback((message: string) => { if (announcer.current) announcer.current.textContent = message; }, []);
 
   useEffect(() => mounted && anchor.current ? installWorkstationPosition(mounted, anchor.current, rig) : undefined, [mounted, rig]);
@@ -212,7 +224,9 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
 
   const prompt = `paulo@obsidian:~${chapterPaths[locale][chapter] ? `/${chapterPaths[locale][chapter]}` : ""}$`;
   const toggleInspect = useCallback(() => setInspecting((value) => !value), []);
-  const screen = <WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} />;
+  const screen = <ScreenBoundary onFailure={onScreenReady} fallback={<div className="workbench-screen workbench-code" data-screen-error role="status"><p>{text.screenUnavailable}</p><button type="button" onClick={() => window.location.reload()}>{text.reload}</button></div>}>
+    <Suspense fallback={<div className="workbench-screen workbench-code" role="status" aria-busy="true"><p>{text.loading}</p></div>}><WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} onReady={onScreenReady} /></Suspense>
+  </ScreenBoundary>;
   const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" ? <div className="workbench-screen workbench-code" data-workstation-screen><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
   const active = !environment.hidden && !focused;
   const live = armed && ready && !failed;
@@ -238,7 +252,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       <noscript><p>{text.fallback}</p>{Object.values(workstationSites).map((site) => <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>)}</noscript>
     </div>
     {body ? createPortal(<>
-      <div ref={bindHost} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected" data-inspecting={inspectActive}>
+      <div ref={bindHost} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready && screenReady ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected" data-inspecting={inspectActive}>
         <div ref={hit} className="workstation-hit" tabIndex={-1} aria-hidden="true" />
         <div className="workstation-dom-layer">
           {ready && !failed && lidOpen && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}

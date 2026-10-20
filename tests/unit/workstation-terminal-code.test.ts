@@ -1,4 +1,6 @@
-import { mkdtempSync, mkdirSync, symlinkSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
@@ -7,7 +9,7 @@ import { TerminalSession } from "@/features/workstation/terminal/session";
 import { highlight } from "@/features/workstation/code/highlight";
 import { INSPECT_REGISTRY, resolveInspectTarget } from "@/features/workstation/code/inspect";
 import { initialWorkstationState, workstationReducer } from "@/features/workstation/state/workstation-machine";
-import { buildIndex, MANIFEST, scanSecrets, validatePath } from "../../scripts/generate-workstation-code.mjs";
+import { buildIndex, MANIFEST, ROOT, scanSecrets, validatePath } from "../../scripts/generate-workstation-code.mjs";
 
 describe("curated terminal", () => {
   it("maps commands in every locale to page and notebook effects", () => {
@@ -40,11 +42,35 @@ describe("curated terminal", () => {
 });
 
 describe("Code app source index", () => {
+  it("marks the first unstaged, staged and untracked source as local and never links it to a clean commit", () => {
+    const root = mkdtempSync(join(tmpdir(), "ws-code-git-"));
+    const git = (...args: string[]) => execFileSync("git", args, { cwd: root, stdio: "pipe", encoding: "utf8" });
+    const path = "src/features/source.ts", manifest: [string, string, string][] = [["notebook", "source", path]];
+    try {
+      mkdirSync(join(root, "src/features"), { recursive: true });
+      writeFileSync(join(root, path), "export const version = 1;\n");
+      git("init"); git("config", "remote.origin.url", "https://github.com/PauloSoaf/paulosoaf-portfolio.git");
+      git("add", "."); git("-c", "user.name=QA fixture", "-c", "user.email=qa@example.invalid", "commit", "-m", "fixture");
+      const sha = git("rev-parse", "HEAD").trim();
+      expect(buildIndex({ root, manifest }).files[0]).toMatchObject({ dirty: false, url: null });
+      git("update-ref", "refs/remotes/origin/main", sha);
+      expect(buildIndex({ root, manifest }).files[0]).toMatchObject({ dirty: false, url: `https://github.com/PauloSoaf/paulosoaf-portfolio/blob/${sha}/${path}` });
+      writeFileSync(join(root, path), "export const version = 2;\n");
+      expect(buildIndex({ root, manifest }).files[0]).toMatchObject({ dirty: true, url: null, content: "export const version = 2;\n" });
+      git("add", ".");
+      expect(buildIndex({ root, manifest }).files[0]).toMatchObject({ dirty: true, url: null });
+      const fresh = "src/features/new-source.ts";
+      writeFileSync(join(root, fresh), "export {};\n");
+      expect(buildIndex({ root, manifest: [["notebook", "new-source", fresh]] }).files[0]).toMatchObject({ dirty: true, url: null });
+    } finally { rmSync(root, { recursive: true, force: true }); }
+  });
   it("publishes only the explicit manifest with hashes", () => {
     const index = buildIndex();
     expect(index.files).toHaveLength(MANIFEST.length);
     for (const file of index.files) {
-      expect(file.sha256).toMatch(/^[a-f0-9]{64}$/); expect(file.content.length).toBe(file.content.length);
+      const actual = readFileSync(join(ROOT, file.path), "utf8");
+      expect(file.content).toBe(actual);
+      expect(file.sha256).toBe(createHash("sha256").update(actual).digest("hex"));
       expect(file.path.startsWith("src/") || file.path === "scripts/generate-workstation-code.mjs").toBe(true);
     }
   });

@@ -51,8 +51,18 @@ export class ScrollInertia {
     const sustained = this.fastLast - this.fastSince >= SUSTAIN_MS;
     // Abruptness, not just slowing down: from near the peak to 30% of it within BRAKE_MS.
     // Momentum decay (trackpad flings) takes several times longer and never qualifies.
-    if (time - this.nearPeak > BRAKE_MS) { this.clearFast(); return null; }
-    if (speed > this.peak * .3) return null;
+    const threshold = this.peak * .3;
+    let crossedAt = time;
+    const startSpeed = before * this.direction, rawSpeed = raw * this.direction;
+    if (speed <= threshold && startSpeed > threshold && rawSpeed < threshold) {
+      // Locate the crossing inside this frame using the SAME exponential filter. At 5–8 Hz,
+      // an instant stop crosses 30% after ~60ms, even if the next sample arrives 200ms later.
+      // Comparing only the sample's arrival time silently widened the apparent brake duration.
+      const crossingSeconds = -TAU_V * Math.log((threshold - rawSpeed) / (startSpeed - rawSpeed));
+      crossedAt = previous.time + Math.max(0, Math.min(dt, crossingSeconds)) * 1000;
+    }
+    if (crossedAt - this.nearPeak > BRAKE_MS) { this.clearFast(); return null; }
+    if (speed > threshold) return null;
     const brake: Brake = { direction: this.direction, speed: this.peak };
     const allowed = sustained && time >= this.cooldownUntil && time >= this.suppressedUntil;
     this.clearFast();

@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { brake } from "../../scripts/lib/workstation-p02.mjs";
 const host = (page: Page) => page.locator("[data-workstation]");
 const screen = (page: Page) => page.locator(".workstation-projected-screen [data-workstation-screen]");
 async function open(page: Page) {
@@ -30,18 +31,6 @@ async function targetCursor(page: Page, id: string) {
   await moveCursor(page, target.x, target.y);
 }
 async function tap(page: Page) { const pad = await point(page, "trackpad-point"); await page.mouse.click(pad.x, pad.y); }
-async function brake(page: Page, direction = 1) {
-  await page.evaluate((direction) => new Promise<void>((resolve) => {
-    let last = performance.now(), velocity = 0; const start = last;
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000, t = now - start; last = now;
-      velocity = t < 420 ? Math.min(5200, velocity + 30000 * dt) : 0;
-      if (velocity) window.scrollBy({ top: direction * velocity * dt, behavior: "instant" });
-      if (t < 420) requestAnimationFrame(tick); else resolve();
-    };
-    requestAnimationFrame(tick);
-  }), direction);
-}
 
 test("3D keys type into the desktop prompt and run the curated terminal", async ({ page }) => {
   await open(page);
@@ -105,6 +94,22 @@ test("the mute control sits in the screen corner and persists", async ({ page })
   await mute.click(); await expect(mute).toHaveAttribute("aria-pressed", "true");
   await page.reload(); await open(page);
   await expect(page.locator(".workstation-projected-screen [data-workstation-mute]")).toHaveAttribute("aria-pressed", "true");
+});
+
+test("Shift-drag rotates the physical notebook without throwing it or losing Notes", async ({ page }) => {
+  await open(page);
+  await screen(page).locator('[data-input-action="notes"]').click();
+  await screen(page).locator("textarea").fill("Notes survive a real rotation gesture");
+  const corners = async () => (await host(page).getAttribute("data-physical-display-corners"))!.split(";").map((pair) => pair.split(",").map(Number));
+  const before = await corners(), grip = await point(page, "drag-point");
+  await page.keyboard.down("Shift"); await page.mouse.move(grip.x, grip.y); await page.mouse.down();
+  await page.mouse.move(grip.x - 85, grip.y - 25, { steps: 8 }); await page.mouse.up(); await page.keyboard.up("Shift");
+  await expect(host(page)).toHaveAttribute("data-body", "FOLLOW");
+  await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 15_000 });
+  const after = await corners();
+  expect(Math.max(...before.map(([x, y], i) => Math.hypot(x! - after[i]![0]!, y! - after[i]![1]!)))).toBeGreaterThan(20);
+  await expect(screen(page).locator("textarea")).toHaveValue("Notes survive a real rotation gesture");
+  expect(await host(page).getAttribute("data-slams")).toBe("0");
 });
 
 for (const width of [1440, 1920, 768, 390]) {
@@ -186,10 +191,13 @@ for (const width of [1440, 1920, 768, 390]) {
   });
 }
 
-test("an abrupt fast-scroll brake knocks the notebook over; it lands and gets back up", async ({ page }) => {
-  test.setTimeout(90_000);
+test("an abrupt fast-scroll brake knocks the notebook over; it lands and gets back up", async ({ page }, testInfo) => {
+  // Includes the full fall, return and fifteen native wheel round trips on SwiftShader.
+  // The actual slam (4s), impacts (20s) and return (30s) assertions retain their limits.
+  test.setTimeout(150_000);
   await open(page);
-  await brake(page);
+  const gesture = await brake(page);
+  await testInfo.attach("observed-brake-input", { body: JSON.stringify(gesture), contentType: "application/json" });
   await expect(host(page)).toHaveAttribute("data-slams", "1", { timeout: 4_000 });
   await expect(host(page)).not.toHaveAttribute("data-body", "FOLLOW");
   await expect.poll(async () => Number(await host(page).getAttribute("data-impacts")), { timeout: 20_000 }).toBeGreaterThan(0);
