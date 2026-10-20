@@ -1,20 +1,34 @@
 "use client";
 /* eslint-disable react-hooks/immutability -- Stable imperative input/render controllers, not React view state. */
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { Component, useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import type { Locale } from "@/i18n/config";
-import { getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
+import { switchLocalePath } from "@/i18n/paths";
+import { applyTheme, getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
 import { constrainedDevice } from "@/graphics/hero/quality";
 import { workstationLabels } from "../labels";
 import { PROJECT_REQUEST, siteForProject, workstationSites } from "../sites";
 import { initialWorkstationState, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
 import { WorkbenchScreen } from "../screen/WorkbenchScreen.client";
-import { createMotionRig, installWorkstationPosition } from "./position";
+import { createMotionRig, installWorkstationPosition, type Impact } from "./position";
 import { NotebookInputController } from "../input/NotebookInputController";
 import { NotebookPointerController } from "../input/NotebookPointerController";
+import { NOTEBOOK_KEYS } from "../input/keyboard-layout";
+import { NotebookSound } from "../audio/notebook-sound";
+import { TerminalSession } from "../terminal/session";
+import type { TerminalEffect } from "../terminal/commands";
+import { knock, tremor } from "../page/page-reactions";
+import { startInspect } from "../code/inspect";
+import type { HoverPart } from "../scene/WorkstationScene.client";
 const Scene = dynamic(() => import("../scene/WorkstationScene.client"), { ssr: false });
 const noopSubscribe = () => () => {};
+const chapterPaths: Record<Locale, Record<string, string>> = {
+  pt: { work: "projetos", about: "sobre", expertise: "especialidades", services: "servicos", contact: "contato" },
+  en: { work: "projects", about: "about", expertise: "expertise", services: "services", contact: "contact" },
+  es: { work: "proyectos", about: "acerca", expertise: "especialidades", services: "servicios", contact: "contacto" },
+};
 class SceneBoundary extends Component<{ children: ReactNode; fail: () => void }, { failed: boolean }> {
   override state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
@@ -23,49 +37,87 @@ class SceneBoundary extends Component<{ children: ReactNode; fail: () => void },
 }
 
 export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
-  const text = workstationLabels[locale];
+  const text = workstationLabels[locale], router = useRouter();
   const body = useSyncExternalStore(noopSubscribe, () => document.body, () => null);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
   const [state, dispatch] = useReducer(workstationReducer, initialWorkstationState);
   const [rig] = useState(createMotionRig), [input] = useState(() => new NotebookInputController()), [pointer] = useState(() => new NotebookPointerController());
-  const [inputMode, setInputMode] = useState(false), [feedback, setFeedback] = useState<"local" | "external" | "ready">("ready");
-  const [tool, setTool] = useState<"move" | "rotate" | "lid">("move"), [touchManipulation, setTouchManipulation] = useState(false), [keyboardView, setKeyboardView] = useState(false);
+  const [sound] = useState(() => new NotebookSound()), [session] = useState(() => new TerminalSession());
   const [armed, setArmed] = useState(false), [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
-  const [surface, setSurface] = useState<HTMLDivElement | null>(null);
-  const [environment, setEnvironment] = useState({ visible: false, loadable: false, hidden: false, reduced: false, mobile: false, limited: false });
-  const anchor = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null);
-  const screenElement = useRef<HTMLDivElement>(null);
-  const sceneElement = useRef<HTMLDivElement>(null);
+  const [menu, setMenu] = useState<{ x: number; y: number } | null>(null), [inspecting, setInspecting] = useState(false), [chapter, setChapter] = useState("hero");
+  const [environment, setEnvironment] = useState({ hidden: false, reduced: false, mobile: false, limited: false, loadable: false });
+  const anchor = useRef<HTMLDivElement>(null), host = useRef<HTMLDivElement>(null), hit = useRef<HTMLDivElement>(null), badge = useRef<HTMLDivElement>(null);
+  const screenElement = useRef<HTMLDivElement>(null), dust = useRef<HTMLDivElement>(null), announcer = useRef<HTMLParagraphElement>(null);
+  const menuElement = useRef<HTMLDivElement>(null), trigger = useRef<HTMLButtonElement>(null);
+  const dialog = useRef<HTMLDialogElement>(null), returnFocus = useRef<HTMLElement | null>(null);
+  const [mounted, setMounted] = useState<HTMLDivElement | null>(null);
+  const bindHost = useCallback((node: HTMLDivElement | null) => { host.current = node; setMounted(node); }, []);
   const bindScreen = useCallback((node: HTMLDivElement | null) => {
     screenElement.current = node;
-    if (node && host.current?.dataset.displayMatrix) {
-      node.style.transform = host.current.dataset.displayMatrix;
-      node.style.visibility = host.current.dataset.displayFront === "true" ? "visible" : "hidden";
-    }
+    if (node && host.current?.dataset.displayMatrix) node.style.transform = host.current.dataset.displayMatrix;
     rig.wake();
   }, [rig]);
-  const dialog = useRef<HTMLDialogElement>(null), returnFocus = useRef<HTMLElement | null>(null);
-  const bind = useCallback((node: HTMLDivElement | null) => { host.current = node; setSurface(node); }, []);
   const fail = useCallback(() => { setFailed(true); setReady(false); }, []), onReady = useCallback(() => setReady(true), []);
+  const onMenu = useCallback((x: number, y: number) => setMenu({ x, y }), []);
   const focused = state.mode === "FOCUS_SCREEN";
-  useEffect(() => surface && anchor.current ? installWorkstationPosition(surface, anchor.current, rig) : undefined, [surface, rig]);
+  const announce = useCallback((message: string) => { if (announcer.current) announcer.current.textContent = message; }, []);
+
+  useEffect(() => mounted && anchor.current ? installWorkstationPosition(mounted, anchor.current, rig) : undefined, [mounted, rig]);
+  useEffect(() => { rig.paused = focused; if (focused) rig.cancel(); rig.wake(); }, [rig, focused]);
+  useEffect(() => () => sound.dispose(), [sound]);
+  // Physical comedy: every impact has a sound, a small reaction and, on hard landings, a page tremor.
   useEffect(() => {
-    rig.paused = focused; rig.locked = state.mode === "MANIPULATE"; rig.wake();
-    if (focused) rig.manipulation.cancel();
-    input.wake = () => rig.wake(); input.onFeedback = setFeedback;
-    pointer.onExternal = () => setFeedback("external"); input.onEscape = () => dispatch({ type: "CLOSE_X" });
-  }, [rig, input, pointer, focused, state.mode]);
+    let reactionTimer = 0, lastAnnounce = 0;
+    const react = (kind: string, ms: number) => {
+      const node = host.current; if (!node) return;
+      node.dataset.reaction = kind; clearTimeout(reactionTimer);
+      reactionTimer = window.setTimeout(() => { if (host.current) host.current.dataset.reaction = ""; }, ms);
+    };
+    const puff = (x: number, y: number, speed: number) => {
+      const layer = dust.current; if (!layer || rig.reduced) return;
+      for (const side of [-1, 1]) {
+        const cloud = document.createElement("span");
+        cloud.style.left = `${x}px`; cloud.style.top = `${y}px`; cloud.style.setProperty("--side", String(side)); cloud.style.setProperty("--size", `${Math.min(70, 24 + speed / 60)}px`);
+        layer.append(cloud); window.setTimeout(() => cloud.remove(), 750);
+      }
+    };
+    rig.onImpact = (impact: Impact) => {
+      const { kind, speed, x, y } = impact;
+      if (kind === "floor") {
+        sound.thud(speed);
+        if (speed > 650) { tremor({ x, y }, Math.min(1.2, speed / 2400)); input.jolt(NOTEBOOK_KEYS.length, Math.min(speed, 3000) * .00055); puff(x, y, speed); }
+      } else if (kind === "dizzy") react("dizzy", 1250);
+      else if (kind === "ceiling") { sound.bonk(speed); react("bonk", 900); input.jolt(NOTEBOOK_KEYS.length, Math.min(speed, 2400) * .0003); }
+      else if (kind === "wall") sound.wall(speed);
+      else if (kind === "slam") react("wow", 600);
+      else if (kind === "throw") sound.whoosh(speed);
+      else if (kind === "lid") sound.lid(speed);
+      else if (kind === "getup") {
+        sound.hop();
+        if (performance.now() - lastAnnounce > 8000) { lastAnnounce = performance.now(); announce(text.announceLanded); }
+      }
+    };
+    rig.onTravel = (box, velocity, time) => { if (knock(box, velocity, time)) sound.tock(); };
+    rig.onChapter = setChapter;
+    input.wake = () => rig.wake(); input.onKey = () => sound.key();
+    input.onEscape = () => dispatch({ type: "CLOSE_X" });
+    return () => { clearTimeout(reactionTimer); rig.onImpact = () => {}; rig.onTravel = () => {}; rig.onChapter = () => {}; };
+  }, [rig, input, sound, announce, text.announceLanded]);
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const device = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
     const limited = constrainedDevice({ saveData: device.connection?.saveData, memory: device.deviceMemory, cores: device.hardwareConcurrency });
-    let visible = false, ratio = 0;
-    const sync = () => setEnvironment({ visible, loadable: visible && (innerWidth >= 768 || ratio >= .55), hidden: document.hidden, reduced: reduced.matches, mobile: innerWidth < 768, limited });
-    const observer = new IntersectionObserver((entries) => { const entry = entries.at(-1); visible = !!entry?.isIntersecting; ratio = entry?.intersectionRatio ?? 0; sync(); }, { threshold: [0, .01, .55] });
-    if (surface) observer.observe(surface);
+    // WebGL loads once a notebook slot is on screen; phones wait until most of one is visible (LCP).
+    const ratios = new Map<Element, number>();
+    const sync = () => {
+      const mobile = innerWidth < 768, best = Math.max(0, ...ratios.values());
+      setEnvironment({ hidden: document.hidden, reduced: reduced.matches, mobile, limited, loadable: mobile ? best >= .55 : best > 0 });
+    };
+    const observer = new IntersectionObserver((entries) => { for (const entry of entries) ratios.set(entry.target, entry.isIntersecting ? entry.intersectionRatio : 0); sync(); }, { threshold: [0, .01, .55] });
+    document.querySelectorAll("[data-workstation-anchor], [data-workstation-section-anchor]").forEach((node) => observer.observe(node));
     reduced.addEventListener("change", sync); document.addEventListener("visibilitychange", sync); window.addEventListener("resize", sync, { passive: true }); sync();
     return () => { observer.disconnect(); reduced.removeEventListener("change", sync); document.removeEventListener("visibilitychange", sync); window.removeEventListener("resize", sync); };
-  }, [surface]);
+  }, []);
   useEffect(() => {
     if (armed || !environment.loadable || environment.hidden || environment.reduced || environment.limited) return;
     const timer = setTimeout(() => setArmed(true), environment.mobile ? 1300 : 500);
@@ -78,56 +130,139 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       if (!siteId) return;
       dispatch({ type: "SET_LID", angle: 108 }); dispatch({ type: "OPEN_SITE", siteId });
       if (innerWidth < 1280 || !armed || failed) dispatch({ type: "FOCUS_SCREEN" });
-      else { document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
+      else { rig.inertia.suppress(performance.now(), 2400); document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
     };
     window.addEventListener(PROJECT_REQUEST, select); return () => window.removeEventListener(PROJECT_REQUEST, select);
-  }, [armed, failed, environment.reduced]);
+  }, [armed, failed, environment.reduced, rig]);
   useEffect(() => {
     const modal = dialog.current; if (!modal) return;
     if (focused && !modal.open) { returnFocus.current = document.activeElement as HTMLElement; modal.showModal(); }
-    if (!focused && modal.open) { modal.close(); returnFocus.current?.focus({ preventScroll: true }); }
+    if (!focused) {
+      // Chrome may close the dialog natively on Escape (non-cancelable close request), so restore
+      // focus whenever focus mode ends. The projected screen that opened it remounts as a new
+      // node: fall back to the options trigger, after the dialog's own restoration and this commit.
+      if (modal.open) modal.close();
+      const previous = returnFocus.current; returnFocus.current = null;
+      // The opener inside the projected screen unmounts in the same commit, so activeElement may already be <body>.
+      if (previous) requestAnimationFrame(() => (previous.isConnected && previous !== document.body ? previous : trigger.current ?? hit.current)?.focus({ preventScroll: true }));
+    }
   }, [focused]);
+  const lidOpen = state.lidAngle >= 15, lastLid = useRef(lidOpen);
+  useEffect(() => {
+    if (lastLid.current === lidOpen) return;
+    lastLid.current = lidOpen; announce(lidOpen ? text.announceOpened : text.announceClosed);
+  }, [lidOpen, announce, text.announceOpened, text.announceClosed]);
+
   const screenDispatch = useCallback((event: WorkstationEvent) => {
     dispatch(event);
     if (environment.mobile && (event.type === "OPEN_SITE" || event.type === "OPEN_CODE")) dispatch({ type: "FOCUS_SCREEN" });
   }, [environment.mobile]);
-  const screen = <WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} />;
-  const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" ? <div className="workbench-screen workbench-code"><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
-  const active = environment.visible && !environment.hidden && !focused;
+  const notebookAction = useCallback((action: "hop" | "drop" | "spin" | "close-lid" | "open-lid" | "reset" | "keyboard" | "left" | "right") => {
+    sound.unlock();
+    if (action === "hop") rig.hop(); else if (action === "drop") rig.drop(); else if (action === "spin") rig.spin();
+    else if (action === "close-lid" || action === "open-lid") { dispatch({ type: "SET_LID", angle: action === "open-lid" ? 108 : 0 }); if (action === "open-lid") sound.boot(); }
+    else if (action === "reset") { rig.reset(); dispatch({ type: "RESET_POSE" }); rig.refresh(); }
+    else if (action === "keyboard") { rig.keyboardView = !rig.keyboardView; rig.refresh(); }
+    else dispatch({ type: "ROTATE", axis: 1, delta: action === "left" ? -.3 : .3 });
+    rig.wake();
+  }, [rig, sound]);
+  useEffect(() => {
+    session.onEffect = (effect: TerminalEffect) => {
+      const behavior: ScrollBehavior = environment.reduced ? "instant" : "smooth";
+      if (effect.type === "scroll") {
+        rig.inertia.suppress(performance.now(), 2600);
+        if (effect.section === "top") window.scrollTo({ top: 0, behavior }); else document.getElementById(effect.section)?.scrollIntoView({ behavior, block: "start" });
+      } else if (effect.type === "theme") applyTheme(getDocumentTheme() === "dark" ? "light" : "dark");
+      else if (effect.type === "locale") router.push(`${switchLocalePath(window.location.pathname, effect.locale)}${window.location.search}`);
+      else if (effect.type === "open") {
+        if (effect.app === "desktop") dispatch({ type: "CLOSE_X" });
+        else if (effect.app === "notes") dispatch({ type: "OPEN_NOTES" });
+        else screenDispatch({ type: "OPEN_SITE", siteId: effect.app === "browser" ? "fixture" : effect.app });
+      } else if (effect.type === "code") dispatch({ type: "OPEN_CODE", ...(effect.file ? { file: effect.file } : {}) });
+      else if (effect.type === "inspect") { dispatch({ type: "OPEN_CODE" }); setInspecting(true); }
+      else if (effect.type === "mute") sound.toggle();
+      else if (effect.type === "focus") dispatch({ type: "FOCUS_SCREEN" });
+      else if (effect.type === "notebook") notebookAction(effect.action);
+    };
+    return () => { session.onEffect = () => {}; };
+  }, [session, rig, sound, router, environment.reduced, screenDispatch, notebookAction]);
+  const inspectActive = inspecting && state.app.kind === "CODE" && !focused;
+  useEffect(() => {
+    if (!inspectActive) return;
+    return startInspect({
+      label: (file) => `${text.inspectPrefix} · ${file}`,
+      onExit: () => setInspecting(false),
+      onPick: (file, element) => {
+        dispatch({ type: "OPEN_CODE", file }); sound.tock();
+        const rect = element.getBoundingClientRect();
+        rig.attention = { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }; rig.wake();
+        window.setTimeout(() => { rig.attention = null; rig.wake(); }, 1400);
+      },
+    });
+  }, [inspectActive, rig, sound, text.inspectPrefix]);
+  // Hidden options: right-click / long-press / Shift+F10 on the notebook, or the keyboard-only trigger.
+  useEffect(() => {
+    if (!menu) return;
+    menuElement.current?.querySelector<HTMLButtonElement>("[role=menuitem]")?.focus({ preventScroll: true });
+    const outside = (event: PointerEvent) => { if (!menuElement.current?.contains(event.target as Node)) setMenu(null); };
+    const close = () => setMenu(null);
+    document.addEventListener("pointerdown", outside, true); window.addEventListener("scroll", close, { passive: true }); window.addEventListener("resize", close);
+    return () => { document.removeEventListener("pointerdown", outside, true); window.removeEventListener("scroll", close); window.removeEventListener("resize", close); };
+  }, [menu]);
+
+  const prompt = `paulo@obsidian:~${chapterPaths[locale][chapter] ? `/${chapterPaths[locale][chapter]}` : ""}$`;
+  const toggleInspect = useCallback(() => setInspecting((value) => !value), []);
+  const screen = <WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} />;
+  const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" ? <div className="workbench-screen workbench-code" data-workstation-screen><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
+  const active = !environment.hidden && !focused;
+  const live = armed && ready && !failed;
+  const badgeText = useCallback((part: HoverPart) => part === "chassis" ? text.badgeChassis : part === "lid" ? (state.lidAngle < 15 ? text.badgeLidOpen : text.badgeLidClose) : part === "keyboard" ? text.badgeKeys : part === "trackpad" ? text.badgeTrackpad : "", [text, state.lidAngle]);
+  const menuItems: { label: string; run: () => void }[] = [
+    { label: lidOpen ? text.closeLid : text.openLid, run: () => notebookAction(lidOpen ? "close-lid" : "open-lid") },
+    { label: text.focus, run: () => dispatch({ type: "FOCUS_SCREEN" }) },
+    { label: text.left, run: () => notebookAction("left") }, { label: text.right, run: () => notebookAction("right") },
+    { label: rig.keyboardView ? text.wholeView : text.keyboardView, run: () => notebookAction("keyboard") },
+    ...(environment.reduced ? [] : [{ label: text.hop, run: () => notebookAction("hop") }, { label: text.drop, run: () => notebookAction("drop") }, { label: text.spin, run: () => notebookAction("spin") }]),
+    { label: text.reset, run: () => notebookAction("reset") },
+    { label: sound.muted ? text.soundOn : text.soundOff, run: () => sound.toggle() },
+  ];
+  const closeMenu = (refocus: boolean) => { setMenu(null); if (refocus) (hit.current ?? trigger.current)?.focus({ preventScroll: true }); };
+  const menuWidth = 232, menuHeight = menuItems.length * 40 + 16;
   return <>
     <div ref={anchor} className="workstation-hero-anchor" data-workstation-anchor data-scene-ready={ready && !failed}>
       <div className="workstation-still" aria-hidden="true"><svg viewBox="0 0 600 430" fill="none"><path d="m124 280 335 20 49-220-309-36-75 236Z" /><path d="m124 280-64 56 330 61 69-97" /><path d="m142 266 300 19 39-189-271-31-68 201Z" /><path d="m161 307 187 24m-200-13 181 24m-122 4 71 13" /><circle cx="321" cy="170" r="40" /></svg></div>
-      <div className="workstation-entry"><p className="text-kicker">{text.caption}</p><button type="button" className="carousel-button js-only" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.explore} ↗</button></div>
+      {!live ? <div className="workstation-fallback js-only">
+        <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
+        {!armed || failed ? <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button> : null}
+      </div> : null}
       <noscript><p>{text.fallback}</p>{Object.values(workstationSites).map((site) => <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>)}</noscript>
     </div>
     {body ? createPortal(<>
-      <div ref={bind} className="workstation-companion" data-workstation data-input-mode={inputMode} data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected">
-        <div ref={sceneElement} className="workstation-scene"><div className="workstation-dom-layer">
-          {ready && !failed && state.lidAngle >= 15 && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
+      <div ref={bindHost} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected" data-inspecting={inspectActive}>
+        <div ref={hit} className="workstation-hit" tabIndex={-1} aria-hidden="true" />
+        <div className="workstation-dom-layer">
+          {ready && !failed && lidOpen && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
         </div>
-          {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} screen={sceneScreen} screenElement={screenElement} sceneElement={sceneElement} host={host} rig={rig} input={input} pointer={pointer} inputMode={inputMode} tool={tool} touchManipulation={touchManipulation} keyboardView={keyboardView} onReady={onReady} onFailure={fail} /></SceneBoundary> : null}
-        </div>
-        <div className="workstation-controls">
-          <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
-          {armed && !failed ? <>
-            <button type="button" onClick={() => dispatch({ type: "SET_LID", angle: state.lidAngle < 15 ? 108 : 0 })}>{state.lidAngle < 15 ? text.openLid : text.closeLid}</button>
-            <button type="button" aria-label={text.left} title={text.left} onClick={() => dispatch({ type: "ROTATE", axis: 1, delta: -.25 })}>←</button>
-            <button type="button" aria-label={text.right} title={text.right} onClick={() => dispatch({ type: "ROTATE", axis: 1, delta: .25 })}>→</button>
-            <button type="button" aria-label={text.tilt} title={text.tilt} onClick={() => dispatch({ type: "ROTATE", axis: 2, delta: state.rotation[2] > 0 ? -.2 : .2 })}>↶</button>
-            <button type="button" aria-label={text.reset} title={text.reset} onClick={() => { rig.manipulation.follow(); dispatch({ type: "RESET" }); setKeyboardView(false); setTouchManipulation(false); setTool("move"); }}>↺</button>
-            <button type="button" aria-pressed={inputMode} onClick={() => { setInputMode(!inputMode); setTouchManipulation(false); }}>{inputMode ? text.inputExit : text.inputMode}</button>
-            <details className="workstation-tools"><summary>{text.tools}</summary><div>
-              <button type="button" data-notebook-tool="move" aria-pressed={tool === "move"} onClick={(event) => { setTool("move"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.move}</button>
-              <button type="button" data-notebook-tool="rotate" aria-pressed={tool === "rotate"} onClick={(event) => { setTool("rotate"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.rotate}</button>
-              <button type="button" data-notebook-tool="lid" aria-pressed={tool === "lid"} onClick={(event) => { setTool("lid"); setTouchManipulation(true); setInputMode(false); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{text.adjustLid}</button>
-              <button type="button" data-keyboard-view aria-pressed={keyboardView} onClick={(event) => { setKeyboardView(!keyboardView); event.currentTarget.closest("details")?.removeAttribute("open"); }}>{keyboardView ? text.wholeView : text.keyboardView}</button>
-            </div></details>
-            <button type="button" className="workstation-rejoin" onClick={() => { rig.manipulation.follow(); setTouchManipulation(false); }}>{text.followPage}</button>
-          </> : <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button>}
-        </div>
-        <p className="workstation-hint" role="status">{ready ? feedback === "external" ? environment.mobile ? text.inputExternalCompact : text.inputExternal : feedback === "local" ? text.inputLocal : environment.mobile ? text.inputReadyCompact : text.inputReady : text.fallback}</p>
+        {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} host={host} hit={hit} badge={badge} screenElement={screenElement} rig={rig} input={input} pointer={pointer} sound={sound} badgeText={badgeText} onReady={onReady} onFailure={fail} onMenu={onMenu} /></SceneBoundary> : null}
+        <div ref={dust} className="workstation-dust" aria-hidden="true" />
+        <div ref={badge} className="workstation-badge" aria-hidden="true" data-visible="false" />
       </div>
-      <dialog ref={dialog} className="workstation-focus" aria-label={text.title} data-workstation-focus onCancel={(event) => { event.preventDefault(); dispatch({ type: "EXIT_FOCUS" }); }}>
+      {live ? <button ref={trigger} type="button" className="workstation-options-trigger" aria-haspopup="menu" aria-expanded={!!menu} aria-describedby="workstation-hint"
+        onClick={() => setMenu({ x: rig.current.x, y: rig.current.y })}>{text.options}</button> : null}
+      <p id="workstation-hint" className="sr-only">{text.hint}</p>
+      {menu ? <div ref={menuElement} role="menu" tabIndex={-1} aria-label={text.options} className="workstation-menu"
+        style={{ left: Math.max(8, Math.min(innerWidth - menuWidth - 8, menu.x)), top: Math.max(8, Math.min(innerHeight - menuHeight - 8, menu.y)) }}
+        onKeyDown={(event) => {
+          const items = [...(menuElement.current?.querySelectorAll<HTMLButtonElement>("[role=menuitem]") ?? [])], index = items.indexOf(document.activeElement as HTMLButtonElement);
+          if (event.key === "Escape") { event.preventDefault(); closeMenu(true); }
+          else if (event.key === "ArrowDown" || event.key === "ArrowUp") { event.preventDefault(); items[(index + (event.key === "ArrowDown" ? 1 : -1) + items.length) % items.length]?.focus(); }
+          else if (event.key === "Home" || event.key === "End") { event.preventDefault(); (event.key === "Home" ? items[0] : items.at(-1))?.focus(); }
+          else if (event.key === "Tab") closeMenu(false);
+        }}>
+        {menuItems.map((item) => <button key={item.label} type="button" role="menuitem" tabIndex={-1} onClick={() => { item.run(); closeMenu(true); }}>{item.label}</button>)}
+      </div> : null}
+      <p ref={announcer} className="sr-only" role="status" aria-live="polite" />
+      <dialog ref={dialog} className="workstation-focus" aria-label={text.title} data-workstation-focus onCancel={(event) => { event.preventDefault(); dispatch({ type: "EXIT_FOCUS" }); }} onClose={() => dispatch({ type: "EXIT_FOCUS" })}>
         <div className="workstation-focus-heading"><span>{text.title}</span><button type="button" onClick={() => dispatch({ type: "EXIT_FOCUS" })}>{text.exitFocus} <span aria-hidden="true">×</span></button></div>
         {focused ? screen : null}
       </dialog>

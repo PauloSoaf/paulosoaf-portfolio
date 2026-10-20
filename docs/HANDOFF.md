@@ -276,3 +276,33 @@ Na revisão final, Codex encurtou a orientação mobile para evitar sobreposiç�
 Fechamento P01.2: **131 unitários / 17 arquivos**, **41 E2E Workstation**, **87 regressões gerais** e **um gate público** passaram, totalizando **129 cenários E2E distintos**. Lint/typecheck e builds preview/público passaram. Seis condições de hidratação lenta mantiveram deltas zero. **118 PNGs / seis WebM** nativos documentam antes/depois, quatro tamanhos, Dark/Light, idiomas e gestos; a comparação de um recorte 640×550 entre PMREM runtime e atlas pronto teve diferença RGB zero. Localhost1010 confirmou o encaminhamento para P01.2, um Canvas, ambiente baked e zero pageerrors desktop/mobile.
 
 JS inicial173.085 gzip, cena lazy252.556, ambiente112.750 gzip e física1.644.937 gzip sob gesto explícito. Cena20calls/9.366tri, idle zero após repouso/liberação do mundo; Lighthouse98desktop/92mobile e controle81mobile. LCPmobile3199ms e INP localdesktop240ms continuam pendentes para publicação. Dez bloqueios editoriais permanecem. O SHA final do commit é acrescentado ao log operacional ignorado após o fechamento; o pai `349d7cf` mantém a fronteira de autoria sem autorreferência circular.
+
+## Workstation P02 — notebook como interface (continuação Claude)
+
+Em **18/10/2026**, a pedido do proprietário (notebook moderno, sem barra de opções, balançar, fechar a tampa clicando, teclado/trackpad, acompanhar a página, tombo cômico na freada do scroll, adaptação a todos os tamanhos, som com mudo e preparação do código exposto), **Claude** retomou da árvore limpa **`fix/workstation-visual-physics-continuity` / `9b0031c2a31c1b74a10e5d126d141fd0d87b2d1f`** e criou **`feat/workstation-playful-notebook`** a partir desse commit. Esse SHA é a fronteira exata: `git diff 9b0031c..HEAD` contém somente esta continuação.
+
+Antes de alterar código: leitura da branch, do histórico local Codex (`~/.codex/sessions`) e da auditoria anexa, de todo `src/features/workstation`, das specs 00/04/06/07, de ADR-017 e da QA P01.2, além dos guias Next instalados. Um plano foi aprovado pelo proprietário com quatro decisões: retorno automático, batida no teto, solver próprio e som com mudo na tela.
+
+| Origem | Fronteira e responsabilidade |
+|---|---|
+| Claude, fundação S00 | Inalterada; autoria conforme o início deste documento. |
+| Codex, até `9b0031c` | S01–S03.5/Recovery e Workstation P00–P01.2: base do modelo procedural, projeção afim + abertura alfa, reducer, fixture/embeds/CSP, Notas, controladores de teclado/trackpad, ambiente HDR baked, estações por seção. Reaproveitados e evoluídos; nada disso é reatribuído. |
+| Proprietário | Pedido, prioridades e respostas às decisões; nenhuma aprovação editorial ou estética presumida. |
+| Claude, P02 — interface/a11y | Remoção da barra/dica/legenda; gestos diretos; rótulo do cursor; menu oculto (`role=menu`, clique direito/toque longo/Shift+F10/gatilho por Tab); anúncios; retorno de foco do diálogo; mudo na tela. |
+| Claude, P02 — render/física | Canvas em tela cheia em pixels; camada de clique recortada pela silhueta; vidro escuro sem DOM; solver 2D com rotação, pêndulo, voo, repouso; inércia/freada do scroll; mola da tampa; rig preso ao conteúdo; trajetória responsiva; reações cômicas; som WebAudio; remoção do Rapier e de `wasm-unsafe-eval`. |
+| Claude, P02 — modelo | Geometria arredondada com bisel, materiais, teclas/legendas na Inter, trackpad de vidro, grades, LED, sombra de contato, estrelas. |
+| Claude, P02 — Terminal/Código/página | Comandos curados e sessão compartilhada; gerador allowlisted do índice de código com validação de caminho/segredo/SHA; app Código com realce próprio; Inspecionar; tremor/esbarrões na página. |
+| Claude, P02 — QA/docs | 25 + 12 unitários novos, duas suítes E2E Workstation reescritas (30 cenários), 19 capturas, ADR-018, QA P02, README e esta seção. |
+
+Durante a validação, os testes revelaram e motivaram as seguintes correções na aplicação:
+- caret desalinhado entre tecla 3D e digitação física;
+- ordem do prompt que reabria o Terminal por cima do Código;
+- falso tombo em fling de trackpad (passou a medir a brusquidão da freada);
+- RAF infinito por resíduo exponencial da inércia;
+- carregamento do deslocamento ao mudar o layout;
+- foco perdido ao fechar o diálogo, porque o Chrome fecha nativamente no Esc e o botão de origem desmonta;
+- notebook cobrindo o link da barra do laboratório.
+
+Premissas antigas dos testes foram reescritas, não relaxadas: a pose agora muda ao olhar para o cursor, e o voo após um salto instantâneo é intencional. A tolerância da “flutuação” inercial e a espera de dois quadros após saltos estão comentadas nos testes. `docs/report/` continua fora do Git. Sem push, merge ou deploy.
+
+Fechamento P02: lint/typecheck; **160 unitários / 18 arquivos**; builds preview e público; **30 E2E Workstation** em servidor de produção (+2 de rede pulados); **87 E2E gerais** (+1 condicional); gate público. Não medidos nesta entrega: Lighthouse, INP, hidratação lenta e vídeos. A sensação física em dispositivos reais e o aceite estético dependem do proprietário. Dez bloqueios editoriais herdados permanecem.

@@ -25,7 +25,18 @@ O hotfix **P01.1** amplia o notebook, acompanha Hero/Work/About/Expertise/Servic
 
 O hotfix **P01.2** refina materiais e legendas das teclas, corrige o recorte/oclusão da tela nos ângulos e acrescenta arraste/arremesso com Rapier lazy. Arraste a base para mover e solte em movimento para arremessar; Alt + arraste gira. **Manipular** oferece Mover, Girar, Tampa e Ver teclado. Em touch, selecione a ferramenta antes do gesto. **Seguir página** devolve o notebook ao percurso contínuo pelas seções; reset restaura todos os controles. Reduced motion solta sem voo. A iluminação HDR é preparada pelo script offline `node scripts/bake-workstation-environment.mjs`; o navegador carrega o atlas pronto e prepara shaders sem gerar PMREM durante a visita. [QA P01.2 e vídeos](docs/qa/Workstation/P01.2/REPORT.md), [ADR-017](docs/adr/ADR-017-workstation-depth-gestures-and-viewport-physics.md).
 
-Para uma prévia otimizada da POC, use `PORTFOLIO_CONTENT_PREVIEW=1` **e** `EXPERIMENTAL_WORKSTATION=1` no build e no servidor. Com esse servidor em `127.0.0.1:3300`, execute `npm run test:workstation`. `node scripts/qa-workstation-physics.mjs` registra as interações e os percursos atuais em quatro tamanhos/Dark/Light; `node scripts/qa-workstation-hotfix.mjs` mantém o roteiro histórico P01.1; `npm run qa:workstation` continua sendo o roteiro histórico P01. `QA_LIVE_EMBEDS=1` inclui os dois testes de rede real; `QA_ORIGIN` altera a origem de QA. Um build público normal retorna 404 para laboratório e fixture. P02–P07 seguem no roadmap do pacote, com input/percurso e arremesso planar priorizados pelos hotfixes; Code é um stub P03, sem fonte externa. Jogos, física destrutiva e demais apps não foram implementados.
+A **P02** torna o notebook a própria interface: não há mais barra de botões.
+- **Mouse:** clique na tampa para fechar/abrir e arraste a borda para ajustar. Arraste a base para pegar (ele balança como pêndulo) e solte em movimento para jogar; ele quica, fica tonto e volta sozinho. Shift/Alt + arraste gira; duplo clique na base redefine a posição.
+- **Teclas e trackpad 3D:** digitam no prompt do desktop, no Terminal e nas Notas e controlam o cursor da tela.
+- **Scroll:** muito rápido seguido de parada brusca, ele tomba no chão (ou bate no teto).
+- **Opções:** ficam ocultas e abrem com clique direito, toque longo, Shift+F10 ou Tab.
+- **Mudo:** canto superior direito da tela do notebook.
+- **Terminal:** `ajuda` lista comandos que navegam pela página e mexem no notebook.
+- **Código:** mostra a fonte real deste repositório, gerada por `npm run code:index` (allowlist, validação de caminhos/segredos, SHA). **Inspecionar** mapeia componentes da página para seus arquivos.
+
+O Rapier foi substituído por um solver próprio e a CSP do laboratório não usa mais `wasm-unsafe-eval`. [QA P02](docs/qa/Workstation/P02/REPORT.md), [ADR-018](docs/adr/ADR-018-workstation-playful-notebook.md).
+
+Para uma prévia otimizada da POC, use `PORTFOLIO_CONTENT_PREVIEW=1` **e** `EXPERIMENTAL_WORKSTATION=1` no build e no servidor. Com esse servidor em `127.0.0.1:3300`, execute `npm run test:workstation`. `node scripts/qa-workstation-physics.mjs` reproduz o roteiro histórico P01.2; `node scripts/qa-workstation-hotfix.mjs` mantém o roteiro histórico P01.1; `npm run qa:workstation` continua sendo o roteiro histórico P01. `QA_LIVE_EMBEDS=1` inclui os dois testes de rede real; `QA_ORIGIN` altera a origem de QA. Um build público normal retorna 404 para laboratório e fixture. O app Código mostra somente a fonte allowlisted deste portfólio (nunca de sites externos). Jogos, física destrutiva e demais apps do pacote seguem no roadmap.
 
 `next dev` mostra candidatos editoriais com avisos. Produção filtra coleções por `status: "approved"`. Perfil e textos da interface ainda exigem aprovação, verificada pelo gate de publicação.
 

@@ -14,7 +14,12 @@ export function NotesApp({ input, pointer, text }: { input: NotebookInputControl
   useLayoutEffect(() => { area.current?.setSelectionRange(document.start, document.end); }, [document]);
   useEffect(() => {
     const read = () => ({ value: area.current?.value ?? "", start: area.current?.selectionStart ?? 0, end: area.current?.selectionEnd ?? 0 });
-    const write = (next: TextSelection) => { input.document = next; setDocument(next); };
+    // Write the DOM synchronously: physical typing may follow before React re-renders.
+    const write = (next: TextSelection) => {
+      const element = area.current;
+      if (element) { element.value = next.value; element.setSelectionRange(next.start, next.end); }
+      input.document = next; setDocument(next);
+    };
     const port = { read, write, focus: () => area.current?.focus({ preventScroll: true }) };
     input.port = port; port.focus();
     const unregister = [

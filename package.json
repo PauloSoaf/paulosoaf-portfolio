@@ -7,11 +7,16 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "code:index": "node scripts/generate-workstation-code.mjs",
+    "predev": "npm run code:index",
     "dev": "next dev --port 1010",
+    "prebuild": "npm run code:index",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "pretypecheck": "npm run code:index",
     "typecheck": "next typegen && tsc --noEmit",
+    "pretest": "npm run code:index",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
@@ -32,7 +37,6 @@
     "qa:workstation": "node scripts/qa-workstation.mjs"
   },
   "dependencies": {
-    "@dimforge/rapier3d-compat": "0.21.0",
     "@react-three/fiber": "9.8.1",
     "next": "16.3.8",
     "react": "19.3.0",

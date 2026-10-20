@@ -18,11 +18,11 @@ export class NotebookPointerController {
     const projected = this.root.closest<HTMLElement>(".workstation-projected-screen");
     let x: number, y: number;
     if (projected) {
+      // The projected screen's matrix maps its 800px plane straight into viewport pixels.
       const matrix = new DOMMatrix(getComputedStyle(projected).transform);
-      const scene = projected.closest<HTMLElement>(".workstation-scene")!, rect = scene.getBoundingClientRect();
-      const scale = rect.width / scene.offsetWidth;
+      const layer = (projected.parentElement ?? projected).getBoundingClientRect();
       const point = matrix.transformPoint(new DOMPoint(this.x * this.root.clientWidth, this.y * this.root.clientHeight));
-      x = rect.left + point.x * scale; y = rect.top + point.y * scale;
+      x = layer.left + point.x; y = layer.top + point.y;
     } else { const rect = this.root.getBoundingClientRect(); x = rect.left + this.x * rect.width; y = rect.top + this.y * rect.height; }
     const element = document.elementsFromPoint(x, y).find((node) => node instanceof HTMLElement && node.closest("[data-input-action]") && this.root!.contains(node));
     return element?.closest<HTMLElement>("[data-input-action]") ?? null;

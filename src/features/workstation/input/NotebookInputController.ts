@@ -30,12 +30,22 @@ export class NotebookInputController {
   port: TextPort | null = null;
   shift = false; caps = false;
   pressed = new Map<string, number>();
+  /** Per-key vertical jolt (scene units) after impacts: offset and velocity per instance. */
+  jolts: { offset: number; velocity: number }[] = [];
   wake = () => {};
   onEscape = () => {};
+  onKey: (label: string) => void = () => {};
   onFeedback: (message: "local" | "external" | "ready") => void = () => {};
   external = false;
+  get animating() { return this.pressed.size > 0 || this.jolts.some((jolt) => jolt.offset !== 0 || jolt.velocity !== 0); }
+  /** A hard landing makes random keycaps hop out and settle back. */
+  jolt(count: number, strength: number) {
+    if (this.jolts.length !== count) this.jolts = Array.from({ length: count }, () => ({ offset: 0, velocity: 0 }));
+    for (const jolt of this.jolts) if (Math.random() < .55) jolt.velocity += strength * (.35 + Math.random() * .65);
+    this.wake();
+  }
   key(label: string) {
-    this.pressed.set(label, performance.now() + 160); this.wake();
+    this.pressed.set(label, performance.now() + 160); this.onKey(label); this.wake();
     if (this.external) { this.onFeedback("external"); return; }
     this.onFeedback("local");
     if (label === "shift") { this.shift = !this.shift; return; }

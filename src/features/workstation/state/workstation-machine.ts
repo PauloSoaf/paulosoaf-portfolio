@@ -1,8 +1,9 @@
 export type ScreenApp =
   | { readonly kind: "DESKTOP" }
   | { readonly kind: "PREVIEW"; readonly siteId: "fixture" | "nutriopus" | "deborah" }
-  | { readonly kind: "CODE" }
-  | { readonly kind: "NOTES" };
+  | { readonly kind: "CODE"; readonly file?: string }
+  | { readonly kind: "NOTES" }
+  | { readonly kind: "TERMINAL" };
 
 export type WorkstationMode =
   | ScreenApp["kind"]
@@ -20,8 +21,9 @@ export type WorkstationState = {
 
 export type WorkstationEvent =
   | { type: "OPEN_SITE"; siteId: unknown }
-  | { type: "OPEN_CODE" }
+  | { type: "OPEN_CODE"; file?: unknown }
   | { type: "OPEN_NOTES" }
+  | { type: "OPEN_TERMINAL" }
   | { type: "CLOSE_X" }
   | { type: "FOCUS_SCREEN" }
   | { type: "EXIT_FOCUS" }
@@ -30,6 +32,7 @@ export type WorkstationEvent =
   | { type: "BEGIN_ROTATE" }
   | { type: "END_ROTATE" }
   | { type: "RESET" }
+  | { type: "RESET_POSE" }
   | { type: "FAIL" };
 
 export const initialWorkstationState: WorkstationState = {
@@ -41,6 +44,7 @@ export const initialWorkstationState: WorkstationState = {
 };
 
 const rotationLimits = [0.6, 1.35, 0.3] as const;
+export const CODE_FILE_ID = /^[a-z0-9]+(?:-[a-z0-9]+){0,12}$/;
 
 export function isScreenInteractive(state: WorkstationState): boolean {
   return state.lidAngle >= 15 && state.mode !== "MANIPULATE" && state.mode !== "BROKEN";
@@ -66,11 +70,16 @@ export function workstationReducer(
       if (siteId !== "fixture" && siteId !== "nutriopus" && siteId !== "deborah") return state;
       return openApp(state, { kind: "PREVIEW", siteId });
     }
-    case "OPEN_CODE":
-      // No component path or external source is accepted by the P01 stub.
-      return openApp(state, { kind: "CODE" });
+    case "OPEN_CODE": {
+      // Only generated manifest ids (kebab-case) are accepted; the Code app resolves them locally.
+      const file = event.file;
+      if (file !== undefined && (typeof file !== "string" || file.length > 64 || !CODE_FILE_ID.test(file))) return state;
+      return openApp(state, file ? { kind: "CODE", file } : { kind: "CODE" });
+    }
     case "OPEN_NOTES":
       return openApp(state, { kind: "NOTES" });
+    case "OPEN_TERMINAL":
+      return openApp(state, { kind: "TERMINAL" });
     case "CLOSE_X": {
       if (state.mode === "BROKEN") return state;
       const focused = state.mode === "FOCUS_SCREEN";
@@ -125,6 +134,9 @@ export function workstationReducer(
         : { ...state, mode: "BROKEN", app: { kind: "DESKTOP" }, priorFocus: false };
     case "RESET":
       return initialWorkstationState;
+    case "RESET_POSE":
+      if (state.mode === "BROKEN") return state;
+      return { ...state, rotation: [0, 0, 0], lidAngle: 108, mode: state.mode === "MANIPULATE" ? state.app.kind : state.mode };
     default:
       return state;
   }

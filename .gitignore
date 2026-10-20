@@ -35,3 +35,6 @@ next-env.d.ts
 
 # Local execution reports (never committed or pushed)
 /docs/report/
+
+# Generated Code app index (scripts/generate-workstation-code.mjs)
+/src/features/workstation/code/generated/
