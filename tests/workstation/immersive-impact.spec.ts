@@ -18,13 +18,18 @@ for (const id of Object.keys(sites) as (keyof typeof sites)[]) {
     await page.route(`${sites[id]}**`, (route) => route.fulfill({ contentType: "text/html", body: documentFixture }));
     await open(page, origin);
     const frame = await commercial(page, id), iframe = page.locator("iframe");
+    await settle(page); // P03 reading pose is a finite transition; native input follows its final projection.
     await expect(frame.locator("h1")).toHaveText("Regression fixture");
     await expect(screen(page).locator(".workbench-toolbar,.workbench-address,.workbench-browser-note")).toHaveCount(0);
     const coverage = await iframe.evaluate((node) => {
       const root = node.closest<HTMLElement>("[data-workstation-screen]")!;
-      return { x: (node as HTMLElement).offsetLeft, y: (node as HTMLElement).offsetTop, w: node.clientWidth, h: node.clientHeight, rw: root.clientWidth, rh: root.clientHeight };
+      const physical = node.getBoundingClientRect(), display = root.getBoundingClientRect();
+      return { x: (node as HTMLElement).offsetLeft, y: (node as HTMLElement).offsetTop, w: node.clientWidth, rw: root.clientWidth, rh: root.clientHeight,
+        widthDelta: Math.abs(physical.width - display.width), heightDelta: Math.abs(physical.height - display.height) };
     });
-    expect(coverage).toEqual({ x: 0, y: 0, w: coverage.rw, h: coverage.rh, rw: 800, rh: 459 });
+    expect(coverage.x).toBe(0); expect(coverage.y).toBe(0); expect(coverage.rw).toBe(800); expect(coverage.rh).toBe(459);
+    expect(coverage.w).toBe(id === "nutriopus" ? 1024 : 1200);
+    expect(coverage.widthDelta).toBeLessThan(1); expect(coverage.heightDelta).toBeLessThan(1);
     const handle = await iframe.elementHandle();
     await frame.locator("input").fill("Native state survives");
     await frame.locator("body").evaluate(() => { document.documentElement.dataset.documentToken = "same-document"; });

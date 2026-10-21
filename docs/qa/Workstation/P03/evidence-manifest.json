@@ -1,0 +1,590 @@
+{
+  "recordedAt": "2026-10-21T21:10:32.912Z",
+  "screenshots": [
+    {
+      "path": "screenshots/before-circular-release.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 302054,
+      "sha256": "0d02103728dda4b0ab44557fc5101d8a4a570e56ca87ea3f4c3f79bfe5198b36"
+    },
+    {
+      "path": "screenshots/before-deborah-800.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 264398,
+      "sha256": "2ccf6430525b928d8d10686561a8a8c505aa3dbba24583913764099262c8de54"
+    },
+    {
+      "path": "screenshots/before-nutriopus-800.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 385584,
+      "sha256": "bf232f06dd764579560315d3bb62dd06c47d442ab1c62de493114ce087ae82ae"
+    },
+    {
+      "path": "screenshots/en-dark-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 235596,
+      "sha256": "8ff8ed8c518facd4a27652c7f1e963e9fb39966de6c6f8823764570888053e55"
+    },
+    {
+      "path": "screenshots/en-dark-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 199978,
+      "sha256": "947700dcbc16fdf27d04e6f86e6c2d18cac03b879b0e245f28191b38c8e4138f"
+    },
+    {
+      "path": "screenshots/en-dark-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 224294,
+      "sha256": "82d89fe12d7bf66348d7ac55b819692838bc9ce4424617c517bea8b4392c0054"
+    },
+    {
+      "path": "screenshots/en-dark-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 82891,
+      "sha256": "390ed63ef40bee107807375dc507add8cdc34b24b0cff3e8e2018ac413bf8c8b"
+    },
+    {
+      "path": "screenshots/en-dark-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 133416,
+      "sha256": "b5c962e545037ea051163a8488ef4fcc8ab15f39a9f9a600e0426213dc094fc7"
+    },
+    {
+      "path": "screenshots/en-dark-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 57229,
+      "sha256": "4a713cc6d412ab5ca6d5878747cc5010dcc520d4d0db68693acc344d54369a5f"
+    },
+    {
+      "path": "screenshots/en-dark-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 51982,
+      "sha256": "7f22ae7c5960e04a608a64b11b1cea22288baca1fc166a7efb37fe5246e88b4b"
+    },
+    {
+      "path": "screenshots/en-dark-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 76696,
+      "sha256": "0b93e3ea8b9e4d4e5c92f7eee7e677caed74a6a138e6ade12448f57225940c70"
+    },
+    {
+      "path": "screenshots/en-dark-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 28646,
+      "sha256": "dcd0d753c6cf90adba0c96792e35ff3b8ee6baf60478c9c1d5ee3b7b0c79d439"
+    },
+    {
+      "path": "screenshots/en-light-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 222184,
+      "sha256": "842dccf104f47dd875fb4d22dd9cfcde8508bc435990471201cc378f64f0d7a7"
+    },
+    {
+      "path": "screenshots/en-light-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 221276,
+      "sha256": "3f2ec715fdc9296cc6c316e619fefea3ff37accba255aef88fff3f320e5021ab"
+    },
+    {
+      "path": "screenshots/en-light-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 218092,
+      "sha256": "ab539d099ba10d08125ceb296e67fae3d77ccf1b876ea0d2716f079c9ba46c8c"
+    },
+    {
+      "path": "screenshots/en-light-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 101733,
+      "sha256": "4a798d7e1013d6eb12eee0232c21ea95e85dccac4c7a3367e38a5619bf681525"
+    },
+    {
+      "path": "screenshots/en-light-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 125992,
+      "sha256": "dfce98cddb47a84a53308aae6738807802e70c1b47a0d860c93c7a96528ab384"
+    },
+    {
+      "path": "screenshots/en-light-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 58512,
+      "sha256": "431f723ba003a1c41936588b683999bc55fd77429ddb7bc94a306844ad7dbbbe"
+    },
+    {
+      "path": "screenshots/en-light-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 49871,
+      "sha256": "840f89e3930fefb999ef83a6e54693d62b195ee53dfcdbf85d0eb69991aca688"
+    },
+    {
+      "path": "screenshots/en-light-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 67719,
+      "sha256": "0f0f250fc76ed1909cf59b9031f7ef919a499fa06259ef70af3e49dee722324c"
+    },
+    {
+      "path": "screenshots/en-light-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 30232,
+      "sha256": "97d90ad11bd6a636038474ba038a4df902b28db118254734962f29365c632a62"
+    },
+    {
+      "path": "screenshots/es-dark-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 241048,
+      "sha256": "e42aa8d7f62b0742d3e2147ab31626e22319e16741db2cc02974890546d37574"
+    },
+    {
+      "path": "screenshots/es-dark-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 201500,
+      "sha256": "94acfa3ec8b090b7ac52e64852fc61a5b9be6defbf5f4e6a052a1354fe33b59d"
+    },
+    {
+      "path": "screenshots/es-dark-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 230189,
+      "sha256": "b1a115e01916d027683ba7ad92c433cfa75a626391afe5ca6e947f90d30cd54a"
+    },
+    {
+      "path": "screenshots/es-dark-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 84548,
+      "sha256": "af7cf10a536c99c1c1c0f5f31959db2de6b07af0532d707f4a9eceb99a1f0484"
+    },
+    {
+      "path": "screenshots/es-dark-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 132666,
+      "sha256": "f30661beb36070bb1a64c7be5be29834e8bc8c2cd598a79df9833bad28deb267"
+    },
+    {
+      "path": "screenshots/es-dark-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 57048,
+      "sha256": "006ca8719c070b2252c3e9d8a72f2edc91812d0011f4d7ceb7a25d82545fa0ef"
+    },
+    {
+      "path": "screenshots/es-dark-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 53795,
+      "sha256": "65be3e81510ac079155a84b25087ec3059967d2126bf98d1da3a528e114d3a55"
+    },
+    {
+      "path": "screenshots/es-dark-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 79769,
+      "sha256": "9120b10a2012e5ec79d41019734f5bd84bbc205563ef1b882b757a6eb6dc4705"
+    },
+    {
+      "path": "screenshots/es-dark-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 29925,
+      "sha256": "e8e84ce49d3647029ff20796e6044074a642239667fe6d344b13d50d33690cc9"
+    },
+    {
+      "path": "screenshots/es-light-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 227621,
+      "sha256": "6f74ad42659b390e6e046e8f19055ac40b179c977232f3bbd39c8000febb19c3"
+    },
+    {
+      "path": "screenshots/es-light-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 222182,
+      "sha256": "25030eba7c3b4658b840bc6d45d969a0e6b1375305807fc62183eebe01bde466"
+    },
+    {
+      "path": "screenshots/es-light-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 224324,
+      "sha256": "a03e49c84486960a0b90ebdec679016e8df2eecc71bfb2b9ce344e69a988d548"
+    },
+    {
+      "path": "screenshots/es-light-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 103195,
+      "sha256": "e5db10b17060ae304fed1085f0b9c92043ab9ce45d3189fa86c66f2a329a1cf1"
+    },
+    {
+      "path": "screenshots/es-light-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 124962,
+      "sha256": "46b6b012a560708b7498eecf6ddfae865ccd38bd94d0b96416f9947861b5339d"
+    },
+    {
+      "path": "screenshots/es-light-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 58347,
+      "sha256": "3d8c1c0149fe540cc2420ac02f39f6c912c45d2723f789ad3e1c3e7b17655b19"
+    },
+    {
+      "path": "screenshots/es-light-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 51566,
+      "sha256": "1150c89553f5a7b8935eb161f154f8f9eba5551a9eae0ce41bf2f173c3eeff40"
+    },
+    {
+      "path": "screenshots/es-light-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 70607,
+      "sha256": "a8d80654906355a4471464b4be2fb62f643fb448325a020f42393e07d07f5917"
+    },
+    {
+      "path": "screenshots/es-light-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 31331,
+      "sha256": "ccec65bc8af4750797d7c1582a8978a4c3a99c17affca84857418065b016ddad"
+    },
+    {
+      "path": "screenshots/hydration-1440-about-after-javascript.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 109099,
+      "sha256": "46fd858180c8ada9e935bc3ecfed3ce779f9a94ade67c479d5a28650d072ab75"
+    },
+    {
+      "path": "screenshots/hydration-1440-about-before-javascript.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 51333,
+      "sha256": "005079acbb55087ad0859830564c26fdb682eebc07f7453c839d9f6c8300aa7b"
+    },
+    {
+      "path": "screenshots/hydration-390-about-after-javascript.png",
+      "width": 390,
+      "height": 900,
+      "bytes": 66707,
+      "sha256": "a3209926cbc021cb273b0223dbec8db245425e78d43d5c5773ee483ffe450725"
+    },
+    {
+      "path": "screenshots/hydration-390-about-before-javascript.png",
+      "width": 390,
+      "height": 900,
+      "bytes": 47522,
+      "sha256": "aad7a93cc4b382edc4193a8b18171dfc688d405d2e54b281dc42b0f8fd09d8d9"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-actual-code.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 323529,
+      "sha256": "ee3d5e97277fcd21067c309dd9c2eed2d9214e3986f02c50b08fd092e24f54b9"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-context.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 191789,
+      "sha256": "1a02812dac90e548f52b9c7b36689e9aa57b19a1515dbf0ccfe0620a788ba927"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-deborah-dark.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 292602,
+      "sha256": "2442e663cf756521abe81c9811e89380c1a835d5b02b7bd89f6445d5ca1e148f"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-deborah-light.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 294002,
+      "sha256": "7b8c880da7878c85e0e05ee9d7ed598eca7fe95b22d49ba8ba90c1c6e503f7f9"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-deborah-native-scroll.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 248576,
+      "sha256": "331b47f73c4159aa961a7b5d7ff1d36fee09abf9a4c7161de692a604d73be1e2"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-nutriopus-dark.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 360091,
+      "sha256": "d4e3a7f7cfc185646e94ec640e4080f62de020d20c60e3140907f9ee37b41fcf"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-nutriopus-light.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 254965,
+      "sha256": "0306fbb5d96238ad490bb60d8b41524e2274814e1a82df4315781862eec4b2a1"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-nutriopus-native-scroll.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 268962,
+      "sha256": "a78e8b8f4c756ee49eb94bb73cf589c447c95d40db2e730a79cc2475c8979f8c"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-optional-discovery.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 330177,
+      "sha256": "9d60c2c08cbbdf441ca5ff40adc8b87cb2a22945896d276a3db497922cffb21b"
+    },
+    {
+      "path": "screenshots/pt-cinematic-1440-spin-release.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 212405,
+      "sha256": "546f6e1e9c228619684a4d866a0fd87c7d1f4d0ffae3d435d33f057184fa3500"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-actual-code.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 54548,
+      "sha256": "fa4c6d0e0617af10582d51fec93eb8958e7ee78bb372d1a99055fcb4c11b706d"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-context.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 60524,
+      "sha256": "35b808733ac182b06513f5bf25bee0056ee9f3ceffcfc6e38d83e762fea9fc8b"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-deborah-dark.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 95194,
+      "sha256": "30db8ae7bb97243ad7cb0bf800c7acc8c0e0043000c1baaa9109f8c47d1102f6"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-deborah-light.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 92455,
+      "sha256": "f4614ed3911ef31705d415408639a9de85dc3fc501efdba53b0d8c8f9e4c5b2d"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-deborah-native-scroll.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 83387,
+      "sha256": "d5d0a1ba1f3d334b1320b23053a37ea049496c3885805aad751f738dc75908be"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-nutriopus-dark.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 123126,
+      "sha256": "a124023c977faaadfd0ee97a4bc2bcb59102e70b106a184339060875a0a00339"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-nutriopus-light.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 83714,
+      "sha256": "6526a693f34df46a3b27586209edb20f17d961691625034f273bf14bddc75f4b"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-nutriopus-native-scroll.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 92766,
+      "sha256": "909d239e1829f0117e13f982753844f4b679becd7600637c38ed055347938c4b"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-optional-discovery.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 99699,
+      "sha256": "1bfdfcadeade56a01702934fee60bc862d77b6526c0b24ccf4b4b6b55af13482"
+    },
+    {
+      "path": "screenshots/pt-cinematic-390-spin-release.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 109397,
+      "sha256": "8834eacca37a6bf86609e169c46ee33b33715291ef931da585cff5fe308b634e"
+    },
+    {
+      "path": "screenshots/pt-dark-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 241081,
+      "sha256": "bc4ca1f67d548610c10daa07a0cc90a36414483883650c77f08aeb6cb3e0f859"
+    },
+    {
+      "path": "screenshots/pt-dark-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 201766,
+      "sha256": "c3f7f88c259013f615cdeaa4d6248fb52127f6a81d5b4162ba164eaf7fb48ae9"
+    },
+    {
+      "path": "screenshots/pt-dark-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 228049,
+      "sha256": "a387661552af1ecddfca3cfe07bb4841789bb725f16274613e9c3a7ea5b7ed18"
+    },
+    {
+      "path": "screenshots/pt-dark-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 85110,
+      "sha256": "09020a5e767dc4f308380bd8c4d57e253c3e59ea40f86370ad123f75d018679b"
+    },
+    {
+      "path": "screenshots/pt-dark-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 132693,
+      "sha256": "d826158df5a657a9a7b7555ee70b7f497658dedc48879d39cba04d75a3230b69"
+    },
+    {
+      "path": "screenshots/pt-dark-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 57317,
+      "sha256": "633ae0535933288620de9775209bac56039678cde0af4c0a9a2b333dcc3af605"
+    },
+    {
+      "path": "screenshots/pt-dark-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 54294,
+      "sha256": "230d291616f29d82f27cf8f7830a6389994bbbbf925ec5f6fd8f17865b02d479"
+    },
+    {
+      "path": "screenshots/pt-dark-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 78036,
+      "sha256": "af0c829d7f060d9c0810119b443f3677c3f36c557ce8fdfc0d50c49144950743"
+    },
+    {
+      "path": "screenshots/pt-dark-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 29730,
+      "sha256": "79f463fc258eb4e82d53f11f764d5bc3017fe32e73e7e6f87484bab9bd5f087e"
+    },
+    {
+      "path": "screenshots/pt-light-1440-about.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 227766,
+      "sha256": "489bee1692d5a4c1b1e614ebc4c58e1da2ce734b8415445f8c9bb77fa66814f6"
+    },
+    {
+      "path": "screenshots/pt-light-1440-code-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 222774,
+      "sha256": "ba2aecd87dff4144e5cace5eba1e8ffea69f83603eb91bde6aa8c7112113cc11"
+    },
+    {
+      "path": "screenshots/pt-light-1440-hero.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 222373,
+      "sha256": "4247a9fb44d3b207637d14481939aef50b62f87cfc3bf6c88abfe65eb3335bcd"
+    },
+    {
+      "path": "screenshots/pt-light-1440-terminal-focus.png",
+      "width": 1440,
+      "height": 900,
+      "bytes": 103828,
+      "sha256": "5358604985f32e615d6aa5097027fbfe29a52efec72c0678f18a0b1c7cc109d0"
+    },
+    {
+      "path": "screenshots/pt-light-390-about.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 125202,
+      "sha256": "fbcfccd847c09e97d1a35da29a2c9a0bd4016b243db72c48874cc1e68c0f0024"
+    },
+    {
+      "path": "screenshots/pt-light-390-code-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 58620,
+      "sha256": "70d0f1eb642eb5d8e9be4c6da0e2ebf7e44c05590bb7cae544c4b4977265fd64"
+    },
+    {
+      "path": "screenshots/pt-light-390-hero-top.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 52111,
+      "sha256": "d6d2eaad578ff2f882104d71f66732d73f5516f213d970f22e7fa3c9a7766b3b"
+    },
+    {
+      "path": "screenshots/pt-light-390-hero.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 68885,
+      "sha256": "5959da63048f0a24ddd8c19f74b4ee6489f828dbb0501b2c10e0cbe2909f8106"
+    },
+    {
+      "path": "screenshots/pt-light-390-terminal-focus.png",
+      "width": 390,
+      "height": 844,
+      "bytes": 30815,
+      "sha256": "1fa82e4e030595e9ee9353eb2bade379a5936c89b79dce5818cf9e54b22ac970"
+    }
+  ],
+  "videos": [
+    {
+      "path": "videos/pt-cinematic-1440-spin-sites-code.webm",
+      "duration": 142.8,
+      "width": 1440,
+      "height": 900,
+      "bytes": 15084744,
+      "sha256": "d174860e105bcf5392b8e838f6aa6c002f519822563ea91c5911b68033c82fe1"
+    },
+    {
+      "path": "videos/pt-cinematic-390-spin-sites-code.webm",
+      "duration": 82.84,
+      "width": 390,
+      "height": 844,
+      "bytes": 8506720,
+      "sha256": "172d20e3744de9d70ab41b9f4508cbbf16644490e9aca6c55efed8553e71c48b"
+    }
+  ]
+}

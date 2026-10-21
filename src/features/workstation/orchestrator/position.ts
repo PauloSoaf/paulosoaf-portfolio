@@ -7,6 +7,8 @@ import { ScrollInertia } from "../physics/scroll-inertia";
 import { createHinge, hingeSettled, stepHinge, type Hinge } from "../physics/hinge";
 import { setData } from "./dataset";
 import { ImpactReaction } from "../physics/impact-reaction";
+import { SpinIntent } from "../physics/spin-intent";
+import { presentationTarget, type Presentation } from "./presentation";
 
 /** Model chassis width in scene units; pose widths are on-screen chassis pixels. */
 export const CHASSIS_UNITS = 3.6;
@@ -61,6 +63,24 @@ export class MotionRig {
   impacts = 0; slams = 0;
   stunnedUntil = 0;
   readonly reaction = new ImpactReaction();
+  readonly spinIntent = new SpinIntent();
+  spinGestures = 0;
+  lastSpinRelease = 0;
+  presentation: Presentation = "context";
+  presentationSuppressed = false;
+  private readingKind: "preview" | "code" = "preview";
+  private readonly presentationMix = { value: 0, velocity: 0 };
+  get presentationAmount() { return this.presentationMix.value; }
+  present(kind: Presentation) {
+    this.presentation = kind; this.presentationSuppressed = false;
+    if (kind !== "context") {
+      this.readingKind = kind;
+      if (this.mode !== "FOLLOW") { this.grip = null; this.spinIntent.clear(); this.reaction.clear(); this.returnHome(false); }
+    }
+    this.wake();
+  }
+  suppressPresentation() { this.presentationSuppressed = true; this.wake(); }
+  private readingTarget(base = this.target) { return presentationTarget(base, this.viewport, this.readingKind, this.presentationAmount); }
   contactAt = 0;
   contactSpeed = 0;
   contactWall = "";
@@ -110,9 +130,12 @@ export class MotionRig {
 
   // ——— Gestures ———
   grab(x: number, y: number, time: number) {
+    this.suppressPresentation();
     this.stunnedUntil = 0; this.reaction.clear(); this.lidOverride = null;
     // Equivalent pose, without carrying whole airborne turns into the grip constraint.
     this.body.angle = wrapAngle(this.body.angle);
+    this.body.spin = 0; // A fresh grip arrests angular momentum without changing the pose.
+    this.spinIntent.begin(this.body, { x, y, time });
     const local = rotate({ x: x - this.body.x, y: y - this.body.y }, -this.body.angle);
     const shape = this.shape(), height = Math.max(...shape.map((p) => p.y)) - Math.min(...shape.map((p) => p.y));
     this.grip = { anchor: local, hang: this.reduced ? 0 : height * .28 };
@@ -124,6 +147,11 @@ export class MotionRig {
     if (this.mode !== "HELD") return;
     const bounds = this.bounds;
     this.pivot = { x: Math.max(bounds.left, Math.min(bounds.right, x)), y: Math.max(bounds.top, Math.min(bounds.bottom, y)) };
+    if (!this.reduced) {
+      const spinning = this.spinIntent.active;
+      this.spinIntent.sample({ ...this.pivot, time });
+      if (!spinning && this.spinIntent.active) this.spinGestures++;
+    }
     this.samples.push({ x: this.pivot.x, y: this.pivot.y, time }); this.samples = this.samples.filter((point) => time - point.time <= 200);
     this.wake();
   }
@@ -132,23 +160,26 @@ export class MotionRig {
     this.grip = null;
     if (this.reduced) { this.returnHome(false); return; }
     const velocity = releaseVelocity(this.samples, time);
+    if (this.spinIntent.active) this.body.spin = (this.body.spin + this.spinIntent.velocityAt(time)) * .5;
+    this.lastSpinRelease = this.body.spin; this.spinIntent.clear();
     this.body.vx = velocity.x; this.body.vy = velocity.y;
     this.launch();
     if (Math.hypot(velocity.x, velocity.y) > 600) this.onImpact({ kind: "throw", speed: Math.hypot(velocity.x, velocity.y), x: this.body.x, y: this.body.y });
   }
-  cancel() { if (this.mode === "HELD") { this.grip = null; this.returnHome(false); } }
+  cancel() { this.spinIntent.clear(); if (this.mode === "HELD") { this.grip = null; this.returnHome(false); } }
   /** Let go in place: gravity does the rest. */
-  drop() { if (this.reduced) return; this.grip = null; this.body.vx = 0; this.body.vy = 60; this.launch(); }
+  drop() { if (this.reduced) return; this.suppressPresentation(); this.spinIntent.clear(); this.grip = null; this.body.vx = 0; this.body.vy = 60; this.launch(); }
   hop() {
     if (this.reduced) return;
+    this.suppressPresentation();
     if (this.mode === "FOLLOW") this.body.vy -= 1100; else { this.body.vy = -1300; this.launch(); }
     this.wake();
   }
-  spin() { if (this.reduced) return; this.body.vy = -1500; this.body.spin = 9 * (Math.random() < .5 ? -1 : 1); this.launch(); }
-  reset() { this.grip = null; this.keyboardView = false; this.lidOverride = null; this.reaction.clear(); this.returnHome(false); }
+  spin() { if (this.reduced) return; this.suppressPresentation(); this.body.vy = -1500; this.body.spin = 9 * (Math.random() < .5 ? -1 : 1); this.launch(); }
+  reset() { this.suppressPresentation(); this.grip = null; this.spinIntent.clear(); this.keyboardView = false; this.lidOverride = null; this.reaction.clear(); this.returnHome(false); }
   kickLid(degreesPerSecond: number) { if (!this.reduced) { this.hinge.velocity += degreesPerSecond; this.wake(); } }
 
-  private launch() { this.mode = "AIRBORNE"; this.reaction.launch(); this.lastContact.clear(); this.restSince = 0; this.wake(); }
+  private launch() { this.mode = "AIRBORNE"; this.spinIntent.clear(); this.reaction.launch(); this.lastContact.clear(); this.restSince = 0; this.wake(); }
   private returnHome(hop: boolean) {
     this.mode = "FOLLOW"; this.lidOverride = null; this.screenX = null; this.screenVelocity = 0;
     this.body.angle = wrapAngle(this.body.angle);
@@ -170,14 +201,18 @@ export class MotionRig {
   // ——— Frame ———
   /** Advance one frame. Returns true while anything still needs frames. */
   step(time: number, scroll: number): boolean {
-    const dt = this.lastFrame ? Math.min((time - this.lastFrame) / 1000, .05) : 1 / 60;
+    const elapsed = this.lastFrame ? Math.max(0, (time - this.lastFrame) / 1000) : 1 / 60;
+    const dt = Math.min(elapsed, .05);
     this.lastFrame = time;
     const brake = this.inertia.sample(scroll, time, this.viewport.height);
     if (brake) this.slam(brake.direction, brake.speed);
     if (this.reduced && (this.mode === "AIRBORNE" || this.mode === "STUNNED")) this.returnHome(false);
-    let moving = this.inertia.active;
+    const reading = this.presentation !== "context" && !this.presentationSuppressed && !this.keyboardView ? 1 : 0;
+    if (this.reduced) { this.presentationMix.value = reading; this.presentationMix.velocity = 0; this.spinIntent.clear(); }
+    let moving = this.reduced ? false : damp(this.presentationMix, reading, dt, 14, 1, 0, .0008);
+    moving ||= this.inertia.active;
     if (this.mode === "FOLLOW") moving = this.follow(dt) || moving;
-    else if (this.mode === "HELD") moving = this.held(dt) || true;
+    else if (this.mode === "HELD") moving = this.held(dt, time, elapsed) || true;
     else if (this.mode === "AIRBORNE") moving = this.fly(dt, time) || true;
     else if (this.mode === "STUNNED") {
       // Keep resolving contacts during the brief physical settle, rather than freezing a pose.
@@ -211,15 +246,16 @@ export class MotionRig {
       Object.assign(this.body, createBody(next.x, next.y)); this.width = { value: next.width, velocity: 0 };
       this.orientation.pitch.value = next.pitch; this.orientation.yaw.value = next.yaw;
     } else if (carry && this.mode === "FOLLOW") {
-      this.body.x += next.x - reference.x; this.body.y += next.y - reference.y;
-      this.width.value += next.width - reference.width;
+      const from = this.readingTarget(reference), to = this.readingTarget(next);
+      this.body.x += to.x - from.x; this.body.y += to.y - from.y;
+      this.width.value += to.width - from.width;
     }
     this.target = next;
     if (next.chapter !== this.chapter) { this.chapter = next.chapter; this.onChapter(next.chapter); }
   }
 
   private follow(dt: number) {
-    const target = this.target, body = this.body;
+    const target = this.readingTarget(), body = this.body;
     if (this.reduced) {
       Object.assign(body, { x: target.x, y: target.y, angle: 0, vx: 0, vy: 0, spin: 0 });
       this.width = { value: target.width, velocity: 0 };
@@ -245,7 +281,7 @@ export class MotionRig {
     return moving;
   }
 
-  private held(dt: number) {
+  private held(dt: number, time: number, elapsed: number) {
     const grip = this.grip; if (!grip) return false;
     const previous = this.pivotVelocity;
     const instant = this.samples.length > 1 ? {
@@ -258,7 +294,8 @@ export class MotionRig {
     this.pivotAcceleration = { x: Math.max(-25000, Math.min(25000, accel.x)), y: Math.max(-25000, Math.min(25000, accel.y)) };
     this.lastPivot = { ...this.pivot };
     if (this.reduced) { const r = rotate({ x: -grip.anchor.x, y: -grip.anchor.y }, this.body.angle); this.body.x = this.pivot.x + r.x; this.body.y = this.pivot.y + r.y; return false; }
-    stepHeld(this.body, this.pivot, this.pivotAcceleration, grip, this.shape(), dt);
+    stepHeld(this.body, this.pivot, this.pivotAcceleration,
+      this.spinIntent.active ? { ...grip, spinDrive: this.spinIntent.velocityAt(time) } : grip, this.shape(), this.spinIntent.active ? Math.min(.2, elapsed) : dt);
     return true;
   }
   private lastPivot: Vec = { x: 0, y: 0 };
@@ -302,12 +339,13 @@ export class MotionRig {
   }
 
   private orient(dt: number, time: number) {
-    const target = this.target, look = this.attention ?? this.look;
+    const target = this.readingTarget(), look = this.attention ?? this.look;
     const { width, height } = this.viewport;
     const following = this.mode === "FOLLOW" && !this.reduced;
+    const lookAmount = 1 - this.presentationAmount * (this.readingKind === "preview" ? 1 : .7);
     const lookYaw = following && look ? Math.max(-1, Math.min(1, (look.x - this.body.x) / (width * .5))) * (this.attention ? .32 : .18) : 0;
     const lookPitch = following && look ? Math.max(-1, Math.min(1, (look.y - this.body.y) / (height * .6))) * (this.attention ? .16 : .09) : 0;
-    const pitch = target.pitch + lookPitch + (this.keyboardView ? .42 : 0), yaw = target.yaw + lookYaw;
+    const pitch = target.pitch + lookPitch * lookAmount + (this.keyboardView ? .42 : 0), yaw = target.yaw + lookYaw * lookAmount;
     if (this.reduced) {
       this.orientation.pitch.value = pitch; this.orientation.yaw.value = yaw; this.orientation.roll.value = 0;
       return false;
@@ -374,6 +412,9 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     setData(host, {
       positioned: "true", chapter: rig.chapter, body: rig.mode, impacts: String(rig.impacts), slams: String(rig.slams),
       scrollVelocity: rig.inertia.velocity.toFixed(0),
+      angularVelocity: rig.body.spin.toFixed(3), spinIntent: String(rig.spinIntent.active), spinGestures: String(rig.spinGestures),
+      spinRelease: rig.lastSpinRelease.toFixed(3),
+      presentation: rig.presentation, presentationAmount: rig.presentationAmount.toFixed(4), presentationManual: String(rig.presentationSuppressed),
       reaction: rig.reaction.stage === "IMPACT" || rig.reaction.stage === "DIZZY" ? "dizzy" : "",
       reactionStage: rig.reaction.stage, reactionCount: String(rig.reaction.count),
       contactAt: String(rig.contactAt), contactWall: rig.contactWall, contactSpeed: rig.contactSpeed.toFixed(2),

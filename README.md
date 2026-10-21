@@ -113,6 +113,8 @@ O workflow `.github/workflows/ci.yml` executa lint, typecheck, testes, build de 
 
 ## Conteúdo e publicação
 
+Workstation P03: giro por gesto circular com inércia, poses finitas de leitura e viewport por site (NutriOpus 1024px / Déborah 1200px), aproveitando o notebook do Claude. Dicas opcionais PT/EN/ES funcionam sem JavaScript; currículo continua condicionado à aprovação editorial. [Decisões](docs/adr/ADR-021-workstation-spin-reading-and-site-fit.md), [QA e evidências](docs/qa/Workstation/P03/REPORT.md) e [fronteira de autoria](docs/HANDOFF.md). Para reproduzir a captura online: `node scripts/qa-workstation-p03.mjs`, com servidor de prévia na origem `QA_ORIGIN` (padrão `http://localhost:1010`). Gera PNG/WebM originais e manifesto em `docs/qa/Workstation/P03`; gravações operacionais ficam em `docs/report/Workstation/P03`, ignorado pelo Git. Não altera aprovações ou publica o site.
+
 Dados ficam em `src/features/`; traduções em `src/i18n/dictionaries/`. Não marcar conteúdo como aprovado sem revisão do proprietário. E-mail, LinkedIn e currículo ainda não foram fornecidos/validados. Demos não verificadas não são exibidas; ilustrações dos projetos são identificadas como arte conceitual.
 
 Antes de qualquer publicação, configurar `SITE_URL` com a origem HTTPS real, aprovar perfil/textos/coleções, validar contatos e arquivo de CV, e executar:

@@ -167,13 +167,17 @@ function Assembly(props: Props) {
         } else if (distance <= 5) return;
         current.started = true; current.capture = true; clear(current);
         host.current?.setAttribute("data-dragging", "true");
-        if (current.rotate) dispatch({ type: "BEGIN_ROTATE" });
+        if (current.rotate) { rig.suppressPresentation(); dispatch({ type: "BEGIN_ROTATE" }); }
         else { rig.grab(current.x0, current.y0, event.timeStamp); sound.unlock(); }
       }
       if (current.rotate) {
         dispatch({ type: "ROTATE", axis: 1, delta: stepX / Math.max(240, size.width) * 3 });
         dispatch({ type: "ROTATE", axis: 0, delta: stepY / Math.max(240, size.height) * 1.6 });
-      } else rig.drag(event.clientX, event.clientY, event.timeStamp);
+      } else {
+        const samples = event.getCoalescedEvents?.() ?? [];
+        for (const sample of samples) rig.drag(sample.clientX, sample.clientY, sample.timeStamp);
+        rig.drag(event.clientX, event.clientY, event.timeStamp);
+      }
     };
     const touchMove = (event: TouchEvent) => { if (gesture.current?.capture && event.cancelable) event.preventDefault(); };
     const menu = (event: MouseEvent) => {
@@ -249,7 +253,7 @@ function Assembly(props: Props) {
     const blend = reduced ? 1 : 1 - Math.exp(-delta * 12);
     let moving = false;
     rotation.current = rotation.current.map((value, index) => {
-      const desired = state.rotation[index]!, next = Math.abs(desired - value) < .0002 ? desired : value + (desired - value) * blend;
+      const desired = state.rotation[index]! * (1 - rig.presentationAmount), next = Math.abs(desired - value) < .0002 ? desired : value + (desired - value) * blend;
       moving ||= next !== desired; return next;
     });
     stage.current.position.set(pose.x - size.width / 2, size.height / 2 - pose.y, 0);

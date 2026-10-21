@@ -1,0 +1,1298 @@
+[
+  {
+    "id": "nutriopus",
+    "width": 800,
+    "status": 200,
+    "viewport": 800,
+    "scrollWidth": 812,
+    "heading": "Tudo que a nutricionista precisa em uma única plataforma",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 800,
+        "controls": [
+          {
+            "text": "",
+            "aria": null,
+            "x": 16,
+            "right": 144,
+            "width": 128,
+            "visible": true
+          },
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 160,
+            "right": 243.5625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 247.5625,
+            "right": 326.203125,
+            "width": 78.640625,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 330.203125,
+            "right": 392.0625,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 396.0625,
+            "right": 475.5625,
+            "width": 79.5,
+            "visible": true
+          },
+          {
+            "text": "PT",
+            "aria": "Mudar Idioma",
+            "x": 491.5625,
+            "right": 554.71875,
+            "width": 63.15625,
+            "visible": true
+          },
+          {
+            "text": "Português",
+            "aria": null,
+            "x": 379.71875,
+            "right": 553.71875,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "English",
+            "aria": null,
+            "x": 379.71875,
+            "right": 553.71875,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "Español",
+            "aria": null,
+            "x": 379.71875,
+            "right": 553.71875,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "",
+            "aria": "Alternar Tema",
+            "x": 560.71875,
+            "right": 618.71875,
+            "width": 58,
+            "visible": true
+          },
+          {
+            "text": "Tema claro",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Escuro Premium",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Bege Minimalista",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Folha Clínica",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Clássico",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Areia Clássica",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Outros temas...",
+            "aria": null,
+            "x": 363.71875,
+            "right": 617.71875,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Demo",
+            "aria": null,
+            "x": 624.71875,
+            "right": 687.65625,
+            "width": 62.9375,
+            "visible": true
+          },
+          {
+            "text": "Entrar",
+            "aria": null,
+            "x": 693.65625,
+            "right": 758.109375,
+            "width": 64.453125,
+            "visible": true
+          },
+          {
+            "text": "Criar conta",
+            "aria": null,
+            "x": 764.109375,
+            "right": 854.265625,
+            "width": 90.15625,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 315.5625,
+        "controls": [
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 160,
+            "right": 243.5625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 247.5625,
+            "right": 326.203125,
+            "width": 78.640625,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 330.203125,
+            "right": 392.0625,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 396.0625,
+            "right": 475.5625,
+            "width": 79.5,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nutriopus",
+    "width": 1024,
+    "status": 200,
+    "viewport": 1024,
+    "scrollWidth": 1024,
+    "heading": "Tudo que a nutricionista precisa em uma única plataforma",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1024,
+        "controls": [
+          {
+            "text": "",
+            "aria": null,
+            "x": 16,
+            "right": 144,
+            "width": 128,
+            "visible": true
+          },
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 187.828125,
+            "right": 271.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 275.390625,
+            "right": 381.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 385.46875,
+            "right": 447.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 451.328125,
+            "right": 547.328125,
+            "width": 96,
+            "visible": true
+          },
+          {
+            "text": "PT",
+            "aria": "Mudar Idioma",
+            "x": 591.15625,
+            "right": 672.3125,
+            "width": 81.15625,
+            "visible": true
+          },
+          {
+            "text": "Português",
+            "aria": null,
+            "x": 497.3125,
+            "right": 671.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "English",
+            "aria": null,
+            "x": 497.3125,
+            "right": 671.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "Español",
+            "aria": null,
+            "x": 497.3125,
+            "right": 671.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "",
+            "aria": "Alternar Tema",
+            "x": 678.3125,
+            "right": 736.3125,
+            "width": 58,
+            "visible": true
+          },
+          {
+            "text": "Tema claro",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Escuro Premium",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Bege Minimalista",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Folha Clínica",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Clássico",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Areia Clássica",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Outros temas...",
+            "aria": null,
+            "x": 481.3125,
+            "right": 735.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Demo",
+            "aria": null,
+            "x": 742.3125,
+            "right": 805.25,
+            "width": 62.9375,
+            "visible": true
+          },
+          {
+            "text": "Entrar",
+            "aria": null,
+            "x": 811.25,
+            "right": 875.703125,
+            "width": 64.453125,
+            "visible": true
+          },
+          {
+            "text": "Criar conta",
+            "aria": null,
+            "x": 881.703125,
+            "right": 1008,
+            "width": 126.296875,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 359.5,
+        "controls": [
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 187.828125,
+            "right": 271.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 275.390625,
+            "right": 381.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 385.46875,
+            "right": 447.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 451.328125,
+            "right": 547.328125,
+            "width": 96,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nutriopus",
+    "width": 1200,
+    "status": 200,
+    "viewport": 1200,
+    "scrollWidth": 1200,
+    "heading": "Tudo que a nutricionista precisa em uma única plataforma",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1200,
+        "controls": [
+          {
+            "text": "",
+            "aria": null,
+            "x": 40,
+            "right": 168,
+            "width": 128,
+            "visible": true
+          },
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 275.828125,
+            "right": 359.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 363.390625,
+            "right": 469.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 473.46875,
+            "right": 535.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 539.328125,
+            "right": 635.328125,
+            "width": 96,
+            "visible": true
+          },
+          {
+            "text": "PT",
+            "aria": "Mudar Idioma",
+            "x": 743.15625,
+            "right": 824.3125,
+            "width": 81.15625,
+            "visible": true
+          },
+          {
+            "text": "Português",
+            "aria": null,
+            "x": 649.3125,
+            "right": 823.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "English",
+            "aria": null,
+            "x": 649.3125,
+            "right": 823.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "Español",
+            "aria": null,
+            "x": 649.3125,
+            "right": 823.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "",
+            "aria": "Alternar Tema",
+            "x": 830.3125,
+            "right": 888.3125,
+            "width": 58,
+            "visible": true
+          },
+          {
+            "text": "Tema claro",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Escuro Premium",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Bege Minimalista",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Folha Clínica",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Clássico",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Areia Clássica",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Outros temas...",
+            "aria": null,
+            "x": 633.3125,
+            "right": 887.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Demo",
+            "aria": null,
+            "x": 894.3125,
+            "right": 957.25,
+            "width": 62.9375,
+            "visible": true
+          },
+          {
+            "text": "Entrar",
+            "aria": null,
+            "x": 963.25,
+            "right": 1027.703125,
+            "width": 64.453125,
+            "visible": true
+          },
+          {
+            "text": "Criar conta",
+            "aria": null,
+            "x": 1033.703125,
+            "right": 1160,
+            "width": 126.296875,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 359.5,
+        "controls": [
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 275.828125,
+            "right": 359.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 363.390625,
+            "right": 469.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 473.46875,
+            "right": 535.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 539.328125,
+            "right": 635.328125,
+            "width": 96,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nutriopus",
+    "width": 1280,
+    "status": 200,
+    "viewport": 1280,
+    "scrollWidth": 1280,
+    "heading": "Tudo que a nutricionista precisa em uma única plataforma",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1280,
+        "controls": [
+          {
+            "text": "",
+            "aria": null,
+            "x": 80,
+            "right": 208,
+            "width": 128,
+            "visible": true
+          },
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 315.828125,
+            "right": 399.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 403.390625,
+            "right": 509.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 513.46875,
+            "right": 575.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 579.328125,
+            "right": 675.328125,
+            "width": 96,
+            "visible": true
+          },
+          {
+            "text": "PT",
+            "aria": "Mudar Idioma",
+            "x": 783.15625,
+            "right": 864.3125,
+            "width": 81.15625,
+            "visible": true
+          },
+          {
+            "text": "Português",
+            "aria": null,
+            "x": 689.3125,
+            "right": 863.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "English",
+            "aria": null,
+            "x": 689.3125,
+            "right": 863.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "Español",
+            "aria": null,
+            "x": 689.3125,
+            "right": 863.3125,
+            "width": 174,
+            "visible": true
+          },
+          {
+            "text": "",
+            "aria": "Alternar Tema",
+            "x": 870.3125,
+            "right": 928.3125,
+            "width": 58,
+            "visible": true
+          },
+          {
+            "text": "Tema claro",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Escuro Premium",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Bege Minimalista",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Folha Clínica",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Azul Clássico",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Areia Clássica",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Outros temas...",
+            "aria": null,
+            "x": 673.3125,
+            "right": 927.3125,
+            "width": 254,
+            "visible": true
+          },
+          {
+            "text": "Demo",
+            "aria": null,
+            "x": 934.3125,
+            "right": 997.25,
+            "width": 62.9375,
+            "visible": true
+          },
+          {
+            "text": "Entrar",
+            "aria": null,
+            "x": 1003.25,
+            "right": 1067.703125,
+            "width": 64.453125,
+            "visible": true
+          },
+          {
+            "text": "Criar conta",
+            "aria": null,
+            "x": 1073.703125,
+            "right": 1200,
+            "width": 126.296875,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 359.5,
+        "controls": [
+          {
+            "text": "Recursos",
+            "aria": null,
+            "x": 315.828125,
+            "right": 399.390625,
+            "width": 83.5625,
+            "visible": true
+          },
+          {
+            "text": "Pré-consulta",
+            "aria": null,
+            "x": 403.390625,
+            "right": 509.46875,
+            "width": 106.078125,
+            "visible": true
+          },
+          {
+            "text": "Portal",
+            "aria": null,
+            "x": 513.46875,
+            "right": 575.328125,
+            "width": 61.859375,
+            "visible": true
+          },
+          {
+            "text": "IA assistiva",
+            "aria": null,
+            "x": 579.328125,
+            "right": 675.328125,
+            "width": 96,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deborah",
+    "width": 800,
+    "status": 200,
+    "viewport": 800,
+    "scrollWidth": 800,
+    "heading": "Déborah\nLima",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 800,
+        "controls": [
+          {
+            "text": "DL\nDÉBORAH LIMA",
+            "aria": "Déborah Lima — início",
+            "x": 32,
+            "right": 184.328125,
+            "width": 152.328125,
+            "visible": true
+          },
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 184.328125,
+            "right": 237.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 277.359375,
+            "right": 353.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 393.46875,
+            "right": 493.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 533.578125,
+            "right": 609.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 649.859375,
+            "right": 768,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 583.671875,
+        "controls": [
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 184.328125,
+            "right": 237.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 277.359375,
+            "right": 353.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 393.46875,
+            "right": 493.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 533.578125,
+            "right": 609.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 649.859375,
+            "right": 768,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deborah",
+    "width": 1024,
+    "status": 200,
+    "viewport": 1024,
+    "scrollWidth": 1024,
+    "heading": "Déborah\nLima",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1024,
+        "controls": [
+          {
+            "text": "DL\nDÉBORAH LIMA",
+            "aria": "Déborah Lima — início",
+            "x": 48,
+            "right": 225.328125,
+            "width": 177.328125,
+            "visible": true
+          },
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 392.328125,
+            "right": 445.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 485.359375,
+            "right": 561.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 601.46875,
+            "right": 701.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 741.578125,
+            "right": 817.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 857.859375,
+            "right": 976,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 583.671875,
+        "controls": [
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 392.328125,
+            "right": 445.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 485.359375,
+            "right": 561.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 601.46875,
+            "right": 701.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 741.578125,
+            "right": 817.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 857.859375,
+            "right": 976,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deborah",
+    "width": 1200,
+    "status": 200,
+    "viewport": 1200,
+    "scrollWidth": 1200,
+    "heading": "Déborah\nLima",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1200,
+        "controls": [
+          {
+            "text": "DL\nDÉBORAH LIMA",
+            "aria": "Déborah Lima — início",
+            "x": 48,
+            "right": 225.328125,
+            "width": 177.328125,
+            "visible": true
+          },
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 568.328125,
+            "right": 621.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 661.359375,
+            "right": 737.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 777.46875,
+            "right": 877.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 917.578125,
+            "right": 993.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 1033.859375,
+            "right": 1152,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 583.671875,
+        "controls": [
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 568.328125,
+            "right": 621.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 661.359375,
+            "right": 737.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 777.46875,
+            "right": 877.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 917.578125,
+            "right": 993.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 1033.859375,
+            "right": 1152,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deborah",
+    "width": 1280,
+    "status": 200,
+    "viewport": 1280,
+    "scrollWidth": 1280,
+    "heading": "Déborah\nLima",
+    "headers": [
+      {
+        "tag": "HEADER",
+        "width": 1280,
+        "controls": [
+          {
+            "text": "DL\nDÉBORAH LIMA",
+            "aria": "Déborah Lima — início",
+            "x": 88,
+            "right": 265.328125,
+            "width": 177.328125,
+            "visible": true
+          },
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 608.328125,
+            "right": 661.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 701.359375,
+            "right": 777.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 817.46875,
+            "right": 917.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 957.578125,
+            "right": 1033.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 1073.859375,
+            "right": 1192,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "tag": "NAV",
+        "width": 583.671875,
+        "controls": [
+          {
+            "text": "SOBRE",
+            "aria": null,
+            "x": 608.328125,
+            "right": 661.359375,
+            "width": 53.03125,
+            "visible": true
+          },
+          {
+            "text": "ATUAÇÃO",
+            "aria": null,
+            "x": 701.359375,
+            "right": 777.46875,
+            "width": 76.109375,
+            "visible": true
+          },
+          {
+            "text": "ABORDAGEM",
+            "aria": null,
+            "x": 817.46875,
+            "right": 917.578125,
+            "width": 100.109375,
+            "visible": true
+          },
+          {
+            "text": "CONTATO",
+            "aria": null,
+            "x": 957.578125,
+            "right": 1033.859375,
+            "width": 76.28125,
+            "visible": true
+          },
+          {
+            "text": "AGENDAR",
+            "aria": null,
+            "x": 1073.859375,
+            "right": 1192,
+            "width": 118.140625,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  }
+]

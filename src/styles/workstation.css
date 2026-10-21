@@ -2,6 +2,17 @@
 .workstation-lab-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;border-bottom:1px solid var(--oo-border-subtle);font:11px var(--font-mono);color:var(--oo-fg-secondary)}
 .workstation-lab-bar a{min-height:44px;display:inline-flex;align-items:center}
 
+/* Optional help in the reserved hero margin; the native popover opens only on request. */
+.workstation-discovery{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:24;width:min(350px,calc(100vw - 48px));color:var(--oo-fg-secondary);font:12px/1.6 var(--font-sans)}
+.workstation-discovery>button{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;padding:8px 14px;cursor:pointer;border:1px solid var(--oo-border-subtle);border-radius:12px;background:var(--oo-bg-base);color:inherit;font:inherit}
+.workstation-discovery button:focus-visible,.workstation-discovery-card button:focus-visible{outline:2px solid var(--oo-accent-primary);outline-offset:3px}
+.workstation-discovery>button span{color:var(--oo-accent-primary)}
+.workstation-discovery-card{position:fixed;inset:auto auto 24px 24px;margin:0;width:min(350px,calc(100vw - 48px));max-height:calc(100dvh - 120px);overflow:auto;padding:18px;background:var(--oo-bg-elevated);color:var(--oo-fg-secondary);font:12px/1.6 var(--font-sans);border:1px solid var(--oo-border-strong);border-radius:14px;box-shadow:0 12px 30px #0005}
+.workstation-discovery-card::backdrop{background:transparent}.workstation-discovery-heading{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:12px;color:var(--oo-fg-primary)}
+.workstation-discovery-heading button{min-width:44px;min-height:44px;border:1px solid var(--oo-border-subtle);border-radius:8px;background:transparent;color:inherit;font-size:22px;cursor:pointer}
+.workstation-discovery-card ol{list-style:decimal;padding-left:18px;display:grid;gap:10px}.workstation-discovery-card nav{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:14px;border-top:1px solid var(--oo-border-subtle);padding-top:8px}
+.workstation-discovery-card nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--oo-fg-primary);text-decoration:underline;text-underline-offset:4px}.workstation-discovery-card nav span{flex-basis:100%;font-size:11px;color:var(--oo-fg-tertiary)}
+
 /* Hero anchor: reserves the composition and holds the pre-WebGL still. */
 .workstation-hero-anchor{position:relative;width:100%;height:460px;margin-block:28px 64px;isolation:isolate}
 .workstation-still{position:absolute;inset:0;pointer-events:none;opacity:.6}
@@ -126,13 +137,14 @@ html[data-theme="light"] .tok-string{color:#9a6700}html[data-theme="light"] .tok
 .workbench-site{position:absolute;inset:0;overflow:hidden}
 .workbench-site iframe{display:block;width:100%;height:100%;border:0;background:var(--oo-bg-base);color-scheme:normal}
 .workbench-screen[data-immersive="true"] .workbench-cursor{display:none}
-.workbench-site-controls{position:absolute;right:0;top:0;z-index:32;display:flex;flex-direction:row-reverse;padding:6px;gap:4px}
+.workbench-site-controls{position:absolute;right:0;bottom:0;z-index:32;display:flex;flex-direction:row-reverse;padding:6px;gap:4px}
 .workbench-site-controls button{min-width:var(--screen-hit-size,44px);min-height:var(--screen-hit-size,44px);padding:0;border:1px solid #ffffff60;background:#101820c9;color:#fff;backdrop-filter:blur(8px);font:calc(var(--screen-hit-size,44px) * .52)/1 system-ui;opacity:0;transform:scale(.92);transition:opacity 140ms ease,transform 140ms ease;box-shadow:0 2px 10px #0005}
 .workbench-site-controls:hover button,.workbench-site-controls:focus-within button{opacity:1;transform:none}
 .workbench-site-controls button:focus-visible{outline:3px solid var(--oo-accent-primary);outline-offset:2px}
 .workbench-site-controls button:hover{background:#263740e8;color:#fff}
 .workbench-site-fallback{position:absolute;inset:0;z-index:31;display:flex;flex-wrap:wrap;align-content:center;align-items:center;gap:12px;padding:32px;padding-top:calc(var(--screen-hit-size,44px) + 16px);background:var(--oo-bg-base);overflow:auto}
 .workbench-site-fallback p{flex-basis:100%;max-width:55ch}.workbench-site-fallback a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
+/* Touch needs visible 44px actions; their lower corner leaves the site navigation clear. */
 @media(hover:none),(pointer:coarse){.workbench-site-controls .workbench-site-exit{opacity:1;transform:none}.workbench-site-controls .workbench-site-help{opacity:.85;transform:none}}
 
 /* Focus dialog: the legible 2D screen for dense content and mobile. */

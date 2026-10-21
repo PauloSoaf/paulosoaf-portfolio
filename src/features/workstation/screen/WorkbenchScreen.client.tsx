@@ -13,23 +13,36 @@ import type { TerminalSession } from "../terminal/session";
 import { NotesApp } from "./NotesApp.client";
 import { CodeApp } from "./CodeApp.client";
 import { TerminalApp, TerminalPrompt } from "./TerminalApp.client";
+import { siteFrame } from "./site-framing";
 
 const unmuted = () => false;
 
 /** The parent cannot inspect a cross-origin document. A load event is not proof of usability. */
-function CommercialPreview({ siteId, text, dispatch }: {
-  siteId: keyof typeof workstationSites; text: (typeof workstationLabels)[Locale]; dispatch: Dispatch<WorkstationEvent>;
+function CommercialPreview({ siteId, text, dispatch, projected }: {
+  siteId: keyof typeof workstationSites; text: (typeof workstationLabels)[Locale]; dispatch: Dispatch<WorkstationEvent>; projected: boolean;
 }) {
   const site = workstationSites[siteId];
   const [attempt, setAttempt] = useState(0), [help, setHelp] = useState(false), [failed, setFailed] = useState(false);
   const loaded = useRef(false);
+  const viewport = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 800, height: 458.5366 });
+  useEffect(() => {
+    const node = viewport.current; if (!node) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry!.contentRect;
+      if (width > 0 && height > 0) setSize((previous) => Math.abs(previous.width - width) < .05 && Math.abs(previous.height - height) < .05 ? previous : { width, height });
+    });
+    observer.observe(node); return () => observer.disconnect();
+  }, []);
+  const frame = siteFrame(size.width, size.height, site.preferredWidth, projected);
   useEffect(() => {
     loaded.current = false;
     const timer = setTimeout(() => { if (!loaded.current) setFailed(true); }, 15000);
     return () => clearTimeout(timer);
   }, [attempt]);
-  return <div className="workbench-site" data-workstation-browser data-immersive-site={siteId}>
+  return <div ref={viewport} className="workbench-site" data-workstation-browser data-immersive-site={siteId} data-site-fit={projected ? "fitted" : "native"} data-site-scale={frame.scale}>
     <iframe key={attempt} src={site.url} title={site.title} data-project-site={siteId}
+      style={projected ? { width: frame.width, height: frame.height, transform: `scale(${frame.scale})`, transformOrigin: "0 0" } : undefined}
       sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin"
       allow="camera 'none'; microphone 'none'; geolocation 'none'"
       onLoad={() => { loaded.current = true; }} onError={() => setFailed(true)} />
@@ -99,7 +112,7 @@ export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer
     </div> : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
       : app.kind === "TERMINAL" ? <TerminalApp session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} intro={text.terminalIntro} />
       : app.kind === "CODE" ? <CodeApp file={app.file} text={text} pointer={pointer} inspecting={inspecting} onInspect={onInspect} onSelect={(file) => dispatch({ type: "OPEN_CODE", file })} />
-      : app.kind === "PREVIEW" && app.siteId !== "fixture" ? <CommercialPreview key={app.siteId} siteId={app.siteId} text={text} dispatch={dispatch} />
+      : app.kind === "PREVIEW" && app.siteId !== "fixture" ? <CommercialPreview key={app.siteId} siteId={app.siteId} text={text} dispatch={dispatch} projected={state.mode !== "FOCUS_SCREEN"} />
       : <div className="workbench-browser" data-workstation-browser>
         <div className="workbench-address"><span aria-hidden="true">●</span><span>{site ? new URL(site.url).hostname : text.fixture}</span>
           {site ? <a href={site.url} target="_blank" rel="noopener noreferrer" aria-label={text.external} title={text.external}>↗</a> : null}</div>

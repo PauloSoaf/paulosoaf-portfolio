@@ -12,15 +12,17 @@ import { isEditorialPreview, visibleItems } from "@/features/content/visibility"
 import type { Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { WorkstationOrchestrator } from "@/features/workstation/orchestrator/WorkstationOrchestrator.client";
+import { WorkstationDiscovery } from "@/features/workstation/WorkstationDiscovery";
 
 /** Shared server editorial tree. The laboratory swaps only the scene island. */
 export function LandingContent({ locale, workstation = false }: { locale: Locale; workstation?: boolean }) {
   const dict = getDictionary(locale), preview = isEditorialPreview();
   const channels = visibleItems(siteContent.contactChannels, preview);
+  const cv = findChannel(channels, "cv");
   const content = <>
     <div data-spatial-story>
       <HeroEditorial locale={locale} dict={dict} profile={siteContent.profile}
-        art={workstation ? <WorkstationOrchestrator locale={locale} /> : undefined} />
+        art={workstation ? <WorkstationOrchestrator locale={locale} discovery={<WorkstationDiscovery locale={locale} cvHref={cv?.status === "approved" ? cv.href ?? undefined : undefined} />} /> : undefined} />
       <WorkSection locale={locale} dict={dict} projects={visibleItems(siteContent.projects, preview)}
         github={findChannel(channels, "github")} preview={preview} workstation={workstation} />
     </div>

@@ -1,0 +1,1102 @@
+{
+  "base": "6dedb39cfa4ba8c8f9b96e3a0e1714ffddf4d272",
+  "branch": "feat/workstation-cinematic-spin-fit",
+  "recordedAt": "2026-10-21T21:10:32.854Z",
+  "environment": "Windows/Chromium/SwiftShader, cold contexts, unthrottled CPU/network; Save-Data isolates bootstrap from explicit 3D activation. INP is the Next/web-vitals value for this local scripted visit, not a field p75. Enable time includes loading and spring settling. CPU render time is not GPU FPS. Videos and Lighthouse run separately.",
+  "validation": {
+    "method": "One final full Workstation run, one worker; browser recordings and profiling run separately. Earlier exploratory/concurrent runs are retained only in ignored reports.",
+    "workstation": {
+      "startTime": "2026-10-21T20:39:14.660Z",
+      "duration": 1118857.571,
+      "expected": 57,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "general": {
+      "total": 88,
+      "expected": 87,
+      "unexpected": 0,
+      "flaky": 0,
+      "skipped": 1,
+      "ok": true
+    },
+    "generalReportFormat": "Native report.json extracted from Playwright HTML report (default general configuration has no JSON reporter).",
+    "generalStartTime": 1792614963412,
+    "generalDurationMs": 163556.873,
+    "publicGate": {
+      "startTime": "2026-10-21T21:09:42.575Z",
+      "duration": 5022.838,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "scenarios": [
+      {
+        "file": "arrow-cluster.spec.ts",
+        "title": "the four visible caps pick the correct arrow with mouse or touch",
+        "status": "passed",
+        "durationMs": 32281
+      },
+      {
+        "file": "arrow-cluster.spec.ts",
+        "title": "the four visible caps pick the correct arrow with mouse or touch",
+        "status": "passed",
+        "durationMs": 26714
+      },
+      {
+        "file": "arrow-cluster.spec.ts",
+        "title": "the four visible caps pick the correct arrow with mouse or touch",
+        "status": "passed",
+        "durationMs": 12141
+      },
+      {
+        "file": "arrow-cluster.spec.ts",
+        "title": "the four visible caps pick the correct arrow with mouse or touch",
+        "status": "passed",
+        "durationMs": 11794
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "circular native gesture produces free spin, release momentum and a recoverable body",
+        "status": "passed",
+        "durationMs": 50841
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "presentation and fitted native iframe survive theme/manual interaction at 1440",
+        "status": "passed",
+        "durationMs": 30987
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "presentation and fitted native iframe survive theme/manual interaction at 390",
+        "status": "passed",
+        "durationMs": 18383
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "Code has a workbench pose with actual new controller source",
+        "status": "passed",
+        "durationMs": 15587
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "optional native discovery and commercial access work without JavaScript in pt",
+        "status": "passed",
+        "durationMs": 544
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "optional native discovery and commercial access work without JavaScript in en",
+        "status": "passed",
+        "durationMs": 498
+      },
+      {
+        "file": "cinematic.spec.ts",
+        "title": "optional native discovery and commercial access work without JavaScript in es",
+        "status": "passed",
+        "durationMs": 493
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor top at 390",
+        "status": "passed",
+        "durationMs": 11826
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #work at 390",
+        "status": "passed",
+        "durationMs": 11844
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #about at 390",
+        "status": "passed",
+        "durationMs": 11901
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor top at 1440",
+        "status": "passed",
+        "durationMs": 10472
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #work at 1440",
+        "status": "passed",
+        "durationMs": 10116
+      },
+      {
+        "file": "hydration.spec.ts",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #about at 1440",
+        "status": "passed",
+        "durationMs": 9967
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "immersive nutriopus: entire display, native input/scroll, stable document across pose/theme/lid",
+        "status": "passed",
+        "durationMs": 36470
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "immersive deborah: entire display, native input/scroll, stable document across pose/theme/lid",
+        "status": "passed",
+        "durationMs": 34577
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "touch commercial preview stays in 3D and exposes an accessible close target",
+        "status": "passed",
+        "durationMs": 7319
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "a stalled external domain has an honest retry/external-link fallback; blocked content has manual help",
+        "status": "passed",
+        "durationMs": 27184
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "physical contact starts dizzy/stars in the same useful frame, recovers continuously and sleeps",
+        "status": "passed",
+        "durationMs": 29810
+      },
+      {
+        "file": "immersive-impact.spec.ts",
+        "title": "a real grab interrupts the recovery instead of fighting the return spring",
+        "status": "passed",
+        "durationMs": 64693
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "3D keys type into the desktop prompt and run the curated terminal",
+        "status": "passed",
+        "durationMs": 14750
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "real 3D keys edit Notes with Shift, Caps, arrows and Backspace",
+        "status": "passed",
+        "durationMs": 21202
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "trackpad moves the cursor, clicks, double clicks and scrolls owned controls",
+        "status": "passed",
+        "durationMs": 35944
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "the terminal opens this portfolio's real source and inspect mode maps page components to files",
+        "status": "passed",
+        "durationMs": 14691
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "the mute control sits in the screen corner and persists",
+        "status": "passed",
+        "durationMs": 5836
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "Shift-drag rotates the physical notebook without throwing it or losing Notes",
+        "status": "passed",
+        "durationMs": 10847
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "page path stays on screen and attached to the content through every section at 1440",
+        "status": "passed",
+        "durationMs": 99107
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "page path stays on screen and attached to the content through every section at 1920",
+        "status": "passed",
+        "durationMs": 101264
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "page path stays on screen and attached to the content through every section at 768",
+        "status": "passed",
+        "durationMs": 65846
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "page path stays on screen and attached to the content through every section at 390",
+        "status": "passed",
+        "durationMs": 44437
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "an abrupt fast-scroll brake knocks the notebook over; it lands and gets back up",
+        "status": "passed",
+        "durationMs": 79327
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "carried, it swings like a pendulum; thrown, it flies, lands and returns by itself",
+        "status": "passed",
+        "durationMs": 16457
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "touch: a vertical swipe on the notebook scrolls the page, a sideways swipe picks it up",
+        "status": "passed",
+        "durationMs": 10225
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "reduced motion with explicit 3D: drags move directly, no flight and no brake fall",
+        "status": "passed",
+        "durationMs": 6024
+      },
+      {
+        "file": "input-motion.spec.ts",
+        "title": "missing studio asset keeps a lit model and a working native screen",
+        "status": "passed",
+        "durationMs": 3048
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "the notebook is the interface: no control bar, options stay hidden",
+        "status": "passed",
+        "durationMs": 3474
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "clicking the lid closes it with a spring, sleeps the screen and reopens it",
+        "status": "passed",
+        "durationMs": 6865
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "dragging the lid edge sets its angle",
+        "status": "passed",
+        "durationMs": 8669
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "hidden options open from a right click or the keyboard and act on the notebook",
+        "status": "passed",
+        "durationMs": 16004
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "only the silhouette captures input: the page stays clickable around the notebook",
+        "status": "passed",
+        "durationMs": 2934
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "DOM on the 3D display receives native input, clicks and wheel without moving the notebook",
+        "status": "passed",
+        "durationMs": 8127
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "focus dialog shows real source in the Code app and returns keyboard focus",
+        "status": "passed",
+        "durationMs": 5864
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "double-clicking the window title focuses the screen",
+        "status": "passed",
+        "durationMs": 2862
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "mobile has a readable 2D screen, native frame scroll and Escape/back",
+        "status": "passed",
+        "durationMs": 4530
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "reduced motion and unavailable WebGL retain complete 2D access",
+        "status": "passed",
+        "durationMs": 2506
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "lab policies stay strict and no longer allow WebAssembly",
+        "status": "passed",
+        "durationMs": 50
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "context loss returns to the still and retry owns one fresh canvas",
+        "status": "passed",
+        "durationMs": 4409
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "mobile defers WebGL while the slot is a peek, then loads when most of it is visible",
+        "status": "passed",
+        "durationMs": 5271
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "a failed lazy OS chunk keeps the portfolio readable and the focus dialog dismissible",
+        "status": "passed",
+        "durationMs": 1520
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "options menu and focus screen meet automated accessibility checks",
+        "status": "passed",
+        "durationMs": 6021
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "no JavaScript keeps editorial links, headings and notebook still",
+        "status": "passed",
+        "durationMs": 393
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "project actions approach the notebook, theme keeps state, anchors stay in the lab",
+        "status": "passed",
+        "durationMs": 19374
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "live nutriopus: native external iframe click and wheel, independent close",
+        "status": "passed",
+        "durationMs": 8033
+      },
+      {
+        "file": "notebook.spec.ts",
+        "title": "live deborah: native external iframe click and wheel, independent close",
+        "status": "passed",
+        "durationMs": 8264
+      }
+    ]
+  },
+  "hydration": [
+    {
+      "width": 390,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    }
+  ],
+  "profiles": [
+    {
+      "width": 1440,
+      "initialGzipBytes": 185523,
+      "initialBudgetBytes": 180000,
+      "sceneLazyGzipBytes": 260150,
+      "codeLazyGzipBytes": 82144,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 216
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 8.5
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 216
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 2.100000023841858
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 448
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "idleFrames600ms": 0,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "initialGzipBytes": 185523,
+      "initialBudgetBytes": 180000,
+      "sceneLazyGzipBytes": 260150,
+      "codeLazyGzipBytes": 82144,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 176
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.799999952316284
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 176
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.100000023841858
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 224
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "idleFrames600ms": 0,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "errors": []
+    }
+  ],
+  "lighthouse": [
+    {
+      "name": "mobile",
+      "fetchTime": "2026-10-21T21:06:56.931Z",
+      "version": "13.5.0",
+      "url": "http://127.0.0.1:3300/pt/workstation-lab",
+      "categories": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 3242.89955,
+      "cls": 0,
+      "tbtMs": 119.5
+    },
+    {
+      "name": "desktop",
+      "fetchTime": "2026-10-21T21:07:15.658Z",
+      "version": "13.5.0",
+      "url": "http://127.0.0.1:3300/pt/workstation-lab",
+      "categories": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 667.9464,
+      "cls": 0.0003364385632242331,
+      "tbtMs": 105
+    }
+  ],
+  "visual": [
+    {
+      "id": "pt-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "pt-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.005194766597244408,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "pt-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "pt-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.005194766597244408,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "en-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "en-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.004638965401874828,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "en-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "en-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.004638965401874828,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "es-dark-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "es-dark-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.005891226156175668,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "es-light-1440",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.007071067811859045,
+      "screenshots": 4,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "id": "es-light-390",
+      "idleFrames600ms": 0,
+      "alignmentErrorPx": 0.005891226156175668,
+      "screenshots": 5,
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "live": [
+    {
+      "id": "pt-cinematic-1440",
+      "spin": 11.886,
+      "websites": [
+        {
+          "site": "nutriopus",
+          "viewport": {
+            "width": 1024,
+            "height": 587,
+            "scrollWidth": 1024,
+            "controls": [
+              {
+                "text": "",
+                "left": 16,
+                "right": 144
+              },
+              {
+                "text": "Recursos",
+                "left": 187.828125,
+                "right": 271.390625
+              },
+              {
+                "text": "Pré-consulta",
+                "left": 275.390625,
+                "right": 381.46875
+              },
+              {
+                "text": "Portal",
+                "left": 385.46875,
+                "right": 447.328125
+              },
+              {
+                "text": "IA assistiva",
+                "left": 451.328125,
+                "right": 547.328125
+              },
+              {
+                "text": "PT",
+                "left": 591.15625,
+                "right": 672.3125
+              },
+              {
+                "text": "Português",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "English",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "Español",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "",
+                "left": 678.3125,
+                "right": 736.3125
+              },
+              {
+                "text": "Tema claro",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Azul Escuro Premium",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Bege Minimalista",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Folha Clínica",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Azul Clássico",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Areia Clássica",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Outros temas...",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Demo",
+                "left": 742.3125,
+                "right": 805.25
+              },
+              {
+                "text": "Entrar",
+                "left": 811.25,
+                "right": 875.703125
+              },
+              {
+                "text": "Criar conta",
+                "left": 881.703125,
+                "right": 1008
+              }
+            ]
+          },
+          "epoch": 1792616370445.5,
+          "nativeWheel": true,
+          "nativeLink": "#recursos",
+          "actualURL": "https://www.nutriopus.com.br/",
+          "sameDocumentAfterThemeManualAndResume": true
+        },
+        {
+          "site": "deborah",
+          "viewport": {
+            "width": 1200,
+            "height": 688,
+            "scrollWidth": 1200,
+            "controls": [
+              {
+                "text": "DLDéborah Lima",
+                "left": 48,
+                "right": 225.328125
+              },
+              {
+                "text": "Sobre",
+                "left": 568.328125,
+                "right": 621.359375
+              },
+              {
+                "text": "Atuação",
+                "left": 661.359375,
+                "right": 737.46875
+              },
+              {
+                "text": "Abordagem",
+                "left": 777.46875,
+                "right": 877.578125
+              },
+              {
+                "text": "Contato",
+                "left": 917.578125,
+                "right": 993.859375
+              },
+              {
+                "text": "Agendar",
+                "left": 1033.859375,
+                "right": 1152
+              }
+            ]
+          },
+          "epoch": 1792616404781.8,
+          "nativeWheel": true,
+          "nativeLink": "#topo",
+          "actualURL": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+          "sameDocumentAfterThemeManualAndResume": true
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-cinematic-1440-spin-sites-code.webm",
+        "duration": 142.8,
+        "width": 1440,
+        "height": 900,
+        "bytes": 15084744,
+        "sha256": "d174860e105bcf5392b8e838f6aa6c002f519822563ea91c5911b68033c82fe1"
+      }
+    },
+    {
+      "id": "pt-cinematic-390",
+      "spin": 7.803,
+      "websites": [
+        {
+          "site": "nutriopus",
+          "viewport": {
+            "width": 1024,
+            "height": 587,
+            "scrollWidth": 1024,
+            "controls": [
+              {
+                "text": "",
+                "left": 16,
+                "right": 144
+              },
+              {
+                "text": "Recursos",
+                "left": 187.828125,
+                "right": 271.390625
+              },
+              {
+                "text": "Pré-consulta",
+                "left": 275.390625,
+                "right": 381.46875
+              },
+              {
+                "text": "Portal",
+                "left": 385.46875,
+                "right": 447.328125
+              },
+              {
+                "text": "IA assistiva",
+                "left": 451.328125,
+                "right": 547.328125
+              },
+              {
+                "text": "PT",
+                "left": 591.15625,
+                "right": 672.3125
+              },
+              {
+                "text": "Português",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "English",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "Español",
+                "left": 497.3125,
+                "right": 671.3125
+              },
+              {
+                "text": "",
+                "left": 678.3125,
+                "right": 736.3125
+              },
+              {
+                "text": "Tema claro",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Azul Escuro Premium",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Bege Minimalista",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Folha Clínica",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Azul Clássico",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Areia Clássica",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Outros temas...",
+                "left": 481.3125,
+                "right": 735.3125
+              },
+              {
+                "text": "Demo",
+                "left": 742.3125,
+                "right": 805.25
+              },
+              {
+                "text": "Entrar",
+                "left": 811.25,
+                "right": 875.703125
+              },
+              {
+                "text": "Criar conta",
+                "left": 881.703125,
+                "right": 1008
+              }
+            ]
+          },
+          "epoch": 1792616894174.1,
+          "nativeWheel": true,
+          "nativeLink": "#recursos",
+          "actualURL": "https://www.nutriopus.com.br/",
+          "sameDocumentAfterThemeManualAndResume": true
+        },
+        {
+          "site": "deborah",
+          "viewport": {
+            "width": 1200,
+            "height": 688,
+            "scrollWidth": 1200,
+            "controls": [
+              {
+                "text": "DLDéborah Lima",
+                "left": 48,
+                "right": 225.328125
+              },
+              {
+                "text": "Sobre",
+                "left": 568.328125,
+                "right": 621.359375
+              },
+              {
+                "text": "Atuação",
+                "left": 661.359375,
+                "right": 737.46875
+              },
+              {
+                "text": "Abordagem",
+                "left": 777.46875,
+                "right": 877.578125
+              },
+              {
+                "text": "Contato",
+                "left": 917.578125,
+                "right": 993.859375
+              },
+              {
+                "text": "Agendar",
+                "left": 1033.859375,
+                "right": 1152
+              }
+            ]
+          },
+          "epoch": 1792616920971.5,
+          "nativeWheel": true,
+          "nativeLink": "#topo",
+          "actualURL": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+          "sameDocumentAfterThemeManualAndResume": true
+        }
+      ],
+      "errors": [],
+      "video": {
+        "path": "videos/pt-cinematic-390-spin-sites-code.webm",
+        "duration": 82.84,
+        "width": 390,
+        "height": 844,
+        "bytes": 8506720,
+        "sha256": "172d20e3744de9d70ab41b9f4508cbbf16644490e9aca6c55efed8553e71c48b"
+      }
+    }
+  ]
+}

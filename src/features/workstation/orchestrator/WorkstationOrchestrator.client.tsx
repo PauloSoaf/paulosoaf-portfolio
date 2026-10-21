@@ -24,6 +24,7 @@ import type { TerminalEffect } from "../terminal/commands";
 import { knock, tremor } from "../page/page-reactions";
 import { startInspect } from "../code/inspect";
 import type { HoverPart } from "../scene/WorkstationScene.client";
+import type { Presentation } from "./presentation";
 const Scene = dynamic(() => import("../scene/WorkstationScene.client"), { ssr: false });
 // The OS is needed only with a ready 3D screen or an explicitly opened 2D dialog.
 // Keep it off the editorial/low-data bootstrap without changing the notebook's interface.
@@ -48,7 +49,7 @@ class ScreenBoundary extends Component<{ children: ReactNode; fallback: ReactNod
   override render() { return this.state.failed ? this.props.fallback : this.props.children; }
 }
 
-export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
+export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale; discovery?: ReactNode }) {
   const text = workstationLabels[locale], router = useRouter();
   const body = useSyncExternalStore(noopSubscribe, () => document.body, () => null);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
@@ -74,6 +75,15 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const fail = useCallback(() => { setFailed(true); setReady(false); }, []), onReady = useCallback(() => setReady(true), []);
   const onMenu = useCallback((x: number, y: number) => setMenu({ x, y }), []);
   const focused = state.mode === "FOCUS_SCREEN";
+  const prepareReading = useCallback((kind: Exclude<Presentation, "context">) => {
+    rig.present(kind); rig.keyboardView = false; dispatch({ type: "SET_LID", angle: 108 }); rig.refresh();
+  }, [rig]);
+  const previewSite = state.app.kind === "PREVIEW" ? state.app.siteId : null;
+  useEffect(() => {
+    const kind = previewSite && previewSite !== "fixture" ? "preview" : state.app.kind === "CODE" ? "code" : "context";
+    rig.present(kind);
+    if (kind !== "context") { rig.keyboardView = false; dispatch({ type: "SET_LID", angle: 108 }); rig.refresh(); }
+  }, [rig, state.app.kind, previewSite]);
   useEffect(() => { if (armed || focused) void loadScreen().catch(() => {}); }, [armed, focused]);
   const announce = useCallback((message: string) => { if (announcer.current) announcer.current.textContent = message; }, []);
 
@@ -136,12 +146,12 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       const detail: unknown = (event as CustomEvent).detail;
       const siteId = detail && typeof detail === "object" ? siteForProject((detail as Record<string, unknown>).slug) : null;
       if (!siteId) return;
-      dispatch({ type: "SET_LID", angle: 108 }); dispatch({ type: "OPEN_SITE", siteId });
+      prepareReading("preview"); dispatch({ type: "OPEN_SITE", siteId });
       if (failed || (!armed && (environment.reduced || environment.limited))) dispatch({ type: "FOCUS_SCREEN" });
       else { setArmed(true); rig.inertia.suppress(performance.now(), 2400); document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
     };
     window.addEventListener(PROJECT_REQUEST, select); return () => window.removeEventListener(PROJECT_REQUEST, select);
-  }, [armed, failed, environment.reduced, environment.limited, rig]);
+  }, [armed, failed, environment.reduced, environment.limited, rig, prepareReading]);
   useEffect(() => {
     const modal = dialog.current; if (!modal) return;
     if (focused && !modal.open) { returnFocus.current = document.activeElement as HTMLElement; modal.showModal(); }
@@ -162,16 +172,18 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   }, [lidOpen, announce, text.announceOpened, text.announceClosed]);
 
   const screenDispatch = useCallback((event: WorkstationEvent) => {
+    if (event.type === "OPEN_CODE") prepareReading("code");
+    else if (event.type === "OPEN_SITE" && (event.siteId === "nutriopus" || event.siteId === "deborah")) prepareReading("preview");
     dispatch(event);
     if (environment.mobile && (event.type === "OPEN_CODE" || (event.type === "OPEN_SITE" && event.siteId === "fixture"))) dispatch({ type: "FOCUS_SCREEN" });
-  }, [environment.mobile]);
+  }, [environment.mobile, prepareReading]);
   const notebookAction = useCallback((action: "hop" | "drop" | "spin" | "close-lid" | "open-lid" | "reset" | "keyboard" | "left" | "right") => {
     sound.unlock();
     if (action === "hop") rig.hop(); else if (action === "drop") rig.drop(); else if (action === "spin") rig.spin();
     else if (action === "close-lid" || action === "open-lid") { dispatch({ type: "SET_LID", angle: action === "open-lid" ? 108 : 0 }); if (action === "open-lid") sound.boot(); }
     else if (action === "reset") { rig.reset(); dispatch({ type: "RESET_POSE" }); rig.refresh(); }
-    else if (action === "keyboard") { rig.keyboardView = !rig.keyboardView; rig.refresh(); }
-    else dispatch({ type: "ROTATE", axis: 1, delta: action === "left" ? -.3 : .3 });
+    else if (action === "keyboard") { rig.suppressPresentation(); rig.keyboardView = !rig.keyboardView; rig.refresh(); }
+    else { rig.suppressPresentation(); dispatch({ type: "ROTATE", axis: 1, delta: action === "left" ? -.3 : .3 }); }
     rig.wake();
   }, [rig, sound]);
   useEffect(() => {
@@ -186,7 +198,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
         if (effect.app === "desktop") dispatch({ type: "CLOSE_X" });
         else if (effect.app === "notes") dispatch({ type: "OPEN_NOTES" });
         else screenDispatch({ type: "OPEN_SITE", siteId: effect.app === "browser" ? "fixture" : effect.app });
-      } else if (effect.type === "code") dispatch({ type: "OPEN_CODE", ...(effect.file ? { file: effect.file } : {}) });
+      } else if (effect.type === "code") screenDispatch({ type: "OPEN_CODE", ...(effect.file ? { file: effect.file } : {}) });
       else if (effect.type === "inspect") { dispatch({ type: "OPEN_CODE" }); setInspecting(true); }
       else if (effect.type === "mute") sound.toggle();
       else if (effect.type === "focus") dispatch({ type: "FOCUS_SCREEN" });
@@ -231,6 +243,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
     { label: lidOpen ? text.closeLid : text.openLid, run: () => notebookAction(lidOpen ? "close-lid" : "open-lid") },
     { label: text.focus, run: () => dispatch({ type: "FOCUS_SCREEN" }) },
     { label: text.left, run: () => notebookAction("left") }, { label: text.right, run: () => notebookAction("right") },
+    ...(state.app.kind === "CODE" || previewSite && previewSite !== "fixture" ? [{ label: text.present, run: () => prepareReading(state.app.kind === "CODE" ? "code" : "preview") }] : []),
     { label: rig.keyboardView ? text.wholeView : text.keyboardView, run: () => notebookAction("keyboard") },
     ...(environment.reduced ? [] : [{ label: text.hop, run: () => notebookAction("hop") }, { label: text.drop, run: () => notebookAction("drop") }, { label: text.spin, run: () => notebookAction("spin") }]),
     { label: text.reset, run: () => notebookAction("reset") },
@@ -246,6 +259,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
         {!armed || failed ? <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button> : null}
       </div> : null}
       <noscript><p>{text.fallback}</p>{Object.values(workstationSites).map((site) => <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>)}</noscript>
+      {discovery}
     </div>
     {body ? createPortal(<>
       <div ref={bindHost} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready && screenReady ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected" data-inspecting={inspectActive}>

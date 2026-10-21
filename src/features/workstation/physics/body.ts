@@ -103,7 +103,7 @@ export function restingOnFloor(body: Body, shape: readonly Vec[], bounds: Bounds
   return shape.some((local) => { const r = rotate(local, body.angle); return body.y + r.y >= bounds.bottom - 1.5; });
 }
 
-export type Grip = { anchor: Vec; hang: number };
+export type Grip = { anchor: Vec; hang: number; spinDrive?: number };
 /**
  * Carried by the pointer: a damped pendulum about the grab point. `hang` lowers the virtual
  * centre of mass so even a centred grip sways when shaken; off-centre grips tilt naturally.
@@ -111,9 +111,18 @@ export type Grip = { anchor: Vec; hang: number };
 export function stepHeld(body: Body, pivot: Vec, pivotAcceleration: Vec, grip: Grip, shape: readonly Vec[], dt: number, gravity = 6000) {
   if (!(dt > 0)) return;
   const inertia = inertiaOf(shape);
-  let remaining = Math.min(dt, .05);
+  // Circular carrying can use real sparse frame time with the same stable 1/240s substeps.
+  // The ordinary pendulum retains its existing .05s budget.
+  let remaining = Math.min(dt, grip.spinDrive !== undefined ? .2 : .05);
   while (remaining > 1e-6) {
     const h = Math.min(STEP, remaining); remaining -= h;
+    if (grip.spinDrive !== undefined) {
+      // A recognised circular gesture winds up the same body, without the pendulum's tilt stop.
+      const drive = Math.max(-AIR.maxSpin, Math.min(AIR.maxSpin, grip.spinDrive));
+      body.spin += (drive - body.spin) * (1 - Math.exp(-18 * h));
+      body.angle += body.spin * h;
+      continue;
+    }
     const d = rotate({ x: -grip.anchor.x, y: -grip.anchor.y + grip.hang }, body.angle);
     const torque = d.x * (gravity - pivotAcceleration.y) + d.y * pivotAcceleration.x;
     // A new grip can begin outside the usual pendulum range after a tumble. Bring that
