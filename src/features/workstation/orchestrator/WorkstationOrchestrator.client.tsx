@@ -1,4 +1,7 @@
 "use client";
+// @refresh reset
+// Imperative class instances must be recreated together after a development hot update.
+// Preserving useState here can pair a new scene with an old MotionRig lacking new fields.
 /* eslint-disable react-hooks/immutability -- Stable imperative input/render controllers, not React view state. */
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";

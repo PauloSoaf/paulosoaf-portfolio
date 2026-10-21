@@ -2,6 +2,8 @@
 
 **21/10/2026 · Codex · `feat/workstation-playful-notebook`.** Retomada exata: `2fea4b80b2235adb77725e0310de4724e2e18587`, árvore limpa. Modelo, materiais e arquitetura da P02 **Claude** (`17ff916`) preservados. Esta continuação acrescenta somente os refinamentos pedidos na auditoria. [Autoria e fronteira](../../../HANDOFF.md) · [ADR-020](../../../adr/ADR-020-workstation-immersive-sites-and-contact-reaction.md) · [P02 Claude](../P02/REPORT.md) · [P02.1 Codex](../P02.1/REPORT.md).
 
+**Correção posterior ao relato do proprietário:** [hotfix de Fast Refresh e diagnóstico do atributo no body](HOTFIX-REFRESH.md), partindo de `e35813e`. Os resultados e hashes abaixo preservam a execução original da P02.2.
+
 ## Comportamento entregue
 
 NutriOpus e Déborah abrem pelo carrossel diretamente no display 3D, inclusive no mobile. O iframe ocupa os **800 × 458,5366 pixels lógicos** da área útil, sem toolbar, endereço, aviso, padding ou borda internos. É o website real, com seu próprio conteúdo, links e scroll. A projeção física conserva a proporção; não há Fullscreen API nem imagem substituta.

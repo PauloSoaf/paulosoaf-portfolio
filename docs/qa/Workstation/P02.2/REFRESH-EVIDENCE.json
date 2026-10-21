@@ -1,0 +1,66 @@
+{
+  "collectedAt": "2026-10-21T15:11:48.798Z",
+  "base": "e35813e945039f64cc35589d950523db0423c520",
+  "source": [
+    {
+      "path": "src/features/workstation/orchestrator/WorkstationOrchestrator.client.tsx",
+      "sha256": "8b81092c2115a89ed893710533cafc39786c88ee70e4666c910d0c3316e845e2"
+    },
+    {
+      "path": "scripts/qa-workstation-refresh.mjs",
+      "sha256": "8b0bb91ecb88e4baa7c8b41078db97fa88ce87ddac44284c3704091f8398685b"
+    },
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "sha256": "94ec82d0d195683720e70ff96a3980f4dfdf2370a06dbe8fc84d54eea84ff6d1"
+    }
+  ],
+  "hmrBefore": {
+    "observed": "initial",
+    "sameDocument": true,
+    "canvas": 1,
+    "scene": "ready",
+    "errors": []
+  },
+  "hmrAfter": {
+    "expectedStale": false,
+    "observed": "updated",
+    "sameDocument": true,
+    "canvas": 1,
+    "scene": "ready",
+    "errors": []
+  },
+  "bodyAttributeIsolation": [
+    {
+      "inject": false,
+      "warning": false,
+      "ready": true,
+      "notesInteractive": true,
+      "canvas": 1,
+      "errors": []
+    },
+    {
+      "inject": true,
+      "warning": true,
+      "ready": true,
+      "notesInteractive": true,
+      "canvas": 1,
+      "errors": []
+    }
+  ],
+  "checks": {
+    "verify": "PASS",
+    "unit": 174,
+    "unitFiles": 19,
+    "previewBuild": "PASS",
+    "targetedE2E": {
+      "startTime": "2026-10-21T15:09:15.522Z",
+      "duration": 114115.588,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "scope": "Development lifecycle only; original P02.2 performance and full-suite evidence are preserved separately. Body attribute injected by the test, not a real installed browser extension."
+}
