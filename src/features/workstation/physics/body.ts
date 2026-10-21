@@ -116,10 +116,13 @@ export function stepHeld(body: Body, pivot: Vec, pivotAcceleration: Vec, grip: G
     const h = Math.min(STEP, remaining); remaining -= h;
     const d = rotate({ x: -grip.anchor.x, y: -grip.anchor.y + grip.hang }, body.angle);
     const torque = d.x * (gravity - pivotAcceleration.y) + d.y * pivotAcceleration.x;
-    body.spin += (torque / (inertia + d.x * d.x + d.y * d.y) - 2.2 * body.spin) * h;
+    // A new grip can begin outside the usual pendulum range after a tumble. Bring that
+    // pose back with a damped constraint; clamping it immediately would teleport its angle.
+    const excess = body.angle - Math.max(-1.2, Math.min(1.2, body.angle)), outside = Math.abs(excess) > 1e-6;
+    body.spin += (torque / (inertia + d.x * d.x + d.y * d.y) - (outside ? 10.2 : 2.2) * body.spin - excess * 64) * h;
     body.spin = Math.max(-AIR.maxSpin, Math.min(AIR.maxSpin, body.spin));
-    body.angle = Math.max(-1.2, Math.min(1.2, body.angle + body.spin * h));
-    if (Math.abs(body.angle) === 1.2) body.spin = 0;
+    body.angle = outside ? body.angle + body.spin * h : Math.max(-1.2, Math.min(1.2, body.angle + body.spin * h));
+    if (!outside && Math.abs(body.angle) === 1.2) body.spin = 0;
   }
   const r = rotate({ x: -grip.anchor.x, y: -grip.anchor.y }, body.angle);
   body.x = pivot.x + r.x; body.y = pivot.y + r.y;

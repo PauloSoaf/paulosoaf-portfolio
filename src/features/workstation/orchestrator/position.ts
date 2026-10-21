@@ -6,6 +6,7 @@ import {
 import { ScrollInertia } from "../physics/scroll-inertia";
 import { createHinge, hingeSettled, stepHinge, type Hinge } from "../physics/hinge";
 import { setData } from "./dataset";
+import { ImpactReaction } from "../physics/impact-reaction";
 
 /** Model chassis width in scene units; pose widths are on-screen chassis pixels. */
 export const CHASSIS_UNITS = 3.6;
@@ -15,8 +16,6 @@ export type BodyMode = "FOLLOW" | "HELD" | "AIRBORNE" | "STUNNED";
 export type Hull = { points: Vec[]; x: number; y: number; angle: number; width: number };
 export type ImpactKind = "floor" | "ceiling" | "wall" | "slam" | "throw" | "getup" | "lid" | "dizzy";
 export type Impact = { kind: ImpactKind; speed: number; x: number; y: number };
-
-const SLAM_SPEED = 900;
 
 /** Exact critically damped spring, stable across refresh rates and direction reversals. */
 export function spring(current: number, target: number, velocity: number, dt: number, omega = 14) {
@@ -61,6 +60,17 @@ export class MotionRig {
   forceSpring = false;
   impacts = 0; slams = 0;
   stunnedUntil = 0;
+  readonly reaction = new ImpactReaction();
+  contactAt = 0;
+  contactSpeed = 0;
+  contactWall = "";
+  /** All physical walls in the latest contacting frame; a corner must not hide its first wall. */
+  contactPacket = "[]";
+  /** Actual monotonic callback clock, separate from the RAF's physics timestamp. */
+  contactDetectedAt = 0;
+  reactionStartedAt = 0;
+  reactionContactDetectedAt = 0;
+  private lastContact = new Map<string, number>();
   viewport: Viewport = { width: 1440, height: 900, top: 0 };
   render?: (seconds: number) => boolean;
   onImpact: (impact: Impact) => void = () => {};
@@ -79,7 +89,6 @@ export class MotionRig {
   private pivotVelocity: Vec = { x: 0, y: 0 };
   private pivotAcceleration: Vec = { x: 0, y: 0 };
   private samples: { x: number; y: number; time: number }[] = [];
-  private flightPeak = 0;
   private restSince = 0;
   private lastFrame = 0;
 
@@ -101,7 +110,9 @@ export class MotionRig {
 
   // ——— Gestures ———
   grab(x: number, y: number, time: number) {
-    if (this.mode === "STUNNED") this.stunnedUntil = 0;
+    this.stunnedUntil = 0; this.reaction.clear(); this.lidOverride = null;
+    // Equivalent pose, without carrying whole airborne turns into the grip constraint.
+    this.body.angle = wrapAngle(this.body.angle);
     const local = rotate({ x: x - this.body.x, y: y - this.body.y }, -this.body.angle);
     const shape = this.shape(), height = Math.max(...shape.map((p) => p.y)) - Math.min(...shape.map((p) => p.y));
     this.grip = { anchor: local, hang: this.reduced ? 0 : height * .28 };
@@ -134,14 +145,14 @@ export class MotionRig {
     this.wake();
   }
   spin() { if (this.reduced) return; this.body.vy = -1500; this.body.spin = 9 * (Math.random() < .5 ? -1 : 1); this.launch(); }
-  reset() { this.grip = null; this.keyboardView = false; this.lidOverride = null; this.returnHome(false); }
+  reset() { this.grip = null; this.keyboardView = false; this.lidOverride = null; this.reaction.clear(); this.returnHome(false); }
   kickLid(degreesPerSecond: number) { if (!this.reduced) { this.hinge.velocity += degreesPerSecond; this.wake(); } }
 
-  private launch() { this.mode = "AIRBORNE"; this.flightPeak = 0; this.restSince = 0; this.wake(); }
+  private launch() { this.mode = "AIRBORNE"; this.reaction.launch(); this.lastContact.clear(); this.restSince = 0; this.wake(); }
   private returnHome(hop: boolean) {
     this.mode = "FOLLOW"; this.lidOverride = null; this.screenX = null; this.screenVelocity = 0;
     this.body.angle = wrapAngle(this.body.angle);
-    if (hop) { this.body.vy = -950; this.onImpact({ kind: "getup", speed: 0, x: this.body.x, y: this.body.y }); }
+    if (hop) { this.body.vy = -320; this.onImpact({ kind: "getup", speed: 0, x: this.body.x, y: this.body.y }); }
     this.wake();
   }
 
@@ -163,15 +174,20 @@ export class MotionRig {
     this.lastFrame = time;
     const brake = this.inertia.sample(scroll, time, this.viewport.height);
     if (brake) this.slam(brake.direction, brake.speed);
+    if (this.reduced && (this.mode === "AIRBORNE" || this.mode === "STUNNED")) this.returnHome(false);
     let moving = this.inertia.active;
     if (this.mode === "FOLLOW") moving = this.follow(dt) || moving;
     else if (this.mode === "HELD") moving = this.held(dt) || true;
     else if (this.mode === "AIRBORNE") moving = this.fly(dt, time) || true;
     else if (this.mode === "STUNNED") {
-      if (time >= this.stunnedUntil) this.returnHome(true);
+      // Keep resolving contacts during the brief physical settle, rather than freezing a pose.
+      stepAirborne(this.body, this.shape(), this.bounds, dt);
+      if (time >= this.stunnedUntil) { this.reaction.recover(time); this.returnHome(true); }
       moving = true;
     }
-    moving = this.orient(dt) || moving;
+    if (this.reduced) this.reaction.clear();
+    moving = this.reaction.step(time) || moving;
+    moving = this.orient(dt, time) || moving;
     const target = this.lidOverride ?? this.hinge.target;
     const saved = this.hinge.target; this.hinge.target = target;
     const external = this.mode === "HELD" ? -this.pivotAcceleration.y * .05 : 0;
@@ -212,8 +228,9 @@ export class MotionRig {
     // Viewport acceleration acts as a gentle pseudo-force: it floats on take-off, settles on landing.
     const pseudo = Math.max(-4000, Math.min(4000, -this.inertia.acceleration * .09));
     const x = { value: body.x, velocity: body.vx }, y = { value: body.y, velocity: body.vy };
-    let moving = damp(x, target.x, dt, 9, .62, 0, .2);
-    moving = damp(y, target.y, dt, 9, .55, pseudo, .2) || moving;
+    const recovering = this.reaction.stage === "RECOVERING";
+    let moving = damp(x, target.x, dt, recovering ? 12 : 9, recovering ? .88 : .62, 0, .2);
+    moving = damp(y, target.y, dt, recovering ? 12 : 9, recovering ? .85 : .55, pseudo, .2) || moving;
     body.x = x.value; body.vx = x.velocity; body.y = y.value; body.vy = y.velocity;
     // Sideways acceleration on screen (path + offset) sways it like something carried.
     const screenVelocity = this.screenX === null ? 0 : (body.x - this.screenX) / Math.max(dt, 1e-3);
@@ -250,31 +267,41 @@ export class MotionRig {
 
   private fly(dt: number, time: number) {
     const contacts: Contact[] = stepAirborne(this.body, this.shape(), this.bounds, dt);
+    if (contacts.length) this.contactPacket = JSON.stringify(contacts.map(({ wall, speed }) => ({ wall, speed: +speed.toFixed(2), time })));
     for (const contact of contacts) {
       if (contact.speed < 140) continue;
-      this.impacts++; this.flightPeak = Math.max(this.flightPeak, contact.speed);
+      // Multiple hull vertices/substeps and settling bounces are one audible/visual event.
+      if (time - (this.lastContact.get(contact.wall) ?? -Infinity) < 120) continue;
+      this.lastContact.set(contact.wall, time);
+      this.impacts++; this.contactAt = time; this.contactSpeed = contact.speed; this.contactWall = contact.wall;
+      this.contactDetectedAt = performance.now();
       const kind: ImpactKind = contact.wall === "floor" ? "floor" : contact.wall === "ceiling" ? "ceiling" : "wall";
       this.onImpact({ kind, speed: contact.speed, x: contact.x, y: contact.y });
+      if (!this.reduced && this.reaction.contact(contact, time)) {
+        this.reactionContactDetectedAt = this.contactDetectedAt;
+        this.reactionStartedAt = performance.now();
+        // A short physical torque; no instantaneous angle change and no artificial position kick.
+        const direction = Math.sign(contact.x - this.body.x) || (contact.wall === "left" ? 1 : -1);
+        this.body.spin += direction * (.35 + this.reaction.strength * .85);
+        this.hinge.velocity -= 90 + this.reaction.strength * 190;
+        this.onImpact({ kind: "dizzy", speed: contact.speed, x: contact.x, y: contact.y });
+      }
       if (contact.wall === "floor" || contact.wall === "ceiling") {
-        // Inertia flaps the lid; a hard landing shuts it until the notebook gets up again.
+        // Inertia flaps the lid. Its target remains the user's choice, even after a hard impact.
         this.hinge.velocity -= Math.min(contact.speed, 3000) * .1;
-        if (contact.speed > 3400 && contact.wall === "floor") this.lidOverride = 0;
       }
     }
     if (restingOnFloor(this.body, this.shape(), this.bounds)) {
       if (!this.restSince) this.restSince = time;
-      if (time - this.restSince > 220) {
-        this.body.vx = this.body.vy = this.body.spin = 0;
+      if (time - this.restSince > 90) {
         this.mode = "STUNNED";
-        const hard = this.flightPeak > SLAM_SPEED;
-        this.stunnedUntil = time + (hard ? 1250 : 380);
-        if (hard) this.onImpact({ kind: "dizzy", speed: this.flightPeak, x: this.body.x, y: this.body.y });
+        this.stunnedUntil = time + 80;
       }
     } else this.restSince = 0;
     return true;
   }
 
-  private orient(dt: number) {
+  private orient(dt: number, time: number) {
     const target = this.target, look = this.attention ?? this.look;
     const { width, height } = this.viewport;
     const following = this.mode === "FOLLOW" && !this.reduced;
@@ -287,7 +314,7 @@ export class MotionRig {
     }
     let moving = damp(this.orientation.pitch, pitch, dt, 8, .8, 0, .0004);
     moving = damp(this.orientation.yaw, yaw, dt, 8, .8, 0, .0004) || moving;
-    moving = damp(this.orientation.roll, target.roll, dt, 8, .8, 0, .0004) || moving;
+    moving = damp(this.orientation.roll, target.roll + this.reaction.wobble(time), dt, 16, .7, 0, .0004) || moving;
     return moving;
   }
 }
@@ -335,6 +362,8 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     if (dirty) sample();
     const moving = rig.step(time, scrollY);
     const pose = rig.current;
+    const strength = rig.reaction.strength.toFixed(3);
+    if (host.style.getPropertyValue("--impact-strength") !== strength) host.style.setProperty("--impact-strength", strength);
     if ((rig.mode === "AIRBORNE" || rig.mode === "HELD") && rig.hull) {
       const dt = travel ? Math.max(.001, (time - travel.time) / 1000) : 0;
       const velocity = travel && dt ? { x: (pose.x - travel.x) / dt, y: (pose.y - travel.y) / dt } : { x: 0, y: 0 };
@@ -345,6 +374,14 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     setData(host, {
       positioned: "true", chapter: rig.chapter, body: rig.mode, impacts: String(rig.impacts), slams: String(rig.slams),
       scrollVelocity: rig.inertia.velocity.toFixed(0),
+      reaction: rig.reaction.stage === "IMPACT" || rig.reaction.stage === "DIZZY" ? "dizzy" : "",
+      reactionStage: rig.reaction.stage, reactionCount: String(rig.reaction.count),
+      contactAt: String(rig.contactAt), contactWall: rig.contactWall, contactSpeed: rig.contactSpeed.toFixed(2),
+      contactPacket: rig.contactPacket, reactionWall: rig.reaction.wall,
+      contactDetectedAt: rig.contactDetectedAt.toFixed(3), reactionStartedAt: rig.reactionStartedAt.toFixed(3),
+      reactionContactAt: String(rig.reaction.contactAt), reactionAt: String(rig.reaction.startedAt),
+      reactionContactDetectedAt: rig.reactionContactDetectedAt.toFixed(3),
+      reactionStrength: rig.reaction.strength.toFixed(3),
       trajectory: [time, pose.x, pose.y, pose.width, pose.angle, pose.pitch, pose.yaw, scrollY].map((n) => +n.toFixed(3)).join(","),
     });
     const needsRender = rig.render?.(time / 1000) ?? false;

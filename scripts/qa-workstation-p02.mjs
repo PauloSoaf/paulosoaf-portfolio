@@ -8,7 +8,7 @@ import { host, screen, settle, point, wheelTo, brake, sample, waitScreenBoot } f
 
 const origin = process.env.QA_ORIGIN ?? "http://127.0.0.1:3300";
 const output = process.env.QA_WORKSTATION_OUTPUT ?? "docs/qa/Workstation/P02.1";
-const raw = "docs/report/Workstation/P02.1/recordings";
+const raw = process.env.QA_WORKSTATION_RAW ?? "docs/report/Workstation/P02.1/recordings";
 const selected = process.env.QA_WORKSTATION_CASES?.split(",");
 let results = [];
 if (selected) {
@@ -24,7 +24,7 @@ try {
   for (const locale of ["pt", "en", "es"]) for (const theme of ["dark", "light"]) for (const width of [1440, 390]) {
     const id = `${locale}-${theme}-${width}`, height = width === 390 ? 844 : 900;
     if (selected && !selected.includes(id)) continue;
-    const record = locale === "pt" && theme === "dark";
+    const record = process.env.QA_WORKSTATION_RECORD !== "0" && locale === "pt" && theme === "dark";
     const context = await browser.newContext({ viewport: { width, height }, hasTouch: width === 390, isMobile: width === 390, reducedMotion: "no-preference",
       ...(record ? { recordVideo: { dir: raw, size: { width, height } } } : {}) });
     await context.addCookies([{ name: "ps-theme", value: theme, url: origin }]);
@@ -93,7 +93,7 @@ try {
         const gesture = await brake(page);
         phases.push({ name: "observed-synthetic-brake-input", ...gesture });
         await expect.poll(async () => Number(await host(page).getAttribute("data-slams")), { timeout: 15_000 }).toBeGreaterThan(before);
-        await expect(host(page)).toHaveAttribute("data-body", "STUNNED", { timeout: 25_000 });
+        await expect(host(page)).toHaveAttribute("data-reaction", "dizzy", { timeout: 25_000 });
         await shot("brake-fall"); await phase("synthetic-scroll-brake");
         await settle(page); await phase("brake-return");
       }

@@ -26,6 +26,8 @@ export const MANIFEST = [
   ["notebook", "motion-rig", "src/features/workstation/orchestrator/position.ts"],
   ["notebook", "trajectory", "src/features/workstation/orchestrator/trajectory.ts"],
   ["notebook", "rigid-body", "src/features/workstation/physics/body.ts"],
+  ["notebook", "impact-reaction", "src/features/workstation/physics/impact-reaction.ts"],
+  ["notebook", "workbench-screen", "src/features/workstation/screen/WorkbenchScreen.client.tsx"],
   ["notebook", "scroll-inertia", "src/features/workstation/physics/scroll-inertia.ts"],
   ["notebook", "hinge", "src/features/workstation/physics/hinge.ts"],
   ["notebook", "notebook-sound", "src/features/workstation/audio/notebook-sound.ts"],

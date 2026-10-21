@@ -1,0 +1,21 @@
+{
+  "method": "Frames from original Playwright WebM, decoded by Chromium at the recorded seek position; no overlays, retouching, retiming or interpolation. Millisecond contact/render timing is measured separately in the application.",
+  "records": [
+    {
+      "image": "screenshots/pt-live-1440-video-dizzy.png",
+      "description": "Atordoamento visível com estrelas e x_x sobre NutriOpus real",
+      "requestedVideoTimeSeconds": 76.17930000000008,
+      "imageSha256": "0db00beaf03c1907dda40f4c68f6b356e03a4b11dbc0bee5398704dac697ee97",
+      "sourceVideo": "videos/pt-live-1440-websites-impact.webm",
+      "sourceVideoSha256": "95ff5fb3dad4eda6552d7b5491f9ee7a71688bc6d02499fb74f6793decd21c62"
+    },
+    {
+      "image": "screenshots/pt-live-390-video-ready.png",
+      "description": "NutriOpus carregado antes do arremesso mobile",
+      "requestedVideoTimeSeconds": 63.147,
+      "imageSha256": "6b4978c8efc4d9c2aaa79d0c247d5678e54a2b5d57984c1b48e6bee97780b6ba",
+      "sourceVideo": "videos/pt-live-390-websites-impact.webm",
+      "sourceVideoSha256": "d4ca8f36c86b7a62d482336679602ccab3082681ca457a4fdc8006ed5a15c12e"
+    }
+  ]
+}

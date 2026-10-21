@@ -1,0 +1,164 @@
+[
+  {
+    "width": 390,
+    "hash": "",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 2899.25,
+      "expertiseTop": 5284.34375,
+      "scrollY": 0
+    },
+    "after": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 2899.25,
+      "expertiseTop": 5284.34375,
+      "scrollY": 0
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "hash": "#work",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 1879.25,
+      "expertiseTop": 4264.34375,
+      "scrollY": 1020
+    },
+    "after": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 1879.25,
+      "expertiseTop": 4264.34375,
+      "scrollY": 1020
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  },
+  {
+    "width": 390,
+    "hash": "#about",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 80.25,
+      "expertiseTop": 2465.34375,
+      "scrollY": 2819
+    },
+    "after": {
+      "timelineHeight": 1593.21875,
+      "aboutTop": 80.25,
+      "expertiseTop": 2465.34375,
+      "scrollY": 2819
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "hash": "",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 486.75,
+      "aboutTop": 2484.453125,
+      "expertiseTop": 4148.109375,
+      "scrollY": 0
+    },
+    "after": {
+      "timelineHeight": 486.75,
+      "aboutTop": 2484.453125,
+      "expertiseTop": 4148.109375,
+      "scrollY": 0
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "hash": "#work",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 486.75,
+      "aboutTop": 1568.453125,
+      "expertiseTop": 3232.109375,
+      "scrollY": 916
+    },
+    "after": {
+      "timelineHeight": 486.75,
+      "aboutTop": 1568.453125,
+      "expertiseTop": 3232.109375,
+      "scrollY": 916
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "hash": "#about",
+    "latencyMs": 120,
+    "bytesPerSecond": 180000,
+    "cpuSlowdown": 4,
+    "before": {
+      "timelineHeight": 486.75,
+      "aboutTop": 88.453125,
+      "expertiseTop": 1752.109375,
+      "scrollY": 2396
+    },
+    "after": {
+      "timelineHeight": 486.75,
+      "aboutTop": 88.453125,
+      "expertiseTop": 1752.109375,
+      "scrollY": 2396
+    },
+    "delta": {
+      "timelineHeight": 0,
+      "aboutTop": 0,
+      "expertiseTop": 0,
+      "scrollY": 0
+    },
+    "scene": "ready",
+    "errors": []
+  }
+]

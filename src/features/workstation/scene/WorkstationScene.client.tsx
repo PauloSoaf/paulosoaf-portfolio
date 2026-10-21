@@ -51,6 +51,7 @@ function Assembly(props: Props) {
   const displayMaterials = useRef<{ hole: Material; glass: Material } | null>(null);
   const gesture = useRef<Gesture | null>(null), lastChassisClick = useRef(0);
   const frames = useRef(0), started = useRef(false), studioReady = useRef(false), sceneMoving = useRef(false);
+  const renderedReaction = useRef(0);
   const rotation = useRef([0, 0, 0]);
   const scratch = useMemo(() => ({ point: new Vector3(), ndc: new Vector2(), raycaster: new Raycaster() }), []);
   const star = useMemo(() => ({ geometry: starGeometry(), material: new MeshBasicMaterial({ color: "#ffd27a", toneMapped: false, transparent: true, depthTest: false }) }), []);
@@ -259,12 +260,14 @@ function Assembly(props: Props) {
     hinge.current.rotation.x = (90 - rig.hinge.angle) * Math.PI / 180;
     if (stars.current) {
       // Dizzy stars orbit just above the real silhouette, wherever and however it landed.
-      const dizzy = rig.mode === "STUNNED" && rig.stunnedUntil - performance.now() > 250 && !!rig.hull;
+      const dizzy = !reduced && (rig.reaction.stage === "IMPACT" || rig.reaction.stage === "DIZZY") && !!rig.hull;
       stars.current.visible = dizzy;
+      if (host.current) setData(host.current, { stars: String(dizzy) });
       if (dizzy && rig.hull) {
         const top = Math.min(...rig.hull.points.map((p) => p.y)), scale = pose.width / CHASSIS_UNITS;
         stars.current.position.set(pose.x - size.width / 2, size.height / 2 - top + 18, 400);
-        stars.current.scale.setScalar(scale);
+        stars.current.scale.setScalar(scale * (.65 + rig.reaction.strength * .45));
+        star.material.opacity = Math.min(1, Math.max(0, (rig.reaction.until - performance.now()) / 150));
         const phase = performance.now() / 1000 * 5.5;
         stars.current.children.forEach((child, index) => {
           const a = phase + index * Math.PI * 2 / 3;
@@ -304,6 +307,9 @@ function Assembly(props: Props) {
       element.style.transform = `matrix(${(b.x - a.x) / DOM_WIDTH},${(b.y - a.y) / DOM_WIDTH},${(c.x - a.x) / DOM_HEIGHT},${(c.y - a.y) / DOM_HEIGHT},${a.x},${a.y})`;
       element.style.visibility = showing ? "visible" : "hidden";
       element.style.opacity = String(Math.min(1, Math.max(0, (lid - 22) / 38)));
+      // Compensate the projected scale so the exit target stays >=44 viewport pixels.
+      const sx = Math.hypot(b.x - a.x, b.y - a.y) / DOM_WIDTH, sy = Math.hypot(c.x - a.x, c.y - a.y) / DOM_HEIGHT;
+      element.style.setProperty("--screen-hit-size", `${Math.min(200, 44 / Math.max(.05, Math.min(sx, sy))).toFixed(2)}px`);
       const accepts = isScreenInteractive(state) && rig.mode === "FOLLOW" && lid > 60 && uncovered;
       element.style.pointerEvents = accepts ? "auto" : "none";
       element.inert = !accepts;
@@ -317,6 +323,10 @@ function Assembly(props: Props) {
   useFrame(({ gl: renderer, scene: world, camera: view }) => {
     renderer.render(world, view);
     if (!root.current || !host.current) return;
+    if (stars.current?.visible && renderedReaction.current !== rig.reaction.count) {
+      renderedReaction.current = rig.reaction.count;
+      setData(host.current, { reactionRenderedAt: performance.now().toFixed(3), reactionRenderedCount: String(rig.reaction.count) });
+    }
     // Silhouette: hull of both shells' boxes. It clips the hit layer and is the rigid-body shape.
     const projected: { x: number; y: number }[] = [];
     for (const name of ["chassis", "lid"]) {

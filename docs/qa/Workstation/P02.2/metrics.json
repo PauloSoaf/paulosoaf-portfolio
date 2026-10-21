@@ -1,0 +1,640 @@
+{
+  "collectedAt": "2026-10-21T08:38:18.097Z",
+  "base": "2fea4b80b2235adb77725e0310de4724e2e18587",
+  "source": [
+    {
+      "path": "src/features/workstation/scene/WorkstationScene.client.tsx",
+      "sha256": "d06f2698afec2b3ead0c01c11f3dbbb34fc3b07b448d035b1298b190d4995a21",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/models/LaptopModel.client.tsx",
+      "sha256": "5776cf2ae0bcedd57a96c46419a9b31c3c0c5f83ad6eb7274da41a625d68ce70",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/orchestrator/position.ts",
+      "sha256": "72c30d14f2a7496724d85acf6e08a4050e04efb791cb15fc2a33d73d31c805f1",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/orchestrator/trajectory.ts",
+      "sha256": "efbc3049bbbe67d081c35c2b2460f83d740399abcf07cc3db1999c6b6725ca1a",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/physics/body.ts",
+      "sha256": "f5bf3ad574d6d610187cdc3c83cc40252391e073502ae536786ea63d943f59e4",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/physics/impact-reaction.ts",
+      "sha256": "ad09109a7c64420c8810d233459e917bb5409894c9672ada72a87b6fb549d6dc",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/screen/WorkbenchScreen.client.tsx",
+      "sha256": "d984c56590588afcededa67c0bf55024047c32c12e302a151b166678f9c7973d",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/physics/scroll-inertia.ts",
+      "sha256": "98dc97bfeff295b8c846136de24ba2937eac2abb85007aaca36943767b98f127",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/physics/hinge.ts",
+      "sha256": "0f7b587783ca6c8ca83f332d321d898669a5a189b3403ea27765961639091453",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/audio/notebook-sound.ts",
+      "sha256": "25c0e5ffce15a42e20f0e5c3d34499bef8bde2cd87815e62e45f319855f6c693",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/page/page-reactions.ts",
+      "sha256": "d1798baf00a773164c1cc8cc5109ef0776482a8251fded53df3f58a3548f485c",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/orchestrator/WorkstationOrchestrator.client.tsx",
+      "sha256": "17287a4ee06f41a263a2a70cedd370c953692047b06ecd89aea76e32a05be2bf",
+      "dirty": true
+    },
+    {
+      "path": "src/features/workstation/state/workstation-machine.ts",
+      "sha256": "453bc8ba95ce44919a020980cb1539baf7504083c0199ab7c1c845648127ff83",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/terminal/commands.ts",
+      "sha256": "d6c12b14edd7411fc28a5a45de203e1016d4ca8bada9daa5f2d1443f713f7433",
+      "dirty": false
+    },
+    {
+      "path": "src/features/workstation/code/highlight.ts",
+      "sha256": "acfc2ba0cd3e72cd53da11835dc19fde9b9ec36e212ac012365d966493609e6a",
+      "dirty": false
+    },
+    {
+      "path": "scripts/generate-workstation-code.mjs",
+      "sha256": "a271342c389a813c9e1b196587a51eeb9afd6ea6ebfa3c64444238f25c61f979",
+      "dirty": true
+    },
+    {
+      "path": "src/components/hero/HeroEditorial.tsx",
+      "sha256": "2f1c028dee06d5de7bb959b97fba8e2caa9d37c509e2c1130ee72300197b3ea7",
+      "dirty": false
+    },
+    {
+      "path": "src/components/layout/SiteHeader.tsx",
+      "sha256": "a641df54160b1bdf3fcb206a2e6115cf1d3f47ed89449e0307d18062eda19184",
+      "dirty": false
+    },
+    {
+      "path": "src/components/ui/ThemeToggle.client.tsx",
+      "sha256": "b5b504da3fc5cced6756f84e550040ed406611c6afe2e561e072c071d934d802",
+      "dirty": false
+    },
+    {
+      "path": "src/components/carousel/ProjectCarousel.client.tsx",
+      "sha256": "94e5cfe98dac6fc39635c5275ed720b919df82312c71363b19dd1a27995234b2",
+      "dirty": false
+    },
+    {
+      "path": "src/components/carousel/CarouselCountdown.client.tsx",
+      "sha256": "fdc84f64dae707bb398b6fecb9af50f58bbd982ec187daaf0179c7be356fde15",
+      "dirty": false
+    },
+    {
+      "path": "src/components/projects/ProjectCard.tsx",
+      "sha256": "652c871a358ade43432e3d865a75426178994b9d4318b90465fc1cdab291adfe",
+      "dirty": false
+    },
+    {
+      "path": "src/components/timeline/JourneyTimeline.client.tsx",
+      "sha256": "ff8344a97aaf0df3e18ed5b3b7741f6dedcf09f2934c40d5db97200aebfd76c9",
+      "dirty": false
+    },
+    {
+      "path": "src/components/sections/Section.tsx",
+      "sha256": "ddeaed00df64c4f7be7f7878490c3ed1dd01890dff72e56a1567a16773d221f5",
+      "dirty": false
+    },
+    {
+      "path": "src/components/sections/ExpertiseSection.tsx",
+      "sha256": "6016a39fab94539d08296961eed12e0130b5d51c84b1a43e5191c9f16d14c177",
+      "dirty": false
+    },
+    {
+      "path": "src/components/sections/ServicesSection.tsx",
+      "sha256": "57fe1441df4abdb5a0422b25dd29bee72f564330f39af8edcb4baddb5045e8d7",
+      "dirty": false
+    },
+    {
+      "path": "src/components/sections/ContactSection.tsx",
+      "sha256": "3bcf4dc0f5a0285b47a57a5a7fde193bb5e8d3dff4c533df3cfbdec3d843de52",
+      "dirty": false
+    },
+    {
+      "path": "src/components/layout/SiteFooter.tsx",
+      "sha256": "4a3175ef655da75cd1b69280863c9dcb8c7d10e9cbf28ecfa8becbf56404d26f",
+      "dirty": false
+    },
+    {
+      "path": "src/features/motion/motion-engine.ts",
+      "sha256": "4832aae072dfdcb2c07aeff3a1f1113d8e3c91f9c52acc9913ef7ef8b2b39d41",
+      "dirty": false
+    },
+    {
+      "path": "src/graphics/hero/HeroScene.client.tsx",
+      "sha256": "4d9a3b1ac07a1d2e3d2112c1a63870e450f604129a5ae208d64b34b2469a54f8",
+      "dirty": false
+    },
+    {
+      "path": "src/theme/theme-client.ts",
+      "sha256": "38514e9f678b63a53acd7d6ad6b0c055a123f8cfac9583eadc2e2285f39b69f5",
+      "dirty": false
+    },
+    {
+      "path": "src/styles/workstation.css",
+      "sha256": "0d14b34c4152cfaa2ad1df5879d2440d717f2bbe732a9df56aaab02a89977c6e",
+      "dirty": true
+    },
+    {
+      "path": "src/styles/tokens.css",
+      "sha256": "0ba68877b0cbcb9cb8c75aec1681730eeedb5b678a1800f990c5b47ad4024abb",
+      "dirty": false
+    }
+  ],
+  "checks": {
+    "lint": "PASS (npm run verify)",
+    "typecheck": "PASS (npm run verify)",
+    "unit": {
+      "passed": 174,
+      "files": 19,
+      "command": "npm run verify"
+    },
+    "previewBuild": "PASS",
+    "publicBuild": "PASS",
+    "workstation": {
+      "startTime": "2026-10-21T08:12:01.862Z",
+      "duration": 800782.9029999999,
+      "expected": 46,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "general": {
+      "startTime": "2026-10-21T07:37:29.119Z",
+      "duration": 130838.413,
+      "expected": 87,
+      "skipped": 1,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "publicGate": {
+      "startTime": "2026-10-21T08:36:12.429Z",
+      "duration": 4737.314,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "editorial": {
+      "status": "BLOCKED",
+      "unchangedBlockers": 10
+    }
+  },
+  "contact": {
+    "callbackDelayMs": 1.900000000000091,
+    "firstRenderSubmissionDelayMs": 5.200000000000273,
+    "rafContactAt": 3956.5,
+    "rafReactionAt": 3956.5,
+    "detectedAt": 3997.7,
+    "startedAt": 3999.6,
+    "renderedAt": 4002.9,
+    "wall": "ceiling",
+    "speed": 4064.31,
+    "maxRecoverySpeedPxS": 77.33800283574143,
+    "stages": [
+      "IDLE",
+      "IMPACT",
+      "DIZZY",
+      "RECOVERING"
+    ],
+    "strongReactions": 1
+  },
+  "hydration": [
+    {
+      "width": 390,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2899.25,
+        "expertiseTop": 5284.34375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1879.25,
+        "expertiseTop": 4264.34375,
+        "scrollY": 1020
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 80.25,
+        "expertiseTop": 2465.34375,
+        "scrollY": 2819
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 2484.453125,
+        "expertiseTop": 4148.109375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1568.453125,
+        "expertiseTop": 3232.109375,
+        "scrollY": 916
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 2396
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    }
+  ],
+  "lighthouses": [
+    {
+      "mode": "desktop",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 666.56505,
+      "tbtMs": 64.5,
+      "cls": 0.0003364385632242331
+    },
+    {
+      "mode": "mobile",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 60
+      },
+      "lcpMs": 3345.3588,
+      "tbtMs": 232,
+      "cls": 0
+    }
+  ],
+  "profile": [
+    {
+      "width": 1440,
+      "initialGzipBytes": 184056,
+      "sceneLazyGzipBytes": 259742,
+      "codeLazyGzipBytes": 77716,
+      "throwLazyGzipBytes": 0,
+      "studioAssetBytes": 112750,
+      "sceneReadyAndSettledMs": 3688,
+      "idleFrames600ms": 0,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "renderCpuMs": 1.2116,
+      "vitals": [
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 224
+        },
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 6.599999964237213
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 224
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 2.5
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 424
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "initialGzipBytes": 184056,
+      "sceneLazyGzipBytes": 259742,
+      "codeLazyGzipBytes": 77716,
+      "throwLazyGzipBytes": 0,
+      "studioAssetBytes": 112750,
+      "sceneReadyAndSettledMs": 1847,
+      "idleFrames600ms": 0,
+      "drawCalls": 18,
+      "triangles": 21146,
+      "renderCpuMs": 1.5752,
+      "vitals": [
+        {
+          "name": "portfolio:vital:TTFB",
+          "value": 5.800000011920929
+        },
+        {
+          "name": "portfolio:vital:FCP",
+          "value": 200
+        },
+        {
+          "name": "portfolio:vital:LCP",
+          "value": 200
+        },
+        {
+          "name": "portfolio:vital:FID",
+          "value": 1.100000023841858
+        },
+        {
+          "name": "portfolio:vital:INP",
+          "value": 208
+        },
+        {
+          "name": "portfolio:vital:CLS",
+          "value": 0
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "visual": {
+    "cases": 12,
+    "screenshots": 76,
+    "maxAlignmentErrorPx": 0.0062513759256615205,
+    "maxIdleFrames": 0,
+    "errors": []
+  },
+  "live": [
+    {
+      "id": "pt-live-1440",
+      "proofs": [
+        {
+          "site": "nutriopus",
+          "actualURL": "https://www.nutriopus.com.br/",
+          "epoch": 1792569951689.9,
+          "preservedAcrossThemeAndRotation": true,
+          "screen": {
+            "width": 800,
+            "height": 459,
+            "rootWidth": 800,
+            "rootHeight": 459
+          }
+        },
+        {
+          "site": "deborah",
+          "actualURL": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+          "epoch": 1792569978083.9,
+          "preservedAcrossThemeAndRotation": true,
+          "screen": {
+            "width": 800,
+            "height": 459,
+            "rootWidth": 800,
+            "rootHeight": 459
+          }
+        }
+      ],
+      "video": {
+        "path": "videos/pt-live-1440-websites-impact.webm",
+        "duration": 150.44,
+        "width": 1440,
+        "height": 900,
+        "bytes": 15176354,
+        "sha256": "95ff5fb3dad4eda6552d7b5491f9ee7a71688bc6d02499fb74f6793decd21c62"
+      },
+      "errors": [],
+      "physicalIframePreserved": true,
+      "statuses": [
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200
+        },
+        {
+          "url": "https://www.xn--advogadadborahlima-jwb.com.br/",
+          "status": 200
+        },
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200
+        }
+      ]
+    },
+    {
+      "id": "pt-live-390",
+      "proofs": [
+        {
+          "site": "nutriopus",
+          "actualURL": "https://www.nutriopus.com.br/",
+          "epoch": 1792570102000.6,
+          "preservedAcrossThemeAndRotation": true,
+          "screen": {
+            "width": 800,
+            "height": 459,
+            "rootWidth": 800,
+            "rootHeight": 459
+          }
+        },
+        {
+          "site": "deborah",
+          "actualURL": "https://www.xn--advogadadborahlima-jwb.com.br/#topo",
+          "epoch": 1792570129941.2,
+          "preservedAcrossThemeAndRotation": true,
+          "screen": {
+            "width": 800,
+            "height": 459,
+            "rootWidth": 800,
+            "rootHeight": 459
+          }
+        }
+      ],
+      "video": {
+        "path": "videos/pt-live-390-websites-impact.webm",
+        "duration": 86.16,
+        "width": 390,
+        "height": 844,
+        "bytes": 8679193,
+        "sha256": "d4ca8f36c86b7a62d482336679602ccab3082681ca457a4fdc8006ed5a15c12e"
+      },
+      "errors": [],
+      "physicalIframePreserved": true,
+      "statuses": [
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200
+        },
+        {
+          "url": "https://www.xn--advogadadborahlima-jwb.com.br/",
+          "status": 200
+        },
+        {
+          "url": "https://www.nutriopus.com.br/",
+          "status": 200
+        }
+      ]
+    }
+  ],
+  "remote": {
+    "checkedAt": "2026-10-21T08:38:17.9796555Z",
+    "head": "2fea4b80b2235adb77725e0310de4724e2e18587",
+    "runs": [
+      {
+        "id": 39551673568,
+        "status": "completed",
+        "conclusion": "cancelled",
+        "html_url": "https://github.com/PauloSoaf/paulosoaf-portfolio/actions/runs/39551673568",
+        "head_sha": "2fea4b80b2235adb77725e0310de4724e2e18587",
+        "updated_at": "2026-10-21T06:04:08Z"
+      }
+    ]
+  },
+  "limits": [
+    "Chromium/SwiftShader; not physical GPU FPS or artistic approval",
+    "Lighthouse single lab samples; INP scripted local visit, not field p75",
+    "Render submission timestamp is not physical presentation time",
+    "Explicit 2D focus transitions may remount the iframe",
+    "Cross-origin load event does not prove usability; manual help remains available",
+    "No push, merge or deploy"
+  ]
+}

@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { settle } from "../../scripts/lib/workstation-p02.mjs";
 const workstation = (page: Page) => page.locator("[data-workstation]");
 async function open(page: Page) {
   await page.goto("/pt/workstation-lab");
@@ -51,7 +52,7 @@ test("clicking the lid closes it with a spring, sleeps the screen and reopens it
   await page.mouse.click(lid.x, lid.y);
   await expect(workstation(page)).toHaveAttribute("data-lid", "0");
   await expect.poll(async () => Number(await workstation(page).getAttribute("data-lid-rendered"))).toBeLessThan(1);
-  await expect(page.locator(".workstation-projected-screen")).toHaveCount(0);
+  await expect(page.locator(".workstation-projected-screen")).not.toBeVisible();
   const hull = (await workstation(page).getAttribute("data-hull"))!.split(";").map((p) => p.split(",").map(Number));
   const cx = hull.reduce((sum, p) => sum + p[0]!, 0) / hull.length, cy = hull.reduce((sum, p) => sum + p[1]!, 0) / hull.length;
   await page.mouse.click(cx, cy);
@@ -257,6 +258,13 @@ test("project actions approach the notebook, theme keeps state, anchors stay in 
   const canvas = await page.locator("canvas").elementHandle();
   await page.locator("[data-workstation-work-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
   await expect(workstation(page)).toHaveAttribute("data-chapter", "work");
+  await settle(page);
+  // Let the actual entry finish and select explicitly, which also pauses autoplay. Repeated
+  // scrollIntoView retries during entry can otherwise move the target and trigger a brake.
+  await page.locator("[data-carousel]").evaluate((node) => Promise.allSettled(node.getAnimations({ subtree: true })
+    .filter((animation) => animation.effect?.getTiming().iterations !== Infinity).map((animation) => animation.finished)));
+  await page.locator(".filmstrip-button").filter({ hasText: "NutriOpus" }).click();
+  await settle(page);
   await page.locator('.carousel-slide[data-active="true"]').getByRole("button", { name: /Explorar no notebook/ }).click();
   await expect(workstation(page)).toHaveAttribute("data-state", "PREVIEW");
   await expect(page.locator('iframe[data-project-site="nutriopus"]')).toHaveAttribute("src", "https://www.nutriopus.com.br/");

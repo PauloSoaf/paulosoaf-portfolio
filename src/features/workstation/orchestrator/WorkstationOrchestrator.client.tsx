@@ -79,12 +79,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   useEffect(() => () => sound.dispose(), [sound]);
   // Physical comedy: every impact has a sound, a small reaction and, on hard landings, a page tremor.
   useEffect(() => {
-    let reactionTimer = 0, lastAnnounce = 0;
-    const react = (kind: string, ms: number) => {
-      const node = host.current; if (!node) return;
-      node.dataset.reaction = kind; clearTimeout(reactionTimer);
-      reactionTimer = window.setTimeout(() => { if (host.current) host.current.dataset.reaction = ""; }, ms);
-    };
+    let lastAnnounce = 0;
     const puff = (x: number, y: number, speed: number) => {
       const layer = dust.current; if (!layer || rig.reduced) return;
       for (const side of [-1, 1]) {
@@ -98,10 +93,8 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       if (kind === "floor") {
         sound.thud(speed);
         if (speed > 650) { tremor({ x, y }, Math.min(1.2, speed / 2400)); input.jolt(NOTEBOOK_KEYS.length, Math.min(speed, 3000) * .00055); puff(x, y, speed); }
-      } else if (kind === "dizzy") react("dizzy", 1250);
-      else if (kind === "ceiling") { sound.bonk(speed); react("bonk", 900); input.jolt(NOTEBOOK_KEYS.length, Math.min(speed, 2400) * .0003); }
+      } else if (kind === "ceiling") { sound.bonk(speed); input.jolt(NOTEBOOK_KEYS.length, Math.min(speed, 2400) * .0003); }
       else if (kind === "wall") sound.wall(speed);
-      else if (kind === "slam") react("wow", 600);
       else if (kind === "throw") sound.whoosh(speed);
       else if (kind === "lid") sound.lid(speed);
       else if (kind === "getup") {
@@ -113,7 +106,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
     rig.onChapter = setChapter;
     input.wake = () => rig.wake(); input.onKey = () => sound.key();
     input.onEscape = () => dispatch({ type: "CLOSE_X" });
-    return () => { clearTimeout(reactionTimer); rig.onImpact = () => {}; rig.onTravel = () => {}; rig.onChapter = () => {}; };
+    return () => { rig.onImpact = () => {}; rig.onTravel = () => {}; rig.onChapter = () => {}; };
   }, [rig, input, sound, announce, text.announceLanded]);
   useEffect(() => {
     const reduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -141,11 +134,11 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       const siteId = detail && typeof detail === "object" ? siteForProject((detail as Record<string, unknown>).slug) : null;
       if (!siteId) return;
       dispatch({ type: "SET_LID", angle: 108 }); dispatch({ type: "OPEN_SITE", siteId });
-      if (innerWidth < 1280 || !armed || failed) dispatch({ type: "FOCUS_SCREEN" });
-      else { rig.inertia.suppress(performance.now(), 2400); document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
+      if (failed || (!armed && (environment.reduced || environment.limited))) dispatch({ type: "FOCUS_SCREEN" });
+      else { setArmed(true); rig.inertia.suppress(performance.now(), 2400); document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
     };
     window.addEventListener(PROJECT_REQUEST, select); return () => window.removeEventListener(PROJECT_REQUEST, select);
-  }, [armed, failed, environment.reduced, rig]);
+  }, [armed, failed, environment.reduced, environment.limited, rig]);
   useEffect(() => {
     const modal = dialog.current; if (!modal) return;
     if (focused && !modal.open) { returnFocus.current = document.activeElement as HTMLElement; modal.showModal(); }
@@ -167,7 +160,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
 
   const screenDispatch = useCallback((event: WorkstationEvent) => {
     dispatch(event);
-    if (environment.mobile && (event.type === "OPEN_SITE" || event.type === "OPEN_CODE")) dispatch({ type: "FOCUS_SCREEN" });
+    if (environment.mobile && (event.type === "OPEN_CODE" || (event.type === "OPEN_SITE" && event.siteId === "fixture"))) dispatch({ type: "FOCUS_SCREEN" });
   }, [environment.mobile]);
   const notebookAction = useCallback((action: "hop" | "drop" | "spin" | "close-lid" | "open-lid" | "reset" | "keyboard" | "left" | "right") => {
     sound.unlock();
@@ -227,7 +220,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
   const screen = <ScreenBoundary onFailure={onScreenReady} fallback={<div className="workbench-screen workbench-code" data-screen-error role="status"><p>{text.screenUnavailable}</p><button type="button" onClick={() => window.location.reload()}>{text.reload}</button></div>}>
     <Suspense fallback={<div className="workbench-screen workbench-code" role="status" aria-busy="true"><p>{text.loading}</p></div>}><WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} onReady={onScreenReady} /></Suspense>
   </ScreenBoundary>;
-  const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" ? <div className="workbench-screen workbench-code" data-workstation-screen><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
+  const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" && state.app.siteId === "fixture" ? <div className="workbench-screen workbench-code" data-workstation-screen><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
   const active = !environment.hidden && !focused;
   const live = armed && ready && !failed;
   const badgeText = useCallback((part: HoverPart) => part === "chassis" ? text.badgeChassis : part === "lid" ? (state.lidAngle < 15 ? text.badgeLidOpen : text.badgeLidClose) : part === "keyboard" ? text.badgeKeys : part === "trackpad" ? text.badgeTrackpad : "", [text, state.lidAngle]);
@@ -255,7 +248,7 @@ export function WorkstationOrchestrator({ locale }: { locale: Locale }) {
       <div ref={bindHost} className="workstation-companion" data-workstation data-state={state.mode} data-lid={state.lidAngle} data-scene={failed ? "error" : ready && screenReady ? "ready" : armed ? "loading" : "fallback"} data-screen-strategy="projected" data-inspecting={inspectActive}>
         <div ref={hit} className="workstation-hit" tabIndex={-1} aria-hidden="true" />
         <div className="workstation-dom-layer">
-          {ready && !failed && lidOpen && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
+          {ready && !failed && !focused ? <div ref={bindScreen} className="workstation-projected-screen">{sceneScreen}</div> : null}
         </div>
         {armed && !failed ? <SceneBoundary fail={fail}><Scene state={state} dispatch={dispatch} theme={theme} active={active} reduced={environment.reduced} host={host} hit={hit} badge={badge} screenElement={screenElement} rig={rig} input={input} pointer={pointer} sound={sound} badgeText={badgeText} onReady={onReady} onFailure={fail} onMenu={onMenu} /></SceneBoundary> : null}
         <div ref={dust} className="workstation-dust" aria-hidden="true" />

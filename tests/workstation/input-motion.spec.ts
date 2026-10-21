@@ -224,10 +224,19 @@ test("carried, it swings like a pendulum; thrown, it flies, lands and returns by
     swing = Math.max(swing, Math.abs(Number((await host(page).getAttribute("data-trajectory"))!.split(",")[4])));
   }
   expect(swing).toBeGreaterThan(.03);
-  for (let step = 1; step <= 6; step++) await page.mouse.move(grip.x - 160 - step * 45, grip.y - 40 - step * 20);
-  await page.mouse.up();
+  // Lift the real body clear of the floor before releasing. Per-event mouse round trips on
+  // SwiftShader can turn a nominal "fast" sequence near the floor into a stationary release.
+  // Native CDP events retain real timestamps; no app/physics clock or threshold is changed.
+  const cdp = await page.context().newCDPSession(page), throwX = grip.x - 180;
+  for (let step = 1; step <= 6; step++) await cdp.send("Input.dispatchMouseEvent", {
+    type: "mouseMoved", x: throwX, y: grip.y - 40 + (200 - (grip.y - 40)) * step / 6, button: "left", buttons: 1,
+  });
+  await Promise.all([...Array.from({ length: 4 }, (_, step) => cdp.send("Input.dispatchMouseEvent", {
+    type: "mouseMoved", x: throwX, y: 200 + (step + 1) * 22, button: "left", buttons: 1,
+  })), cdp.send("Input.dispatchMouseEvent", { type: "mouseReleased", x: throwX, y: 288, button: "left", buttons: 0 })]);
   await expect(host(page)).toHaveAttribute("data-body", /AIRBORNE|STUNNED/);
   await expect.poll(async () => Number(await host(page).getAttribute("data-impacts")), { timeout: 20_000 }).toBeGreaterThan(0);
+  await page.mouse.up(); await cdp.detach(); // synchronize Playwright's button bookkeeping
   await expect(host(page)).toHaveAttribute("data-body", "FOLLOW", { timeout: 30_000 });
 });
 

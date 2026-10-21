@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable react-hooks/immutability -- Bind imperative device controllers to the mounted owned screen. */
-import { useEffect, useRef, useSyncExternalStore, type Dispatch } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type Dispatch } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Theme } from "@/theme/theme";
 import { workstationLabels } from "../labels";
@@ -15,6 +15,37 @@ import { CodeApp } from "./CodeApp.client";
 import { TerminalApp, TerminalPrompt } from "./TerminalApp.client";
 
 const unmuted = () => false;
+
+/** The parent cannot inspect a cross-origin document. A load event is not proof of usability. */
+function CommercialPreview({ siteId, text, dispatch }: {
+  siteId: keyof typeof workstationSites; text: (typeof workstationLabels)[Locale]; dispatch: Dispatch<WorkstationEvent>;
+}) {
+  const site = workstationSites[siteId];
+  const [attempt, setAttempt] = useState(0), [help, setHelp] = useState(false), [failed, setFailed] = useState(false);
+  const loaded = useRef(false);
+  useEffect(() => {
+    loaded.current = false;
+    const timer = setTimeout(() => { if (!loaded.current) setFailed(true); }, 15000);
+    return () => clearTimeout(timer);
+  }, [attempt]);
+  return <div className="workbench-site" data-workstation-browser data-immersive-site={siteId}>
+    <iframe key={attempt} src={site.url} title={site.title} data-project-site={siteId}
+      sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin"
+      allow="camera 'none'; microphone 'none'; geolocation 'none'"
+      onLoad={() => { loaded.current = true; }} onError={() => setFailed(true)} />
+    <div className="workbench-site-controls">
+      <button type="button" className="workbench-site-exit" data-input-action="close" aria-label={text.close} title={text.close} onClick={() => dispatch({ type: "CLOSE_X" })}>×</button>
+      <button type="button" className="workbench-site-help" aria-label={text.siteOptions} title={text.siteOptions} aria-expanded={help || failed} onClick={() => setHelp(!help)}>⋯</button>
+    </div>
+    {help || failed || site.status !== "verified-local" ? <div className="workbench-site-fallback" role="region" aria-label={text.siteOptions}>
+      <p role={failed ? "status" : undefined}>{failed ? text.siteFailed : text.siteHelp}</p>
+      <a href={site.url} target="_blank" rel="noopener noreferrer">{text.external} ↗</a>
+      <button type="button" onClick={() => { setFailed(false); setHelp(false); setAttempt(attempt + 1); }}>{text.siteRetry}</button>
+      <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
+      <button type="button" onClick={() => { setFailed(false); setHelp(false); }}>{text.siteResume}</button>
+    </div> : null}
+  </div>;
+}
 
 function SpeakerIcon({ muted }: { muted: boolean }) {
   return <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -45,15 +76,15 @@ export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer
   }, [pointer, input, sound, app.kind, dispatch]);
   // "Ready" includes the native text port and trackpad bindings, not just the first 3D frame.
   useEffect(onReady, [onReady]);
-  return <div ref={root} className="workbench-screen" data-workstation-screen data-app={app.kind}>
-    <div className="workbench-toolbar" onDoubleClick={(event) => { if (!(event.target as Element).closest("button") && state.mode !== "FOCUS_SCREEN") dispatch({ type: "FOCUS_SCREEN" }); }}>
+  return <div ref={root} className="workbench-screen" data-workstation-screen data-app={app.kind} data-immersive={!!site}>
+    {!site ? <div className="workbench-toolbar" onDoubleClick={(event) => { if (!(event.target as Element).closest("button") && state.mode !== "FOCUS_SCREEN") dispatch({ type: "FOCUS_SCREEN" }); }}>
       <span className="workbench-mark" aria-hidden="true">◈</span><span className="workbench-title">{title}</span>
       <span className="workbench-toolbar-end">
         {app.kind !== "DESKTOP" ? <button data-input-action="close" type="button" onClick={() => dispatch({ type: "CLOSE_X" })} aria-label={text.close} title={text.close}>×</button> : null}
         {state.mode !== "FOCUS_SCREEN" ? <button data-input-action="focus" type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })} aria-label={text.focus} title={text.focus}>⤢</button> : null}
         <button data-input-action="mute" data-workstation-mute type="button" onClick={sound.toggle} aria-pressed={muted} aria-label={muted ? text.soundOn : text.soundOff} title={muted ? text.soundOn : text.soundOff}><SpeakerIcon muted={muted} /></button>
       </span>
-    </div>
+    </div> : null}
     {app.kind === "DESKTOP" ? <div className="workbench-desktop">
       <div className="workbench-orbit" aria-hidden="true"><span>◈</span></div>
       <p className="workbench-kicker">OBSIDIAN / WORKBENCH</p><h2>{text.greeting}</h2><p>{text.subtitle}</p>
@@ -68,6 +99,7 @@ export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer
     </div> : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
       : app.kind === "TERMINAL" ? <TerminalApp session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} intro={text.terminalIntro} />
       : app.kind === "CODE" ? <CodeApp file={app.file} text={text} pointer={pointer} inspecting={inspecting} onInspect={onInspect} onSelect={(file) => dispatch({ type: "OPEN_CODE", file })} />
+      : app.kind === "PREVIEW" && app.siteId !== "fixture" ? <CommercialPreview key={app.siteId} siteId={app.siteId} text={text} dispatch={dispatch} />
       : <div className="workbench-browser" data-workstation-browser>
         <div className="workbench-address"><span aria-hidden="true">●</span><span>{site ? new URL(site.url).hostname : text.fixture}</span>
           {site ? <a href={site.url} target="_blank" rel="noopener noreferrer" aria-label={text.external} title={text.external}>↗</a> : null}</div>
