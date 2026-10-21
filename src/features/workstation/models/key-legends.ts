@@ -1,6 +1,6 @@
 import { CanvasTexture, InstancedBufferAttribute, MeshBasicMaterial, PlaneGeometry, SRGBColorSpace, type Texture } from "three";
-import { NOTEBOOK_KEYS } from "../input/keyboard-layout";
-const COLS = 8, CELL = 160, KEY_DEPTH = .18;
+import { KEY_DEPTH, NOTEBOOK_KEYS } from "../input/keyboard-layout";
+const COLS = 8, CELL = 160;
 export function createKeyMaterial(texture: Texture) {
   const material = new MeshBasicMaterial({ map: texture, transparent: true, opacity: 1, depthWrite: false, toneMapped: false });
   material.onBeforeCompile = (shader) => {

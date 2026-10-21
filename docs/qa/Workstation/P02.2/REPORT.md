@@ -4,6 +4,8 @@
 
 **Correção posterior ao relato do proprietário:** [hotfix de Fast Refresh e diagnóstico do atributo no body](HOTFIX-REFRESH.md), partindo de `e35813e`. Os resultados e hashes abaixo preservam a execução original da P02.2.
 
+**Correção do teclado:** [cluster de setas em T invertido](arrow-cluster/REPORT.md), a partir de `64ee99e`, com regressão dos cliques e capturas próprias.
+
 ## Comportamento entregue
 
 NutriOpus e Déborah abrem pelo carrossel diretamente no display 3D, inclusive no mobile. O iframe ocupa os **800 × 458,5366 pixels lógicos** da área útil, sem toolbar, endereço, aviso, padding ou borda internos. É o website real, com seu próprio conteúdo, links e scroll. A projeção física conserva a proporção; não há Fullscreen API nem imagem substituta.

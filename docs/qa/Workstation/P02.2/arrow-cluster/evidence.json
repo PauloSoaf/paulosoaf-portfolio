@@ -1,0 +1,402 @@
+{
+  "collectedAt": "2026-10-21T17:35:41.115Z",
+  "base": "64ee99e327b5c6ff0759a1829c9bdbbcb93f5533",
+  "source": [
+    {
+      "path": "src/features/workstation/input/keyboard-layout.ts",
+      "sha256": "c47915c4bf2c8126004eb431c57996d12923b14dde3b20fc1db0e99a6a3a19af"
+    },
+    {
+      "path": "src/features/workstation/models/LaptopModel.client.tsx",
+      "sha256": "4d6006af0143e0b019488608d762e76002a8064663e6f77f48faa71fad70f1e2"
+    },
+    {
+      "path": "src/features/workstation/models/key-legends.ts",
+      "sha256": "bf8ae8a5a879c8819c8af6b88dd47afc3775f356265c2f6da6c12fdec0fdc61f"
+    },
+    {
+      "path": "tests/unit/workstation-arrow-cluster.test.ts",
+      "sha256": "95252ebc41df8e689e0be2c2ef836f51aee10614b836c5529fee705a52467b1d"
+    },
+    {
+      "path": "tests/workstation/arrow-cluster.spec.ts",
+      "sha256": "b9666a9e2b9186b0b8809db092db2a9d90519fec25ece925db00d2420cadb827"
+    }
+  ],
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": 181,
+    "unitFiles": 20,
+    "previewBuild": "PASS",
+    "e2e": {
+      "startTime": "2026-10-21T17:32:46.147Z",
+      "duration": 149056.002,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "proofs": [
+    {
+      "width": 1440,
+      "theme": "dark",
+      "input": "mouse",
+      "results": [
+        {
+          "label": "↑",
+          "caret": 2,
+          "target": {
+            "index": 45,
+            "label": "↑",
+            "x": 1248,
+            "y": 619.9
+          }
+        },
+        {
+          "label": "←",
+          "caret": 6,
+          "target": {
+            "index": 51,
+            "label": "←",
+            "x": 1204.5,
+            "y": 650.5
+          }
+        },
+        {
+          "label": "↓",
+          "caret": 12,
+          "target": {
+            "index": 52,
+            "label": "↓",
+            "x": 1245.3,
+            "y": 651.6
+          }
+        },
+        {
+          "label": "→",
+          "caret": 8,
+          "target": {
+            "index": 53,
+            "label": "→",
+            "x": 1286.1,
+            "y": 651.9
+          }
+        }
+      ],
+      "arrows": [
+        {
+          "index": 45,
+          "label": "↑",
+          "x": 1227.7,
+          "y": 659.7
+        },
+        {
+          "index": 51,
+          "label": "←",
+          "x": 1178.7,
+          "y": 679.9
+        },
+        {
+          "index": 52,
+          "label": "↓",
+          "x": 1216.8,
+          "y": 689.9
+        },
+        {
+          "index": 53,
+          "label": "→",
+          "x": 1254.8,
+          "y": 699.8
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "input": "mouse",
+      "results": [
+        {
+          "label": "↑",
+          "caret": 2,
+          "target": {
+            "index": 45,
+            "label": "↑",
+            "x": 1248,
+            "y": 619.9
+          }
+        },
+        {
+          "label": "←",
+          "caret": 6,
+          "target": {
+            "index": 51,
+            "label": "←",
+            "x": 1204.5,
+            "y": 650.5
+          }
+        },
+        {
+          "label": "↓",
+          "caret": 12,
+          "target": {
+            "index": 52,
+            "label": "↓",
+            "x": 1245.3,
+            "y": 651.6
+          }
+        },
+        {
+          "label": "→",
+          "caret": 8,
+          "target": {
+            "index": 53,
+            "label": "→",
+            "x": 1286.1,
+            "y": 651.9
+          }
+        }
+      ],
+      "arrows": [
+        {
+          "index": 45,
+          "label": "↑",
+          "x": 1227.7,
+          "y": 659.7
+        },
+        {
+          "index": 51,
+          "label": "←",
+          "x": 1178.7,
+          "y": 679.9
+        },
+        {
+          "index": 52,
+          "label": "↓",
+          "x": 1216.8,
+          "y": 689.9
+        },
+        {
+          "index": 53,
+          "label": "→",
+          "x": 1254.8,
+          "y": 699.8
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "theme": "dark",
+      "input": "touch",
+      "results": [
+        {
+          "label": "↑",
+          "caret": 2,
+          "target": {
+            "index": 45,
+            "label": "↑",
+            "x": 310.3,
+            "y": 530.7
+          }
+        },
+        {
+          "label": "←",
+          "caret": 6,
+          "target": {
+            "index": 51,
+            "label": "←",
+            "x": 285.9,
+            "y": 557.2
+          }
+        },
+        {
+          "label": "↓",
+          "caret": 12,
+          "target": {
+            "index": 52,
+            "label": "↓",
+            "x": 308.6,
+            "y": 557.2
+          }
+        },
+        {
+          "label": "→",
+          "caret": 8,
+          "target": {
+            "index": 53,
+            "label": "→",
+            "x": 331.3,
+            "y": 557.2
+          }
+        }
+      ],
+      "arrows": [
+        {
+          "index": 45,
+          "label": "↑",
+          "x": 301.7,
+          "y": 555.8
+        },
+        {
+          "index": 51,
+          "label": "←",
+          "x": 275.7,
+          "y": 570.3
+        },
+        {
+          "index": 52,
+          "label": "↓",
+          "x": 298.1,
+          "y": 573.6
+        },
+        {
+          "index": 53,
+          "label": "→",
+          "x": 320.5,
+          "y": 576.9
+        }
+      ],
+      "errors": []
+    },
+    {
+      "width": 390,
+      "theme": "light",
+      "input": "touch",
+      "results": [
+        {
+          "label": "↑",
+          "caret": 2,
+          "target": {
+            "index": 45,
+            "label": "↑",
+            "x": 310.3,
+            "y": 530.7
+          }
+        },
+        {
+          "label": "←",
+          "caret": 6,
+          "target": {
+            "index": 51,
+            "label": "←",
+            "x": 285.9,
+            "y": 557.2
+          }
+        },
+        {
+          "label": "↓",
+          "caret": 12,
+          "target": {
+            "index": 52,
+            "label": "↓",
+            "x": 308.6,
+            "y": 557.2
+          }
+        },
+        {
+          "label": "→",
+          "caret": 8,
+          "target": {
+            "index": 53,
+            "label": "→",
+            "x": 331.3,
+            "y": 557.2
+          }
+        }
+      ],
+      "arrows": [
+        {
+          "index": 45,
+          "label": "↑",
+          "x": 301.7,
+          "y": 555.8
+        },
+        {
+          "index": 51,
+          "label": "←",
+          "x": 275.7,
+          "y": 570.3
+        },
+        {
+          "index": 52,
+          "label": "↓",
+          "x": 298.1,
+          "y": 573.6
+        },
+        {
+          "index": 53,
+          "label": "→",
+          "x": 320.5,
+          "y": 576.9
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "dark-1440-keyboard.png",
+      "bytes": 52964,
+      "width": 523,
+      "height": 295,
+      "sha256": "65dff509a2dda8a9ccb35f755c7ec7ed9eb4384e8062544cf39b62345651aa64"
+    },
+    {
+      "path": "dark-1440-notebook.png",
+      "bytes": 243679,
+      "width": 1440,
+      "height": 900,
+      "sha256": "384c4b6e3f8f259ac2b5ad1c6329af46621270913441602b268ccf88b3f39d3c"
+    },
+    {
+      "path": "light-1440-keyboard.png",
+      "bytes": 50829,
+      "width": 523,
+      "height": 295,
+      "sha256": "13e1e5d9f7b0500418bc183b1156569ea33705cf1c26f5370f2d93a4c6d9e470"
+    },
+    {
+      "path": "light-1440-notebook.png",
+      "bytes": 235866,
+      "width": 1440,
+      "height": 900,
+      "sha256": "42726d574107f11b323bd83946b244ce41a01579e6aec6750d8ccff14641b7a7"
+    },
+    {
+      "path": "dark-390-keyboard.png",
+      "bytes": 21897,
+      "width": 314,
+      "height": 160,
+      "sha256": "28733343fd4075251d3984118d57626a841cb78bab8fefda4170d2e7393a6c77"
+    },
+    {
+      "path": "dark-390-notebook.png",
+      "bytes": 89661,
+      "width": 390,
+      "height": 844,
+      "sha256": "8595f8376c728e06af32e8d76442350047c8286193a0adb3eafeb0887923a763"
+    },
+    {
+      "path": "light-390-keyboard.png",
+      "bytes": 21534,
+      "width": 314,
+      "height": 160,
+      "sha256": "b27a52e6478ae7a26628a401a35df8f5b8aeb6a791bb9407b6770143eaeec492"
+    },
+    {
+      "path": "light-390-notebook.png",
+      "bytes": 86245,
+      "width": 390,
+      "height": 844,
+      "sha256": "5495be71385d22b854935928b60594dd231de6d7244a9c4bc3cb8145c5ffe736"
+    }
+  ],
+  "limits": [
+    "Native Chromium/SwiftShader screenshots and mouse/touch input; mobile emulated at 390px",
+    "No new performance or editorial approval",
+    "Raw logs/traces remain ignored under docs/report"
+  ]
+}

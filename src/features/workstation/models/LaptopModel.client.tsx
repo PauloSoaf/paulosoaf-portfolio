@@ -8,7 +8,7 @@ import {
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import type { LaptopHitTarget } from "./hit-targets";
-import { NOTEBOOK_KEYS as KEYS } from "../input/keyboard-layout";
+import { KEY_DEPTH, NOTEBOOK_KEYS as KEYS } from "../input/keyboard-layout";
 import type { NotebookInputController } from "../input/NotebookInputController";
 import { createKeyLegends, createKeyMaterial } from "./key-legends";
 
@@ -72,7 +72,7 @@ export function LaptopModel({ theme, hingeRef, displayRef, children, input }: {
     base: slab(BASE.width, BASE.depth, BASE.thickness, .2, .028, true),
     lid: slab(BASE.width, 2.36, .05, .2, .016, false),
     well: flat(3.12, 1.3, .06),
-    key: new RoundedBoxGeometry(1, .026, .18, 2, .011),
+    key: new RoundedBoxGeometry(1, .026, KEY_DEPTH, 2, .011),
     trackpad: flat(1.46, .7, .07),
     trackpadEdge: ring(1.46, .7, .07, .012),
     bezel: flat(3.5, 2.22, .14),
@@ -132,7 +132,7 @@ export function LaptopModel({ theme, hingeRef, displayRef, children, input }: {
       mesh.setMatrixAt(index, frame.matrix.makeScale(key.width, 1, 1).setPosition(key.x, KEY_Y + lift, key.z));
       mesh.setColorAt(index, down ? frame.pressed : frame.normal);
       const label = frame.label;
-      label.position.set(key.x, KEY_Y + .0135 + lift, key.z); label.rotation.x = -Math.PI / 2; label.scale.set(key.width, .18, 1); label.updateMatrix();
+      label.position.set(key.x, KEY_Y + .0135 + lift, key.z); label.rotation.x = -Math.PI / 2; label.scale.set(key.width, KEY_DEPTH, 1); label.updateMatrix();
       keyLabels.current?.setMatrixAt(index, label.matrix);
     });
     mesh.instanceMatrix.needsUpdate = true;
