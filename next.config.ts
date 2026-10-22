@@ -45,14 +45,14 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     const lab = isDev || (process.env.PORTFOLIO_CONTENT_PREVIEW === "1" && process.env.EXPERIMENTAL_WORKSTATION === "1");
-    return [{ source: "/:path*", headers: securityHeaders }, ...(lab ? [
+    return [{ source: "/:path*", headers: securityHeaders },
+      // Only the canonical portfolio can embed the two owner-supplied project sites.
+      { source: "/:locale(pt|en|es)", headers: [
+        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-src 'self'", "frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br") },
+      ] }, ...(lab ? [
       { source: "/workstation/embed-fixture", headers: [
         { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-ancestors 'none'", "frame-ancestors 'self'") },
         { key: "X-Frame-Options", value: "SAMEORIGIN" },
-      ] },
-      { source: "/:locale(pt|en|es)/workstation-lab", headers: [
-        { key: "Content-Security-Policy", value: contentSecurityPolicy.replace("frame-src 'self'", "frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br") },
-        { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ] },
     ] : [])];
   },

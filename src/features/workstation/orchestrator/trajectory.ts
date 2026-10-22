@@ -30,7 +30,10 @@ export function clampX(x: number, width: number, viewport: Viewport, extent: Ext
 
 function stationPose(station: Station, scroll: number, viewport: Viewport, extent: Extent, pinBottom = false) {
   const fill = viewport.width < 768 ? .92 : .74;
-  const width = fitWidth(station.width * fill, viewport, extent);
+  // Work shares space with a full card/controls. Fit the rendered silhouette to that
+  // station as well as the viewport, including narrow hosts with a desktop scrollbar.
+  const desired = station.id === "work" ? Math.min(station.width * fill, station.width * .98 / extent.width, station.height * .98 / extent.height) : station.width * fill;
+  const width = fitWidth(desired, viewport, extent);
   const x = clampX(station.left + station.width / 2, width, viewport, extent);
   // Face the editorial content: a notebook on the right turns its screen toward the left.
   const yaw = clamp((.5 - x / viewport.width) * .5, -.22, .22);

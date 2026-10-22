@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore, type Dispatch } from
 import type { Locale } from "@/i18n/config";
 import type { Theme } from "@/theme/theme";
 import { workstationLabels } from "../labels";
-import { workstationSites } from "../sites";
+import { workstationSites, type WorkstationAccess } from "../sites";
 import type { WorkstationEvent, WorkstationState } from "../state/workstation-machine";
 import type { NotebookInputController } from "../input/NotebookInputController";
 import type { NotebookPointerController } from "../input/NotebookPointerController";
@@ -67,8 +67,9 @@ function SpeakerIcon({ muted }: { muted: boolean }) {
   </svg>;
 }
 
-export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer, sound, session, prompt, inspecting, onInspect, onReady }: {
+export function WorkbenchScreen({ state, dispatch, access, locale, theme, input, pointer, sound, session, prompt, inspecting, onInspect, onReady }: {
   state: WorkstationState; dispatch: Dispatch<WorkstationEvent>; locale: Locale; theme: Theme;
+  access: WorkstationAccess;
   input: NotebookInputController; pointer: NotebookPointerController; sound: NotebookSound; session: TerminalSession;
   prompt: string; inspecting: boolean; onInspect: () => void; onReady: () => void;
 }) {
@@ -103,11 +104,11 @@ export function WorkbenchScreen({ state, dispatch, locale, theme, input, pointer
       <p className="workbench-kicker">OBSIDIAN / WORKBENCH</p><h2>{text.greeting}</h2><p>{text.subtitle}</p>
       <div className="workbench-apps">
         <button data-input-action="terminal" type="button" onClick={() => dispatch({ type: "OPEN_TERMINAL" })}><span aria-hidden="true">›_</span>{text.terminal}<small>{text.terminalHint}</small></button>
-        <button data-input-action="browser" type="button" onClick={() => dispatch({ type: "OPEN_SITE", siteId: "fixture" })}><span aria-hidden="true">↗</span>{text.browser}<small>{text.fixture}</small></button>
+        {access.fixture ? <button data-input-action="browser" type="button" onClick={() => dispatch({ type: "OPEN_SITE", siteId: "fixture" })}><span aria-hidden="true">↗</span>{text.browser}<small>{text.fixture}</small></button> : null}
         <button data-input-action="code" type="button" onClick={() => dispatch({ type: "OPEN_CODE" })}><span aria-hidden="true">&lt;/&gt;</span>{text.code}<small>{text.codeHint}</small></button>
         <button data-input-action="notes" type="button" onClick={() => dispatch({ type: "OPEN_NOTES" })}><span aria-hidden="true">✎</span>{text.notes}<small>{text.notesLocal}</small></button>
       </div>
-      <div className="workbench-projects">{Object.entries(workstationSites).map(([id, item]) => <button data-input-action={id} type="button" key={id} onClick={() => dispatch({ type: "OPEN_SITE", siteId: id })}>{item.title} <span aria-hidden="true">↗</span></button>)}</div>
+      <div className="workbench-projects">{access.sites.map(id => <button data-input-action={id} type="button" key={id} onClick={() => dispatch({ type: "OPEN_SITE", siteId: id })}>{workstationSites[id].title} <span aria-hidden="true">↗</span></button>)}</div>
       <TerminalPrompt session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} compact onSubmitted={() => dispatch({ type: "OPEN_TERMINAL" })} />
     </div> : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
       : app.kind === "TERMINAL" ? <TerminalApp session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} intro={text.terminalIntro} />

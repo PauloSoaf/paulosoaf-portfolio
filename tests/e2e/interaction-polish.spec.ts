@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { dictionaries } from "../../src/i18n/get-dictionary";
 
 test.use({ reducedMotion: "no-preference", viewport: { width: 1440, height: 900 }, launchOptions: { args: ["--enable-unsafe-swiftshader"] } });
-const art = (page: Page) => page.locator("[data-hero-art]");
+const art = (page: Page) => page.locator("[data-workstation]");
 async function noWebGL(page: Page) {
   await page.addInitScript(() => Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: true } }));
 }
@@ -121,7 +121,7 @@ for (const locale of ["pt", "en", "es"] as const) for (const theme of ["dark", "
 }
 
 test("rapid switches preserve canvas, timeline, carousel, URL and scroll without stale transition state", async ({ page }) => {
-  await page.goto("/pt?heroDebug=1"); await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
+  await page.goto("/pt"); await expect(art(page)).toHaveAttribute("data-scene", "ready", { timeout: 30_000 });
   const canvas = await page.locator("canvas").elementHandle();
   await page.locator("#about").evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
   await page.getByRole("tab").nth(1).click();
@@ -163,24 +163,6 @@ test("CTA mouse hover/press and keyboard focus change pixels without changing la
   await page.keyboard.press("Enter"); await expect(page).toHaveURL(/#work$/);
 });
 
-test("Hero drag, keyboard equivalent and damping operate on the same real canvas and pause", async ({ page }) => {
-  await page.goto("/pt?heroDebug=1"); await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
-  await expect(art(page)).toHaveAttribute("data-hero-entrance", "850");
-  const canvas = await page.locator("canvas").elementHandle(), before = await page.locator("canvas").screenshot();
-  const box = (await page.locator("[data-hero-surface]").boundingBox())!;
-  await page.mouse.move(box.x + box.width * .4, box.y + box.height * .5); await page.mouse.down();
-  await page.mouse.move(box.x + box.width * .75, box.y + box.height * .5, { steps: 10 }); await page.mouse.up();
-  await expect.poll(async () => Number(await art(page).getAttribute("data-hero-exploration"))).toBeGreaterThan(.3);
-  expect((await page.locator("canvas").screenshot()).equals(before)).toBe(false);
-  const angle = Number(await art(page).getAttribute("data-hero-exploration"));
-  await page.getByRole("button", { name: "Explorar objeto à esquerda", exact: true }).focus(); await page.keyboard.press("Enter");
-  await expect.poll(async () => Number(await art(page).getAttribute("data-hero-exploration"))).toBeLessThan(angle);
-  await page.mouse.move(0, 0); await page.waitForTimeout(2200);
-  await page.getByRole("button", { name: "Pausar movimento", exact: true }).click(); await page.waitForTimeout(100);
-  const frames = await art(page).getAttribute("data-hero-frames"); await page.waitForTimeout(400);
-  expect(await art(page).getAttribute("data-hero-frames")).toBe(frames);
-  expect(await canvas!.evaluate(node => node === document.querySelector("canvas"))).toBe(true);
-});
 
 test("reduced motion keeps switches immediate and disables decorative transforms", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" }); await page.goto("/pt");
@@ -193,36 +175,4 @@ test("reduced motion keeps switches immediate and disables decorative transforms
   await expect(page.locator(".carousel-play")).toBeDisabled();
   await page.goto("/pt#about"); await page.getByRole("tab").nth(2).click();
   await expect(page.getByRole("tabpanel")).toContainText("3D e projetos próprios");
-});
-
-test("real touch drag explores the orb, vertical swipe scrolls, and touch CTA press has feedback", async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: "no-preference" });
-  const page = await context.newPage(); await page.goto("http://127.0.0.1:3200/pt?heroDebug=1");
-  const cdp = await context.newCDPSession(page);
-  const cta = page.getByRole("link", { name: "Explorar projetos", exact: true });
-  await page.evaluate(() => document.fonts.ready); await cta.scrollIntoViewIfNeeded();
-  const button = (await cta.boundingBox())!;
-  const touch = async (type: "touchStart" | "touchMove" | "touchEnd", x = 0, y = 0) => cdp.send("Input.dispatchTouchEvent", { type, touchPoints: type === "touchEnd" ? [] : [{ x, y }] });
-  await touch("touchStart", button.x + button.width / 2, button.y + button.height / 2);
-  await page.waitForTimeout(180);
-  expect(await cta.evaluate(el => new DOMMatrix(getComputedStyle(el).transform).a)).toBeLessThan(1);
-  await touch("touchEnd"); await expect(page).toHaveURL(/#work$/);
-  await page.goto("http://127.0.0.1:3200/pt?heroDebug=1");
-  await art(page).scrollIntoViewIfNeeded(); await expect(art(page)).toHaveAttribute("data-hero-state", "ready", { timeout: 30_000 });
-  await expect(art(page)).toHaveAttribute("data-hero-entrance", "850");
-  const box = (await page.locator("[data-hero-surface]").boundingBox())!;
-  const x = box.x + box.width * .4, y = Math.min(650, box.y + box.height * .55);
-  await touch("touchStart", x, y);
-  for (let step = 1; step <= 8; step++) { await touch("touchMove", x + step * 12, y); await page.waitForTimeout(25); }
-  await touch("touchEnd");
-  await expect.poll(async () => Number(await art(page).getAttribute("data-hero-exploration"))).toBeGreaterThan(.2);
-  await expect(page.locator("[data-hero-surface]")).not.toHaveAttribute("data-interacting", "true");
-  await page.waitForTimeout(100); // Allow the completed gesture's bounded inertia to reach the renderer probe.
-  const angle = await art(page).getAttribute("data-hero-exploration"), before = await page.evaluate(() => scrollY);
-  await touch("touchStart", x, y);
-  for (let step = 1; step <= 8; step++) { await touch("touchMove", x, y - step * 25); await page.waitForTimeout(25); }
-  await touch("touchEnd");
-  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(before + 100);
-  expect(await art(page).getAttribute("data-hero-exploration")).toBe(angle);
-  await context.close();
 });

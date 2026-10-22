@@ -63,7 +63,7 @@ describe("Code app source index", () => {
       writeFileSync(join(root, fresh), "export {};\n");
       expect(buildIndex({ root, manifest: [["notebook", "new-source", fresh]] }).files[0]).toMatchObject({ dirty: true, url: null });
     } finally { rmSync(root, { recursive: true, force: true }); }
-  });
+  }, 15_000); // This regression runs real Git processes and filesystem I/O on Windows.
   it("publishes only the explicit manifest with hashes", () => {
     const index = buildIndex();
     expect(index.files).toHaveLength(MANIFEST.length);

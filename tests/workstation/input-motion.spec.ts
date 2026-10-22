@@ -1,12 +1,12 @@
 import { test, expect, type Page } from "@playwright/test";
-import { brake } from "../../scripts/lib/workstation-p02.mjs";
+import { brake, settle } from "../../scripts/lib/workstation-p02.mjs";
 const host = (page: Page) => page.locator("[data-workstation]");
 const screen = (page: Page) => page.locator(".workstation-projected-screen [data-workstation-screen]");
 async function open(page: Page) {
-  await page.goto("/pt/workstation-lab");
+  await page.goto("/pt");
   if (page.viewportSize()!.width < 1280) await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
   await expect(host(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
-  await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
+  await settle(page);
 }
 async function point(page: Page, name: string) {
   const [x, y] = (await host(page).getAttribute(`data-${name}`))!.split(",").map(Number);
@@ -56,12 +56,27 @@ test("real 3D keys edit Notes with Shift, Caps, arrows and Backspace", async ({ 
   expect(await host(page).getAttribute("data-body")).toBe("FOLLOW");
 });
 
-test("trackpad moves the cursor, clicks, double clicks and scrolls owned controls", async ({ page }) => {
+test("trackpad moves the cursor, clicks, double clicks and scrolls owned controls", async ({ page }, testInfo) => {
   await open(page);
   await targetCursor(page, "notes"); await tap(page); await expect(page.locator("textarea")).toBeVisible();
   await page.locator("textarea").fill("Real trackpad input");
   await targetCursor(page, "notes-save"); await tap(page); await expect(page.locator("[data-notes-saved]")).toContainText("Real trackpad input");
-  await targetCursor(page, "notes-text"); await tap(page); await tap(page);
+  await targetCursor(page, "notes-text");
+  const doublePoint = await point(page, "trackpad-point");
+  await page.evaluate(() => {
+    const ups: { timestamp: number; handled: number }[] = [];
+    Object.assign(window, { qaTrackpadUps: ups });
+    document.querySelector(".workstation-hit")!.addEventListener("pointerup", event => {
+      ups.push({ timestamp: event.timeStamp, handled: performance.now() });
+    }, { passive: true });
+  });
+  // Two native clicks in one gesture; locator/data queries between independent taps can
+  // exceed the controller's genuine 350ms double-click window on a software renderer.
+  await page.mouse.dblclick(doublePoint.x, doublePoint.y);
+  const ups = await page.evaluate(() => (window as unknown as { qaTrackpadUps: { timestamp: number; handled: number }[] }).qaTrackpadUps);
+  expect(ups).toHaveLength(2);
+  expect(ups[1]!.timestamp - ups[0]!.timestamp).toBeLessThan(350);
+  await testInfo.attach("native-trackpad-double-click", { body: JSON.stringify(ups), contentType: "application/json" });
   expect(await page.locator("textarea").evaluate((node) => (node as HTMLTextAreaElement).selectionEnd - (node as HTMLTextAreaElement).selectionStart)).toBe("Real trackpad input".length);
   const pad = await point(page, "trackpad-point"), before = await page.evaluate(() => scrollY);
   await page.mouse.move(pad.x, pad.y); await page.mouse.wheel(0, 180);
@@ -143,7 +158,11 @@ for (const width of [1440, 1920, 768, 390]) {
       await page.locator(`[data-workstation-section-anchor="${id}"]`).evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
       await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
       await expect(host(page)).toHaveAttribute("data-chapter", id);
-      await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
+      await settle(page);
+      if (id === "work") {
+        await expect(host(page)).toHaveAttribute("data-project-reading", "false");
+        await expect(host(page)).toBeVisible();
+      }
       // In its slot, the live screen never covers the section's own text.
       const overlap = await page.evaluate((id) => {
         const screen = document.querySelector(".workstation-projected-screen")!.getBoundingClientRect();
@@ -159,12 +178,12 @@ for (const width of [1440, 1920, 768, 390]) {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     // Let the jump reach the rig before waiting for its flight home to settle.
     await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-    await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
+    await settle(page);
     const reading = await page.evaluate(() => (window as unknown as { pathSamples: unknown[] }).pathSamples.length);
     await page.mouse.move(8, 400);
     for (let step = 0; step < 40; step++) { await page.mouse.wheel(0, 110); await page.waitForTimeout(90); }
     for (let step = 0; step < 20; step++) { await page.mouse.wheel(0, -110); await page.waitForTimeout(90); }
-    await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });
+    await settle(page);
     const samples = await page.evaluate(() => (window as unknown as { pathSamples: { time: number; x: number; y: number; width: number; scroll: number; screenError: number }[] }).pathSamples);
     expect(samples.length).toBeGreaterThan(80);
     const viewport = page.viewportSize()!;
@@ -263,7 +282,7 @@ test("touch: a vertical swipe on the notebook scrolls the page, a sideways swipe
 });
 
 test("reduced motion with explicit 3D: drags move directly, no flight and no brake fall", async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: "reduce" }); await page.goto("/pt/workstation-lab");
+  await page.emulateMedia({ reducedMotion: "reduce" }); await page.goto("/pt");
   await page.getByRole("button", { name: "Ativar notebook 3D", exact: true }).click();
   await expect(host(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
   await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 12_000 });

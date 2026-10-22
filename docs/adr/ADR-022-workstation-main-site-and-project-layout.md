@@ -1,0 +1,24 @@
+# ADR-022 — Notebook como página principal e leitura de Projetos
+
+**22/10/2026 · Codex · `feat/workstation-main-site-project-layout`.** Base limpa: `cbb2b84fa16bc271c6a30ccbc435bcdbcd94f76b`. [Autoria](../HANDOFF.md) · [QA](../qa/Workstation/MainSite/REPORT.md).
+
+O proprietário pediu uma única experiência com o notebook, retirada de “Voltar para o portfólio” e da mensagem acima da navegação, e correção dos projetos cortados ao navegar por scroll. A página principal ainda renderizava a escultura antiga em produção; no desenvolvimento, redirecionava ao laboratório. A seção de projetos reservava uma posição absoluta `top:440px` para o notebook e empregava um título de até 112px. Na captura inicial de 1440×900, os controles começavam em y=1256,875px, enquanto o notebook avançava sobre a descrição.
+
+## Decisões
+
+- `/{locale}` renderiza diretamente a árvore editorial com a ilha Workstation, em desenvolvimento e produção. O parâmetro histórico `experience` deixa de selecionar outra interface. A antiga rota `/workstation-lab` responde com redirect 307, mantém idioma/parâmetros úteis e descarta `experience`; o navegador preserva a âncora nativa. Não existe nova landing paralela.
+- O layout deixa de renderizar a faixa editorial global; a barra do laboratório sai da página. Os badges individuais e os filtros de aprovação continuam ativos. Metadata/canonical seguem a rota principal e o preview continua `noindex`.
+- A CSP libera somente os dois hosts fornecidos pelo proprietário e somente nas três páginas principais. As outras páginas conservam `frame-src 'self'`; a fixture mantém o gate próprio e continua 404 no build público. Sem permissões extras de scripts, sandbox ou WebAssembly.
+- A mesma lista de projetos visíveis no servidor determina os sites acessíveis no notebook, no fallback sem JS e no Terminal. Sem aprovações, o notebook público mantém Código, Notas e Terminal; não apresenta botões dos projetos em revisão nem o browser de teste. O pedido de limpar a apresentação não equivale a aprovar conteúdo.
+- A estação `work` limita a largura também pela altura e largura de sua área, usando a silhueta renderizada e 2% de respiro. Isso corrige o tablet em 768px: o host com scrollbar mede 754px, o fator de preenchimento pode passar ao ramo de telefone e o notebook ultrapassava a estação, alcançando os controles. As demais estações mantêm seu cálculo anterior. Três regressões geométricas cobrem esse limite.
+- A escolha entre leitura empilhada e duas colunas usa a largura CSS (`innerWidth`), e o fitting continua usando a largura útil do Canvas. A verificação extra reproduziu `1024→1010px` e `1037→1023px`: havia duas colunas, mas a proteção interpretava a largura útil como layout empilhado e ocultava o notebook. Uma regressão real com WebGL verifica as duas janelas e a separação entre silhueta e card.
+- Projetos usa uma grade real: título em toda a largura; a partir de 1024px, card e estação do notebook compartilham a segunda linha. Em telas menores, o card e seus controles vêm antes da estação. A altura é natural, sem `max-height`, corte de texto ou scroll interno no card. As imagens usam proporção menor no desktop; controles e seletores continuam acessíveis e o contador de sete segundos é preservado.
+- A trajetória automática existente pode atravessar um card de largura total no mobile. A silhueta física agora cede espaço quando cruza a área de leitura, abaixo de 1024px e somente em `FOLLOW` contextual. O mesmo Canvas e os documentos permanecem montados. Visibilidade e `inert` retiram também os hit targets e o DOM projetado de foco/clique; na estação reservada, reaparecem. Arraste, voo, reação e apresentação intencional não são ocultados. A área é medida em geometria de layout, independente do transform temporário do reveal, dentro do RAF existente, sem loop novo.
+
+Modelo, atlas, materiais, teclado, tampa, solver, reconhecedor circular e apresentação P03 foram reaproveitados. Não há nova dependência, alteração de conteúdo aprovado, avanço para S04 ou implementação de jogos/dano.
+
+## Verificação e limites
+
+Os testes atuais exercitam a rota canônica, redirects com query/hash sem JS, CSP, filtros públicos inclusive dentro do notebook, todos os projetos em oito resoluções/Dark/Light, navegação nativa, a silhueta ao lado do card e leitura mobile com Canvas já carregado seguida de clique real em projeto. Os testes específicos da escultura retirada foram preservados em `tests/legacy`, fora da suíte do produto atual; não são apresentados como cobertura executada.
+
+Resultados e capturas desta continuação ficam no relatório próprio, com os arquivos brutos em `docs/report/` ignorado pelo Git. Métricas de performance históricas não são reclassificadas como novas medições. Publicação, revisão editorial e aceite estético continuam pendentes. Não houve push, merge nem deploy.

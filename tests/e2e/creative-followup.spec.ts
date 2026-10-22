@@ -1,5 +1,8 @@
 import { expect, test } from "@playwright/test";
 test.use({ reducedMotion:"no-preference", viewport:{width:1440,height:900}, launchOptions:{args:["--enable-unsafe-swiftshader"]} });
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: true } }));
+});
 
 test("countdown reaches zero at the real deadline, selects a new project, freezes on hover and resumes remaining time",async({page})=>{
   await page.goto("/pt#work"); const carousel=page.locator("[data-carousel]"), timer=page.getByRole("timer");
@@ -48,20 +51,6 @@ test("reveal begins deeper in the viewport and remains visibly in progress after
   await expect(heading).toHaveAttribute("data-motion-state","finished");
 });
 
-test("one real canvas follows all five sections with changing sizes, and global pause freezes it",async({page})=>{
-  await page.goto("/pt?heroDebug=1"); const art=page.locator("[data-hero-art]"), companion=page.locator("[data-spatial-companion]");
-  await expect(art).toHaveAttribute("data-hero-state","ready",{timeout:30000}); const canvas=await page.locator("canvas").elementHandle(), widths:number[]=[];
-  for(const id of ["work","about","expertise","services","contact"]){
-    await page.locator('#'+id).evaluate(el=>el.scrollIntoView({block:"start",behavior:"instant"}));
-    await expect(companion).toHaveAttribute("data-spatial-section",id); await expect(companion).toBeInViewport();
-    widths.push((await companion.boundingBox())!.width); expect(await canvas!.evaluate(el=>el===document.querySelector("canvas"))).toBe(true);
-    await expect(art).toHaveAttribute("data-hero-state","ready");
-  }
-  expect(Math.max(...widths)-Math.min(...widths)).toBeGreaterThan(60);
-  await page.getByRole("button",{name:"Pausar movimento",exact:true}).click(); await page.waitForTimeout(150);
-  const frames=await art.getAttribute("data-hero-frames"); await page.waitForTimeout(400); expect(await art.getAttribute("data-hero-frames")).toBe(frames);
-  await page.getByRole("button",{name:"Usar arte estática",exact:true}).click(); await expect(page.locator("canvas")).toHaveCount(0);
-});
 
 test("spotlight cards respond to the pointer and existing CTAs keep real destinations",async({page})=>{
   await page.goto("/pt#expertise"); const card=page.locator('[data-spotlight]').first(); await card.hover({position:{x:70,y:100}});

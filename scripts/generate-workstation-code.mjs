@@ -25,6 +25,7 @@ export const MANIFEST = [
   ["notebook", "laptop-model", "src/features/workstation/models/LaptopModel.client.tsx"],
   ["notebook", "motion-rig", "src/features/workstation/orchestrator/position.ts"],
   ["notebook", "trajectory", "src/features/workstation/orchestrator/trajectory.ts"],
+  ["notebook", "content-clearance", "src/features/workstation/orchestrator/content-clearance.ts"],
   ["notebook", "rigid-body", "src/features/workstation/physics/body.ts"],
   ["notebook", "impact-reaction", "src/features/workstation/physics/impact-reaction.ts"],
   ["notebook", "spin-intent", "src/features/workstation/physics/spin-intent.ts"],

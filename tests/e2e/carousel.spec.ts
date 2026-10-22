@@ -7,6 +7,8 @@ test.use({ reducedMotion: "no-preference", viewport: { width: 1440, height: 900 
 const carousel = (page: Page) => page.locator("[data-carousel]");
 const active = (page: Page) => page.locator('.carousel-slide[data-active="true"]');
 test.beforeEach(async ({ page }) => {
+  // These tests isolate the carousel; real GPU/physical input is exercised by the Workstation suite.
+  await page.addInitScript(() => Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: true } }));
   await page.addInitScript(() => {
     const observer = window.IntersectionObserver;
     const log: unknown[] = [];
@@ -90,7 +92,7 @@ test("keyboard arrows only at stage focus, button Space/Enter and active link ta
   await expect(active(page)).toHaveAttribute("data-project", "iot-devices-manager");
   await page.keyboard.press("Enter");
   await expect(active(page)).toHaveAttribute("data-project", "chess-in-react");
-  await expect(page.locator('[role="status"]')).toHaveText("5 de 7: ChessInReact");
+  await expect(carousel(page).locator('[role="status"]')).toHaveText("5 de 7: ChessInReact");
 });
 
 test("mouse drag changes pixels and project, interrupted drag cancels, dragging links cannot navigate", async ({ page }) => {
@@ -122,7 +124,7 @@ test("7-second autoplay, hover suspension, manual pause and focus stops until ex
   await expect(carousel(page)).toHaveAttribute("data-auto", "true");
   await page.clock.fastForward(7_001);
   await expect(active(page)).toHaveAttribute("data-project", "deborah-lima");
-  await expect(page.locator('[role="status"]')).toHaveText("");
+  await expect(carousel(page).locator('[role="status"]')).toHaveText("");
   await active(page).hover(); await expect(carousel(page)).toHaveAttribute("data-auto", "false");
   await page.clock.fastForward(21_000); await expect(active(page)).toHaveAttribute("data-project", "deborah-lima");
   await page.mouse.move(0, 0); await expect(carousel(page)).toHaveAttribute("data-auto", "true");

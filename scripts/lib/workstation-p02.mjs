@@ -14,7 +14,7 @@ export async function settle(page) {
   await expect(host(page)).toHaveAttribute("data-motion", "settled", { timeout: 45_000 });
 }
 export async function open(page, origin, locale = "pt", manual = false) {
-  await page.goto(`${origin}/${locale}/workstation-lab`);
+  await page.goto(`${origin}/${locale}`);
   await page.evaluate(() => document.fonts.ready);
   if (page.viewportSize().width < 1280) await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
   if (manual) await page.getByRole("button", { name: "Ativar notebook 3D", exact: true }).click();

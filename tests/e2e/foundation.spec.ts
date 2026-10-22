@@ -2,6 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { dictionaries } from "../../src/i18n/get-dictionary";
 import { htmlLang, locales } from "../../src/i18n/config";
+import { workstationLabels } from "../../src/features/workstation/labels";
 
 for (const locale of locales) {
   const dict = dictionaries[locale];
@@ -140,7 +141,18 @@ test("public build excludes editorial drafts and unapproved contact links", asyn
     await expect(page.locator('a[href^="mailto:"], a[href="#"]')).toHaveCount(0);
     await expect(page.locator("#hero-title")).toBeVisible();
     expect((await request.get(`/${locale}`)).headers()["content-security-policy"]).not.toContain("'wasm-unsafe-eval'");
-    expect((await request.get(`/${locale}/workstation-lab`)).status()).toBe(404);
+    await expect(page.locator("[data-workstation]")).toHaveCount(1);
+    expect((await request.get(`/${locale}/workstation-lab`, { maxRedirects: 0 })).headers().location).toBe(`/${locale}`);
+    await page.locator(".workstation-fallback").getByRole("button", { name: new RegExp(workstationLabels[locale].focus) }).click();
+    await expect(page.locator("dialog [data-workstation-screen]")).toBeVisible();
+    await expect(page.locator('dialog [data-input-action="nutriopus"], dialog [data-input-action="deborah"], dialog [data-input-action="browser"]')).toHaveCount(0);
+    await expect(page.locator('dialog [data-input-action="code"], dialog [data-input-action="notes"], dialog [data-input-action="terminal"]')).toHaveCount(3);
+    await page.locator('dialog [data-input-action="terminal"]').click();
+    await page.locator("#workbench-terminal-prompt").fill("open nutriopus");
+    await page.locator("#workbench-terminal-prompt").press("Enter");
+    await expect(page.locator("dialog")).toContainText({ pt: "Aplicativo indisponível.", en: "App unavailable.", es: "Aplicación no disponible." }[locale]);
+    await expect(page.locator("iframe")).toHaveCount(0);
+    await page.keyboard.press("Escape");
   }
   const fixture = await request.get("/workstation/embed-fixture");
   expect(fixture.status()).toBe(404);

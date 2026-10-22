@@ -1,5 +1,6 @@
 import type { Locale } from "@/i18n/config";
 import type { SectionId } from "@/i18n/paths";
+import { canOpenSite, type WorkstationAccess } from "../sites";
 
 /**
  * Curated terminal: a fixed command map parsed without shell expansion, eval or filesystem.
@@ -59,14 +60,15 @@ const notebook: Record<string, "hop" | "drop" | "spin" | "close-lid" | "reset" |
   fechar: "close-lid", close: "close-lid", cerrar: "close-lid", reset: "reset", resetar: "reset", reiniciar: "reset", teclado: "keyboard", keyboard: "keyboard",
 };
 
-export function runCommand(raw: string, locale: Locale): CommandResult {
+export function runCommand(raw: string, locale: Locale, access?: WorkstationAccess): CommandResult {
   const t = text[locale];
+  const choices = access ? [...access.sites, ...(access.fixture ? ["browser"] : []), locale === "en" ? "notes" : "notas"].join("|") : `nutriopus|deborah|browser|${locale === "en" ? "notes" : "notas"}`;
   const line = raw.slice(0, MAX_INPUT).trim();
   if (!line) return { output: [], effects: [] };
   const [rawName = "", ...args] = line.split(/\s+/);
   const name = rawName.toLowerCase().normalize("NFC");
   const argument = (args[0] ?? "").toLowerCase();
-  if (["help", "ajuda", "ayuda", "?"].includes(name)) return { output: t.help, effects: [] };
+  if (["help", "ajuda", "ayuda", "?"].includes(name)) return { output: t.help.map(line => line.includes("nutriopus|") ? line.replace(/<[^>]+>/, `<${choices}>`) : line), effects: [] };
   if (name === "whoami") return { output: [t.whoami], effects: [] };
   if (name === "ls") return { output: [t.ls], effects: [] };
   if (["clear", "limpar", "limpiar", "cls"].includes(name)) return { output: [], effects: [{ type: "clear" }] };
@@ -86,7 +88,10 @@ export function runCommand(raw: string, locale: Locale): CommandResult {
   if (["abrir", "open", "abre"].includes(name)) {
     if (["codigo", "código", "code"].includes(argument)) return { output: [t.code], effects: [{ type: "code" }] };
     const app = Object.hasOwn(apps, argument) ? apps[argument] : undefined;
-    if (!app) return { output: [t.usage(`${name} nutriopus|deborah|browser|notas`)], effects: [], tone: "error" };
+    if (!app) return { output: [t.usage(`${name} ${choices}`)], effects: [], tone: "error" };
+    if (access && app !== "notes" && !canOpenSite(access, app === "browser" ? "fixture" : app)) {
+      return { output: [{ pt: "Aplicativo indisponível.", en: "App unavailable.", es: "Aplicación no disponible." }[locale]], effects: [], tone: "error" };
+    }
     return { output: [t.opening(argument)], effects: [{ type: "open", app }] };
   }
   if (["codigo", "código", "code", "cat"].includes(name)) return { output: [t.code], effects: [{ type: "code", ...(argument ? { file: argument.replace(/\.[a-z]+$/, "").replace(/[^a-z0-9-]/g, "-") } : {}) }] };

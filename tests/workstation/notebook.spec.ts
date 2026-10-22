@@ -3,7 +3,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { settle } from "../../scripts/lib/workstation-p02.mjs";
 const workstation = (page: Page) => page.locator("[data-workstation]");
 async function open(page: Page) {
-  await page.goto("/pt/workstation-lab");
+  await page.goto("/pt");
   if (page.viewportSize()!.width < 1280) await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
   await expect(workstation(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
   await expect(page.locator(".workstation-projected-screen [data-workstation-screen]")).toBeVisible();
@@ -165,7 +165,7 @@ test("mobile has a readable 2D screen, native frame scroll and Escape/back", asy
 
 test("reduced motion and unavailable WebGL retain complete 2D access", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/pt/workstation-lab");
+  await page.goto("/pt");
   await expect(page.locator("canvas")).toHaveCount(0);
   await page.locator(".workstation-fallback").getByRole("button", { name: /Focar tela/ }).click();
   await page.locator("dialog").getByRole("button", { name: /^Browser/ }).click();
@@ -179,8 +179,8 @@ test("reduced motion and unavailable WebGL retain complete 2D access", async ({ 
   await expect(page.locator("dialog [data-workstation-screen]")).toBeVisible();
 });
 
-test("lab policies stay strict and no longer allow WebAssembly", async ({ request }) => {
-  const parent = await request.get("/pt/workstation-lab"), fixture = await request.get("/workstation/embed-fixture");
+test("canonical notebook policies stay strict and no longer allow WebAssembly", async ({ request }) => {
+  const parent = await request.get("/pt"), fixture = await request.get("/workstation/embed-fixture");
   const policy = parent.headers()["content-security-policy"]!;
   expect(policy).toContain("frame-ancestors 'none'");
   expect(policy).toContain("frame-src 'self' https://www.nutriopus.com.br https://www.xn--advogadadborahlima-jwb.com.br");
@@ -204,12 +204,18 @@ test("context loss returns to the still and retry owns one fresh canvas", async 
 });
 
 test("mobile defers WebGL while the slot is a peek, then loads when most of it is visible", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/pt/workstation-lab");
+  await page.setViewportSize({ width: 390, height: 640 });
+  await page.goto("/pt");
   await expect(workstation(page)).toHaveAttribute("data-positioned", "true");
+  await page.evaluate(() => document.fonts.ready);
+  const anchor = page.locator("[data-workstation-anchor]");
+  // Establish a real 25% peek; the old laboratory bars no longer push the slot below the fold.
+  await anchor.evaluate(node => { const rect = node.getBoundingClientRect(); window.scrollTo({ top: scrollY + rect.top - innerHeight + rect.height * .25, behavior: "instant" }); });
+  const fraction = await anchor.evaluate(node => { const rect = node.getBoundingClientRect(); return Math.max(0, Math.min(rect.bottom, innerHeight) - Math.max(rect.top, 0)) / rect.height; });
+  expect(fraction).toBeGreaterThan(.2); expect(fraction).toBeLessThan(.3);
   await page.waitForTimeout(1900);
   await expect(page.locator("canvas")).toHaveCount(0);
-  await page.locator("[data-workstation-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
+  await anchor.evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
   await expect(workstation(page)).toHaveAttribute("data-scene", "ready", { timeout: 15_000 });
 });
 
@@ -221,7 +227,7 @@ test("a failed lazy OS chunk keeps the portfolio readable and the focus dialog d
     if ((await response.text()).includes("workbench-toolbar")) { blocked++; await route.abort(); }
     else await route.fulfill({ response });
   });
-  await page.goto("/pt/workstation-lab");
+  await page.goto("/pt");
   await page.locator(".workstation-fallback").getByRole("button", { name: /Focar tela/ }).click();
   await expect(page.locator("dialog [data-screen-error]")).toContainText("A tela não carregou", { timeout: 20_000 });
   expect(blocked).toBeGreaterThan(0);
@@ -245,15 +251,15 @@ test("options menu and focus screen meet automated accessibility checks", async 
 test("no JavaScript keeps editorial links, headings and notebook still", async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
-  await page.goto("/pt/workstation-lab");
+  await page.goto("/pt");
   await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator(".workstation-still")).toBeVisible();
   await expect(page.locator("canvas")).toHaveCount(0);
-  await expect(page.locator('a[href="/pt/workstation-lab#contact"]').first()).toBeVisible();
+  await expect(page.locator('a[href="/pt#contact"]').first()).toBeVisible();
   await context.close();
 });
 
-test("project actions approach the notebook, theme keeps state, anchors stay in the lab", async ({ page }) => {
+test("project actions approach the notebook, theme keeps state, anchors stay canonical", async ({ page }) => {
   await open(page);
   const canvas = await page.locator("canvas").elementHandle();
   await page.locator("[data-workstation-work-anchor]").evaluate((node) => node.scrollIntoView({ block: "center", behavior: "instant" }));
@@ -272,9 +278,9 @@ test("project actions approach the notebook, theme keeps state, anchors stay in 
   await expect(workstation(page)).toHaveAttribute("data-state", "PREVIEW");
   expect(await canvas?.evaluate((node) => node === document.querySelector("canvas"))).toBe(true);
   await page.locator('header nav a[href$="#about"]').filter({ visible: true }).click();
-  await expect(page).toHaveURL(/\/pt\/workstation-lab#about$/);
+  await expect(page).toHaveURL(/\/pt#about$/);
   await page.locator('header a[lang="en"]').filter({ visible: true }).click();
-  await expect(page).toHaveURL(/\/en\/workstation-lab#about$/);
+  await expect(page).toHaveURL(/\/en#about$/);
 });
 
 for (const site of [{ id: "nutriopus", title: "NutriOpus" }, { id: "deborah", title: "Déborah Lima" }]) {

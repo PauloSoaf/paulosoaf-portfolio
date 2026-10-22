@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-22",
+  "branch": "feat/workstation-main-site-project-layout",
+  "base": "cbb2b84fa16bc271c6a30ccbc435bcdbcd94f76b",
+  "checks": {
+    "unit": {
+      "passed": 209,
+      "files": 24
+    },
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "previewBuild": "PASS",
+    "publicBuild": "PASS",
+    "general": {
+      "startTime": "2026-10-22T15:50:10.530Z",
+      "duration": 138777.622,
+      "expected": 75,
+      "skipped": 1,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "workstationFull": {
+      "startTime": "2026-10-22T16:15:33.067Z",
+      "duration": 1294484.846,
+      "expected": 77,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "projectLayoutFinal": {
+      "startTime": "2026-10-22T16:39:42.714Z",
+      "duration": 80935.688,
+      "expected": 21,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "public": {
+      "startTime": "2026-10-22T16:43:56.114Z",
+      "duration": 10133.198,
+      "expected": 7,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "hydration": [
+    {
+      "width": 390,
+      "hash": "",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#work",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#about",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#work",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#about",
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "errors": []
+    }
+  ],
+  "nativeTrackpadDoubleClick": {
+    "events": [
+      {
+        "timestamp": 25490.799999952316,
+        "handled": 25497.5
+      },
+      {
+        "timestamp": 25490.899999976158,
+        "handled": 25503.799999952316
+      }
+    ],
+    "eventGapMs": 0.10000002384185791,
+    "handlingGapMs": 6.299999952316284
+  },
+  "visual": {
+    "combinations": 14,
+    "pngs": 36,
+    "centeredMobileStations": 6,
+    "additionalScrollbarWidths": [
+      1024,
+      1037
+    ],
+    "maxProjectionErrorPx": 0.006938959604608746,
+    "errors": 0
+  },
+  "sources": {
+    "manifestFiles": 38,
+    "evidence": "evidence.json",
+    "changesAfterFull": [
+      {
+        "path": "src/features/workstation/orchestrator/position.ts",
+        "fullSuite": "c61e695dc8b54f6414371b665f1d57b7e5e4617b691d382637d98bdba37035dc",
+        "final": "8bc6fc5c57252bde952d6fd4311b550404106105eade614f971a7eaad21bb571"
+      }
+    ]
+  },
+  "limits": {
+    "editorialReleaseBlockers": 10,
+    "performanceRemeasured": false,
+    "physicalHardwareAcceptance": false,
+    "push": false,
+    "merge": false,
+    "deploy": false
+  }
+}

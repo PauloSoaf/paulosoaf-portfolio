@@ -1,6 +1,4 @@
 /* Obsidian Workstation: one physical notebook over the page. No control bar — options stay hidden until asked for. */
-.workstation-lab-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;border-bottom:1px solid var(--oo-border-subtle);font:11px var(--font-mono);color:var(--oo-fg-secondary)}
-.workstation-lab-bar a{min-height:44px;display:inline-flex;align-items:center}
 
 /* Optional help in the reserved hero margin; the native popover opens only on request. */
 .workstation-discovery{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);z-index:24;width:min(350px,calc(100vw - 48px));color:var(--oo-fg-secondary);font:12px/1.6 var(--font-sans)}
@@ -26,6 +24,9 @@
 /* Full-viewport stage: canvas paints, a hull-clipped layer receives input, the page stays clickable around it. */
 .workstation-companion{position:fixed;inset:0;z-index:21;pointer-events:none;visibility:hidden;overflow:hidden}
 .workstation-companion[data-positioned="true"]{visibility:visible}
+.workstation-companion{transition:opacity 180ms ease-out}
+.workstation-companion[data-project-reading="true"]{opacity:0;visibility:hidden}
+.workstation-companion[data-project-reading="true"] .workstation-projected-screen{visibility:hidden!important;pointer-events:none}
 .workstation-hit{position:absolute;inset:0;z-index:1;pointer-events:auto;touch-action:pan-y;clip-path:polygon(0 0,0 0,0 0);cursor:grab;outline:none;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .workstation-companion:not([data-scene="ready"]) .workstation-hit{pointer-events:none}
 .workstation-companion[data-part="lid"] .workstation-hit,.workstation-companion[data-part="keyboard"] .workstation-hit{cursor:pointer}
@@ -163,9 +164,7 @@ html[data-js]:not([data-experience="classic"]) #main [data-workstation-story] se
   .workstation-hero-anchor{position:absolute;right:-12px;top:0;width:54%;height:auto;aspect-ratio:800/620;margin:0}
   [data-workstation-story] [data-hero] .hero-copy{max-width:48%}
   [data-workstation-story] #hero-title{font-size:clamp(4rem,6.7vw,6.8rem)}
-  [data-workstation-story] #work .project-carousel{width:48%}
   html:not([data-experience="classic"]) [data-workstation-story] .project-card{grid-template-columns:1fr}
-  [data-workstation-story] .workstation-work-anchor{position:absolute;right:-32px;top:440px;width:56%;margin:0}
   [data-workstation-story] #about .workstation-section-anchor{width:760px}
   [data-workstation-story] #expertise .container-page{min-height:960px}
   [data-workstation-story] #expertise .workstation-section-anchor{position:absolute;left:-32px;top:320px;width:54%;margin:0}
@@ -186,7 +185,45 @@ html[data-js]:not([data-experience="classic"]) #main [data-workstation-story] se
   .workstation-focus .workbench-ide{grid-template-columns:1fr;grid-template-rows:auto 1fr}.workstation-focus .workbench-ide-files{max-height:150px;border-right:0;border-bottom:1px solid var(--oo-border-subtle)}
   .workbench-desktop{padding:20px}.workbench-browser-note{font-size:11px}
 }
+/* Projects share a real grid row with their notebook station. The section's natural
+   height follows all card content and controls, including before hydration/no JS. */
+html:not([data-experience="classic"]) [data-workstation-story] #work{padding-block:clamp(2rem,4svh,3.5rem)}
+[data-workstation-story] #work>.container-page{display:grid;grid-template-columns:minmax(0,1fr);row-gap:1.5rem}
+[data-workstation-story] #work .section-heading{grid-area:1/1/2/-1;margin-bottom:0;min-width:0}
+html:not([data-experience="classic"]) [data-workstation-story] #work .section-heading h2{max-width:none;font-size:clamp(2.5rem,4.2vw,4.25rem)}
+[data-workstation-story] #work .section-heading .text-kicker{margin-bottom:12px}
+[data-workstation-story] #work .section-heading>[data-motion="rule"]{margin-top:24px}
+[data-workstation-story] #work .workstation-work-anchor{grid-area:3/1;position:relative;inset:auto;width:min(800px,100%);margin:0 auto}
+[data-workstation-story] #work .workstation-work-anchor+div{grid-area:2/1;min-width:0}
+[data-workstation-story] #work .project-carousel{width:100%}
+html:not([data-experience="classic"]) [data-workstation-story] #work .project-media{height:auto;min-height:0;aspect-ratio:16/9;border-right:0;border-bottom:1px solid var(--oo-border-subtle)}
+html:not([data-experience="classic"]) [data-workstation-story] #work .project-copy{padding:18px;gap:8px}
+html:not([data-experience="classic"]) [data-workstation-story] #work .project-copy h3{font-size:clamp(1.5rem,2vw,1.875rem)}
+[data-workstation-story] #work .project-carousel[data-enhanced="true"] .carousel-stage,
+html[data-js] [data-workstation-story] #work .project-carousel[data-enhanced="false"] .carousel-stage{padding-block:8px 16px}
+[data-workstation-story] #work .carousel-filmstrip{margin-top:12px}
+[data-workstation-story] #work .filmstrip-title{display:none}
+[data-workstation-story] #work .carousel-status{margin-top:8px}
+@media(min-width:48rem){
+  [data-workstation-story] #work .carousel-controls{display:grid;grid-template-columns:44px 44px minmax(0,1fr) auto 48px;gap:8px}
+  [data-workstation-story] #work .carousel-prev{grid-area:1/1;order:0}
+  [data-workstation-story] #work .carousel-next{grid-area:1/2;order:0}
+  [data-workstation-story] #work .carousel-play{grid-area:1/3;justify-self:start}
+  [data-workstation-story] #work .carousel-position{grid-area:1/4;margin:0}
+  [data-workstation-story] #work .carousel-countdown{grid-area:1/5;width:48px;height:48px}
+  [data-workstation-story] #work .carousel-range{grid-area:2/1/3/-1;width:100%;margin:0}
+  [data-workstation-story] #work .carousel-hint{grid-area:3/1/4/-1}
+}
+@media(min-width:64rem){
+  [data-workstation-story] #work>.container-page{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:clamp(2rem,4vw,4rem)}
+  [data-workstation-story] #work .workstation-work-anchor{grid-area:2/2;align-self:start;width:100%;aspect-ratio:800/620}
+  [data-workstation-story] #work .workstation-work-anchor+div{grid-area:2/1}
+  html:not([data-experience="classic"]) [data-workstation-story] #work .project-media{aspect-ratio:16/5}
+  [data-workstation-story] #work .project-carousel[data-enhanced="true"] .carousel-slide{width:calc(100% - 32px)}
+  html[data-js] [data-workstation-story] #work .project-carousel[data-enhanced="false"] .carousel-stage{grid-auto-columns:calc(100% - 32px)}
+}
 @media(prefers-reduced-motion:reduce){
+  .workstation-companion{transition:none}
   .workbench-screen button,.workstation-focus button{transition:none}
   .workstation-projected-screen .workbench-screen,.workstation-menu,.workstation-dust span{animation:none}
   [data-workstation][data-reaction] .workbench-reaction{opacity:0}

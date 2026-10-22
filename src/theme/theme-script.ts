@@ -7,4 +7,4 @@ import { THEME_COOKIE } from "./theme";
  * - `data-theme` comes from the preference cookie, accepting only `dark`/`light`.
  * Without JavaScript nothing runs and CSS falls back to the Dark tokens on `:root`.
  */
-export const THEME_BOOTSTRAP_SCRIPT = `(function(){try{var d=document.documentElement;d.setAttribute("data-js","");d.setAttribute("data-experience",new URLSearchParams(location.search).get("experience")==="classic"?"classic":"recovery");var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);d.setAttribute("data-theme",m?m[1]:"dark")}catch(e){}})();`;
+export const THEME_BOOTSTRAP_SCRIPT = `(function(){try{var d=document.documentElement;d.setAttribute("data-js","");d.setAttribute("data-experience","workstation");var m=document.cookie.match(/(?:^|;\\s*)${THEME_COOKIE}=(dark|light)(?:;|$)/);d.setAttribute("data-theme",m?m[1]:"dark")}catch(e){}})();`;

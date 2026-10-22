@@ -9,6 +9,7 @@ import { setData } from "./dataset";
 import { ImpactReaction } from "../physics/impact-reaction";
 import { SpinIntent } from "../physics/spin-intent";
 import { presentationTarget, type Presentation } from "./presentation";
+import { needsProjectClearance, type ReadingArea } from "./content-clearance";
 
 /** Model chassis width in scene units; pose widths are on-screen chassis pixels. */
 export const CHASSIS_UNITS = 3.6;
@@ -376,12 +377,18 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     const top = Math.max(0, ...ceilings.map((node) => node?.getBoundingClientRect().bottom ?? 0));
     return { width: host.clientWidth || innerWidth, height: host.clientHeight || innerHeight, top };
   }
+  let projectReadingArea: ReadingArea | null = null;
   function sample() {
     dirty = false;
     const next = viewport(), resized = next.width !== rig.viewport.width || next.height !== rig.viewport.height;
     rig.viewport = next;
     if (layoutDirty || resized) {
       stations = stages.map((node) => { const rect = node.getBoundingClientRect(); return { id: node.dataset.workstationSectionAnchor ?? "hero", left: rect.left, top: rect.top + scrollY, width: rect.width, height: rect.height }; }).filter((rect) => rect.width > 0);
+      const heading = document.querySelector("#work .section-heading")?.getBoundingClientRect();
+      const content = document.querySelector<HTMLElement>("#work [data-carousel]")?.parentElement;
+      const container = document.querySelector("#work>.container-page")?.getBoundingClientRect();
+      // Offset geometry ignores the content wrapper's temporary scroll-reveal transform.
+      projectReadingArea = heading && content && container ? { left: container.left, top: heading.top + scrollY, width: container.width, height: container.top + content.offsetTop + content.offsetHeight - heading.top } : null;
     }
     const jump = Math.abs(scrollY - lastScroll) > next.height * 2.5, relaid = layoutDirty || resized;
     const plan = (scroll: number) => {
@@ -426,6 +433,12 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
       trajectory: [time, pose.x, pose.y, pose.width, pose.angle, pose.pitch, pose.yaw, scrollY].map((n) => +n.toFixed(3)).join(","),
     });
     const needsRender = rig.render?.(time / 1000) ?? false;
+    // Match the CSS breakpoint, which includes the scrollbar; the rig's narrower
+    // drawable width remains correct for physical fitting, but not for choosing columns.
+    const reading = needsProjectClearance(innerWidth, rig.mode === "FOLLOW", rig.presentation !== "context", rig.hull?.points ?? [], projectReadingArea, scrollY);
+    setData(host, { projectReading: String(reading) });
+    // Also remove the projected DOM and keyboard hit layer from focus/hit testing while yielding.
+    if (host.inert !== reading) host.inert = reading;
     setData(host, { motion: moving || needsRender ? "moving" : "settled", motionDriver: moving ? "rig" : needsRender ? "scene" : "idle" });
     if (moving || needsRender) pending = requestAnimationFrame(paint);
   }

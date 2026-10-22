@@ -75,7 +75,7 @@ for (const locale of ["pt", "en", "es"]) {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
     const page = await context.newPage();
     try {
-      await page.goto(`${origin}/${locale}/workstation-lab`);
+      await page.goto(`${origin}/${locale}`);
       const panel = page.locator("#workstation-discovery-card"); await expect(panel).not.toBeVisible();
       await page.locator('[popoverTarget="workstation-discovery-card"]').first().click();
       await expect(panel).toBeVisible(); await expect(panel.locator('a[href="#about"]')).toBeVisible();

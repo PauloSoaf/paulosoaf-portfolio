@@ -12,7 +12,7 @@ import { switchLocalePath } from "@/i18n/paths";
 import { applyTheme, getDocumentTheme, subscribeToTheme } from "@/theme/theme-client";
 import { constrainedDevice } from "@/graphics/hero/quality";
 import { workstationLabels } from "../labels";
-import { PROJECT_REQUEST, siteForProject, workstationSites } from "../sites";
+import { PROJECT_REQUEST, siteForProject, workstationSites, canOpenSite, type WorkstationAccess } from "../sites";
 import { initialWorkstationState, workstationReducer, type WorkstationEvent } from "../state/workstation-machine";
 import { createMotionRig, installWorkstationPosition, type Impact } from "./position";
 import { NotebookInputController } from "../input/NotebookInputController";
@@ -49,13 +49,13 @@ class ScreenBoundary extends Component<{ children: ReactNode; fallback: ReactNod
   override render() { return this.state.failed ? this.props.fallback : this.props.children; }
 }
 
-export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale; discovery?: ReactNode }) {
+export function WorkstationOrchestrator({ locale, access, discovery }: { locale: Locale; access: WorkstationAccess; discovery?: ReactNode }) {
   const text = workstationLabels[locale], router = useRouter();
   const body = useSyncExternalStore(noopSubscribe, () => document.body, () => null);
   const theme = useSyncExternalStore(subscribeToTheme, getDocumentTheme, () => "dark" as const);
   const [state, dispatch] = useReducer(workstationReducer, initialWorkstationState);
   const [rig] = useState(createMotionRig), [input] = useState(() => new NotebookInputController()), [pointer] = useState(() => new NotebookPointerController());
-  const [sound] = useState(() => new NotebookSound()), [session] = useState(() => new TerminalSession());
+  const [sound] = useState(() => new NotebookSound()), [session] = useState(() => new TerminalSession(access));
   const [armed, setArmed] = useState(false), [ready, setReady] = useState(false), [failed, setFailed] = useState(false);
   const [screenReady, setScreenReady] = useState(false);
   const onScreenReady = useCallback(() => setScreenReady(true), []);
@@ -145,13 +145,13 @@ export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale;
     const select = (event: Event) => {
       const detail: unknown = (event as CustomEvent).detail;
       const siteId = detail && typeof detail === "object" ? siteForProject((detail as Record<string, unknown>).slug) : null;
-      if (!siteId) return;
+      if (!siteId || !canOpenSite(access, siteId)) return;
       prepareReading("preview"); dispatch({ type: "OPEN_SITE", siteId });
       if (failed || (!armed && (environment.reduced || environment.limited))) dispatch({ type: "FOCUS_SCREEN" });
       else { setArmed(true); rig.inertia.suppress(performance.now(), 2400); document.querySelector("[data-workstation-work-anchor]")?.scrollIntoView({ block: "center", behavior: environment.reduced ? "instant" : "smooth" }); }
     };
     window.addEventListener(PROJECT_REQUEST, select); return () => window.removeEventListener(PROJECT_REQUEST, select);
-  }, [armed, failed, environment.reduced, environment.limited, rig, prepareReading]);
+  }, [armed, failed, environment.reduced, environment.limited, rig, prepareReading, access]);
   useEffect(() => {
     const modal = dialog.current; if (!modal) return;
     if (focused && !modal.open) { returnFocus.current = document.activeElement as HTMLElement; modal.showModal(); }
@@ -172,11 +172,12 @@ export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale;
   }, [lidOpen, announce, text.announceOpened, text.announceClosed]);
 
   const screenDispatch = useCallback((event: WorkstationEvent) => {
+    if (event.type === "OPEN_SITE" && !canOpenSite(access, event.siteId)) { announce(text.unavailable); return; }
     if (event.type === "OPEN_CODE") prepareReading("code");
     else if (event.type === "OPEN_SITE" && (event.siteId === "nutriopus" || event.siteId === "deborah")) prepareReading("preview");
     dispatch(event);
     if (environment.mobile && (event.type === "OPEN_CODE" || (event.type === "OPEN_SITE" && event.siteId === "fixture"))) dispatch({ type: "FOCUS_SCREEN" });
-  }, [environment.mobile, prepareReading]);
+  }, [environment.mobile, prepareReading, access, announce, text.unavailable]);
   const notebookAction = useCallback((action: "hop" | "drop" | "spin" | "close-lid" | "open-lid" | "reset" | "keyboard" | "left" | "right") => {
     sound.unlock();
     if (action === "hop") rig.hop(); else if (action === "drop") rig.drop(); else if (action === "spin") rig.spin();
@@ -233,7 +234,7 @@ export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale;
   const prompt = `paulo@obsidian:~${chapterPaths[locale][chapter] ? `/${chapterPaths[locale][chapter]}` : ""}$`;
   const toggleInspect = useCallback(() => setInspecting((value) => !value), []);
   const screen = <ScreenBoundary onFailure={onScreenReady} fallback={<div className="workbench-screen workbench-code" data-screen-error role="status"><p>{text.screenUnavailable}</p><button type="button" onClick={() => window.location.reload()}>{text.reload}</button></div>}>
-    <Suspense fallback={<div className="workbench-screen workbench-code" role="status" aria-busy="true"><p>{text.loading}</p></div>}><WorkbenchScreen state={state} dispatch={screenDispatch} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} onReady={onScreenReady} /></Suspense>
+    <Suspense fallback={<div className="workbench-screen workbench-code" role="status" aria-busy="true"><p>{text.loading}</p></div>}><WorkbenchScreen state={state} dispatch={screenDispatch} access={access} locale={locale} theme={theme} input={input} pointer={pointer} sound={sound} session={session} prompt={prompt} inspecting={inspectActive} onInspect={toggleInspect} onReady={onScreenReady} /></Suspense>
   </ScreenBoundary>;
   const sceneScreen = environment.mobile && state.app.kind === "PREVIEW" && state.app.siteId === "fixture" ? <div className="workbench-screen workbench-code" data-workstation-screen><p>{text.focus}</p><button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button></div> : screen;
   const active = !environment.hidden && !focused;
@@ -258,7 +259,7 @@ export function WorkstationOrchestrator({ locale, discovery }: { locale: Locale;
         <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
         {!armed || failed ? <button type="button" onClick={() => { setArmed(true); setFailed(false); }}>{text.enable}</button> : null}
       </div> : null}
-      <noscript><p>{text.fallback}</p>{Object.values(workstationSites).map((site) => <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>)}</noscript>
+      <noscript><p>{text.fallback}</p>{access.sites.map(id => { const site = workstationSites[id]; return <p key={site.url}><a href={site.url} target="_blank" rel="noopener noreferrer">{site.title} · {text.external} ↗</a></p>; })}</noscript>
       {discovery}
     </div>
     {body ? createPortal(<>

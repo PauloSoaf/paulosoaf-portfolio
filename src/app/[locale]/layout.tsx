@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 
-import { PreviewBanner } from "@/components/editorial/Editorial";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { contactChannels, findChannel } from "@/features/contact/contact-links";
@@ -65,7 +64,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         >
           {dict.a11y.skipToContent}
         </a>
-        {preview ? <PreviewBanner text={dict.editorial.banner} /> : null}
         <SiteHeader locale={locale} dict={dict} />
         <main id="main" tabIndex={-1} className="focus:outline-none">
           {children}

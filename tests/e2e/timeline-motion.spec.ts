@@ -3,6 +3,10 @@ import { expect, test, type Page } from "@playwright/test";
 import { dictionaries } from "../../src/i18n/get-dictionary";
 
 test.use({ viewport: { width: 1440, height: 900 }, reducedMotion: "no-preference" });
+test.beforeEach(async ({ page }) => {
+  // Isolate motion/timeline and timer tests from GPU work; physical input has its own suite.
+  await page.addInitScript(() => Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: true } }));
+});
 const timeline = (page: Page) => page.locator("[data-timeline]");
 const scrollTo = async (page: Page, selector: string) => page.locator(selector).evaluate((el) => el.scrollIntoView({ block: "center", behavior: "instant" }));
 async function ready(page: Page, url = "/pt#about") {

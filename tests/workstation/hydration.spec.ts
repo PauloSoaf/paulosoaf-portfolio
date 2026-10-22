@@ -14,7 +14,7 @@ for (const width of [390, 1440]) for (const hash of ["", "#work", "#about"]) {
     const gate = new Promise<void>((resolve) => { release = resolve; });
     await page.route("**/_next/**/*.js", async (route) => { await gate; await route.continue(); });
     try {
-      await page.goto(`${testInfo.project.use.baseURL}/pt/workstation-lab${hash}`, { waitUntil: "commit" });
+      await page.goto(`${testInfo.project.use.baseURL}/pt${hash}`, { waitUntil: "commit" });
       await page.locator("[data-timeline]").waitFor(); await page.evaluate(() => document.fonts.ready);
       // Let CSS/fonts and the browser's native hash navigation settle while app JS stays blocked.
       await page.waitForTimeout(800);
