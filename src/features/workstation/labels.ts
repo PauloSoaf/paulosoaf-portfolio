@@ -2,7 +2,7 @@ import type { Locale } from "@/i18n/config";
 
 const pt = {
   title: "Obsidian Workstation", caption: "Um objeto. Muitas possibilidades.",
-  present: "Apresentar conteúdo",
+  present: "Apresentar conteúdo", projects: "Projetos",
   enable: "Ativar notebook 3D", focus: "Focar tela", exitFocus: "Voltar ao notebook",
   close: "Voltar ao desktop", openLid: "Abrir tampa", closeLid: "Fechar tampa",
   left: "Girar à esquerda", right: "Girar à direita", reset: "Redefinir posição",
@@ -39,7 +39,7 @@ const pt = {
 type Labels = { [K in keyof typeof pt]: string };
 const en: Labels = {
   title: "Obsidian Workstation", caption: "One object. Many possibilities.",
-  present: "Present content",
+  present: "Present content", projects: "Projects",
   enable: "Enable 3D notebook", focus: "Focus screen", exitFocus: "Back to notebook",
   close: "Back to desktop", openLid: "Open lid", closeLid: "Close lid",
   left: "Rotate left", right: "Rotate right", reset: "Reset position",
@@ -75,7 +75,7 @@ const en: Labels = {
 };
 const es: Labels = {
   title: "Obsidian Workstation", caption: "Un objeto. Muchas posibilidades.",
-  present: "Presentar contenido",
+  present: "Presentar contenido", projects: "Proyectos",
   enable: "Activar notebook 3D", focus: "Enfocar pantalla", exitFocus: "Volver al notebook",
   close: "Volver al escritorio", openLid: "Abrir tapa", closeLid: "Cerrar tapa",
   left: "Girar a la izquierda", right: "Girar a la derecha", reset: "Restablecer posición",

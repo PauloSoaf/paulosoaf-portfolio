@@ -11,6 +11,29 @@ const reduce = (...events: WorkstationEvent[]): WorkstationState =>
   events.reduce(workstationReducer, initialWorkstationState);
 
 describe("workstation screen and manipulation state", () => {
+  it("opens the automatic gallery on entering Projects and returns to Desktop on leaving", () => {
+    const gallery = reduce({ type: "SYNC_PROJECTS", active: true });
+    expect(gallery.app).toEqual({ kind: "PROJECTS", automatic: true });
+    expect(workstationReducer(gallery, { type: "SYNC_PROJECTS", active: false }).app.kind).toBe("DESKTOP");
+  });
+  it.each(["OPEN_NOTES", "OPEN_TERMINAL", "OPEN_CODE"] as const)("passive scroll preserves a manually opened %s", type => {
+    const current = reduce({ type });
+    expect(workstationReducer(current, { type: "SYNC_PROJECTS", active: true })).toBe(current);
+  });
+  it("keeps explicit gallery and focus choices independent of passive scroll", () => {
+    const gallery = reduce({ type: "OPEN_PROJECTS" });
+    expect(workstationReducer(gallery, { type: "SYNC_PROJECTS", active: false })).toBe(gallery);
+    const focused = reduce({ type: "FOCUS_SCREEN" });
+    expect(workstationReducer(focused, { type: "SYNC_PROJECTS", active: true })).toBe(focused);
+  });
+  it("explicit Projects navigation can replace an app without resetting lid or rotation", () => {
+    const current = reduce({ type: "OPEN_TERMINAL" }, { type: "ROTATE", axis: 1, delta: .2 });
+    const gallery = workstationReducer(current, { type: "OPEN_PROJECTS", automatic: true });
+    expect(gallery.app.kind).toBe("PROJECTS");
+    expect(gallery.rotation).toEqual(current.rotation);
+    expect(gallery.lidAngle).toBe(current.lidAngle);
+    expect(workstationReducer(reduce({ type: "FAIL" }), { type: "OPEN_PROJECTS" }).mode).toBe("BROKEN");
+  });
   it.each(["fixture", "nutriopus", "deborah"])("selects only the registered site %s", (siteId) => {
     const state = reduce({ type: "OPEN_SITE", siteId });
     expect(state.mode).toBe("PREVIEW");

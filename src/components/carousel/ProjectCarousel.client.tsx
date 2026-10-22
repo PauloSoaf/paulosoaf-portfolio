@@ -8,6 +8,7 @@ import { CarouselCountdown } from "./CarouselCountdown.client";
 import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
 import { CarouselMediaContext } from "./CarouselMediaContext.client";
+import { useProjectPlayback } from "@/features/projects/ProjectPlaybackProvider.client";
 
 interface Slide { slug: string; title: string; content: ReactNode }
 interface Props { slides: readonly Slide[]; labels: Dictionary["carousel"] }
@@ -26,10 +27,15 @@ export function ProjectCarousel({ slides, labels }: Props) {
   const playIntent = useRef<boolean | null>(null);
   const enhanced = useSyncExternalStore(subscribeHydration, hydrated, serverHydrated);
   const [state, dispatch] = useReducer(carouselReducer, initialCarouselState);
+  const playback = useProjectPlayback();
+  const store = playback?.store;
+  const [companionEngaged, setCompanionEngaged] = useState(false);
+  const [companionVisible, setCompanionVisible] = useState(false);
+  const companionVisibility = useRef(false);
   const slugs = useMemo(() => slides.map((slide) => slide.slug), [slides]);
   const clock = useMemo(() => createCarouselClock(() => dispatch({ type: "step", delta: 1, slugs })), [slugs]);
   const index = selectedIndex(state, slugs);
-  const auto = enhanced && shouldAutoAdvance(state, slides.length);
+  const auto = enhanced && !companionEngaged && shouldAutoAdvance({ ...state, visible: state.visible || companionVisible }, slides.length);
   const media = useMemo(() => enhanced && slugs.length > 0 ? {
     allowedSlugs: new Set(slugs.filter((_, i) => Math.abs(slideOffset(i, index, slugs.length)) <= 1)),
     activeSlug: slugs[index]!, visible: state.visible,
@@ -45,7 +51,8 @@ export function ProjectCarousel({ slides, labels }: Props) {
     // A delayed callback can contain several transitions for this same node. Apply the newest.
     const observer = new IntersectionObserver((entries) => {
       const visible = !!entries.at(-1)?.isIntersecting;
-      if (!visible) clock.pause(); dispatch({ type: "visible", value: visible });
+      // An offscreen page card must not stop a still-visible notebook's shared clock.
+      if (!visible && !companionVisibility.current) clock.pause(); dispatch({ type: "visible", value: visible });
     }, { threshold: 0.1 });
     // Track the actual committed node. A one-shot nullable ref read can miss a hydration commit.
     observer.observe(hostNode);
@@ -82,6 +89,22 @@ export function ProjectCarousel({ slides, labels }: Props) {
     const next = wrapIndex(index + delta, slides.length);
     dispatch({ type: "step", delta, slugs, announcement: slides[next] ? `${format(labels.position, { index: next + 1, total: slides.length })}: ${slides[next].title}` : "" });
   }
+
+  useEffect(() => {
+    if (!enhanced || !store) return;
+    store.publish({ index, playing: state.isPlaying, running: auto, reduced: state.reducedMotion, clock }, event => {
+      if (event.type === "engaged") {
+        if (event.value) clock.pause();
+        setCompanionEngaged(event.value);
+      } else if (event.type === "visible") { companionVisibility.current = event.value; setCompanionVisible(event.value); }
+      else if (event.type === "toggle") dispatch({ type: "playing", value: !state.isPlaying });
+      else {
+        clock.reset();
+        const delta = event.type === "next" ? 1 : -1, next = wrapIndex(index + delta, slides.length);
+        dispatch({ type: "step", delta, slugs, announcement: slides[next] ? `${format(labels.position, { index: next + 1, total: slides.length })}: ${slides[next].title}` : "" });
+      }
+    });
+  }, [enhanced, store, index, auto, state.isPlaying, state.reducedMotion, clock, slugs, slides, labels.position]);
 
   function finishGesture(cancelled = false) {
     const current = gesture.current;

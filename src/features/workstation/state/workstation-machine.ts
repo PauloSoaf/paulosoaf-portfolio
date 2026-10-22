@@ -1,5 +1,6 @@
 export type ScreenApp =
   | { readonly kind: "DESKTOP" }
+  | { readonly kind: "PROJECTS"; readonly automatic: boolean }
   | { readonly kind: "PREVIEW"; readonly siteId: "fixture" | "nutriopus" | "deborah" }
   | { readonly kind: "CODE"; readonly file?: string }
   | { readonly kind: "NOTES" }
@@ -24,6 +25,8 @@ export type WorkstationEvent =
   | { type: "OPEN_CODE"; file?: unknown }
   | { type: "OPEN_NOTES" }
   | { type: "OPEN_TERMINAL" }
+  | { type: "OPEN_PROJECTS"; automatic?: boolean }
+  | { type: "SYNC_PROJECTS"; active: boolean }
   | { type: "CLOSE_X" }
   | { type: "FOCUS_SCREEN" }
   | { type: "EXIT_FOCUS" }
@@ -80,6 +83,13 @@ export function workstationReducer(
       return openApp(state, { kind: "NOTES" });
     case "OPEN_TERMINAL":
       return openApp(state, { kind: "TERMINAL" });
+    case "OPEN_PROJECTS":
+      return openApp(state, { kind: "PROJECTS", automatic: !!event.automatic });
+    case "SYNC_PROJECTS":
+      if (state.mode === "FOCUS_SCREEN" || state.mode === "MANIPULATE" || state.mode === "BROKEN") return state;
+      if (event.active && state.app.kind === "DESKTOP") return openApp(state, { kind: "PROJECTS", automatic: true });
+      if (!event.active && state.app.kind === "PROJECTS" && state.app.automatic) return openApp(state, { kind: "DESKTOP" });
+      return state;
     case "CLOSE_X": {
       if (state.mode === "BROKEN") return state;
       const focused = state.mode === "FOCUS_SCREEN";

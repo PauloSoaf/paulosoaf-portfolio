@@ -1,0 +1,129 @@
+{
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21aa"
+  ],
+  "results": [
+    {
+      "locale": "pt",
+      "theme": "dark",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "pt",
+      "theme": "light",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "en",
+      "theme": "dark",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "en",
+      "theme": "light",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "es",
+      "theme": "dark",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "es",
+      "theme": "light",
+      "mode": "2d-mobile-reduced",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 10
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "pt",
+      "theme": "dark",
+      "mode": "projected-desktop",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 13
+        }
+      ],
+      "passes": 12
+    },
+    {
+      "locale": "pt",
+      "theme": "light",
+      "mode": "projected-desktop",
+      "axeVersion": "4.13.0",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 13
+        }
+      ],
+      "passes": 12
+    }
+  ]
+}

@@ -14,6 +14,8 @@ import { NotesApp } from "./NotesApp.client";
 import { CodeApp } from "./CodeApp.client";
 import { TerminalApp, TerminalPrompt } from "./TerminalApp.client";
 import { siteFrame } from "./site-framing";
+import { ProjectsApp } from "./ProjectsApp.client";
+import { useProjectPlayback } from "@/features/projects/ProjectPlaybackProvider.client";
 
 const unmuted = () => false;
 
@@ -76,13 +78,14 @@ export function WorkbenchScreen({ state, dispatch, access, locale, theme, input,
   const root = useRef<HTMLDivElement>(null);
   const muted = useSyncExternalStore(sound.subscribe, sound.getMuted, unmuted);
   const text = workstationLabels[locale], app = state.app;
+  const playback = useProjectPlayback();
   const site = app.kind === "PREVIEW" && app.siteId !== "fixture" ? workstationSites[app.siteId] : null;
-  const title = app.kind === "DESKTOP" ? text.desktop : app.kind === "CODE" ? text.code : app.kind === "NOTES" ? text.notes : app.kind === "TERMINAL" ? text.terminal : site?.title ?? text.fixture;
+  const title = app.kind === "DESKTOP" ? text.desktop : app.kind === "PROJECTS" ? text.projects : app.kind === "CODE" ? text.code : app.kind === "NOTES" ? text.notes : app.kind === "TERMINAL" ? text.terminal : site?.title ?? text.fixture;
   const src = app.kind === "PREVIEW" ? site?.url ?? `/workstation/embed-fixture?locale=${locale}&theme=${theme}` : null;
   useEffect(() => {
     pointer.bind(root.current);
     input.external = pointer.external = app.kind === "PREVIEW";
-    const actions: Record<string, WorkstationEvent> = { focus: { type: "FOCUS_SCREEN" }, close: { type: "CLOSE_X" }, browser: { type: "OPEN_SITE", siteId: "fixture" }, code: { type: "OPEN_CODE" }, notes: { type: "OPEN_NOTES" }, terminal: { type: "OPEN_TERMINAL" }, nutriopus: { type: "OPEN_SITE", siteId: "nutriopus" }, deborah: { type: "OPEN_SITE", siteId: "deborah" } };
+    const actions: Record<string, WorkstationEvent> = { focus: { type: "FOCUS_SCREEN" }, close: { type: "CLOSE_X" }, projects: { type: "OPEN_PROJECTS" }, browser: { type: "OPEN_SITE", siteId: "fixture" }, code: { type: "OPEN_CODE" }, notes: { type: "OPEN_NOTES" }, terminal: { type: "OPEN_TERMINAL" }, nutriopus: { type: "OPEN_SITE", siteId: "nutriopus" }, deborah: { type: "OPEN_SITE", siteId: "deborah" } };
     const unregister = [...Object.entries(actions).map(([id, event]) => pointer.register(id, { click: () => dispatch(event) })),
       pointer.register("mute", { click: sound.toggle }),
       pointer.register("desktop-prompt", { click: () => input.port?.focus() }), pointer.register("terminal-prompt", { click: () => input.port?.focus() })];
@@ -103,6 +106,7 @@ export function WorkbenchScreen({ state, dispatch, access, locale, theme, input,
       <div className="workbench-orbit" aria-hidden="true"><span>◈</span></div>
       <p className="workbench-kicker">OBSIDIAN / WORKBENCH</p><h2>{text.greeting}</h2><p>{text.subtitle}</p>
       <div className="workbench-apps">
+        {playback?.projects.length ? <button data-input-action="projects" type="button" onClick={() => dispatch({ type: "OPEN_PROJECTS" })}><span aria-hidden="true">▤</span>{text.projects}</button> : null}
         <button data-input-action="terminal" type="button" onClick={() => dispatch({ type: "OPEN_TERMINAL" })}><span aria-hidden="true">›_</span>{text.terminal}<small>{text.terminalHint}</small></button>
         {access.fixture ? <button data-input-action="browser" type="button" onClick={() => dispatch({ type: "OPEN_SITE", siteId: "fixture" })}><span aria-hidden="true">↗</span>{text.browser}<small>{text.fixture}</small></button> : null}
         <button data-input-action="code" type="button" onClick={() => dispatch({ type: "OPEN_CODE" })}><span aria-hidden="true">&lt;/&gt;</span>{text.code}<small>{text.codeHint}</small></button>
@@ -110,7 +114,8 @@ export function WorkbenchScreen({ state, dispatch, access, locale, theme, input,
       </div>
       <div className="workbench-projects">{access.sites.map(id => <button data-input-action={id} type="button" key={id} onClick={() => dispatch({ type: "OPEN_SITE", siteId: id })}>{workstationSites[id].title} <span aria-hidden="true">↗</span></button>)}</div>
       <TerminalPrompt session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} compact onSubmitted={() => dispatch({ type: "OPEN_TERMINAL" })} />
-    </div> : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
+    </div> : app.kind === "PROJECTS" ? <ProjectsApp locale={locale} pointer={pointer} dispatch={dispatch} access={access} />
+      : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
       : app.kind === "TERMINAL" ? <TerminalApp session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} intro={text.terminalIntro} />
       : app.kind === "CODE" ? <CodeApp file={app.file} text={text} pointer={pointer} inspecting={inspecting} onInspect={onInspect} onSelect={(file) => dispatch({ type: "OPEN_CODE", file })} />
       : app.kind === "PREVIEW" && app.siteId !== "fixture" ? <CommercialPreview key={app.siteId} siteId={app.siteId} text={text} dispatch={dispatch} projected={state.mode !== "FOCUS_SCREEN"} />

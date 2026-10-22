@@ -15,6 +15,8 @@ import { WorkstationOrchestrator } from "@/features/workstation/orchestrator/Wor
 import { WorkstationDiscovery } from "@/features/workstation/WorkstationDiscovery";
 import { workstationAvailable } from "@/features/workstation/config";
 import { siteForProject } from "@/features/workstation/sites";
+import { orderProjects } from "@/features/projects/project-presentation";
+import { ProjectPlaybackProvider } from "@/features/projects/ProjectPlaybackProvider.client";
 
 /** One public experience; editorial visibility is independent of the notebook. */
 export function LandingContent({ locale }: { locale: Locale }) {
@@ -36,5 +38,6 @@ export function LandingContent({ locale }: { locale: Locale }) {
     <ContactSection dict={dict} channels={channels} preview={preview} />
     <MotionRuntime /><CreativeRuntime />
   </>;
-  return <div data-workstation-story>{content}</div>;
+  const playbackProjects = orderProjects(projects).map(({ slug, title, kind, status, summary, image, art }) => ({ slug, title, kind, status, summary, image, art }));
+  return <ProjectPlaybackProvider projects={playbackProjects} labels={{ carousel: dict.carousel, projects: dict.projects, editorial: dict.editorial }}><div data-workstation-story>{content}</div></ProjectPlaybackProvider>;
 }

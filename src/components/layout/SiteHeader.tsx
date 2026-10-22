@@ -10,6 +10,7 @@ import { localePath, sectionHref, sectionIds } from "@/i18n/paths";
 
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu.client";
+import { SectionNavigation } from "./SectionNavigation.client";
 
 interface SiteHeaderProps {
   locale: Locale;
@@ -27,6 +28,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
 
   return (
     <header id="top" className="sticky top-0 z-40 border-b border-line bg-(--oo-header-bg)">
+      <SectionNavigation />
       <div className="container-page flex h-(--oo-header-height) items-center justify-between gap-5">
         <Logo href={localePath(locale)} label={dict.a11y.home} />
 

@@ -16,11 +16,11 @@
 .ui-nav { position:relative; }
 .ui-nav::after { content:""; position:absolute; bottom:9px; inset-inline:0; height:1px; background:var(--oo-accent-primary); transform:scaleX(0); transform-origin:left; transition:transform var(--oo-motion-normal) var(--oo-ease-emphasized); }
 .ui-nav:hover::after, .ui-nav:focus-visible::after, .ui-nav[aria-current]::after { transform:scaleX(1); }
-html:has(#work:target) header .ui-nav[href$="#work"]::after,
-html:has(#about:target) header .ui-nav[href$="#about"]::after,
-html:has(#expertise:target) header .ui-nav[href$="#expertise"]::after,
-html:has(#services:target) header .ui-nav[href$="#services"]::after,
-html:has(#contact:target) header .ui-nav[href$="#contact"]::after { transform:scaleX(1); }
+html:not([data-section-tracking]):has(#work:target) header .ui-nav[href$="#work"]::after,
+html:not([data-section-tracking]):has(#about:target) header .ui-nav[href$="#about"]::after,
+html:not([data-section-tracking]):has(#expertise:target) header .ui-nav[href$="#expertise"]::after,
+html:not([data-section-tracking]):has(#services:target) header .ui-nav[href$="#services"]::after,
+html:not([data-section-tracking]):has(#contact:target) header .ui-nav[href$="#contact"]::after { transform:scaleX(1); }
 .ui-card { transition:translate var(--oo-motion-normal) var(--oo-ease-standard),border-color var(--oo-motion-fast),box-shadow var(--oo-motion-normal); }
 @media (hover:hover) { .ui-card:hover { translate:0 -3px; border-color:var(--oo-border-strong); box-shadow:0 12px 28px var(--oo-glow); } }
 .ui-card:focus-within { border-color:var(--oo-border-strong); }

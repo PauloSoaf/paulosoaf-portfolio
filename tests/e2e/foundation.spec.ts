@@ -145,6 +145,7 @@ test("public build excludes editorial drafts and unapproved contact links", asyn
     expect((await request.get(`/${locale}/workstation-lab`, { maxRedirects: 0 })).headers().location).toBe(`/${locale}`);
     await page.locator(".workstation-fallback").getByRole("button", { name: new RegExp(workstationLabels[locale].focus) }).click();
     await expect(page.locator("dialog [data-workstation-screen]")).toBeVisible();
+    await expect(page.locator('dialog [data-input-action="projects"]')).toHaveCount(0);
     await expect(page.locator('dialog [data-input-action="nutriopus"], dialog [data-input-action="deborah"], dialog [data-input-action="browser"]')).toHaveCount(0);
     await expect(page.locator('dialog [data-input-action="code"], dialog [data-input-action="notes"], dialog [data-input-action="terminal"]')).toHaveCount(3);
     await page.locator('dialog [data-input-action="terminal"]').click();

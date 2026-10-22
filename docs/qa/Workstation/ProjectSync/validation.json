@@ -1,0 +1,419 @@
+{
+  "base": "ca69c5d7734429de04b8246d4d9eb0ae0e1b2372",
+  "branch": "fix/workstation-project-navigation-sync",
+  "unit": {
+    "passed": 216,
+    "files": 25
+  },
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "previewBuild": "PASS",
+  "publicBuild": "PASS",
+  "suites": {
+    "general": {
+      "startTime": "2026-10-22T19:10:11.101Z",
+      "duration": 119444.061,
+      "expected": 82,
+      "skipped": 1,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "workstationFull": {
+      "startTime": "2026-10-22T19:12:29.325Z",
+      "duration": 1203035.045,
+      "expected": 85,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "projectSyncFinal": {
+      "startTime": "2026-10-22T19:34:51.071Z",
+      "duration": 83345.90999999999,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "public": {
+      "startTime": "2026-10-22T19:38:42.633Z",
+      "duration": 11162.702,
+      "expected": 14,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "finalProductAdjustmentAfterFullSuite": {
+    "reason": "Explicit gallery opened from Desktop also plays while the page remains in Hero; final 8-case suite includes this native interaction.",
+    "changes": [
+      {
+        "path": "src/features/workstation/screen/ProjectsApp.client.tsx",
+        "before": "b3fc3e497724755cdf43b104fca276fd608c57645dbcc8e3220140f28ae83d71",
+        "after": "be9252b8cee7f8c29183f70862eb99b7e2c3e0cbb51288437b432a0c809688f4"
+      }
+    ]
+  },
+  "visual": {
+    "combinations": 14,
+    "screenshots": 37,
+    "errors": [],
+    "maxProjectionError": 0.006938959604608746
+  },
+  "accessibility": {
+    "scans": 8,
+    "violations": 0,
+    "incompleteContrastNodes": [
+      {
+        "locale": "pt",
+        "theme": "dark",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "theme": "light",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "theme": "dark",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "en",
+        "theme": "light",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "es",
+        "theme": "dark",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "es",
+        "theme": "light",
+        "mode": "2d-mobile-reduced",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 10
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "theme": "dark",
+        "mode": "projected-desktop",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 13
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "theme": "light",
+        "mode": "projected-desktop",
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 13
+          }
+        ]
+      }
+    ],
+    "manualConformanceNotClaimed": true
+  },
+  "hydration": [
+    {
+      "width": 390,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2403.53125,
+        "expertiseTop": 4788.625,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 2403.53125,
+        "expertiseTop": 4788.625,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1518.53125,
+        "expertiseTop": 3903.625,
+        "scrollY": 885
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 1518.53125,
+        "expertiseTop": 3903.625,
+        "scrollY": 885
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "fallback",
+      "errors": []
+    },
+    {
+      "width": 390,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 79.53125,
+        "expertiseTop": 2464.625,
+        "scrollY": 2324
+      },
+      "after": {
+        "timelineHeight": 1593.21875,
+        "aboutTop": 79.53125,
+        "expertiseTop": 2464.625,
+        "scrollY": 2324
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1747.453125,
+        "expertiseTop": 3411.109375,
+        "scrollY": 0
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 1747.453125,
+        "expertiseTop": 3411.109375,
+        "scrollY": 0
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#work",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 934.453125,
+        "expertiseTop": 2598.109375,
+        "scrollY": 813
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 934.453125,
+        "expertiseTop": 2598.109375,
+        "scrollY": 813
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "hash": "#about",
+      "latencyMs": 120,
+      "bytesPerSecond": 180000,
+      "cpuSlowdown": 4,
+      "before": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 1659
+      },
+      "after": {
+        "timelineHeight": 486.75,
+        "aboutTop": 88.453125,
+        "expertiseTop": 1752.109375,
+        "scrollY": 1659
+      },
+      "delta": {
+        "timelineHeight": 0,
+        "aboutTop": 0,
+        "expertiseTop": 0,
+        "scrollY": 0
+      },
+      "scene": "ready",
+      "errors": []
+    }
+  ],
+  "release": {
+    "ready": false,
+    "unchangedBlockers": 10
+  },
+  "finalSourceChanges": [
+    {
+      "path": "scripts/generate-workstation-code.mjs",
+      "sha256": "955e04ecdd6d175a53440f6e55d5be46a26b0427248fd86c56be76755b205712"
+    },
+    {
+      "path": "src/components/carousel/ProjectCarousel.client.tsx",
+      "sha256": "1241c3b2d48f7ec18310d523ecf39ff8a2b4d919cd97b1b8530b8dd909e93b12"
+    },
+    {
+      "path": "src/components/layout/LandingContent.tsx",
+      "sha256": "cdcf7cec931d95a2f87a92a3517da20b0f9fc5716636347499b62b8beb94ead0"
+    },
+    {
+      "path": "src/components/layout/SectionNavigation.client.tsx",
+      "sha256": "8123050d85343039a679bf6533a19982b2622bfd2a0ea7264f53bf22df7594b8"
+    },
+    {
+      "path": "src/components/layout/SiteHeader.tsx",
+      "sha256": "39c3f079a53dcc51df4b1f32002b51b3d1a7226f8103ba130830f8a03a8f9a9c"
+    },
+    {
+      "path": "src/components/ui/PageLink.client.tsx",
+      "sha256": "e3370d3d385124cad662d17ccb24da6ff119254d9e89fdeb3ed888f7462b83e4"
+    },
+    {
+      "path": "src/features/navigation/visible-section.ts",
+      "sha256": "4893e4fe0bf44f32043c2734636fa99ed48dcea0d325572d8b2282dd61a2090e"
+    },
+    {
+      "path": "src/features/projects/ProjectPlaybackProvider.client.tsx",
+      "sha256": "0d036b6a8e406ae0ce109dfb84f0ed534e268ba372cc67cfec7f31dfdcda251f"
+    },
+    {
+      "path": "src/features/projects/project-playback.ts",
+      "sha256": "4f7a496a2611f2211b4ffcf7ba68ec56b7ec6aa5d92d590fd560f7f6e9a77fad"
+    },
+    {
+      "path": "src/features/workstation/labels.ts",
+      "sha256": "5a2f8319f194159dbe36a7742ab1d28b3f1e14116c2da11ea08187eecf0fe26a"
+    },
+    {
+      "path": "src/features/workstation/orchestrator/WorkstationOrchestrator.client.tsx",
+      "sha256": "965d53f3c069d0d6b5c0efee70e0fae3cb4e5a578039f804027d8a7b9bbddd89"
+    },
+    {
+      "path": "src/features/workstation/screen/ProjectsApp.client.tsx",
+      "sha256": "be9252b8cee7f8c29183f70862eb99b7e2c3e0cbb51288437b432a0c809688f4"
+    },
+    {
+      "path": "src/features/workstation/screen/WorkbenchScreen.client.tsx",
+      "sha256": "48a9773a4f9d25da7f9dd115c79f38c6eea0d21d97a8a9fc316ed19b94b67e0c"
+    },
+    {
+      "path": "src/features/workstation/state/workstation-machine.ts",
+      "sha256": "2be1111899b44174edbd4164c42bc7507ba80fdda55a61b2dd904141111e56cb"
+    },
+    {
+      "path": "src/styles/interactions.css",
+      "sha256": "1558044207a47ec56167c1a56d4dbcf4bb90fa092befa95c04d0bc031d1e7d41"
+    },
+    {
+      "path": "src/styles/workstation.css",
+      "sha256": "6cccb3dab7c10b113bc856367220a56456da81a15de704081768fbfde84c22d0"
+    },
+    {
+      "path": "tests/e2e/foundation.spec.ts",
+      "sha256": "f112fe9a332307a8a8c8ff9ecad9c880168224199017db7b8272e667069bb217"
+    },
+    {
+      "path": "tests/e2e/project-navigation.spec.ts",
+      "sha256": "9d1578c60b56a7661c93f83d64b338f1fc599334f2deb83fb04c2f2303a8b34e"
+    },
+    {
+      "path": "tests/unit/project-playback.test.tsx",
+      "sha256": "2b407d9d4610867d1d450f35975a227f9fad4c93c718e7768fdaf985983375ad"
+    },
+    {
+      "path": "tests/unit/workstation-machine.test.ts",
+      "sha256": "681ff64e1be4cba7aefbcc48c75903f3d84428fb3333508dc6a8e86efcdf0a6a"
+    },
+    {
+      "path": "tests/workstation/project-sync.spec.ts",
+      "sha256": "8bef0cadd78692e0e449d6890604057762b0d62b88d7898fd429b43ebc6e3cae"
+    }
+  ]
+}
