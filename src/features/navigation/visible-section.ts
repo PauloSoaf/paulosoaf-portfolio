@@ -2,9 +2,9 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
-import { sectionIds, type SectionId } from "@/i18n/paths";
+import { navigationIds, type NavigationId } from "@/i18n/paths";
 
-let current: SectionId | null = null;
+let current: NavigationId | null = null;
 let stop: (() => void) | undefined;
 let route: string | null = null;
 const listeners = new Set<() => void>();
@@ -16,8 +16,8 @@ function start() {
   const measure = () => {
     frame = 0;
     const marker = (document.getElementById("top")?.getBoundingClientRect().bottom ?? 0) + 24;
-    let next: SectionId | null = null;
-    for (const id of sectionIds) {
+    let next: NavigationId | null = null;
+    for (const id of navigationIds) {
       const bounds = document.getElementById(id)?.getBoundingClientRect();
       if (bounds && bounds.top <= marker && bounds.bottom > marker) { next = id; break; }
     }

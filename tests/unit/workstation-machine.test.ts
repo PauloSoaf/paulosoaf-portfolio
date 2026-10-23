@@ -11,6 +11,18 @@ const reduce = (...events: WorkstationEvent[]): WorkstationState =>
   events.reduce(workstationReducer, initialWorkstationState);
 
 describe("workstation screen and manipulation state", () => {
+  it("changes automatic content between Projects, Journey and Home without replacing manual apps", () => {
+    const projects = reduce({ type: "SYNC_SECTION", section: "work" });
+    const journey = workstationReducer(projects, { type: "SYNC_SECTION", section: "about" });
+    expect(journey.app).toEqual({ kind: "JOURNEY", automatic: true });
+    expect(workstationReducer(journey, { type: "SYNC_SECTION", section: null }).app.kind).toBe("DESKTOP");
+    const manual = reduce({ type: "OPEN_NOTES" });
+    expect(workstationReducer(manual, { type: "SYNC_SECTION", section: "about" })).toBe(manual);
+    const focused = reduce({ type: "FOCUS_SCREEN" });
+    expect(workstationReducer(focused, { type: "SYNC_SECTION", section: "about" })).toBe(focused);
+    const explicit = workstationReducer(manual, { type: "OPEN_JOURNEY", automatic: true });
+    expect(explicit.app.kind).toBe("JOURNEY");
+  });
   it("opens the automatic gallery on entering Projects and returns to Desktop on leaving", () => {
     const gallery = reduce({ type: "SYNC_PROJECTS", active: true });
     expect(gallery.app).toEqual({ kind: "PROJECTS", automatic: true });

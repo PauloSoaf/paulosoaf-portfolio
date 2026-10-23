@@ -342,7 +342,10 @@ export class MotionRig {
   private orient(dt: number, time: number) {
     const target = this.readingTarget(), look = this.attention ?? this.look;
     const { width, height } = this.viewport;
-    const following = this.mode === "FOLLOW" && !this.reduced;
+    // Native websites and chapter reading stay still under the pointer; the page path
+    // and manual manipulation retain their springs and physical motion.
+    const reading = target.chapter === "work" || target.chapter === "about";
+    const following = this.mode === "FOLLOW" && !this.reduced && (!reading || !!this.attention);
     const lookAmount = 1 - this.presentationAmount * (this.readingKind === "preview" ? 1 : .7);
     const lookYaw = following && look ? Math.max(-1, Math.min(1, (look.x - this.body.x) / (width * .5))) * (this.attention ? .32 : .18) : 0;
     const lookPitch = following && look ? Math.max(-1, Math.min(1, (look.y - this.body.y) / (height * .6))) * (this.attention ? .16 : .09) : 0;
@@ -378,6 +381,7 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     return { width: host.clientWidth || innerWidth, height: host.clientHeight || innerHeight, top };
   }
   let projectReadingArea: ReadingArea | null = null;
+  let journeyReadingArea: ReadingArea | null = null;
   function sample() {
     dirty = false;
     const next = viewport(), resized = next.width !== rig.viewport.width || next.height !== rig.viewport.height;
@@ -389,6 +393,9 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
       const container = document.querySelector("#work>.container-page")?.getBoundingClientRect();
       // Offset geometry ignores the content wrapper's temporary scroll-reveal transform.
       projectReadingArea = heading && content && container ? { left: container.left, top: heading.top + scrollY, width: container.width, height: container.top + content.offsetTop + content.offsetHeight - heading.top } : null;
+      const about = document.querySelector("#about .section-heading")?.getBoundingClientRect();
+      const navigation = document.querySelector("#about .journey-navigation")?.getBoundingClientRect();
+      journeyReadingArea = about && navigation ? { left: about.left, top: about.top + scrollY, width: about.width, height: navigation.bottom - about.top } : null;
     }
     const jump = Math.abs(scrollY - lastScroll) > next.height * 2.5, relaid = layoutDirty || resized;
     const plan = (scroll: number) => {
@@ -435,7 +442,7 @@ export function installWorkstationPosition(host: HTMLElement, anchor: HTMLElemen
     const needsRender = rig.render?.(time / 1000) ?? false;
     // Match the CSS breakpoint, which includes the scrollbar; the rig's narrower
     // drawable width remains correct for physical fitting, but not for choosing columns.
-    const reading = needsProjectClearance(innerWidth, rig.mode === "FOLLOW", rig.presentation !== "context", rig.hull?.points ?? [], projectReadingArea, scrollY);
+    const reading = [projectReadingArea, journeyReadingArea].some(area => needsProjectClearance(innerWidth, rig.mode === "FOLLOW", rig.presentation !== "context", rig.hull?.points ?? [], area, scrollY));
     setData(host, { projectReading: String(reading) });
     // Also remove the projected DOM and keyboard hit layer from focus/hit testing while yielding.
     if (host.inert !== reading) host.inert = reading;

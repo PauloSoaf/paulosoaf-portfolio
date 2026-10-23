@@ -27,6 +27,7 @@ import type { HoverPart } from "../scene/WorkstationScene.client";
 import type { Presentation } from "./presentation";
 import { useVisibleSection } from "@/features/navigation/visible-section";
 import { useProjectPlayback } from "@/features/projects/ProjectPlaybackProvider.client";
+import { useJourneyScreen } from "@/features/experience/JourneyScreenProvider.client";
 const Scene = dynamic(() => import("../scene/WorkstationScene.client"), { ssr: false });
 // The OS is needed only with a ready 3D screen or an explicitly opened 2D dialog.
 // Keep it off the editorial/low-data bootstrap without changing the notebook's interface.
@@ -79,16 +80,26 @@ export function WorkstationOrchestrator({ locale, access, discovery }: { locale:
   const focused = state.mode === "FOCUS_SCREEN";
   const section = useVisibleSection(), playback = useProjectPlayback();
   const hasProjects = !!playback?.projects.length;
+  const journey = useJourneyScreen(), hasJourney = !!journey?.enabled;
+  const setJourneyAvailable = journey?.setAvailable;
   useEffect(() => {
-    dispatch({ type: "SYNC_PROJECTS", active: section === "work" && hasProjects });
-  }, [section, hasProjects]);
+    setJourneyAvailable?.((ready && !failed) || focused);
+    return () => setJourneyAvailable?.(false);
+  }, [setJourneyAvailable, ready, failed, focused]);
+  useEffect(() => {
+    dispatch({ type: "SYNC_SECTION", section: section === "work" && hasProjects ? "work" : section === "about" && hasJourney ? "about" : null });
+  }, [section, hasProjects, hasJourney]);
   useEffect(() => {
     const navigate = (event: Event) => {
-      if (hasProjects && (event as CustomEvent<{ section?: string }>).detail?.section === "work") dispatch({ type: "OPEN_PROJECTS", automatic: true });
+      const destination = (event as CustomEvent<{ section?: string }>).detail?.section;
+      if (hasProjects && destination === "work") dispatch({ type: "OPEN_PROJECTS", automatic: true });
+      if (hasJourney && destination === "about") dispatch({ type: "OPEN_JOURNEY", automatic: true });
     };
+    const openJourney = () => { if (hasJourney) dispatch({ type: "OPEN_JOURNEY", automatic: true }); };
     window.addEventListener("portfolio:section-navigate", navigate);
-    return () => window.removeEventListener("portfolio:section-navigate", navigate);
-  }, [hasProjects]);
+    window.addEventListener("portfolio:workstation-journey", openJourney);
+    return () => { window.removeEventListener("portfolio:section-navigate", navigate); window.removeEventListener("portfolio:workstation-journey", openJourney); };
+  }, [hasProjects, hasJourney]);
   const prepareReading = useCallback((kind: Exclude<Presentation, "context">) => {
     rig.present(kind); rig.keyboardView = false; dispatch({ type: "SET_LID", angle: 108 }); rig.refresh();
   }, [rig]);

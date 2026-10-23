@@ -1,0 +1,1303 @@
+{
+  "date": "2026-10-23T19:33:18.225Z",
+  "actor": "Codex",
+  "takeover": "eb6501683598438587e68ffaf952af942a19dec2",
+  "claudeSnapshot": "17ff916637674df95be03ed58ee44fd22e64981b",
+  "branch": "feat/workstation-live-projects-and-journey",
+  "testedState": "uncommitted worktree; exact source hashes below",
+  "node": "v22.20.0",
+  "verify": {
+    "lint": true,
+    "typecheck": true,
+    "unit": 218,
+    "unitFiles": 25,
+    "previewBuild": true,
+    "publicBuild": true
+  },
+  "workstation": {
+    "runs": [
+      {
+        "name": "regression.json",
+        "startTime": "2026-10-23T11:09:37.003Z",
+        "duration": 1053367.703,
+        "expected": 69,
+        "skipped": 0,
+        "unexpected": 4,
+        "flaky": 0
+      },
+      {
+        "name": "regression-followup.json",
+        "startTime": "2026-10-23T11:32:15.590Z",
+        "duration": 425786.163,
+        "expected": 14,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      {
+        "name": "tablet-final.json",
+        "startTime": "2026-10-23T11:43:34.917Z",
+        "duration": 99623.761,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    ],
+    "cases": [
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor top at 390|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor top at 390",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor #work at 390|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #work at 390",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor #about at 390|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #about at 390",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor top at 1440|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor top at 1440",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor #work at 1440|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #work at 1440",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "hydration.spec.ts|slow JavaScript preserves timeline geometry and native anchor #about at 1440|chromium",
+        "title": "slow JavaScript preserves timeline geometry and native anchor #about at 1440",
+        "file": "hydration.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "input-motion.spec.ts|3D keys type into the desktop prompt and run the curated terminal|chromium",
+        "title": "3D keys type into the desktop prompt and run the curated terminal",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|real 3D keys edit Notes with Shift, Caps, arrows and Backspace|chromium",
+        "title": "real 3D keys edit Notes with Shift, Caps, arrows and Backspace",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|trackpad moves the cursor, clicks, double clicks and scrolls owned controls|chromium",
+        "title": "trackpad moves the cursor, clicks, double clicks and scrolls owned controls",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|the terminal opens this portfolio's real source and inspect mode maps page components to files|chromium",
+        "title": "the terminal opens this portfolio's real source and inspect mode maps page components to files",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|the mute control sits in the screen corner and persists|chromium",
+        "title": "the mute control sits in the screen corner and persists",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|Shift-drag rotates the physical notebook without throwing it or losing Notes|chromium",
+        "title": "Shift-drag rotates the physical notebook without throwing it or losing Notes",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|page path stays on screen and attached to the content through every section at 1440|chromium",
+        "title": "page path stays on screen and attached to the content through every section at 1440",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "input-motion.spec.ts|page path stays on screen and attached to the content through every section at 1920|chromium",
+        "title": "page path stays on screen and attached to the content through every section at 1920",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "input-motion.spec.ts|page path stays on screen and attached to the content through every section at 768|chromium",
+        "title": "page path stays on screen and attached to the content through every section at 768",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "tablet-final.json"
+      },
+      {
+        "key": "input-motion.spec.ts|page path stays on screen and attached to the content through every section at 390|chromium",
+        "title": "page path stays on screen and attached to the content through every section at 390",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "input-motion.spec.ts|an abrupt fast-scroll brake knocks the notebook over; it lands and gets back up|chromium",
+        "title": "an abrupt fast-scroll brake knocks the notebook over; it lands and gets back up",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "input-motion.spec.ts|carried, it swings like a pendulum; thrown, it flies, lands and returns by itself|chromium",
+        "title": "carried, it swings like a pendulum; thrown, it flies, lands and returns by itself",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|touch: a vertical swipe on the notebook scrolls the page, a sideways swipe picks it up|chromium",
+        "title": "touch: a vertical swipe on the notebook scrolls the page, a sideways swipe picks it up",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|reduced motion with explicit 3D: drags move directly, no flight and no brake fall|chromium",
+        "title": "reduced motion with explicit 3D: drags move directly, no flight and no brake fall",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "input-motion.spec.ts|missing studio asset keeps a lit model and a working native screen|chromium",
+        "title": "missing studio asset keeps a lit model and a working native screen",
+        "file": "input-motion.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "live-experience.spec.ts|the project player embeds the authorized website with native input, scroll and persistent reading|chromium",
+        "title": "the project player embeds the authorized website with native input, scroll and persistent reading",
+        "file": "live-experience.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "live-experience.spec.ts|Journey keeps its rail on the page and moves the single set of details into the notebook|chromium",
+        "title": "Journey keeps its rail on the page and moves the single set of details into the notebook",
+        "file": "live-experience.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "live-experience.spec.ts|live project iframe NutriOpus renders its real website in the synchronized carousel|chromium",
+        "title": "live project iframe NutriOpus renders its real website in the synchronized carousel",
+        "file": "live-experience.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "live-experience.spec.ts|live project iframe Déborah Lima renders its real website in the synchronized carousel|chromium",
+        "title": "live project iframe Déborah Lima renders its real website in the synchronized carousel",
+        "file": "live-experience.spec.ts",
+        "status": "passed",
+        "report": "regression-followup.json"
+      },
+      {
+        "key": "notebook.spec.ts|the notebook is the interface: no control bar, options stay hidden|chromium",
+        "title": "the notebook is the interface: no control bar, options stay hidden",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|clicking the lid closes it with a spring, sleeps the screen and reopens it|chromium",
+        "title": "clicking the lid closes it with a spring, sleeps the screen and reopens it",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|dragging the lid edge sets its angle|chromium",
+        "title": "dragging the lid edge sets its angle",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|hidden options open from a right click or the keyboard and act on the notebook|chromium",
+        "title": "hidden options open from a right click or the keyboard and act on the notebook",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|only the silhouette captures input: the page stays clickable around the notebook|chromium",
+        "title": "only the silhouette captures input: the page stays clickable around the notebook",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|DOM on the 3D display receives native input, clicks and wheel without moving the notebook|chromium",
+        "title": "DOM on the 3D display receives native input, clicks and wheel without moving the notebook",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|focus dialog shows real source in the Code app and returns keyboard focus|chromium",
+        "title": "focus dialog shows real source in the Code app and returns keyboard focus",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|double-clicking the window title focuses the screen|chromium",
+        "title": "double-clicking the window title focuses the screen",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|mobile has a readable 2D screen, native frame scroll and Escape/back|chromium",
+        "title": "mobile has a readable 2D screen, native frame scroll and Escape/back",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|reduced motion and unavailable WebGL retain complete 2D access|chromium",
+        "title": "reduced motion and unavailable WebGL retain complete 2D access",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|canonical notebook policies stay strict and no longer allow WebAssembly|chromium",
+        "title": "canonical notebook policies stay strict and no longer allow WebAssembly",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|context loss returns to the still and retry owns one fresh canvas|chromium",
+        "title": "context loss returns to the still and retry owns one fresh canvas",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|mobile defers WebGL while the slot is a peek, then loads when most of it is visible|chromium",
+        "title": "mobile defers WebGL while the slot is a peek, then loads when most of it is visible",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|a failed lazy OS chunk keeps the portfolio readable and the focus dialog dismissible|chromium",
+        "title": "a failed lazy OS chunk keeps the portfolio readable and the focus dialog dismissible",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|options menu and focus screen meet automated accessibility checks|chromium",
+        "title": "options menu and focus screen meet automated accessibility checks",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|no JavaScript keeps editorial links, headings and notebook still|chromium",
+        "title": "no JavaScript keeps editorial links, headings and notebook still",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|project actions approach the notebook, theme keeps state, anchors stay canonical|chromium",
+        "title": "project actions approach the notebook, theme keeps state, anchors stay canonical",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|live nutriopus: native external iframe click and wheel, independent close|chromium",
+        "title": "live nutriopus: native external iframe click and wheel, independent close",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "notebook.spec.ts|live deborah: native external iframe click and wheel, independent close|chromium",
+        "title": "live deborah: native external iframe click and wheel, independent close",
+        "file": "notebook.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|the CSS two-column boundary stays visible with a narrower scrollbar host|chromium",
+        "title": "the CSS two-column boundary stays visible with a narrower scrollbar host",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/2880x1800: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/2880x1800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/1920x1080: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/1920x1080: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/1440x900: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/1440x900: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/1280x800: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/1280x800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/1024x768: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/1024x768: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/768x1024: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/768x1024: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/390x844: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/390x844: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|dark/360x800: native project anchor, full cards and aligned station|chromium",
+        "title": "dark/360x800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/2880x1800: native project anchor, full cards and aligned station|chromium",
+        "title": "light/2880x1800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/1920x1080: native project anchor, full cards and aligned station|chromium",
+        "title": "light/1920x1080: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/1440x900: native project anchor, full cards and aligned station|chromium",
+        "title": "light/1440x900: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/1280x800: native project anchor, full cards and aligned station|chromium",
+        "title": "light/1280x800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/1024x768: native project anchor, full cards and aligned station|chromium",
+        "title": "light/1024x768: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/768x1024: native project anchor, full cards and aligned station|chromium",
+        "title": "light/768x1024: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/390x844: native project anchor, full cards and aligned station|chromium",
+        "title": "light/390x844: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|light/360x800: native project anchor, full cards and aligned station|chromium",
+        "title": "light/360x800: native project anchor, full cards and aligned station",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|390: an already loaded scene yields to project reading and opens the site on a real click|chromium",
+        "title": "390: an already loaded scene yields to project reading and opens the site on a real click",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|768: an already loaded scene yields to project reading and opens the site on a real click|chromium",
+        "title": "768: an already loaded scene yields to project reading and opens the site on a real click",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|1440: native navigation keeps the real notebook beside the project card|chromium",
+        "title": "1440: native navigation keeps the real notebook beside the project card",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-layout.spec.ts|2880: native navigation keeps the real notebook beside the project card|chromium",
+        "title": "2880: native navigation keeps the real notebook beside the project card",
+        "file": "project-layout.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|native Projects navigation opens and plays the notebook carousel with one real clock and bidirectional controls|chromium",
+        "title": "native Projects navigation opens and plays the notebook carousel with one real clock and bidirectional controls",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|dark/mobile: gallery keeps playing when its page card is outside the viewport|chromium",
+        "title": "dark/mobile: gallery keeps playing when its page card is outside the viewport",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|light/mobile: gallery keeps playing when its page card is outside the viewport|chromium",
+        "title": "light/mobile: gallery keeps playing when its page card is outside the viewport",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|passive section scroll preserves a manual app; an explicit Projects click chooses the gallery|chromium",
+        "title": "passive section scroll preserves a manual app; an explicit Projects click chooses the gallery",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|pt: reduced motion has a translated 2D gallery with manual selection and disabled autoplay|chromium",
+        "title": "pt: reduced motion has a translated 2D gallery with manual selection and disabled autoplay",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|en: reduced motion has a translated 2D gallery with manual selection and disabled autoplay|chromium",
+        "title": "en: reduced motion has a translated 2D gallery with manual selection and disabled autoplay",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|es: reduced motion has a translated 2D gallery with manual selection and disabled autoplay|chromium",
+        "title": "es: reduced motion has a translated 2D gallery with manual selection and disabled autoplay",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      },
+      {
+        "key": "project-sync.spec.ts|Projects opened explicitly from the notebook Desktop plays while the page stays in Hero|chromium",
+        "title": "Projects opened explicitly from the notebook Desktop plays while the page stays in Hero",
+        "file": "project-sync.spec.ts",
+        "status": "passed",
+        "report": "regression.json"
+      }
+    ]
+  },
+  "general": {
+    "runs": [
+      {
+        "name": "general-first.json",
+        "startTime": "2026-10-23T11:50:10.913Z",
+        "duration": 178929.36000000002,
+        "expected": 79,
+        "skipped": 1,
+        "unexpected": 3,
+        "flaky": 0
+      },
+      {
+        "name": "general.json",
+        "startTime": "2026-10-23T11:55:01.717Z",
+        "duration": 133887.212,
+        "expected": 81,
+        "skipped": 1,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      {
+        "name": "general-followup.json",
+        "startTime": "2026-10-23T19:24:21.574Z",
+        "duration": 30812.058,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    ],
+    "cases": [
+      {
+        "key": "carousel.spec.ts|real project change, wrapping, position, verified links and inert neighbors|chromium",
+        "title": "real project change, wrapping, position, verified links and inert neighbors",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|keyboard arrows only at stage focus, button Space/Enter and active link tab order|chromium",
+        "title": "keyboard arrows only at stage focus, button Space/Enter and active link tab order",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|mouse drag changes pixels and project, interrupted drag cancels, dragging links cannot navigate|chromium",
+        "title": "mouse drag changes pixels and project, interrupted drag cancels, dragging links cannot navigate",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|7-second autoplay, hover suspension, manual pause and focus stops until explicit restart|chromium",
+        "title": "7-second autoplay, hover suspension, manual pause and focus stops until explicit restart",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|hidden tab and offscreen suspend timers; reduced motion disables autoplay and transitions|chromium",
+        "title": "hidden tab and offscreen suspend timers; reduced motion disables autoplay and transitions",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|real touch swipe and vertical scroll on compact mobile with accessible alternatives|chromium",
+        "title": "real touch swipe and vertical scroll on compact mobile with accessible alternatives",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|failed images restore distinct concepts with stable dimensions and usable links|chromium",
+        "title": "failed images restore distinct concepts with stable dimensions and usable links",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|catalog stays fully accessible without JavaScript and hides unavailable actions|chromium",
+        "title": "catalog stays fully accessible without JavaScript and hides unavailable actions",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|pt/dark: active carousel accessibility and reflow|chromium",
+        "title": "pt/dark: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|pt/light: active carousel accessibility and reflow|chromium",
+        "title": "pt/light: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|en/dark: active carousel accessibility and reflow|chromium",
+        "title": "en/dark: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|en/light: active carousel accessibility and reflow|chromium",
+        "title": "en/light: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|es/dark: active carousel accessibility and reflow|chromium",
+        "title": "es/dark: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|es/light: active carousel accessibility and reflow|chromium",
+        "title": "es/light: active carousel accessibility and reflow",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|theme and locale changes preserve working controls, anchor and approved link destinations|chromium",
+        "title": "theme and locale changes preserve working controls, anchor and approved link destinations",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "carousel.spec.ts|delayed mono font keeps the hero badge and carousel controls dimensions stable|chromium",
+        "title": "delayed mono font keeps the hero badge and carousel controls dimensions stable",
+        "file": "carousel.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "creative-followup.spec.ts|countdown reaches zero at the real deadline, selects a new project, freezes on hover and resumes remaining time|chromium",
+        "title": "countdown reaches zero at the real deadline, selects a new project, freezes on hover and resumes remaining time",
+        "file": "creative-followup.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "creative-followup.spec.ts|direct project selectors change actual content and preserve manual navigation in reduced motion|chromium",
+        "title": "direct project selectors change actual content and preserve manual navigation in reduced motion",
+        "file": "creative-followup.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "creative-followup.spec.ts|reveal begins deeper in the viewport and remains visibly in progress after 400ms|chromium",
+        "title": "reveal begins deeper in the viewport and remains visibly in progress after 400ms",
+        "file": "creative-followup.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "creative-followup.spec.ts|spotlight cards respond to the pointer and existing CTAs keep real destinations|chromium",
+        "title": "spotlight cards respond to the pointer and existing CTAs keep real destinations",
+        "file": "creative-followup.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "creative.spec.ts|About depth follows scroll, chapter selection keeps keyboard priority, reduction stops signatures|chromium",
+        "title": "About depth follows scroll, chapter selection keeps keyboard priority, reduction stops signatures",
+        "file": "creative.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|pt: complete HTML, metadata and links without JavaScript|chromium",
+        "title": "pt: complete HTML, metadata and links without JavaScript",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|pt/dark: responsive layout and automated accessibility|chromium",
+        "title": "pt/dark: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|pt/light: responsive layout and automated accessibility|chromium",
+        "title": "pt/light: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|en: complete HTML, metadata and links without JavaScript|chromium",
+        "title": "en: complete HTML, metadata and links without JavaScript",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|en/dark: responsive layout and automated accessibility|chromium",
+        "title": "en/dark: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|en/light: responsive layout and automated accessibility|chromium",
+        "title": "en/light: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|es: complete HTML, metadata and links without JavaScript|chromium",
+        "title": "es: complete HTML, metadata and links without JavaScript",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|es/dark: responsive layout and automated accessibility|chromium",
+        "title": "es/dark: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|es/light: responsive layout and automated accessibility|chromium",
+        "title": "es/light: responsive layout and automated accessibility",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|mobile menu supports keyboard, Escape and section navigation|chromium",
+        "title": "mobile menu supports keyboard, Escape and section navigation",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|theme and language persist while explicit URLs win over preferences|chromium",
+        "title": "theme and language persist while explicit URLs win over preferences",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|root negotiates browser language and does not cache a personal redirect|chromium",
+        "title": "root negotiates browser language and does not cache a personal redirect",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|unknown routes serve a styled 404 with return links even without JavaScript|chromium",
+        "title": "unknown routes serve a styled 404 with return links even without JavaScript",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|reduced motion keeps content visible and broken artwork cannot block navigation|chromium",
+        "title": "reduced motion keeps content visible and broken artwork cannot block navigation",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|200% text zoom preserves mobile content and controls|chromium",
+        "title": "200% text zoom preserves mobile content and controls",
+        "file": "foundation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "foundation.spec.ts|public build excludes editorial drafts and unapproved contact links|chromium",
+        "title": "public build excludes editorial drafts and unapproved contact links",
+        "file": "foundation.spec.ts",
+        "status": "skipped",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|slow JS/network: 390/top keeps geometry and anchor through hydration|chromium",
+        "title": "slow JS/network: 390/top keeps geometry and anchor through hydration",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|slow JS/network: 390#about keeps geometry and anchor through hydration|chromium",
+        "title": "slow JS/network: 390#about keeps geometry and anchor through hydration",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|slow JS/network: 1440/top keeps geometry and anchor through hydration|chromium",
+        "title": "slow JS/network: 1440/top keeps geometry and anchor through hydration",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|slow JS/network: 1440#about keeps geometry and anchor through hydration|chromium",
+        "title": "slow JS/network: 1440#about keeps geometry and anchor through hydration",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|failed modules retain native trajectory links and scrollable project strip|chromium",
+        "title": "failed modules retain native trajectory links and scrollable project strip",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|a native chapter choice made before hydration survives enhancement|chromium",
+        "title": "a native chapter choice made before hydration survives enhancement",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|pt/dark: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "pt/dark: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|pt/light: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "pt/light: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|en/dark: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "en/dark: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|en/light: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "en/light: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|es/dark: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "es/dark: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|es/light: pre-paint preference, animated switch and reload persistence|chromium",
+        "title": "es/light: pre-paint preference, animated switch and reload persistence",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|rapid switches preserve canvas, timeline, carousel, URL and scroll without stale transition state|chromium",
+        "title": "rapid switches preserve canvas, timeline, carousel, URL and scroll without stale transition state",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|CTA mouse hover/press and keyboard focus change pixels without changing layout|chromium",
+        "title": "CTA mouse hover/press and keyboard focus change pixels without changing layout",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "interaction-polish.spec.ts|reduced motion keeps switches immediate and disables decorative transforms|chromium",
+        "title": "reduced motion keeps switches immediate and disables decorative transforms",
+        "file": "interaction-polish.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|pt: the canonical portfolio owns the notebook and strict embed policy|chromium",
+        "title": "pt: the canonical portfolio owns the notebook and strict embed policy",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|pt: saved laboratory links preserve query and native hash without JavaScript|chromium",
+        "title": "pt: saved laboratory links preserve query and native hash without JavaScript",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|en: the canonical portfolio owns the notebook and strict embed policy|chromium",
+        "title": "en: the canonical portfolio owns the notebook and strict embed policy",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|en: saved laboratory links preserve query and native hash without JavaScript|chromium",
+        "title": "en: saved laboratory links preserve query and native hash without JavaScript",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|es: the canonical portfolio owns the notebook and strict embed policy|chromium",
+        "title": "es: the canonical portfolio owns the notebook and strict embed policy",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "main-site.spec.ts|es: saved laboratory links preserve query and native hash without JavaScript|chromium",
+        "title": "es: saved laboratory links preserve query and native hash without JavaScript",
+        "file": "main-site.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|pt/1440: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "pt/1440: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|pt/390: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "pt/390: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|en/1440: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "en/1440: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|en/390: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "en/390: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|es/1440: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "es/1440: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|es/390: first and repeated Projects clicks follow the actual section, including a stale fragment|chromium",
+        "title": "es/390: first and repeated Projects clicks follow the actual section, including a stale fragment",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "project-navigation.spec.ts|fragment navigation retains native history and no-JS repeated anchors|chromium",
+        "title": "fragment navigation retains native history and no-JS repeated anchors",
+        "file": "project-navigation.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|desktop timeline selects actual details, uses keyboard tabs and preserves focus|chromium",
+        "title": "desktop timeline selects actual details, uses keyboard tabs and preserves focus",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|mobile keeps chapter navigation and accessible 2D reading when 3D is unavailable|chromium",
+        "title": "mobile keeps chapter navigation and accessible 2D reading when 3D is unavailable",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|desktop scroll sync is opt-in, manual selection takes priority, reduced motion disables sync|chromium",
+        "title": "desktop scroll sync is opt-in, manual selection takes priority, reduced motion disables sync",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general-followup.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|editorial reveal uses real intermediate transforms, runs once and does not affect carousel selection|chromium",
+        "title": "editorial reveal uses real intermediate transforms, runs once and does not affect carousel selection",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|parallax is limited to decoration, responds to native scroll and stops in reduced motion|chromium",
+        "title": "parallax is limited to decoration, responds to native scroll and stops in reduced motion",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|anchors and reload midway reveal immediately, native navigation remains functional|chromium",
+        "title": "anchors and reload midway reveal immediately, native navigation remains functional",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|WAAPI failure keeps every resting section visible|chromium",
+        "title": "WAAPI failure keeps every resting section visible",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|dynamic reveal targets are discovered, removed targets cancelled and focused CTAs remain visible|chromium",
+        "title": "dynamic reveal targets are discovered, removed targets cancelled and focused CTAs remain visible",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|no-JS and no-CSS keep a semantic complete trajectory and valid anchors|chromium",
+        "title": "no-JS and no-CSS keep a semantic complete trajectory and valid anchors",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|pt/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "pt/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|pt/light: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "pt/light: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|en/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "en/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|en/light: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "en/light: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|es/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "es/dark: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|es/light: reflow at six viewports, axe, translated tabs and theme/locale persistence|chromium",
+        "title": "es/light: reflow at six viewports, axe, translated tabs and theme/locale persistence",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|S02 explicit play while focused remains suspended until focus leaves, then advances|chromium",
+        "title": "S02 explicit play while focused remains suspended until focus leaves, then advances",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|S02 real browser timer advances after seven seconds with the shared motion runtime|chromium",
+        "title": "S02 real browser timer advances after seven seconds with the shared motion runtime",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      },
+      {
+        "key": "timeline-motion.spec.ts|timeline remains interactive through a real theme and language change|chromium",
+        "title": "timeline remains interactive through a real theme and language change",
+        "file": "timeline-motion.spec.ts",
+        "status": "passed",
+        "report": "general.json"
+      }
+    ]
+  },
+  "public": {
+    "startTime": "2026-10-23T19:30:30.965Z",
+    "duration": 13488.048999999999,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "hydrationDiagnosis": {
+    "origin": "http://127.0.0.1:1010",
+    "cases": [
+      {
+        "injected": false,
+        "reload": false,
+        "errorCount": 0,
+        "bodyAttribute": null,
+        "warningMatchesAttribute": false
+      },
+      {
+        "injected": false,
+        "reload": true,
+        "errorCount": 0,
+        "bodyAttribute": null,
+        "warningMatchesAttribute": false
+      },
+      {
+        "injected": true,
+        "reload": false,
+        "errorCount": 1,
+        "bodyAttribute": "true",
+        "warningMatchesAttribute": true
+      },
+      {
+        "injected": true,
+        "reload": true,
+        "errorCount": 1,
+        "bodyAttribute": "true",
+        "warningMatchesAttribute": true
+      }
+    ],
+    "extensionIdentity": "not inspected"
+  },
+  "accessibility": {
+    "violations": [],
+    "passes": 26,
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 68
+      }
+    ]
+  },
+  "editorial": {
+    "exitCode": 1,
+    "blockers": [
+      "SITE_URL ausente ou sem https:// — canonical, hreflang e Open Graph ficariam incorretos.",
+      "Perfil (nome de apresentação e cargo do hero) não aprovado.",
+      "Textos de interface PT/EN/ES (hero, títulos, descrições) não revisados/aprovados.",
+      "Projetos aprovados: 0 (mínimo 3).",
+      "Trajetória (About) sem nenhum item aprovado.",
+      "Especialidades sem nenhum grupo aprovado.",
+      "Serviços sem nenhuma oferta aprovada.",
+      "Contato \"email\" sem valor validado e aprovado.",
+      "Contato \"linkedin\" sem valor validado e aprovado.",
+      "Contato \"cv\" sem valor validado e aprovado."
+    ]
+  },
+  "claudeFoundationDiff": [],
+  "sourceHashes": {
+    "scripts/diagnose-workstation-hydration.mjs": "30f673dc960d0ee8dd7e700f562047dfda172943cd70eeb64e4681977ad7e646",
+    "scripts/generate-workstation-code.mjs": "320accb9135c242dea21b732f13881d9ade4c88c7dc295ab136e699a2167ecab",
+    "scripts/qa-workstation-live-experience.mjs": "c6c7124a5dc36bf8085bbb099fa434ca3927e9fd863775c71bbb3a1c83ccff0d",
+    "src/components/editorial/Editorial.tsx": "5b5e0126c124735d57527281d04c164e4d0bd7fb69fde3dcbe59d31f95e2fe12",
+    "src/components/hero/HeroEditorial.tsx": "6223e28e4b8589b68e7476d64f90fa60d79db41d976dc8da266c6619791f5bb2",
+    "src/components/layout/LandingContent.tsx": "1eb17ad28890a426d24a3f5c8c30c2d1e8d4b54e5bcd77161b49b720bc86c6ff",
+    "src/components/layout/Logo.tsx": "e003858b01dfd92b27006234036b7931b4559f67d72d41345a6f6e18434156b8",
+    "src/components/layout/SiteFooter.tsx": "9e01f9a6ed27bf47d348f657afabf9b23f13cc7363adf50ce7b71e9c969e7182",
+    "src/components/layout/SiteHeader.tsx": "00b4b431076bac4ec34998d784a02eedee13cc6102358a66e487a7bffc649786",
+    "src/components/sections/AboutSection.tsx": "14948b36cb9316b280db2db1e5bceca2fb4f345c94b06eec9d14f424de698058",
+    "src/components/timeline/JourneyTimeline.client.tsx": "ad9fc9b907c22e1f81cd5f2c05931b29766744514adf11c7b4e28d8ff0ed3900",
+    "src/features/experience/JourneyScreenProvider.client.tsx": "387db2121ae75099637bd66c765acb0193a65c9a5e4fc8c90bf22cc3525a14c9",
+    "src/features/navigation/visible-section.ts": "dee6bb1431785cce7dcb43019ba70d3c9ca0192de4e4190fb934b2a85703e2b6",
+    "src/features/projects/ProjectPlaybackProvider.client.tsx": "d7637532c220047b5811053906b641117bcf1cf30f14933c7e0d2795767be8b2",
+    "src/features/workstation/input/NotebookPointerController.ts": "6df816339ca3f35a6f7401d80749f9a78e19040833a686ae13be807d41f996bd",
+    "src/features/workstation/labels.ts": "3e702603f23c0abde0ff023de72c06666b7452bcb20ef74a3930a681ab3f8f1c",
+    "src/features/workstation/orchestrator/WorkstationOrchestrator.client.tsx": "a0afd829009cde0a794873dfe71adb60d9a6cfbe8b771b662b1dd41a68596136",
+    "src/features/workstation/orchestrator/position.ts": "a9167cf9d2049cac78dc49b65e47f9381c343b7c8cbfcc917fc0fc8331224e4b",
+    "src/features/workstation/orchestrator/trajectory.ts": "647cc4b9621fa82edf55e4c1e99d657a680945bc23ede76c20317a2ef68ac9ac",
+    "src/features/workstation/screen/CommercialPreview.client.tsx": "83c05376f7e60599576d8fbc000d2748e02d9c42ad1f348425e6d1b6e6794a46",
+    "src/features/workstation/screen/ProjectsApp.client.tsx": "3f5803aea946124ce7ef704673d6d1cbb3461c32876876323e59aacd8237026c",
+    "src/features/workstation/screen/WorkbenchScreen.client.tsx": "d0db4e478e5eb80da0ef69b903bd5c87ddbd2ada2c82aed5b76f5bed74902f3d",
+    "src/features/workstation/state/workstation-machine.ts": "672fce4827613e9e737187fc752ca5e7bcfae7f82c6c5c4b3dca29fe94fff120",
+    "src/i18n/dictionaries/en.ts": "6ef1e096d53d5d38d30bdbd321426d642329c2b2544847771fffb02a5e7a90b9",
+    "src/i18n/dictionaries/es.ts": "9e39f941fdb2b4ff568b395a4e45df48ae6e9a7018dd7d23e71a0b6b2fac53c2",
+    "src/i18n/dictionaries/pt.ts": "2dcb9a8a3ff6392b164d8759dee4566be3b0e602615fc99d71f9bdbabe153af6",
+    "src/i18n/paths.ts": "43c21a8679b64f155fe0dfb51f1a584b9a2557b8afcfa0adf2695521b4154873",
+    "src/styles/workstation.css": "89d891d561a2b308b261a9a79f5f9a8236398c43785c2304a2bfa58bb0b5ca7e",
+    "tests/e2e/carousel.spec.ts": "6badd3bf4fb7ddd60a3682f195a82da5bd4fca8734ad6c42b25ad24374d9eb4f",
+    "tests/e2e/foundation.spec.ts": "92fcc3140170efa0a45e3e7affe9f82397d597107962b339272fe69eec58e932",
+    "tests/e2e/interaction-polish.spec.ts": "0f86c0fef27602ff56221ebb0a62f2bbd9d1709722bac20943aad4f026c38ff0",
+    "tests/e2e/project-navigation.spec.ts": "7b8495cddb646716b85224d1ee504bcde824515c87c9b14a026a5442d2dc1d3c",
+    "tests/e2e/timeline-motion.spec.ts": "8872b73258ecefbdcc70f9b42f8071decdbd4c396952ed238771e223d0c624c7",
+    "tests/unit/workstation-machine.test.ts": "50f01509a2ea571c557086a0d13da380852786fab411b7f0cd1d961f4adc1091",
+    "tests/unit/workstation-physics-trajectory.test.ts": "c0121bc48b398ce5973b9c5d98711c22d3744deaf24935acfcba58342b07db26",
+    "tests/workstation/input-motion.spec.ts": "c34e10383c5570f26a18ce640808a94087ac2e4d864046ce0dfa356a868a7087",
+    "tests/workstation/live-experience.spec.ts": "96c2cdb1712a396c9b17eb11e7bc8a08f29acfdcbe6c5717a33a4d7cb22b90f6",
+    "tests/workstation/project-sync.spec.ts": "5e9daf0e277b75710c4f1c2c616a1307cd237a62387678ad0f2c20cab837e263"
+  },
+  "images": [
+    "1440-dark-about.png",
+    "1440-dark-work.png",
+    "1440-light-about.png",
+    "1440-light-work.png",
+    "2119-dark-about.png",
+    "2119-dark-work.png",
+    "2119-light-about.png",
+    "2119-light-work.png",
+    "3840-dark-about.png",
+    "3840-dark-work.png",
+    "390-dark-about-navigation.png",
+    "390-dark-about.png",
+    "390-dark-work-navigation.png",
+    "390-dark-work.png",
+    "390-light-about-navigation.png",
+    "390-light-about.png",
+    "390-light-work-navigation.png",
+    "390-light-work.png"
+  ]
+}

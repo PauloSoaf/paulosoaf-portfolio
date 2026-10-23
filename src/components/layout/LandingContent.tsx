@@ -17,6 +17,7 @@ import { workstationAvailable } from "@/features/workstation/config";
 import { siteForProject } from "@/features/workstation/sites";
 import { orderProjects } from "@/features/projects/project-presentation";
 import { ProjectPlaybackProvider } from "@/features/projects/ProjectPlaybackProvider.client";
+import { JourneyScreenProvider } from "@/features/experience/JourneyScreenProvider.client";
 
 /** One public experience; editorial visibility is independent of the notebook. */
 export function LandingContent({ locale }: { locale: Locale }) {
@@ -32,12 +33,12 @@ export function LandingContent({ locale }: { locale: Locale }) {
       <WorkSection locale={locale} dict={dict} projects={projects}
         github={findChannel(channels, "github")} preview={preview} workstation />
     </div>
-    <AboutSection locale={locale} dict={dict} chapters={visibleItems(siteContent.journeyChapters, preview)} preview={preview} />
+    <AboutSection locale={locale} dict={dict} chapters={visibleItems(siteContent.journeyChapters, preview)} preview={preview} workstation />
     <ExpertiseSection locale={locale} dict={dict} groups={visibleItems(siteContent.expertiseGroups, preview)} preview={preview} />
     <ServicesSection locale={locale} dict={dict} offers={visibleItems(siteContent.serviceOffers, preview)} preview={preview} />
     <ContactSection dict={dict} channels={channels} preview={preview} />
     <MotionRuntime /><CreativeRuntime />
   </>;
-  const playbackProjects = orderProjects(projects).map(({ slug, title, kind, status, summary, image, art }) => ({ slug, title, kind, status, summary, image, art }));
-  return <ProjectPlaybackProvider projects={playbackProjects} labels={{ carousel: dict.carousel, projects: dict.projects, editorial: dict.editorial }}><div data-workstation-story>{content}</div></ProjectPlaybackProvider>;
+  const playbackProjects = orderProjects(projects).map(({ slug, title, kind, status, summary, image, art, repository }) => ({ slug, title, kind, status, summary, image, art, repository }));
+  return <ProjectPlaybackProvider projects={playbackProjects} labels={{ carousel: dict.carousel, projects: dict.projects, editorial: dict.editorial }}><JourneyScreenProvider enabled={visibleItems(siteContent.journeyChapters, preview).length > 0}><div data-workstation-story>{content}</div></JourneyScreenProvider></ProjectPlaybackProvider>;
 }

@@ -57,7 +57,7 @@ test("real project change, wrapping, position, verified links and inert neighbor
   const errors: string[] = []; page.on("pageerror", (error) => errors.push(error.message));
   await ready(page);
   await expect(active(page)).toHaveAttribute("data-project", "nutriopus");
-  await expect(active(page).getByText("Rascunho")).toBeVisible();
+  await expect(active(page).getByText("Rascunho", { exact: true })).toHaveCount(0);
   await expect(active(page).locator("a")).toHaveCount(0);
   await page.getByRole("button", { name: "Próximo projeto", exact: true }).click();
   await expect(active(page)).toHaveAttribute("data-project", "deborah-lima");

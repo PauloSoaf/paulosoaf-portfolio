@@ -12,6 +12,9 @@ const scrollTo = async (page: Page, selector: string) => page.locator(selector).
 async function ready(page: Page, url = "/pt#about") {
   await page.goto(url); await expect(timeline(page)).toHaveAttribute("data-desktop", "true");
   await page.evaluate(() => document.fonts.ready);
+  // Hydration can finish while the initial native #about smooth scroll is still
+  // running. Finish that navigation before issuing a separate reading gesture.
+  if (url.endsWith("#about")) await expect.poll(() => page.locator("#about").evaluate(node => Math.abs(node.getBoundingClientRect().top - parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)))).toBeLessThanOrEqual(1);
 }
 
 test("desktop timeline selects actual details, uses keyboard tabs and preserves focus", async ({ page }) => {
@@ -42,15 +45,15 @@ test("desktop timeline selects actual details, uses keyboard tabs and preserves 
   expect(titles).toEqual(["Desenvolvimento Full Stack", "Software para operações", "3D e projetos próprios"]);
 });
 
-test("mobile remains linear and highlights chapters while scrolling in both directions", async ({ page }) => {
+test("mobile keeps chapter navigation and accessible 2D reading when 3D is unavailable", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto("/pt#about");
-  await expect(timeline(page)).toHaveAttribute("data-desktop", "false");
-  await expect(page.getByRole("tablist")).toHaveCount(0); await expect(page.locator(".journey-item[inert]")).toHaveCount(0);
-  await page.evaluate(() => document.fonts.ready);
+  await expect(timeline(page)).toHaveAttribute("data-desktop", "true");
+  await expect(page.getByRole("tablist")).toHaveCount(1);
+  await expect(page.locator(".journey-item[inert]")).toHaveCount(2);
   for (const id of ["industrial-systems", "creative-engineering", "foundations"]) {
-    await scrollTo(page, `[data-chapter="${id}"]`);
+    await page.locator(`[data-chapter-id="${id}"].journey-tab`).click();
     await expect(timeline(page)).toHaveAttribute("data-selected-chapter", id);
-    await expect(page.locator(`[data-chapter="${id}"]`)).toBeVisible();
+    await expect(page.getByRole("tabpanel")).toHaveAttribute("data-chapter", id);
   }
   expect(await page.locator(".journey-panel").evaluateAll((nodes) => nodes.every((n) => getComputedStyle(n).position !== "sticky"))).toBe(true);
 });
@@ -59,7 +62,18 @@ test("desktop scroll sync is opt-in, manual selection takes priority, reduced mo
   await ready(page); await expect(timeline(page)).toHaveAttribute("data-follow", "false");
   await page.getByRole("button", { name: "Acompanhar a rolagem" }).click();
   await page.mouse.move(0, 0);
-  await scrollTo(page, '.journey-tab[data-chapter-id="creative-engineering"]');
+  // Clicking the below-fold control can start native focus scrolling. Let that
+  // finish before issuing the independent scroll that selects a chapter.
+  await expect.poll(async () => {
+    const y = await page.evaluate(() => scrollY);
+    await page.waitForTimeout(250);
+    return await page.evaluate(() => scrollY) === y;
+  }).toBe(true);
+  const chapter = page.locator('.journey-tab[data-chapter-id="creative-engineering"]');
+  // Center the chapter in the measured viewport; scrollIntoView also accounts for
+  // the sticky header's scroll padding and can leave another chapter closer.
+  await chapter.evaluate(node => { const box = node.getBoundingClientRect(); scrollBy({ top: (box.top + box.bottom) / 2 - innerHeight / 2, behavior: "instant" }); });
+  await expect.poll(() => chapter.evaluate(node => { const box = node.getBoundingClientRect(); return Math.abs((box.top + box.bottom) / 2 - innerHeight / 2); })).toBeLessThan(1);
   await expect(timeline(page)).toHaveAttribute("data-selected-chapter", "creative-engineering");
   await page.getByRole("tab").first().click();
   await expect(timeline(page)).toHaveAttribute("data-follow", "false");

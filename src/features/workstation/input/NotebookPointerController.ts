@@ -46,7 +46,7 @@ export class NotebookPointerController {
   end() {
     const down = this.down; this.down = null;
     if (!down) return;
-    if (this.external) { this.onExternal(); this.paint(); return; }
+    if (this.external || (!this.hit() && this.root?.querySelector("iframe"))) { this.onExternal(); this.paint(); return; }
     if (down.moved < .025) {
       const id = this.hit()?.dataset.inputAction ?? "", action = this.actions.get(id), now = performance.now();
       if (id === this.lastClick.id && now - this.lastClick.time < 350 && action?.doubleClick) action.doubleClick();
@@ -57,7 +57,7 @@ export class NotebookPointerController {
   }
   cancel() { this.down = null; this.paint(); }
   scroll(delta: number) {
-    if (this.external) { this.onExternal(); return; }
+    if (this.external || (!this.hit() && this.root?.querySelector("iframe"))) { this.onExternal(); return; }
     const element = this.hit();
     const scroller = element?.closest<HTMLElement>("[data-input-scroll]") ?? this.root?.querySelector<HTMLElement>("[data-input-scroll]");
     scroller?.scrollBy({ top: delta, behavior: "instant" });

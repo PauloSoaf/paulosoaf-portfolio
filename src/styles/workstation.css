@@ -248,3 +248,58 @@ html[data-js] [data-workstation-story] #work .project-carousel[data-enhanced="fa
   .workbench-site-controls button{transition:none;transform:none}
 }
 @media(forced-colors:active){.workstation-focus,.workbench-screen,.workstation-menu{border:1px solid CanvasText}.workstation-focus::backdrop{background:Canvas}}
+
+/* Live content owns the screen; the real page remains interactive inside the iframe. */
+.workbench-project-address{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:36px;padding:4px 16px;border-bottom:1px solid var(--oo-border-subtle);font:12px/1.4 var(--font-mono);flex-shrink:0}
+.workbench-project-address a{color:var(--oo-fg-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.workbench-project-unavailable{height:100%;overflow:auto;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.workbench-project-unavailable h2{font:600 32px/1.1 var(--font-display);letter-spacing:-.04em}
+.workbench-project-unavailable a{color:var(--oo-accent-primary);text-decoration:underline;min-height:44px;display:inline-flex;align-items:center}
+.workbench-gallery-stage:has(iframe){animation:none}
+.workbench-journey{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain}
+.workbench-journey .journey-panels{display:grid;padding:0;border:0;gap:0;min-height:100%}
+.workbench-journey .journey-item{grid-area:1/1}
+.workbench-journey .journey-item::before{display:none}
+.workbench-journey .journey-item[aria-hidden="true"]{visibility:hidden;pointer-events:none}
+html:not([data-experience="classic"]) .workbench-journey .journey-panel{transform:none;box-shadow:none;border:0;border-radius:0;min-height:100%;padding:24px 32px;gap:20px}
+html:not([data-experience="classic"]) .workbench-journey .journey-panel h3{font-size:36px}
+.workbench-journey .journey-content{animation:ws-project-arrive 480ms var(--oo-ease-emphasized) both}
+.workbench-journey .journey-panel-footer{padding-top:14px}
+.workstation-journey-anchor{position:relative;min-width:0}
+.journey-screen-fallback{height:100%;overflow:auto}
+html:not([data-experience="classic"]) #main [data-workstation-story] :is(#work,#about)>.container-page{width:min(2360px,calc(100% - clamp(32px,4vw,96px)));max-width:none;margin-inline:auto}
+[data-workstation-story] #about .section-heading{margin-bottom:32px}
+html:not([data-experience="classic"]) [data-workstation-story] #about{padding-block:clamp(2rem,4svh,3.5rem)}
+html:not([data-experience="classic"]) [data-workstation-story] #about .section-heading h2{font-size:clamp(2.5rem,4.2vw,4.25rem)}
+@media(min-width:64rem){
+  [data-workstation-story] #work>.container-page,
+  .journey-timeline[data-workstation-journey="true"][data-desktop]{grid-template-columns:minmax(300px,.8fr) minmax(0,1.8fr);column-gap:clamp(28px,3vw,72px)}
+  [data-workstation-story] #work .workstation-work-anchor,
+  .workstation-journey-anchor{width:100%;height:clamp(420px,calc(100svh - var(--oo-header-height) - 220px),1120px);aspect-ratio:auto;margin:0;align-self:start}
+  [data-workstation-story] #work .project-copy{padding:20px}
+  html:not([data-experience="classic"]) [data-workstation-story] #work .project-media{aspect-ratio:16/7}
+  .journey-timeline[data-workstation-journey="true"] .journey-navigation{display:block}
+  .journey-timeline[data-workstation-journey="true"] .journey-tab{min-height:132px}
+}
+@media(min-width:100rem){
+  [data-workstation-story] #work>.container-page,
+  .journey-timeline[data-workstation-journey="true"][data-desktop]{grid-template-columns:minmax(360px,.65fr) minmax(0,1.8fr)}
+}
+@media(max-width:63.99rem){
+  .journey-timeline[data-workstation-journey="true"] .journey-navigation{display:block}
+  [data-workstation-story] #work .workstation-work-anchor,
+  .workstation-journey-anchor{width:100%;height:clamp(440px,calc(100svh - var(--oo-header-height) - 96px),1000px);aspect-ratio:auto}
+  .workstation-journey-anchor{margin-top:24px}
+  .journey-screen-fallback .journey-panels{border:0;padding:0}
+  .journey-timeline[data-workstation-journey="true"][data-desktop="true"] .journey-screen-fallback .journey-panels{gap:0}
+  .journey-timeline[data-workstation-journey="true"][data-desktop="true"] .journey-screen-fallback .journey-item{grid-area:1/1}
+  .journey-timeline[data-workstation-journey="true"][data-desktop="true"] .journey-item[aria-hidden="true"]{visibility:hidden;pointer-events:none}
+}
+/* Reserve the same slot before React loads, including narrow screens. */
+html[data-js] .journey-timeline[data-workstation-journey="true"] .journey-screen-fallback .journey-panels{display:grid;gap:0}
+html[data-js] .journey-timeline[data-workstation-journey="true"] .journey-screen-fallback .journey-item{grid-area:1/1}
+html[data-js] .journey-timeline[data-workstation-journey="true"][data-desktop="false"] .journey-screen-fallback .journey-item:not(:first-child){visibility:hidden}
+html[data-js] .journey-timeline[data-workstation-journey="true"][data-desktop="false"]:has(.journey-panel:target) .journey-screen-fallback .journey-item{visibility:hidden}
+html[data-js] .journey-timeline[data-workstation-journey="true"][data-desktop="false"] .journey-screen-fallback .journey-item:has(.journey-panel:target){visibility:visible}
+html:not([data-js]) .workstation-journey-anchor{height:auto;aspect-ratio:auto;min-height:0}
+@media(prefers-reduced-motion:reduce){.workbench-journey .journey-content{animation:none}}

@@ -6,7 +6,7 @@ import { LanguageSwitch } from "@/components/ui/LanguageSwitch.client";
 import { ThemeToggle } from "@/components/ui/ThemeToggle.client";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { localePath, sectionHref, sectionIds } from "@/i18n/paths";
+import { sectionHref, navigationIds } from "@/i18n/paths";
 
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu.client";
@@ -23,17 +23,17 @@ interface SiteHeaderProps {
  * links. Without JavaScript the menu button is replaced by a link to the footer navigation.
  */
 export function SiteHeader({ locale, dict }: SiteHeaderProps) {
-  const navItems = sectionIds.map((id) => ({ id, href: sectionHref(locale, id), label: dict.nav[id] }));
+  const navItems = navigationIds.map((id) => ({ id, href: sectionHref(locale, id), label: dict.nav[id] }));
   const contactHref = sectionHref(locale, "contact");
 
   return (
     <header id="top" className="sticky top-0 z-40 border-b border-line bg-(--oo-header-bg)">
       <SectionNavigation />
       <div className="container-page flex h-(--oo-header-height) items-center justify-between gap-5">
-        <Logo href={localePath(locale)} label={dict.a11y.home} />
+        <Logo href={sectionHref(locale, "home")} label={dict.a11y.home} />
 
         <nav aria-label={dict.a11y.primaryNav} className="hidden lg:block">
-          <ul className="flex items-center gap-6 xl:gap-8">
+          <ul className="flex items-center gap-3 xl:gap-6">
             {navItems.map((item) => (
               <li key={item.id}>
                 <Link

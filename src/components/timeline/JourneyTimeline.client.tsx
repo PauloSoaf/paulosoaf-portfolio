@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type CS
 import { revealElement } from "@/features/motion/motion-engine";
 import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
+import { createPortal } from "react-dom";
+import { useJourneyScreen } from "@/features/experience/JourneyScreenProvider.client";
 
 interface Chapter { id: string; label: string; title: string; summary: string; content: ReactNode }
 interface Props { chapters: readonly Chapter[]; labels: Dictionary["journey"] }
@@ -18,7 +20,10 @@ const subscribeHash = (cb: () => void) => { window.addEventListener("hashchange"
 
 export function JourneyTimeline({ chapters, labels }: Props) {
   const enhanced = useSyncExternalStore(emptySubscribe, hydrated, server);
-  const desktop = useSyncExternalStore(subscribeDesktop, desktopSnapshot, server) && enhanced;
+  const wide = useSyncExternalStore(subscribeDesktop, desktopSnapshot, server) && enhanced;
+  const journey = useJourneyScreen();
+  const workstation = !!journey?.enabled;
+  const desktop = wide || (workstation && enhanced);
   const reduced = useSyncExternalStore(subscribeReduced, reducedSnapshot, server);
   const hash = useSyncExternalStore(subscribeHash, hashSnapshot, () => "");
   const [host, setHost] = useState<HTMLDivElement | null>(null);
@@ -30,15 +35,28 @@ export function JourneyTimeline({ chapters, labels }: Props) {
   const previous = useRef<string | undefined>(undefined);
 
   useEffect(() => {
+    if (!journey?.target || journey.target.closest("dialog")) return;
+    // Portals change DOM tab order. Keep reverse navigation adjacent to the rail.
+    const back = (event: KeyboardEvent) => {
+      if (event.key !== "Tab" || !event.shiftKey || document.activeElement !== document.getElementById(`journey-panel-${id}`)) return;
+      event.preventDefault();
+      const followButton = host?.querySelector<HTMLButtonElement>(".journey-follow:not(:disabled)");
+      (followButton ?? host?.querySelector<HTMLElement>(`#journey-tab-${id}`))?.focus({ preventScroll: wide });
+    };
+    document.addEventListener("keydown", back);
+    return () => document.removeEventListener("keydown", back);
+  }, [journey?.target, host, id, wide]);
+
+  useEffect(() => {
     if (!host || !id) return;
     const changed = previous.current !== undefined && previous.current !== id;
     previous.current = id;
     if (!desktop || reduced || !changed) return;
-    const content = host.querySelector<HTMLElement>(`[data-chapter="${id}"] .journey-content`);
+    const content = (journey?.target ?? host).querySelector<HTMLElement>(`[data-chapter="${id}"] .journey-content`);
     const animation = content ? revealElement(content, "settle") : null;
     if (animation) void animation.finished.catch(() => {});
     return () => animation?.cancel();
-  }, [host, id, desktop, reduced]);
+  }, [host, id, desktop, reduced, journey?.target]);
 
   useEffect(() => {
     if (!host || reduced || (desktop && !follow) || typeof IntersectionObserver === "undefined") return;
@@ -68,11 +86,34 @@ export function JourneyTimeline({ chapters, labels }: Props) {
     const chapter = chapters[next];
     if (!chapter) return;
     select(chapter.id); setFollow(false);
+    if (workstation) window.dispatchEvent(new Event("portfolio:workstation-journey"));
     if (moveFocus) host?.querySelector<HTMLElement>(`[data-chapter-id="${chapter.id}"].journey-tab`)?.focus();
   }
 
+  function focusProjectedDetails(event: { preventDefault(): void }) {
+    const panel = document.getElementById(`journey-panel-${id}`);
+    // A phone may be showing the rail while the notebook yields below it. Never
+    // cancel native Tab unless the destination can actually receive visible focus.
+    if (!journey?.target || !panel || panel.closest("[inert]") || getComputedStyle(panel).visibility !== "visible") return;
+    const bounds = panel.getBoundingClientRect();
+    if (bounds.bottom <= 0 || bounds.top >= innerHeight) return;
+    event.preventDefault(); panel.focus({ preventScroll: true });
+  }
+
   if (!chapters.length) return null;
-  return <div ref={bind} className="journey-timeline" data-timeline data-desktop={desktop} data-selected-chapter={id} data-follow={follow && !reduced}
+  const panels = <ol className="journey-panels" role={desktop ? "presentation" : undefined}>
+      {chapters.map((chapter, i) => <li key={chapter.id} className="journey-item" data-chapter-id={chapter.id} data-current={i === index}
+        aria-hidden={desktop && i !== index || undefined} inert={desktop && i !== index || undefined} role={desktop ? "presentation" : undefined}>
+        <article className="journey-panel" id={`journey-panel-${chapter.id}`} data-chapter={chapter.id}
+          role={desktop ? "tabpanel" : undefined} tabIndex={desktop && i === index ? 0 : undefined}
+          aria-labelledby={desktop ? `journey-tab-${chapter.id}` : `journey-heading-${chapter.id}`}>
+          <div className="journey-content">{chapter.content}</div>
+          <div className="journey-panel-footer"><span>{format(labels.position, { index: String(i + 1).padStart(2, "0"), total: String(chapters.length).padStart(2, "0") })}</span>
+            <span aria-hidden="true" className="journey-mark">↗</span></div>
+        </article>
+      </li>)}
+    </ol>;
+  return <div ref={bind} className="journey-timeline" data-timeline data-workstation-journey={workstation || undefined} data-desktop={desktop} data-selected-chapter={id} data-follow={follow && !reduced}
     style={{ "--journey-progress": (index + 1) / chapters.length } as CSSProperties}>
     <div className="journey-navigation" data-motion="horizontal">
       <div className="journey-rail" role={desktop ? "tablist" : undefined} aria-label={labels.navigation} aria-orientation={desktop ? "vertical" : undefined}>
@@ -81,6 +122,9 @@ export function JourneyTimeline({ chapters, labels }: Props) {
           role={desktop ? "tab" : undefined} aria-selected={desktop ? i === index : undefined} aria-controls={desktop ? `journey-panel-${chapter.id}` : undefined} tabIndex={desktop ? i === index ? 0 : -1 : undefined}
           data-chapter-id={chapter.id} onClick={(event) => { if (desktop) { event.preventDefault(); choose(i); } }} onFocus={() => { if (desktop) choose(i); }}
           onKeyDown={(event) => {
+            if (event.key === "Tab" && !event.shiftKey && journey?.target && (reduced || chapters.length < 2)) {
+              focusProjectedDetails(event); return;
+            }
             if (desktop && event.key === " ") { event.preventDefault(); choose(i); return; }
             const target = event.key === "ArrowDown" ? (i + 1) % chapters.length : event.key === "ArrowUp" ? (i - 1 + chapters.length) % chapters.length :
               event.key === "Home" ? 0 : event.key === "End" ? chapters.length - 1 : null;
@@ -92,19 +136,11 @@ export function JourneyTimeline({ chapters, labels }: Props) {
         </a>)}
       </div>
       {chapters.length > 1 && <button type="button" className="journey-follow ui-control" aria-pressed={follow} disabled={reduced || !enhanced}
+        onKeyDown={event => { if (event.key === "Tab" && !event.shiftKey) focusProjectedDetails(event); }}
         onClick={() => setFollow((value) => !value)}>{labels.followScroll}</button>}
     </div>
-    <ol className="journey-panels" role={desktop ? "presentation" : undefined}>
-      {chapters.map((chapter, i) => <li key={chapter.id} className="journey-item" data-chapter-id={chapter.id} data-current={i === index}
-        aria-hidden={desktop && i !== index || undefined} inert={desktop && i !== index || undefined} role={desktop ? "presentation" : undefined}>
-        <article className="journey-panel" id={`journey-panel-${chapter.id}`} data-chapter={chapter.id}
-          role={desktop ? "tabpanel" : undefined} tabIndex={desktop && i === index ? 0 : undefined}
-          aria-labelledby={desktop ? `journey-tab-${chapter.id}` : `journey-heading-${chapter.id}`}>
-          <div className="journey-content" data-motion="settle">{chapter.content}</div>
-          <div className="journey-panel-footer"><span>{format(labels.position, { index: String(i + 1).padStart(2, "0"), total: String(chapters.length).padStart(2, "0") })}</span>
-            <span aria-hidden="true" className="journey-mark">↗</span></div>
-        </article>
-      </li>)}
-    </ol>
+    {workstation ? <div className="workstation-journey-anchor" data-workstation-section-anchor="about">
+      {journey?.target ? createPortal(panels, journey.target) : <div className={journey?.available ? "sr-only" : "journey-screen-fallback"}>{panels}</div>}
+    </div> : panels}
   </div>;
 }

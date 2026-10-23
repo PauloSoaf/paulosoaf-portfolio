@@ -19,6 +19,7 @@ export const pt = {
     newTab: "abre em nova aba",
   },
   nav: {
+    home: "Início",
     work: "Projetos",
     about: "Sobre",
     expertise: "Especialidades",

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PageLink as Link } from "@/components/ui/PageLink.client";
 
 /** `PS.` wordmark linking home; the accessible name spells out the owner's name. */
 export function Logo({ href, label }: { href: string; label: string }) {

@@ -34,7 +34,8 @@ for (const width of [390, 1440]) for (const hash of ["", "#about"]) {
     if (hash) await expect(page.locator("#about-title")).toBeInViewport();
     release();
     await expect(page.locator("[data-carousel]")).toHaveAttribute("data-enhanced", "true", { timeout: 30_000 });
-    await expect(page.locator("[data-timeline]")).toHaveAttribute("data-desktop", String(width >= 1024));
+    // The notebook uses the same accessible chapter tabs on narrow and wide screens.
+    await expect(page.locator("[data-timeline]")).toHaveAttribute("data-desktop", "true");
     await page.waitForTimeout(650);
     const after = await position(page);
     expect(Math.abs(after.height - before.height)).toBeLessThanOrEqual(1);

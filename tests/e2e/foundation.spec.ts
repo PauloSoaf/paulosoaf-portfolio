@@ -53,6 +53,8 @@ test("mobile menu supports keyboard, Escape and section navigation", async ({ pa
   await page.keyboard.press("Enter");
   await expect(menu).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Tab");
+  await expect(page.getByRole("navigation", { name: "Navegação principal" }).getByRole("link", { name: "Início" })).toBeFocused();
+  await page.keyboard.press("Tab");
   await expect(page.getByRole("navigation", { name: "Navegação principal" }).getByRole("link", { name: "Projetos" })).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(menu).toHaveAttribute("aria-expanded", "false");

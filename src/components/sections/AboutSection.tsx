@@ -12,14 +12,15 @@ interface AboutSectionProps {
   dict: Dictionary;
   chapters: readonly JourneyChapter[];
   preview: boolean;
+  workstation?: boolean;
 }
 
 /**
  * Server-rendered chapter content. S03 enhances the linear list into desktop tabs.
  */
-export function AboutSection({ locale, dict, chapters, preview }: AboutSectionProps) {
+export function AboutSection({ locale, dict, chapters, preview, workstation }: AboutSectionProps) {
   return (
-    <Section id="about" heading={dict.sections.about}>
+    <Section id="about" heading={dict.sections.about} sceneAnchor={workstation && chapters.length > 0 ? false : undefined}>
       {chapters.length > 0 ? (
         <JourneyTimeline labels={dict.journey} chapters={chapters.map((chapter, index) => ({
           id: chapter.id, label: chapter.label[locale], title: chapter.title[locale], summary: chapter.summary[locale],

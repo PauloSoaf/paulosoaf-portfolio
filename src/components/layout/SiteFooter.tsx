@@ -6,7 +6,7 @@ import type { ContactChannel } from "@/features/contact/contact-links";
 import type { Locale } from "@/i18n/config";
 import { format } from "@/i18n/format";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { localePath, sectionHref, sectionIds } from "@/i18n/paths";
+import { sectionHref, navigationIds } from "@/i18n/paths";
 
 import { Logo } from "./Logo";
 
@@ -28,13 +28,13 @@ export function SiteFooter({ locale, dict, github }: SiteFooterProps) {
     <footer className="border-t border-line bg-sunken">
       <div className="container-page grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:py-14">
         <div>
-          <Logo href={localePath(locale)} label={dict.a11y.home} />
+          <Logo href={sectionHref(locale, "home")} label={dict.a11y.home} />
           <p className="mt-3 max-w-xs text-sm text-fg-subtle">{dict.footer.tagline}</p>
         </div>
 
         <nav id="site-footer-nav" aria-label={dict.a11y.footerNav}>
           <ul className="grid gap-1">
-            {sectionIds.map((id) => (
+            {navigationIds.map((id) => (
               <li key={id}>
                 <Link
                   href={sectionHref(locale, id)}

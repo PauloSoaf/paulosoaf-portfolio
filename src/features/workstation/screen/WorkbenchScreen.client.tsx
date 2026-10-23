@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable react-hooks/immutability -- Bind imperative device controllers to the mounted owned screen. */
-import { useEffect, useRef, useState, useSyncExternalStore, type Dispatch } from "react";
+import { useEffect, useRef, useSyncExternalStore, type Dispatch } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Theme } from "@/theme/theme";
 import { workstationLabels } from "../labels";
@@ -13,54 +13,12 @@ import type { TerminalSession } from "../terminal/session";
 import { NotesApp } from "./NotesApp.client";
 import { CodeApp } from "./CodeApp.client";
 import { TerminalApp, TerminalPrompt } from "./TerminalApp.client";
-import { siteFrame } from "./site-framing";
+import { CommercialPreview } from "./CommercialPreview.client";
+import { useJourneyScreen } from "@/features/experience/JourneyScreenProvider.client";
 import { ProjectsApp } from "./ProjectsApp.client";
 import { useProjectPlayback } from "@/features/projects/ProjectPlaybackProvider.client";
 
 const unmuted = () => false;
-
-/** The parent cannot inspect a cross-origin document. A load event is not proof of usability. */
-function CommercialPreview({ siteId, text, dispatch, projected }: {
-  siteId: keyof typeof workstationSites; text: (typeof workstationLabels)[Locale]; dispatch: Dispatch<WorkstationEvent>; projected: boolean;
-}) {
-  const site = workstationSites[siteId];
-  const [attempt, setAttempt] = useState(0), [help, setHelp] = useState(false), [failed, setFailed] = useState(false);
-  const loaded = useRef(false);
-  const viewport = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ width: 800, height: 458.5366 });
-  useEffect(() => {
-    const node = viewport.current; if (!node) return;
-    const observer = new ResizeObserver(([entry]) => {
-      const { width, height } = entry!.contentRect;
-      if (width > 0 && height > 0) setSize((previous) => Math.abs(previous.width - width) < .05 && Math.abs(previous.height - height) < .05 ? previous : { width, height });
-    });
-    observer.observe(node); return () => observer.disconnect();
-  }, []);
-  const frame = siteFrame(size.width, size.height, site.preferredWidth, projected);
-  useEffect(() => {
-    loaded.current = false;
-    const timer = setTimeout(() => { if (!loaded.current) setFailed(true); }, 15000);
-    return () => clearTimeout(timer);
-  }, [attempt]);
-  return <div ref={viewport} className="workbench-site" data-workstation-browser data-immersive-site={siteId} data-site-fit={projected ? "fitted" : "native"} data-site-scale={frame.scale}>
-    <iframe key={attempt} src={site.url} title={site.title} data-project-site={siteId}
-      style={projected ? { width: frame.width, height: frame.height, transform: `scale(${frame.scale})`, transformOrigin: "0 0" } : undefined}
-      sandbox="allow-scripts allow-same-origin" referrerPolicy="strict-origin-when-cross-origin"
-      allow="camera 'none'; microphone 'none'; geolocation 'none'"
-      onLoad={() => { loaded.current = true; }} onError={() => setFailed(true)} />
-    <div className="workbench-site-controls">
-      <button type="button" className="workbench-site-exit" data-input-action="close" aria-label={text.close} title={text.close} onClick={() => dispatch({ type: "CLOSE_X" })}>×</button>
-      <button type="button" className="workbench-site-help" aria-label={text.siteOptions} title={text.siteOptions} aria-expanded={help || failed} onClick={() => setHelp(!help)}>⋯</button>
-    </div>
-    {help || failed || site.status !== "verified-local" ? <div className="workbench-site-fallback" role="region" aria-label={text.siteOptions}>
-      <p role={failed ? "status" : undefined}>{failed ? text.siteFailed : text.siteHelp}</p>
-      <a href={site.url} target="_blank" rel="noopener noreferrer">{text.external} ↗</a>
-      <button type="button" onClick={() => { setFailed(false); setHelp(false); setAttempt(attempt + 1); }}>{text.siteRetry}</button>
-      <button type="button" onClick={() => dispatch({ type: "FOCUS_SCREEN" })}>{text.focus} ⤢</button>
-      <button type="button" onClick={() => { setFailed(false); setHelp(false); }}>{text.siteResume}</button>
-    </div> : null}
-  </div>;
-}
 
 function SpeakerIcon({ muted }: { muted: boolean }) {
   return <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -79,12 +37,14 @@ export function WorkbenchScreen({ state, dispatch, access, locale, theme, input,
   const muted = useSyncExternalStore(sound.subscribe, sound.getMuted, unmuted);
   const text = workstationLabels[locale], app = state.app;
   const playback = useProjectPlayback();
+  const journey = useJourneyScreen();
   const site = app.kind === "PREVIEW" && app.siteId !== "fixture" ? workstationSites[app.siteId] : null;
-  const title = app.kind === "DESKTOP" ? text.desktop : app.kind === "PROJECTS" ? text.projects : app.kind === "CODE" ? text.code : app.kind === "NOTES" ? text.notes : app.kind === "TERMINAL" ? text.terminal : site?.title ?? text.fixture;
+  const title = app.kind === "DESKTOP" ? text.desktop : app.kind === "PROJECTS" ? text.projects : app.kind === "JOURNEY" ? text.journey : app.kind === "CODE" ? text.code : app.kind === "NOTES" ? text.notes : app.kind === "TERMINAL" ? text.terminal : site?.title ?? text.fixture;
   const src = app.kind === "PREVIEW" ? site?.url ?? `/workstation/embed-fixture?locale=${locale}&theme=${theme}` : null;
   useEffect(() => {
     pointer.bind(root.current);
-    input.external = pointer.external = app.kind === "PREVIEW";
+    input.external = app.kind === "PREVIEW" || app.kind === "PROJECTS";
+    pointer.external = app.kind === "PREVIEW";
     const actions: Record<string, WorkstationEvent> = { focus: { type: "FOCUS_SCREEN" }, close: { type: "CLOSE_X" }, projects: { type: "OPEN_PROJECTS" }, browser: { type: "OPEN_SITE", siteId: "fixture" }, code: { type: "OPEN_CODE" }, notes: { type: "OPEN_NOTES" }, terminal: { type: "OPEN_TERMINAL" }, nutriopus: { type: "OPEN_SITE", siteId: "nutriopus" }, deborah: { type: "OPEN_SITE", siteId: "deborah" } };
     const unregister = [...Object.entries(actions).map(([id, event]) => pointer.register(id, { click: () => dispatch(event) })),
       pointer.register("mute", { click: sound.toggle }),
@@ -114,7 +74,8 @@ export function WorkbenchScreen({ state, dispatch, access, locale, theme, input,
       </div>
       <div className="workbench-projects">{access.sites.map(id => <button data-input-action={id} type="button" key={id} onClick={() => dispatch({ type: "OPEN_SITE", siteId: id })}>{workstationSites[id].title} <span aria-hidden="true">↗</span></button>)}</div>
       <TerminalPrompt session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} compact onSubmitted={() => dispatch({ type: "OPEN_TERMINAL" })} />
-    </div> : app.kind === "PROJECTS" ? <ProjectsApp locale={locale} pointer={pointer} dispatch={dispatch} access={access} />
+    </div> : app.kind === "PROJECTS" ? <ProjectsApp projected={state.mode !== "FOCUS_SCREEN"} locale={locale} pointer={pointer} dispatch={dispatch} access={access} />
+      : app.kind === "JOURNEY" ? <div ref={journey?.setTarget} className="workbench-journey" data-notebook-journey />
       : app.kind === "NOTES" ? <NotesApp input={input} pointer={pointer} text={text} />
       : app.kind === "TERMINAL" ? <TerminalApp session={session} input={input} locale={locale} prompt={prompt} placeholder={text.promptPlaceholder} intro={text.terminalIntro} />
       : app.kind === "CODE" ? <CodeApp file={app.file} text={text} pointer={pointer} inspecting={inspecting} onInspect={onInspect} onSelect={(file) => dispatch({ type: "OPEN_CODE", file })} />

@@ -132,7 +132,7 @@ for (const width of [1440, 1920, 768, 390]) {
     test.setTimeout(150_000);
     await page.setViewportSize({ width, height: width === 390 ? 844 : width === 1920 ? 1080 : 900 }); await open(page);
     await page.evaluate(() => {
-      type Sample = { time: number; x: number; y: number; width: number; scroll: number; screenError: number };
+      type Sample = { time: number; x: number; y: number; width: number; scroll: number; screenError: number; hullLeft: number; hullRight: number };
       const samples: Sample[] = []; (window as unknown as { pathSamples: Sample[] }).pathSamples = samples;
       let last = 0;
       const sample = () => {
@@ -147,7 +147,8 @@ for (const width of [1440, 1920, 768, 390]) {
             const matrix = new DOMMatrix(element.style.transform);
             screenError = Math.max(...[[0, 0], [800, 0], [0, 458.5366]].map(([px, py], index) => { const p = matrix.transformPoint(new DOMPoint(px, py)); return Math.hypot(p.x - physical[index]![0]!, p.y - physical[index]![1]!); }));
           }
-          samples.push({ time: time!, x: x!, y: y!, width: width!, scroll: scroll!, screenError });
+          const hull = node.dataset.hull!.split(";").map(pair => Number(pair.split(",")[0]));
+          samples.push({ time: time!, x: x!, y: y!, width: width!, scroll: scroll!, screenError, hullLeft: Math.min(...hull), hullRight: Math.max(...hull) });
         }
         if (samples.length < 6000) requestAnimationFrame(sample);
       };
@@ -181,15 +182,18 @@ for (const width of [1440, 1920, 768, 390]) {
     await settle(page);
     const reading = await page.evaluate(() => (window as unknown as { pathSamples: unknown[] }).pathSamples.length);
     await page.mouse.move(8, 400);
+    // Renderer acknowledgement prevents queued wheel packets becoming an unintended
+    // high-speed burst on SwiftShader. This is deliberately ordinary reading input.
     for (let step = 0; step < 40; step++) { await page.mouse.wheel(0, 110); await page.waitForTimeout(90); }
     for (let step = 0; step < 20; step++) { await page.mouse.wheel(0, -110); await page.waitForTimeout(90); }
     await settle(page);
-    const samples = await page.evaluate(() => (window as unknown as { pathSamples: { time: number; x: number; y: number; width: number; scroll: number; screenError: number }[] }).pathSamples);
+    const samples = await page.evaluate(() => (window as unknown as { pathSamples: { time: number; x: number; y: number; width: number; scroll: number; screenError: number; hullLeft: number; hullRight: number }[] }).pathSamples);
     expect(samples.length).toBeGreaterThan(80);
     const viewport = page.viewportSize()!;
     for (const sample of samples) {
-      const half = sample.width * 1.08 / 2;
-      expect(sample.x - half).toBeGreaterThan(-4); expect(sample.x + half).toBeLessThan(viewport.width + 4);
+      // Validate the silhouette actually rendered, including changing yaw/pitch during
+      // travel. A fixed chassis multiplier is inaccurate in the frontal reading pose.
+      expect(sample.hullLeft).toBeGreaterThan(-4); expect(sample.hullRight).toBeLessThan(viewport.width + 4);
       expect(sample.screenError).toBeLessThan(.5);
     }
     // After instant anchor jumps it flies to the new slot instead of teleporting.
@@ -214,6 +218,9 @@ test("an abrupt fast-scroll brake knocks the notebook over; it lands and gets ba
   // Includes the full fall, return and fifteen native wheel round trips on SwiftShader.
   // The actual slam (4s), impacts (20s) and return (30s) assertions retain their limits.
   test.setTimeout(150_000);
+  // Automatic project websites are network dependencies; isolate this physics input
+  // from their script/GC stalls. Real website click/wheel is checked in live-experience.
+  await page.route(/https:\/\/www\.(?:nutriopus\.com\.br|xn--advogadadborahlima-jwb\.com\.br)\//, route => route.fulfill({ contentType: "text/html", body: "<!doctype html><html lang=pt><title>Physics fixture</title><h1>Controlled project document</h1></html>" }));
   await open(page);
   const gesture = await brake(page);
   await testInfo.attach("observed-brake-input", { body: JSON.stringify(gesture), contentType: "application/json" });

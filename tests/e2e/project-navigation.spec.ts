@@ -22,11 +22,11 @@ for (const locale of ["pt", "en", "es"]) for (const width of [1440, 390]) {
     const atTop = async () => {
       await page.mouse.move(8, 450);
       await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-      await expect(page.locator('header nav a[aria-current="location"]')).toHaveCount(0);
+      await expect(page.locator(`header nav a[href="/${locale}#home"][aria-current="location"]`)).toHaveCount(2);
     };
     await page.goto(`/${locale}`);
     await expect(page.locator("html")).toHaveAttribute("data-section-tracking", "true");
-    await expect(page.locator('header nav a[aria-current="location"]')).toHaveCount(0);
+    await expect(page.locator(`header nav a[href="/${locale}#home"][aria-current="location"]`)).toHaveCount(2);
     await click("work", true); await atWork();
     await atTop();
     // The fragment remains #work while the visitor is visibly in the Hero.
@@ -34,6 +34,14 @@ for (const locale of ["pt", "en", "es"]) for (const width of [1440, 390]) {
     await click("work"); await atWork();
     await click("about");
     await expect(page.locator(`header nav a[href="/${locale}#about"][aria-current="location"]`)).toHaveCount(2);
+    await click("work"); await atWork();
+    await click("home", true);
+    await expect(page.locator(`header nav a[href="/${locale}#home"][aria-current="location"]`)).toHaveCount(2);
+    await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThanOrEqual(1);
+    await page.locator("#work").evaluate(node => node.scrollIntoView({ block: "start", behavior: "instant" }));
+    // Repeated #home on the wordmark also preserves native anchor behavior.
+    await page.locator(`header .container-page>a[href="/${locale}#home"]`).click();
+    await expect.poll(() => page.evaluate(() => scrollY)).toBeLessThanOrEqual(1);
     await click("work"); await atWork();
     await page.reload(); await atWork();
     await atTop(); await click("work"); await atWork();

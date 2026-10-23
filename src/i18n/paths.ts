@@ -4,13 +4,15 @@ export type SectionId = "work" | "about" | "expertise" | "services" | "contact";
 
 /** Landing sections in page order (information-architecture.md). */
 export const sectionIds: readonly SectionId[] = ["work", "about", "expertise", "services", "contact"];
+export type NavigationId = "home" | SectionId;
+export const navigationIds: readonly NavigationId[] = ["home", ...sectionIds];
 
 /** Absolute in-site path for a locale, e.g. `localePath("en", "#work")` → `/en#work`. */
 export function localePath(locale: Locale, suffix = ""): string {
   return `/${locale}${suffix}`;
 }
 
-export function sectionHref(locale: Locale, section: SectionId): string {
+export function sectionHref(locale: Locale, section: NavigationId): string {
   return localePath(locale, `#${section}`);
 }
 

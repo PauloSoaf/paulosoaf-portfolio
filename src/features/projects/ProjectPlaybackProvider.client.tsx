@@ -5,7 +5,7 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import { createProjectPlayback } from "./project-playback";
 
 /** Only display fields from the already-filtered server catalog cross this boundary. */
-export type PlaybackProject = Pick<Project, "slug" | "title" | "kind" | "status" | "summary" | "image" | "art">;
+export type PlaybackProject = Pick<Project, "slug" | "title" | "kind" | "status" | "summary" | "image" | "art" | "repository">;
 const ProjectPlaybackContext = createContext<{
   store: ReturnType<typeof createProjectPlayback>; projects: readonly PlaybackProject[];
   labels: Pick<Dictionary, "carousel" | "projects" | "editorial">;

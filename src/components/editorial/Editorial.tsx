@@ -14,7 +14,8 @@ export function StatusBadge({
   status: ContentStatus;
   labels: Record<ContentStatus, string>;
 }) {
-  if (status === "approved") return null;
+  // Presentation only: draft records still require approval and remain filtered publicly.
+  if (status === "approved" || status === "draft") return null;
   return (
     <span
       data-editorial="status"

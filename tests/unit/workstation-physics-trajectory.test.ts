@@ -164,6 +164,16 @@ describe("motion rig", () => {
     value.setTarget({ x: 900, y: 380, width: 520, pitch: .1, yaw: 0, roll: 0, chapter: "hero" }, true, false);
     expect(value.body.y).toBe(380);
   });
+  it("holds the reading pose under the pointer while preserving intentional code inspection", () => {
+    const value = rig();
+    value.setTarget({ ...value.target, chapter: "work", yaw: 0 }, false, true);
+    value.look = { x: 40, y: 100 };
+    for (let i = 0; i < 180; i++) value.step(i * 16, 0);
+    expect(Math.abs(value.current.yaw)).toBeLessThan(.001);
+    value.attention = { x: 40, y: 100 };
+    for (let i = 180; i < 360; i++) value.step(i * 16, 0);
+    expect(Math.abs(value.current.yaw)).toBeGreaterThan(.05);
+  });
   it("a fast scroll brake knocks it over, it lands, gets dizzy and goes home", () => {
     const value = rig(), kinds: string[] = [];
     value.onImpact = (impact) => kinds.push(impact.kind);
@@ -232,7 +242,10 @@ describe("responsive page path", () => {
     }
     const middle = desktop.top + (desktop.height - desktop.top) / 2, work = stations[1]!;
     const arrived = planTrajectory(stations, work.top + work.height / 2 - middle, desktop);
-    expect(arrived.chapter).toBe("work"); expect(arrived.y).toBeCloseTo(middle); expect(arrived.width).toBeCloseTo(work.width * .74);
+    expect(arrived.chapter).toBe("work"); expect(arrived.y).toBeCloseTo(middle);
+    expect(arrived.width).toBeGreaterThan(work.width * .74);
+    expect(arrived.width * 1.08).toBeLessThanOrEqual(work.width);
+    expect(arrived.width).toBeLessThanOrEqual(work.height);
   });
   it("holds a side-slot hero above the fold on short desktops, but not in-flow mobile slots", () => {
     const short = { width: 1366, height: 600, top: 72 }, pose = planTrajectory([{ ...stations[0]!, top: 300 }, stations[1]!], 0, short);

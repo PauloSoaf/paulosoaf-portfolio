@@ -16,6 +16,7 @@ export const en: Dictionary = {
     newTab: "opens in a new tab",
   },
   nav: {
+    home: "Home",
     work: "Work",
     about: "About",
     expertise: "Expertise",

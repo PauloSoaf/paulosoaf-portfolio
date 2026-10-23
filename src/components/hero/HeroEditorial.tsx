@@ -25,7 +25,7 @@ export function HeroEditorial({ locale, dict, profile, art }: HeroEditorialProps
   const { hero } = dict;
 
   return (
-    <section data-hero aria-labelledby="hero-title" className="relative isolate overflow-clip border-b border-line">
+    <section id="home" data-hero aria-labelledby="hero-title" className="relative isolate overflow-clip border-b border-line">
       <HeroVitals />
       <div aria-hidden="true" data-scroll-decor className="hero-grid pointer-events-none absolute inset-0 -z-20" />
 

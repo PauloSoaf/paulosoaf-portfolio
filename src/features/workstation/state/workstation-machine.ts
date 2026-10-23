@@ -1,6 +1,7 @@
 export type ScreenApp =
   | { readonly kind: "DESKTOP" }
   | { readonly kind: "PROJECTS"; readonly automatic: boolean }
+  | { readonly kind: "JOURNEY"; readonly automatic: boolean }
   | { readonly kind: "PREVIEW"; readonly siteId: "fixture" | "nutriopus" | "deborah" }
   | { readonly kind: "CODE"; readonly file?: string }
   | { readonly kind: "NOTES" }
@@ -27,6 +28,8 @@ export type WorkstationEvent =
   | { type: "OPEN_TERMINAL" }
   | { type: "OPEN_PROJECTS"; automatic?: boolean }
   | { type: "SYNC_PROJECTS"; active: boolean }
+  | { type: "OPEN_JOURNEY"; automatic?: boolean }
+  | { type: "SYNC_SECTION"; section: "work" | "about" | null }
   | { type: "CLOSE_X" }
   | { type: "FOCUS_SCREEN" }
   | { type: "EXIT_FOCUS" }
@@ -85,6 +88,16 @@ export function workstationReducer(
       return openApp(state, { kind: "TERMINAL" });
     case "OPEN_PROJECTS":
       return openApp(state, { kind: "PROJECTS", automatic: !!event.automatic });
+    case "OPEN_JOURNEY":
+      return openApp(state, { kind: "JOURNEY", automatic: !!event.automatic });
+    case "SYNC_SECTION": {
+      if (state.mode === "FOCUS_SCREEN" || state.mode === "MANIPULATE" || state.mode === "BROKEN") return state;
+      const automatic = (state.app.kind === "PROJECTS" || state.app.kind === "JOURNEY") && state.app.automatic;
+      if (state.app.kind !== "DESKTOP" && !automatic) return state;
+      const kind = event.section === "work" ? "PROJECTS" : event.section === "about" ? "JOURNEY" : "DESKTOP";
+      if (state.app.kind === kind) return state;
+      return openApp(state, kind === "DESKTOP" ? { kind } : { kind, automatic: true });
+    }
     case "SYNC_PROJECTS":
       if (state.mode === "FOCUS_SCREEN" || state.mode === "MANIPULATE" || state.mode === "BROKEN") return state;
       if (event.active && state.app.kind === "DESKTOP") return openApp(state, { kind: "PROJECTS", automatic: true });

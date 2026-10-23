@@ -29,10 +29,11 @@ export function clampX(x: number, width: number, viewport: Viewport, extent: Ext
 }
 
 function stationPose(station: Station, scroll: number, viewport: Viewport, extent: Extent, pinBottom = false) {
-  const fill = viewport.width < 768 ? .92 : .74;
+  const reading = station.id === "work" || station.id === "about";
+  const fill = reading ? .98 : viewport.width < 768 ? .92 : .82;
   // Work shares space with a full card/controls. Fit the rendered silhouette to that
   // station as well as the viewport, including narrow hosts with a desktop scrollbar.
-  const desired = station.id === "work" ? Math.min(station.width * fill, station.width * .98 / extent.width, station.height * .98 / extent.height) : station.width * fill;
+  const desired = reading ? Math.min(station.width * fill / extent.width, station.height * .98 / extent.height) : station.width * fill;
   const width = fitWidth(desired, viewport, extent);
   const x = clampX(station.left + station.width / 2, width, viewport, extent);
   // Face the editorial content: a notebook on the right turns its screen toward the left.
@@ -41,7 +42,7 @@ function stationPose(station: Station, scroll: number, viewport: Viewport, exten
   // A side slot (beside the copy) may hold the notebook above the fold on short screens;
   // an in-flow slot (below the copy on tablet/mobile) must keep entering from the page edge.
   if (pinBottom && station.width < viewport.width * .7) y = Math.min(y, viewport.height - viewportMargin(viewport) - width * extent.height / 2);
-  return { x, y, width, pitch: .1, yaw, roll: 0, chapter: station.id };
+  return { x, y, width, pitch: reading ? 18 * Math.PI / 180 - .5 : .1, yaw: reading ? 0 : yaw, roll: 0, chapter: station.id };
 }
 
 /**

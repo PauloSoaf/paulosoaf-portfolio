@@ -24,7 +24,7 @@ test("native Projects navigation opens and plays the notebook carousel with one 
   const initial = await gallery(page).getAttribute("data-selected-index");
   await expect.poll(() => gallery(page).getAttribute("data-selected-index"), { timeout: 10_000 }).not.toBe(initial);
   await synchronized(page);
-  await expect(page.locator("iframe")).toHaveCount(0);
+  await expect(page.locator("iframe[data-project-site]")).toHaveCount(["nutriopus", "deborah-lima"].includes(await gallery(page).getAttribute("data-project") ?? "") ? 1 : 0);
   // A direct selection in the page is reflected in the real projected screen.
   await page.locator(".filmstrip-button").nth(3).click();
   await expect(gallery(page)).toHaveAttribute("data-selected-index", "3");
@@ -35,11 +35,11 @@ test("native Projects navigation opens and plays the notebook carousel with one 
   expect(await canvas!.evaluate(node => node === document.querySelector("canvas"))).toBe(true);
   // Leaving returns the automatic app to Desktop. The same fragment works again from Hero.
   await page.locator('header .ui-nav[href="/pt#about"]').click();
-  await expect(screen(page)).toHaveAttribute("data-app", "DESKTOP");
+  await expect(screen(page)).toHaveAttribute("data-app", "JOURNEY");
   await page.locator('header .ui-nav[href="/pt#work"]').click();
   await expect(gallery(page)).toBeVisible();
   await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
-  await expect(page.locator('header .ui-nav[aria-current="location"]')).toHaveCount(0);
+  await expect(page.locator('header .ui-nav[href="/pt#home"][aria-current="location"]')).toHaveCount(1);
   await page.locator('header .ui-nav[href="/pt#work"]').click();
   await settle(page); await expect(gallery(page)).toBeVisible();
   await synchronized(page); expect(errors).toEqual([]);
@@ -65,7 +65,7 @@ for (const theme of ["dark", "light"]) {
     await expect.poll(() => gallery(page).getAttribute("data-selected-index"), { timeout: 10_000 }).not.toBe(initial);
     await synchronized(page);
     await page.screenshot({ path: info.outputPath(`projects-synchronized-mobile-${theme}.png`) });
-    await expect(page.locator("iframe")).toHaveCount(0);
+    await expect(page.locator("iframe[data-project-site]")).toHaveCount(["nutriopus", "deborah-lima"].includes(await gallery(page).getAttribute("data-project") ?? "") ? 1 : 0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
   });
 }
@@ -115,5 +115,5 @@ test("Projects opened explicitly from the notebook Desktop plays while the page 
   await expect.poll(() => gallery(page).getAttribute("data-selected-index"), { timeout: 10_000 }).not.toBe(initial);
   await synchronized(page);
   expect(await page.evaluate(() => scrollY)).toBe(0);
-  await expect(page.locator('header .ui-nav[aria-current="location"]')).toHaveCount(0);
+  await expect(page.locator('header .ui-nav[href="/pt#home"][aria-current="location"]')).toHaveCount(1);
 });
